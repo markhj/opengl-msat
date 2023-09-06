@@ -4,11 +4,6 @@
 # Required
 version: 2
 
-python:
-  version: 3.7
-  install:
-    - requirements: docs/requirements.txt
-
 # Set the version of Python and other tools you might need
 build:
   os: ubuntu-22.04
@@ -17,3 +12,7 @@ build:
 
 mkdocs:
   configuration: mkdocs.yml
+
+python:
+  install:
+    - requirements: docs/requirements.txt
