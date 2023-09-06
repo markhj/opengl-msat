@@ -4,6 +4,7 @@ project(opengl_msat)
 set(CMAKE_CXX_STANDARD 17)
 
 include_directories(include)
+include_directories(libs/glad/include)
 
 # LibrarySetup.cmake needs the variable PACKAGE_PREFIX_DIR
 # In this case we just set it to the current directory

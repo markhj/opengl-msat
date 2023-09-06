@@ -13,6 +13,12 @@ target_include_directories(opengl_msat
         $<INSTALL_INTERFACE:include>
 )
 
+target_include_directories(opengl_msat
+        PUBLIC
+        $<BUILD_INTERFACE:${PACKAGE_PREFIX_DIR}/libs/glad/include>
+        $<INSTALL_INTERFACE:libs/glad/include>
+)
+
 # Export the targets file
 export(TARGETS opengl_msat
         FILE ${CMAKE_CURRENT_BINARY_DIR}/opengl_msatTargets.cmake)

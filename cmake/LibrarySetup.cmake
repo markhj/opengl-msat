@@ -1,8 +1,11 @@
 # The list of classes in the library
-set(CLASSES timer/timer)
+set(CLASSES
+        timer/timer
+        window/window)
 
 # The list of contracts in the library
-set(CONTRACTS bindable)
+set(CONTRACTS
+        bindable)
 
 # Declare the variable which will contain the parsed lists
 # of sources and headers
