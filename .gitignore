@@ -1,0 +1,4 @@
+# Base directories to exclude
+cmake-build-debug/
+cmake-build-release/
+.idea/
