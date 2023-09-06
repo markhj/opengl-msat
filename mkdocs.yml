@@ -1,3 +1,6 @@
 site_name: OpenGL MSAT
 theme:
   name: 'material'
+nav:
+  - Home: index.md
+  - Getting started: getting-started/getting-started.md
