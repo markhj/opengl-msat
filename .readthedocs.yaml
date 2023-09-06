@@ -4,6 +4,11 @@
 # Required
 version: 2
 
+python:
+  version: 3.11
+  install:
+    - requirements: docs/requirements.txt
+
 # Set the version of Python and other tools you might need
 build:
   os: ubuntu-22.04
