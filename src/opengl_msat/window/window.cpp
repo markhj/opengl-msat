@@ -3,8 +3,10 @@
 
 void Window::generate()
 {
-    if (!glfwInit() && !glfwInitiated) {
-        std::cerr << "Failed to initialize GLFW" << std::endl;
+    if (!glfwInitiated) {
+        if (!glfwInit()) {
+            std::cerr << "Failed to initialize GLFW" << std::endl;
+        }
     }
 
     glfwWindowHint(GLFW_SAMPLES, msaaSamples);
@@ -26,8 +28,7 @@ void Window::generate()
         }
     }
 
-    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     monitorWidth = mode->width;
     monitorHeight = mode->height;
 
@@ -45,15 +46,15 @@ void Window::close()
     shouldClose = true;
 }
 
-GLFWwindow *Window::createWindow() {
-    if (fullScreenMode) {
-//        GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-//        const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-//        return glfwCreateWindow(mode->width, mode->height, title, nullptr, nullptr);
-        return glfwCreateWindow(monitorWidth, monitorHeight, title, nullptr, nullptr);
-    }
-
-    return glfwCreateWindow(windowWidth, windowHeight, title, nullptr, nullptr);
+GLFWwindow *Window::createWindow()
+{
+    return glfwCreateWindow(
+            fullScreenMode ? monitorWidth : windowWidth,
+            fullScreenMode ? monitorHeight : windowHeight,
+            title,
+            nullptr,
+            nullptr
+            );
 }
 
 void Window::swapBuffers()
