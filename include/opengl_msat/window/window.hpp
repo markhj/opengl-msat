@@ -69,6 +69,8 @@ private:
     void destroy();
 
     [[nodiscard]] int getDecoration() const;
+
+    static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 };
 
 #endif

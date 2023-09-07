@@ -1,5 +1,7 @@
 # The list of classes in the library
 set(CLASSES
+        controls/keyboard
+        controls/keyboard_mapping
         timer/timer
         window/window)
 

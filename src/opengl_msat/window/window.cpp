@@ -32,6 +32,8 @@ void Window::generate()
     monitorWidth = mode->width;
     monitorHeight = mode->height;
 
+    glfwSetKeyCallback(glfwWindow, keyboardCallback);
+
     instantiated = true;
     glfwInitiated = true;
 }
@@ -100,4 +102,9 @@ int Window::getDecoration() const
     }
 
     return decoration ? 1 : 0;
+}
+
+void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
+    std::cout << "key pressed!" << std::endl;
 }
