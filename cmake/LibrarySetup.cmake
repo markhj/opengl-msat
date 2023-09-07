@@ -25,4 +25,8 @@ foreach (CONTRACT ${CONTRACTS})
 endforeach ()
 
 # Add the library with the source and header files
-add_library(opengl_msat ${OPENGL_MSAT_HEADER_FILES} ${OPENGL_MSAT_SOURCE_FILES})
+add_library(opengl_msat
+        ${PACKAGE_PREFIX_DIR}/libs/glad/include/glad/glad.h
+        ${PACKAGE_PREFIX_DIR}/libs/glad/src/glad.c
+        ${OPENGL_MSAT_HEADER_FILES}
+        ${OPENGL_MSAT_SOURCE_FILES})

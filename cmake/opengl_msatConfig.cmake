@@ -12,7 +12,7 @@ target_include_directories(opengl_msat
         $<BUILD_INTERFACE:${PACKAGE_PREFIX_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
-
+message(${PACKAGE_PREFIX_DIR}/libs)
 target_include_directories(opengl_msat
         PUBLIC
         $<BUILD_INTERFACE:${PACKAGE_PREFIX_DIR}/libs/glad/include>
