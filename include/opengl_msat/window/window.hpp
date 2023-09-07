@@ -1,8 +1,7 @@
 #ifndef OPENGL_MSAT_WINDOW_HPP
 #define OPENGL_MSAT_WINDOW_HPP
 
-#include "glad/glad.h"
-#include <GLFW/glfw3.h>
+#include "opengl_msat/common.h"
 
 class Window {
 public:
