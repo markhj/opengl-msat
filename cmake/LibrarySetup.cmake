@@ -4,6 +4,8 @@ set(CLASSES
         controls/keyboard
         controls/keyboard_mapping
         timer/timer
+        vertex/vao
+        vertex/vbo
         window/window)
 
 # The list of contracts in the library
@@ -12,6 +14,7 @@ set(CONTRACTS
 
 # The list of structs and enums
 set(SHARED_TYPES
+        vertex_types
         keyboard_types)
 
 # Declare the variable which will contain the parsed lists
