@@ -42,6 +42,18 @@ public:
     void setMsaaSampling(int samples) {
         msaaSamples = samples;
     }
+
+    [[nodiscard]] unsigned int getWidth() const {
+        return fullScreenMode ? monitorWidth : windowWidth;
+    }
+
+    [[nodiscard]] unsigned int getHeight() const {
+        return fullScreenMode ? monitorHeight : windowHeight;
+    }
+
+    [[nodiscard]] float getAspectRatio() const {
+        return static_cast<float>(getWidth()) / getHeight();
+    }
 private:
     GLFWwindow* glfwWindow;
 

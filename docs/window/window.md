@@ -161,3 +161,15 @@ window.regenerate();
 This setting requires regeneration.
 
 The default value is 4.
+
+## Width, height and aspect ratio
+
+You can retrieve width, height and aspect radio with these methods:
+
+````c++
+int width = window.getWidth();
+int height = window.getHeight();
+float aspectRatio = window.getAspectRatio();
+````
+
+When the window is in full screen mode the width and height are equal to the display resolution, even if the underlying window width and height are different.
