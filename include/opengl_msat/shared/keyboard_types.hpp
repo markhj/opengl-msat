@@ -7,7 +7,6 @@
 
 enum KeyState {
     Press,
-    Down,
     Release
 };
 

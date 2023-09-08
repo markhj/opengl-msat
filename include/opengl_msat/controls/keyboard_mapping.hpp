@@ -19,10 +19,6 @@ public:
         addEvent(key, action, KeyState::Release);
     }
 
-    void whileDown(Key key, std::function<void()> action) {
-        addEvent(key, action, KeyState::Down);
-    }
-
     std::optional<std::function<void()>> getHandle(KeyboardEvent ev) {
         auto handle = mapping.find(ev);
         if (handle == mapping.end()) {
