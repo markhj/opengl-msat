@@ -1,8 +1,24 @@
 #ifndef OPENGL_MSAT_KEYBOARD_HPP
 #define OPENGL_MSAT_KEYBOARD_HPP
 
-class Keyboard {
+#include "opengl_msat/common.h"
+#include "keyboard_mapping.hpp"
 
+class Keyboard {
+public:
+    Keyboard() = default;
+
+    explicit Keyboard(KeyboardMapping* kbm) : keyboardMapping(kbm) {}
+
+    void setKeyboardMapping(KeyboardMapping* kbm) {
+        keyboardMapping = kbm;
+    }
+
+    KeyboardMapping* getKeyboardMapping() {
+        return keyboardMapping;
+    }
+private:
+    KeyboardMapping* keyboardMapping{};
 };
 
 #endif

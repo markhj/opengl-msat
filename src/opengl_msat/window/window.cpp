@@ -1,6 +1,8 @@
 #include <iostream>
 #include "opengl_msat/window/window.hpp"
 
+Keyboard* Window::keyboard = nullptr;
+
 void Window::generate()
 {
     if (!glfwInitiated) {
@@ -106,5 +108,34 @@ int Window::getDecoration() const
 
 void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-    std::cout << "key pressed!" << std::endl;
+    if (!keyboard) {
+        return;
+    }
+
+    auto glfwToKey = keyGlfwLookup.find(key);
+    if (!glfwToKey->first) {
+        return;
+    }
+
+    KeyState state;
+    switch (action) {
+        case GLFW_PRESS:
+            state = KeyState::Press;
+            break;
+        case GLFW_RELEASE:
+            state = KeyState::Release;
+            break;
+        default:
+            return;
+    }
+
+    KeyboardEvent kbEvent {
+        .key = glfwToKey->second,
+        .event = state
+    };
+
+    auto handle = keyboard->getKeyboardMapping()->getHandle(kbEvent);
+    if (handle.has_value()) {
+        handle.value()();
+    }
 }

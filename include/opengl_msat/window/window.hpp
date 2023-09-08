@@ -2,15 +2,11 @@
 #define OPENGL_MSAT_WINDOW_HPP
 
 #include "opengl_msat/common.h"
+#include "opengl_msat/controls/keyboard.hpp"
+#include "opengl_msat/shared/keyboard_types.hpp"
 
 class Window {
 public:
-    Window() { }
-
-    Window(unsigned int width, unsigned int height) : windowWidth(width), windowHeight(height) {}
-
-    Window(const char* title) : title(title) { }
-
     Window(unsigned int width, unsigned int height, const char* title)
         : windowWidth(width), windowHeight(height), title(title)
     {}
@@ -35,6 +31,35 @@ public:
 
     void close();
 
+    void setKeyboard(Keyboard* kb) {
+        keyboard = kb;
+    }
+private:
+    GLFWwindow* glfwWindow;
+
+    static Keyboard* keyboard;
+
+    bool instantiated = false;
+
+    bool glfwInitiated = false;
+
+    bool shouldClose = false;
+
+    unsigned int windowWidth,
+        windowHeight,
+        monitorWidth,
+        monitorHeight;
+
+    const char* title;
+
+    GLFWwindow* createWindow();
+
+    void destroy();
+
+    [[nodiscard]] int getDecoration() const;
+
+    static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
     // Window decoration is the title bar with minimize, maximize and close buttons
     // The setting of this value in practice is overruled by fullScreenMode (if true)
     // NOTE: Requires the window to be re-generated when changed after initialization
@@ -48,29 +73,6 @@ public:
     // When setting of decoration conflicts with full screen mode, this mode takes priority
     // NOTE: Requires the window to be re-generated when changed after initialization
     bool fullScreenMode = false;
-private:
-    GLFWwindow* glfwWindow;
-
-    bool instantiated = false;
-
-    bool glfwInitiated = false;
-
-    bool shouldClose = false;
-
-    unsigned int windowWidth = 800,
-        windowHeight = 600,
-        monitorWidth,
-        monitorHeight;
-
-    const char* title = "OpenGL MSAT";
-
-    GLFWwindow* createWindow();
-
-    void destroy();
-
-    [[nodiscard]] int getDecoration() const;
-
-    static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 };
 
 #endif
