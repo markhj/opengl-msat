@@ -15,6 +15,10 @@ To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.r
 ## Documentation :blue_book:
 The documentation is written in Markdown (MD) and compiled with MkDocs.
 
+### Editing documentation (with mkdocs)
+You must first and foremost have **Python** (and **PiP**) installed.
+Proceed by installing **Mkdocs**.
+
 For installation, please see: https://www.mkdocs.org
 
 To serve the documentation locally:
@@ -23,7 +27,17 @@ To serve the documentation locally:
 mkdocs serve
 ````
 
+On some Windows machines it might be necessary to run with:
+
+````bash
+python -m mkdocs serve
+````
+
 The documentation source is found in the ``docs`` directory.
 
+### Publishing
 The version hosted at readthedocs.io is automatically rebuilt when a new
 version of ``master`` branch is pushed.
+
+The documentation is based on the latest ``master`` branch, and is available
+at https://opengl-msat.readthedocs.io

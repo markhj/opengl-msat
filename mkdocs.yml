@@ -3,7 +3,9 @@ theme:
   name: 'material'
 nav:
   - Home: index.md
-  - Getting started: getting-started/getting-started.md
+  - Getting started:
+    - Getting started: getting-started/getting-started.md
+    - Window: window/window.md
   - Controls:
     - Keyboard: controls/keyboard.md
     - Key enum: controls/key-enum.md
