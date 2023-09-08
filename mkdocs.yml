@@ -9,3 +9,5 @@ nav:
   - Controls:
     - Keyboard: controls/keyboard.md
     - Key enum: controls/key-enum.md
+  - Misc.:
+    - Timer: timer/timer.md
