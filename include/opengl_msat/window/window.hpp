@@ -34,6 +34,14 @@ public:
     void setKeyboard(Keyboard* kb) {
         keyboard = kb;
     }
+
+    void setFullScreenMode(bool mode) {
+        fullScreenMode = mode;
+    }
+
+    void setMsaaSampling(int samples) {
+        msaaSamples = samples;
+    }
 private:
     GLFWwindow* glfwWindow;
 

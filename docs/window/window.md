@@ -108,6 +108,11 @@ The function used to regenerate the GLFW window instance is:
 window.regenerate();
 ````
 
+### Why not regenerate automatically when a setting that requires it has been changed?
+
+A very valid question! The idea of leveraging this control to the programmer, is for scenarios
+in which multiple settings that require window regeneration are changed at the same time.
+
 ## Change size
 
 You can change the window size with ``Window::setSize``.
@@ -119,5 +124,37 @@ window.setSize(1024, 768);
 Note: Resizing the window does **not** require regenerating the window.
 
 ## Fullscreen
+To switch to (or out of) full screen mode, simply use ``Window::setFullScreenMode``.
+
+**Important**: You need to regenerate the window when going in and out of full-screen.
+This is required because we utilize ``glfwWindowHint`` to turn window decoration on and off.
+Window decoration is a term for the title bar, borders and buttons to minimize, maximize and close.
+
+````c++
+window.setFullScreenMode(true);
+window.regenerate();
+````
+
+And to exit full screen mode:
+
+````c++
+window.setFullScreenMode(true);
+window.regenerate();
+````
+
+When you exit full-screen mode it returns to the original size from
+just before full-screen mode was entered.
 
 ## MSAA sampling
+**MSAA sampling** is also known as **anti-alias**.
+
+You can modify this setting with:
+
+````c++
+window.setMsaaSampling(8);
+window.regenerate();
+````
+
+This setting requires regeneration.
+
+The default value is 4.
