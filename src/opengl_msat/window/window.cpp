@@ -81,7 +81,14 @@ void Window::setSize(unsigned int width, unsigned int height)
 {
     windowWidth = width;
     windowHeight = height;
-    glfwSetWindowSize(glfwWindow, width, height);
+
+    // We will only store the new window size, when we're in full screen
+    // mode, but not actually resize the window, as this may cause
+    // the window to behave as in full-screen mode, but not actually
+    // fill out the entire screen space
+    if (!fullScreenMode) {
+        glfwSetWindowSize(glfwWindow, width, height);
+    }
 }
 
 void Window::regenerate()

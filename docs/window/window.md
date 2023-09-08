@@ -99,7 +99,7 @@ If you're not familiar with this function, then no need to worry.
 
 Among the settings in our library it concerns:
 
-- Toggling between window and full-screen mode
+- Toggling between window and full screen mode
 - Changing MSAA sampling after instantiation
 
 The function used to regenerate the GLFW window instance is:
@@ -123,10 +123,13 @@ window.setSize(1024, 768);
 
 Note: Resizing the window does **not** require regenerating the window.
 
-## Fullscreen
+Resizing does not work in full screen mode. But new size will be saved, for when/if
+you leave full screen mode.
+
+## Full screen
 To switch to (or out of) full screen mode, simply use ``Window::setFullScreenMode``.
 
-**Important**: You need to regenerate the window when going in and out of full-screen.
+**Important**: You need to regenerate the window when going in and out of full screen.
 This is required because we utilize ``glfwWindowHint`` to turn window decoration on and off.
 Window decoration is a term for the title bar, borders and buttons to minimize, maximize and close.
 
@@ -142,8 +145,8 @@ window.setFullScreenMode(true);
 window.regenerate();
 ````
 
-When you exit full-screen mode it returns to the original size from
-just before full-screen mode was entered.
+When you exit full screen mode it returns to the original size from
+just before full screen mode was entered.
 
 ## MSAA sampling
 **MSAA sampling** is also known as **anti-alias**.
