@@ -10,4 +10,6 @@ nav:
     - Keyboard: controls/keyboard.md
     - Key enum: controls/key-enum.md
   - Misc.:
+    - Context: context/context.md
+    - Bindable classes: lists/bindable-classes.md
     - Timer: timer/timer.md

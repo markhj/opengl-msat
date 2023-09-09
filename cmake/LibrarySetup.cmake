@@ -3,6 +3,7 @@ set(CLASSES
         shared/keyboard_types
         controls/keyboard
         controls/keyboard_mapping
+        context/context
         timer/timer
         vertex/vao
         vertex/vbo

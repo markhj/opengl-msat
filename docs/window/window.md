@@ -113,6 +113,19 @@ window.regenerate();
 A very valid question! The idea of leveraging this control to the programmer, is for scenarios
 in which multiple settings that require window regeneration are changed at the same time.
 
+Otherwise you could end up with:
+
+1. Change MSAA sampling
+2. _Wait for window to regenerate_
+3. Change to full screen mode
+4. _Wait for window to regenerate_
+
+Instead, with the current implementation it works like:
+
+1. Change MSAA sampling
+2. Change to full screen mode
+3. _Wait for window to regenerate_
+
 ## Change size
 
 You can change the window size with ``Window::setSize``.
@@ -123,8 +136,8 @@ window.setSize(1024, 768);
 
 Note: Resizing the window does **not** require regenerating the window.
 
-Resizing does not work in full screen mode. But new size will be saved, for when/if
-you leave full screen mode.
+Resizing has no effect in full screen mode. But the new size will be saved, for when/if
+you return to windowed mode, and _then_ it will apply.
 
 ## Full screen
 To switch to (or out of) full screen mode, simply use ``Window::setFullScreenMode``.
@@ -141,7 +154,7 @@ window.regenerate();
 And to exit full screen mode:
 
 ````c++
-window.setFullScreenMode(true);
+window.setFullScreenMode(false);
 window.regenerate();
 ````
 
@@ -172,4 +185,8 @@ int height = window.getHeight();
 float aspectRatio = window.getAspectRatio();
 ````
 
-When the window is in full screen mode the width and height are equal to the display resolution, even if the underlying window width and height are different.
+When the window is in full screen mode the returned width and height values are equal to the display resolution, even if the underlying window width and height settings are different.
+If you generate a 800x600 window on a 1920x1080 monitor, then the following applies:
+
+- Window mode: ``getWidth`` and ``getHeight`` return 800 and 600.
+- Full screen mode: ``getWidth`` and ``getHeight`` return 1920 and 1080.
