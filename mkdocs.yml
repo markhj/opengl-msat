@@ -10,7 +10,7 @@ nav:
     - VBO: vertex/vbo.md
   - Shaders:
       - Shaders: shader/shader.md
-  - Rendering
+  - Rendering:
     - Rendering: render/render.md
     - Settings: render/render-settings.md
   - Controls:
@@ -20,4 +20,5 @@ nav:
     - Context: context/context.md
     - Bindable classes: lists/bindable-classes.md
     - Timer: timer/timer.md
+  - Troubleshooting: troubleshooting.md
   - Roadmap: roadmap.md
