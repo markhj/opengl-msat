@@ -1,9 +1,12 @@
 # The list of classes in the library
 set(CLASSES
         shared/keyboard_types
+        shared/vertex_types
         controls/keyboard
         controls/keyboard_mapping
         context/context
+        renderer/renderer
+        shader/shader
         timer/timer
         vertex/vao
         vertex/vbo
@@ -15,8 +18,8 @@ set(CONTRACTS
 
 # The list of structs and enums
 set(SHARED_TYPES
-        vertex_types
-        keyboard_types)
+        render_types
+        shader_types)
 
 # Declare the variable which will contain the parsed lists
 # of sources and headers

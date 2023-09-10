@@ -6,6 +6,10 @@ nav:
   - Getting started:
     - Getting started: getting-started/getting-started.md
     - Window: window/window.md
+    - VAO: vertex/vao.md
+    - VBO: vertex/vbo.md
+  - Shaders:
+      - Shaders: shader/shader.md
   - Controls:
     - Keyboard: controls/keyboard.md
     - Key enum: controls/key-enum.md

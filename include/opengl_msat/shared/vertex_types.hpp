@@ -1,7 +1,9 @@
 #ifndef OPENGL_MSAT_VERTEX_TYPES_HPP
 #define OPENGL_MSAT_VERTEX_TYPES_HPP
 
-enum VertexAttribute {
+#include <stdexcept>
+
+enum class VertexAttribute {
     Position2D,
     Position3D,
 
@@ -17,5 +19,7 @@ enum VertexAttribute {
     Tangent3D,
     Bitangent3D,
 };
+
+unsigned int getVertexAttributeSize(VertexAttribute attr);
 
 #endif
