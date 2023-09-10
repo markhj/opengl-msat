@@ -10,6 +10,9 @@ nav:
     - VBO: vertex/vbo.md
   - Shaders:
       - Shaders: shader/shader.md
+  - Rendering
+    - Rendering: render/render.md
+    - Settings: render/render-settings.md
   - Controls:
     - Keyboard: controls/keyboard.md
     - Key enum: controls/key-enum.md
@@ -17,3 +20,4 @@ nav:
     - Context: context/context.md
     - Bindable classes: lists/bindable-classes.md
     - Timer: timer/timer.md
+  - Roadmap: roadmap.md

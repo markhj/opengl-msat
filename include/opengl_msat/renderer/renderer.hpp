@@ -10,30 +10,28 @@
 
 class Renderer {
 public:
-    Renderer(Window& window, Timer& timer) : window(window), timer(timer) {}
-
-    void render(std::function<void()> iter)
-    {
-        while (window.keepOpen())
-        {
-            timer.start();
-
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-            iter();
-
-            glDrawArrays(GL_TRIANGLES, 0, 3);
-
-            window.swapAndPoll();
-
-            timer.end();
-        }
+    Renderer(Window& window, Timer& timer, RenderSettings& settings)
+        : window(window), timer(timer), settings(settings) {
+        applySettings();
     }
+
+    void applySettings() const;
+
+    void render(VAO& vao);
+
+    void render(VAO vao, DrawMode drawMode);
+
+    void render(VAO& vao, DrawMode drawMode, unsigned int from, unsigned int count);
+
+    void loop(std::function<void(Renderer*)> iter);
+
+    void clear() const;
 private:
     Window& window;
 
     Timer& timer;
+
+    RenderSettings& settings;
 };
 
 #endif

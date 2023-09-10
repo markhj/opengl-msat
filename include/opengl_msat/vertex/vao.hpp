@@ -2,6 +2,7 @@
 #define OPENGL_MSAT_VAO_HPP
 
 #include <vector>
+#include <memory>
 #include "opengl_msat/contracts/bindable.hpp"
 #include "opengl_msat/common.h"
 #include "opengl_msat/shared/vertex_types.hpp"
@@ -25,7 +26,9 @@ public:
     void associate(VBO& vbo, std::vector<VertexAttribute> attributes)
     {
         bind();
-        associatedVBOs.push_back(vbo);
+
+        associatedVBOs.emplace_back(vbo);
+
         Context::with(vbo, [&vbo, &attributes]() {
             vbo.upload();
 
@@ -49,10 +52,15 @@ public:
         });
         unbind();
     }
+
+    std::vector<std::reference_wrapper<VBO>> getAssociatedVBOs()
+    {
+        return associatedVBOs;
+    }
 private:
     GLuint vao;
 
-    std::vector<VBO> associatedVBOs = {};
+    std::vector<std::reference_wrapper<VBO>> associatedVBOs = {};
 };
 
 #endif

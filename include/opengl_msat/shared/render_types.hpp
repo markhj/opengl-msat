@@ -9,4 +9,9 @@ enum DrawMode {
     Triangles = GL_TRIANGLES,
 };
 
+struct RenderSettings {
+    float pointSize = 1.0;
+    float lineSize = 1.0;
+};
+
 #endif

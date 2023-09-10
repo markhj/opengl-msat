@@ -8,7 +8,7 @@
 
 class VBO : public Bindable {
 public:
-    VBO(std::vector<GLfloat>& values) : vertices(values)
+    VBO()
     {
         glGenBuffers(1, &vbo);
     }
@@ -23,19 +23,29 @@ public:
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
-    void setVertices(std::vector<GLfloat>& values)
+    void setVertices(std::vector<GLfloat> values)
     {
-        vertices = values;
+        vertices = std::move(values);
     }
 
     void upload() const
     {
         glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), vertices.data(), draw);
     }
+
+    [[nodiscard]] unsigned int count() const
+    {
+        return vertices.size();
+    }
+
+    [[nodiscard]] unsigned int byteSize() const
+    {
+        return count() * sizeof(GLfloat);
+    }
 private:
     GLuint vbo;
 
-    std::vector<GLfloat>& vertices;
+    std::vector<GLfloat> vertices;
 
     GLenum draw = GL_DYNAMIC_DRAW;
 };
