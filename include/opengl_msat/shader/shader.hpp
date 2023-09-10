@@ -4,6 +4,7 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/contracts/bindable.hpp"
 #include "opengl_msat/shared/shader_types.hpp"
+#include "vertex_sbldr.hpp"
 #include <iostream>
 #include <map>
 
@@ -12,6 +13,11 @@ public:
     void compile();
 
     void setSource(ShaderStage stage, const char* source);
+
+    void fromBuilder(VertexShaderBuilder builder)
+    {
+        setSource(ShaderStage::Vertex, builder.build());
+    }
 
     unsigned int getProgramId() const
     {
