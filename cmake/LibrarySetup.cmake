@@ -7,8 +7,8 @@ set(CLASSES
         context/context
         renderer/renderer
         shader/shader
-        shader/shader_builder
         shader/vertex_sbldr
+        shader/fragment_sbldr
         timer/timer
         vertex/vao
         vertex/vbo
@@ -16,7 +16,8 @@ set(CLASSES
 
 # The list of contracts in the library
 set(CONTRACTS
-        bindable)
+        bindable
+        shader_builder)
 
 # Declare the variable which will contain the parsed lists
 # of sources and headers

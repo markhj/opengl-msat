@@ -1,7 +1,7 @@
 #ifndef OPENGL_MSAT_VERTEX_SBLDR_HPP
 #define OPENGL_MSAT_VERTEX_SBLDR_HPP
 
-#include "shader_builder.hpp"
+#include "opengl_msat/contracts/shader_builder.hpp"
 #include "opengl_msat/shared/vertex_types.hpp"
 #include <utility>
 #include <vector>
@@ -12,7 +12,7 @@ public:
         : attributes(std::move(attributes))
         { }
 
-    const char* build() override;
+    std::string build() override;
 private:
     std::vector<VertexAttribute> attributes;
 };

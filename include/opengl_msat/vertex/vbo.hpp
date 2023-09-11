@@ -13,6 +13,12 @@ public:
         glGenBuffers(1, &vbo);
     }
 
+    VBO(std::vector<GLfloat> vertices)
+    {
+        setVertices(vertices);
+        glGenBuffers(1, &vbo);
+    }
+
     void bind() override
     {
         glBindBuffer(GL_ARRAY_BUFFER, vbo);

@@ -1,9 +1,9 @@
 #include <iostream>
 #include "opengl_msat/shader/vertex_sbldr.hpp"
 
-const char* VertexShaderBuilder::build()
+std::string VertexShaderBuilder::build()
 {
-    std::string lines = "#version 330";
+    std::string lines = "#version 330 core";
 
     int loc = 0;
     for (VertexAttribute attr : attributes) {
