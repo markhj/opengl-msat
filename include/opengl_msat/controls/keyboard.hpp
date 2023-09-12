@@ -10,13 +10,9 @@ public:
 
     explicit Keyboard(KeyboardMapping* kbm) : keyboardMapping(kbm) {}
 
-    void setKeyboardMapping(KeyboardMapping* kbm) {
-        keyboardMapping = kbm;
-    }
+    void setKeyboardMapping(KeyboardMapping* kbm);
 
-    KeyboardMapping* getKeyboardMapping() {
-        return keyboardMapping;
-    }
+    KeyboardMapping* getKeyboardMapping();
 private:
     KeyboardMapping* keyboardMapping{};
 };

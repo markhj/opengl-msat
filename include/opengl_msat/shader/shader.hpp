@@ -17,35 +17,17 @@ public:
 
     void setSource(ShaderStage stage, std::string source);
 
-    void fromBuilder(VertexShaderBuilder builder)
-    {
-        setSource(ShaderStage::Vertex, builder.build());
-    }
+    void fromBuilder(VertexShaderBuilder builder);
 
-    void fromBuilder(FragmentShaderBuilder builder)
-    {
-        setSource(ShaderStage::Fragment, builder.build());
-    }
+    void fromBuilder(FragmentShaderBuilder builder);
 
-    unsigned int getProgramId() const
-    {
-        return programId;
-    }
+    unsigned int getProgramId() const;
 
-    void bind()
-    {
-        glUseProgram(getProgramId());
-    }
+    void bind();
 
-    void unbind()
-    {
-        glUseProgram(0);
-    }
+    void unbind();
 
-    GLint getLocation(const char* of)
-    {
-        return glGetUniformLocation(getProgramId(), of);
-    }
+    GLint getLocation(const char* of);
 
     void uniform(const char* name, int value);
 

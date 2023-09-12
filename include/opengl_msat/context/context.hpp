@@ -6,11 +6,7 @@
 
 class Context {
 public:
-    static void with(Bindable& bindable, const std::function<void()>& callable) {
-        bindable.bind();
-        callable();
-        bindable.unbind();
-    }
+    static void with(Bindable& bindable, const std::function<void()>& callable);
 };
 
 #endif

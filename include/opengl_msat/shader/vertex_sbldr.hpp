@@ -15,12 +15,7 @@ public:
 
     std::string build() override;
 
-    VertexShaderBuilder& setProjection(Projection value)
-    {
-        projection = value;
-
-        return *this;
-    }
+    VertexShaderBuilder& setProjection(Projection value);
 private:
     std::vector<VertexAttribute> attributes;
 

@@ -63,3 +63,10 @@ std::string VertexShaderBuilder::build()
 
     return lines.c_str();
 }
+
+VertexShaderBuilder &VertexShaderBuilder::setProjection(Projection value)
+{
+    projection = value;
+
+    return *this;
+}

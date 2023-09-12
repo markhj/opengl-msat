@@ -19,3 +19,24 @@ Mat4 Camera::getProjection() const
             zNear,
             zFar);
 }
+
+void Camera::setPosition(Vec3 value)
+{
+    position = value;
+}
+
+void Camera::setTarget(Vec3 value)
+{
+    target = value;
+}
+
+void Camera::setClippingPlane(float near, float far)
+{
+    zNear = near;
+    zFar = far;
+}
+
+void Camera::setFieldOfView(float deg)
+{
+    fov = deg;
+}

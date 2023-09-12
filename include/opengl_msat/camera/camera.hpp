@@ -15,31 +15,13 @@ public:
 
     [[nodiscard]] Mat4 getProjection() const;
 
-    void setPosition(Vec3 value)
-    {
-        position = value;
-    }
+    void setPosition(Vec3 value);
 
-    void setTarget(Vec3 value)
-    {
-        target = value;
-    }
+    void setTarget(Vec3 value);
 
-    void setUp(Vec3 value)
-    {
-        up = value;
-    }
+    void setClippingPlane(float near, float far);
 
-    void setClippingPlane(float near, float far)
-    {
-        zNear = near;
-        zFar = far;
-    }
-
-    void setFieldOfView(float deg)
-    {
-        fov = deg;
-    }
+    void setFieldOfView(float deg);
 private:
     Window& window;
 

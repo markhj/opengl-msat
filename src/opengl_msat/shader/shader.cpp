@@ -149,3 +149,33 @@ void ShaderProgram::uniform(const char *name, Vec3 value)
     glUniform3fv(getLocation(name), 1, glm::value_ptr(value.toGlm()));
     unbind();
 }
+
+void ShaderProgram::fromBuilder(VertexShaderBuilder builder)
+{
+    setSource(ShaderStage::Vertex, builder.build());
+}
+
+void ShaderProgram::fromBuilder(FragmentShaderBuilder builder)
+{
+    setSource(ShaderStage::Fragment, builder.build());
+}
+
+unsigned int ShaderProgram::getProgramId() const
+{
+    return programId;
+}
+
+void ShaderProgram::bind()
+{
+    glUseProgram(getProgramId());
+}
+
+void ShaderProgram::unbind()
+{
+    glUseProgram(0);
+}
+
+GLint ShaderProgram::getLocation(const char *of)
+{
+    return glGetUniformLocation(getProgramId(), of);
+}
