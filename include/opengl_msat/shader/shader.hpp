@@ -47,6 +47,14 @@ public:
         return glGetUniformLocation(getProgramId(), of);
     }
 
+    void uniform(const char* name, int value);
+
+    void uniform(const char* name, unsigned int value);
+
+    void uniform(const char* name, float value);
+
+    void uniform(const char* name, Vec3 value);
+
     void uniform(const char* name, Mat4 value);
 
     void uniform(Camera& camera);

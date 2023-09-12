@@ -108,6 +108,13 @@ GLenum ShaderProgram::getShaderStage(ShaderStage stage)
     }
 }
 
+void ShaderProgram::uniform(Camera &camera)
+{
+    uniform("view", camera.getView());
+    uniform("model", camera.getModel());
+    uniform("projection", camera.getProjection());
+}
+
 void ShaderProgram::uniform(const char *name, Mat4 value)
 {
     bind();
@@ -115,9 +122,30 @@ void ShaderProgram::uniform(const char *name, Mat4 value)
     unbind();
 }
 
-void ShaderProgram::uniform(Camera &camera)
+void ShaderProgram::uniform(const char *name, int value)
 {
-    uniform("view", camera.getView());
-    uniform("model", camera.getModel());
-    uniform("projection", camera.getProjection());
+    bind();
+    glUniform1i(getLocation(name), value);
+    unbind();
+}
+
+void ShaderProgram::uniform(const char *name, unsigned int value)
+{
+    bind();
+    glUniform1i(getLocation(name), value);
+    unbind();
+}
+
+void ShaderProgram::uniform(const char *name, float value)
+{
+    bind();
+    glUniform1f(getLocation(name), value);
+    unbind();
+}
+
+void ShaderProgram::uniform(const char *name, Vec3 value)
+{
+    bind();
+    glUniform3fv(getLocation(name), 1, glm::value_ptr(value.toGlm()));
+    unbind();
 }
