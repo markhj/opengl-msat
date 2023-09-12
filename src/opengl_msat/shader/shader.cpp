@@ -1,5 +1,6 @@
 #include <vector>
 #include "opengl_msat/shader/shader.hpp"
+#include <glm/gtc/type_ptr.hpp>
 
 void ShaderProgram::compileShaderStage(ShaderStage stage)
 {
@@ -105,4 +106,18 @@ GLenum ShaderProgram::getShaderStage(ShaderStage stage)
         default:
             throw std::runtime_error("OpenGL MSAT: Missing implementation in getShaderStage");
     }
+}
+
+void ShaderProgram::uniform(const char *name, Mat4 value)
+{
+    bind();
+    glUniformMatrix4fv(getLocation(name), 1, GL_FALSE, glm::value_ptr(value.toGlm()));
+    unbind();
+}
+
+void ShaderProgram::uniform(Camera &camera)
+{
+    uniform("view", camera.getView());
+    uniform("model", camera.getModel());
+    uniform("projection", camera.getProjection());
 }

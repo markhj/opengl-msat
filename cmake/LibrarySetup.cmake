@@ -2,13 +2,17 @@
 set(CLASSES
         shared/keyboard_types
         shared/vertex_types
+        camera/camera
         controls/keyboard
         controls/keyboard_mapping
         context/context
+        geometry/vectors
+        geometry/matrices
         renderer/renderer
         shader/shader
         shader/vertex_sbldr
         shader/fragment_sbldr
+        tools/dump
         timer/timer
         vertex/vao
         vertex/vbo
@@ -17,7 +21,8 @@ set(CLASSES
 # The list of contracts in the library
 set(CONTRACTS
         bindable
-        shader_builder)
+        shader_builder
+        glm_derivative)
 
 # Declare the variable which will contain the parsed lists
 # of sources and headers

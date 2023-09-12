@@ -35,10 +35,18 @@ std::string VertexShaderBuilder::build()
                 + ";";
     }
 
+    if (projection != Projection::None) {
+        lines += "\nuniform mat4 model;";
+        lines += "\nuniform mat4 view;";
+        lines += "\nuniform mat4 projection;";
+    }
+
     lines += "\n\nvoid main() {";
 
     if (posSize == 2) {
         lines += "\n\tgl_Position = vec4(vbo_pos, 0.0, 1.0);";
+    } else if (projection != Projection::None) {
+        lines += "\n\tgl_Position = projection * model * view * vec4(vbo_pos, 1.0);";
     } else {
         lines += "\n\tgl_Position = vec4(vbo_pos, 1.0);";
     }

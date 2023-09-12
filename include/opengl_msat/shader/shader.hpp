@@ -6,6 +6,8 @@
 #include "opengl_msat/shared/shader_types.hpp"
 #include "vertex_sbldr.hpp"
 #include "fragment_sbldr.hpp"
+#include "opengl_msat/geometry/matrices.hpp"
+#include "opengl_msat/camera/camera.hpp"
 #include <iostream>
 #include <map>
 
@@ -39,6 +41,15 @@ public:
     {
         glUseProgram(0);
     }
+
+    GLint getLocation(const char* of)
+    {
+        return glGetUniformLocation(getProgramId(), of);
+    }
+
+    void uniform(const char* name, Mat4 value);
+
+    void uniform(Camera& camera);
 private:
     GLuint programId;
 
