@@ -11,34 +11,15 @@
 
 class KeyboardMapping {
 public:
-    void onPress(Key key, std::function<void()> action) {
-        addEvent(key, action, KeyState::Press);
-    }
+    void onPress(Key key, std::function<void()> action);
 
-    void onRelease(Key key, std::function<void()> action) {
-        addEvent(key, action, KeyState::Release);
-    }
+    void onRelease(Key key, std::function<void()> action);
 
-    std::optional<std::function<void()>> getHandle(KeyboardEvent ev) {
-        auto handle = mapping.find(ev);
-        if (handle == mapping.end()) {
-            return std::optional<std::function<void()>>{std::nullopt};
-        }
-        return handle->second;
-    }
+    std::optional<std::function<void()>> getHandle(KeyboardEvent ev);
 private:
     std::map<KeyboardEvent, std::function<void()>> mapping;
 
-    void addEvent(Key key, std::function<void()> action, KeyState state)
-    {
-        mapping.insert(std::make_pair(
-            KeyboardEvent {
-                .key = key,
-                .event = state
-            },
-            action
-        ));
-    }
+    void addEvent(Key key, std::function<void()> action, KeyState state);
 };
 
 #endif

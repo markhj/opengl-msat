@@ -2,11 +2,17 @@
 set(CLASSES
         shared/keyboard_types
         shared/vertex_types
+        camera/camera
         controls/keyboard
         controls/keyboard_mapping
         context/context
+        geometry/vectors
+        geometry/matrices
         renderer/renderer
         shader/shader
+        shader/vertex_sbldr
+        shader/fragment_sbldr
+        tools/dump
         timer/timer
         vertex/vao
         vertex/vbo
@@ -14,12 +20,9 @@ set(CLASSES
 
 # The list of contracts in the library
 set(CONTRACTS
-        bindable)
-
-# The list of structs and enums
-set(SHARED_TYPES
-        render_types
-        shader_types)
+        bindable
+        shader_builder
+        glm_derivative)
 
 # Declare the variable which will contain the parsed lists
 # of sources and headers
@@ -37,11 +40,6 @@ endforeach()
 foreach (CONTRACT ${CONTRACTS})
     list(APPEND OPENGL_MSAT_HEADER_FILES "${PACKAGE_PREFIX_DIR}/include/opengl_msat/contracts/${CONTRACT}.hpp")
 endforeach ()
-
-# Repeat the same for contracts (they only have header files)
-#foreach (SHARED_TYPE ${SHARED_TYPES})
-#    list(APPEND OPENGL_MSAT_HEADER_FILES "${PACKAGE_PREFIX_DIR}/include/opengl_msat/shared/${SHARED_TYPE}.hpp")
-#endforeach ()
 
 # Add the library with the source and header files
 add_library(opengl_msat

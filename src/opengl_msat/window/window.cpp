@@ -146,3 +146,38 @@ void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int act
         handle.value()();
     }
 }
+
+GLFWwindow *Window::getGlfwWindow() const
+{
+    return glfwWindow;
+}
+
+void Window::setKeyboard(Keyboard *kb)
+{
+    keyboard = kb;
+}
+
+void Window::setFullScreenMode(bool mode)
+{
+    fullScreenMode = mode;
+}
+
+void Window::setMsaaSampling(int samples)
+{
+    msaaSamples = samples;
+}
+
+unsigned int Window::getWidth() const
+{
+    return fullScreenMode ? monitorWidth : windowWidth;
+}
+
+unsigned int Window::getHeight() const
+{
+    return fullScreenMode ? monitorHeight : windowHeight;
+}
+
+float Window::getAspectRatio() const
+{
+    return static_cast<float>(getWidth()) / getHeight();
+}

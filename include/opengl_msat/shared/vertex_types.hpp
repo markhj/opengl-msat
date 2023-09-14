@@ -21,5 +21,6 @@ enum class VertexAttribute {
 };
 
 unsigned int getVertexAttributeSize(VertexAttribute attr);
+const char* getVertexAttributeVarName(VertexAttribute attr);
 
 #endif

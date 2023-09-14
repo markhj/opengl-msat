@@ -4,6 +4,10 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/contracts/bindable.hpp"
 #include "opengl_msat/shared/shader_types.hpp"
+#include "vertex_sbldr.hpp"
+#include "fragment_sbldr.hpp"
+#include "opengl_msat/geometry/matrices.hpp"
+#include "opengl_msat/camera/camera.hpp"
 #include <iostream>
 #include <map>
 
@@ -11,66 +15,43 @@ class ShaderProgram : public Bindable {
 public:
     void compile();
 
-    void setSource(ShaderStage stage, const char* source);
+    void setSource(ShaderStage stage, std::string source);
 
-    unsigned int getProgramId() const
-    {
-        return programId;
-    }
+    void fromBuilder(VertexShaderBuilder builder);
 
-    void bind()
-    {
-        glUseProgram(getProgramId());
-    }
+    void fromBuilder(FragmentShaderBuilder builder);
 
-    void unbind()
-    {
-        glUseProgram(0);
-    }
+    unsigned int getProgramId() const;
+
+    void bind();
+
+    void unbind();
+
+    GLint getLocation(const char* of);
+
+    void uniform(const char* name, int value);
+
+    void uniform(const char* name, unsigned int value);
+
+    void uniform(const char* name, float value);
+
+    void uniform(const char* name, Vec3 value);
+
+    void uniform(const char* name, Mat4 value);
+
+    void uniform(Camera& camera);
 private:
     GLuint programId;
 
-    std::map<ShaderStage, const char*> sources = {};
+    bool compileErrors = false;
 
-    const char* getShaderTypeName(ShaderStage stage)
-    {
-        switch (stage) {
-            case ShaderStage::Vertex:
-                return "Vertex";
-            case ShaderStage::Fragment:
-                return "Fragment";
-            case ShaderStage::Compute:
-                return "Compute";
-            case ShaderStage::Geometry:
-                return "Geometry";
-            case ShaderStage::TessControl:
-                return "Tessellation control";
-            case ShaderStage::TessEval:
-                return "Tessellation evaluation";
-            default:
-                throw std::runtime_error("OpenGL MSAT: Missing implementation in getShaderStage");
-        }
-    }
+    std::map<ShaderStage, std::string> sources = {};
 
-    GLenum getShaderStage(ShaderStage stage)
-    {
-        switch (stage) {
-            case ShaderStage::Vertex:
-                return GL_VERTEX_SHADER;
-            case ShaderStage::Fragment:
-                return GL_FRAGMENT_SHADER;
-            case ShaderStage::Compute:
-                return GL_COMPUTE_SHADER;
-            case ShaderStage::Geometry:
-                return GL_GEOMETRY_SHADER;
-            case ShaderStage::TessEval:
-                return GL_TESS_EVALUATION_SHADER;
-            case ShaderStage::TessControl:
-                return GL_TESS_CONTROL_SHADER;
-            default:
-                throw std::runtime_error("OpenGL MSAT: Missing implementation in getShaderStage");
-        }
-    }
+    const char* getShaderTypeName(ShaderStage stage);
+
+    GLenum getShaderStage(ShaderStage stage);
+
+    void compileShaderStage(ShaderStage stage);
 };
 
 #endif

@@ -22,4 +22,5 @@ nav:
     - Context: context/context.md
     - Bindable classes: lists/bindable-classes.md
     - Timer: timer/timer.md
+  - Troubleshooting: troubleshooting.md
   - Roadmap: roadmap.md

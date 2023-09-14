@@ -10,8 +10,13 @@
 
 class Renderer {
 public:
-    Renderer(Window& window, Timer& timer, RenderSettings& settings)
+    Renderer(Window& window, Timer* timer, RenderSettings* settings)
         : window(window), timer(timer), settings(settings) {
+        applySettings();
+    }
+
+    Renderer(Window& window)
+            : window(window), timer(nullptr), settings(nullptr) {
         applySettings();
     }
 
@@ -29,9 +34,9 @@ public:
 private:
     Window& window;
 
-    Timer& timer;
+    Timer* timer;
 
-    RenderSettings& settings;
+    RenderSettings* settings;
 };
 
 #endif

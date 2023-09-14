@@ -14,6 +14,7 @@ public:
     [[nodiscard]] unsigned int getFramesPerSecond() const;
 private:
     double deltaTime = 0.0f;
+
     std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 };
 

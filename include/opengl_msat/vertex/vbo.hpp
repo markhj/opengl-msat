@@ -8,40 +8,21 @@
 
 class VBO : public Bindable {
 public:
-    VBO()
-    {
-        glGenBuffers(1, &vbo);
-    }
+    VBO();
 
-    void bind() override
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    }
+    VBO(std::vector<GLfloat> vertices);
 
-    void unbind() override
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-    }
+    void bind() override;
 
-    void setVertices(std::vector<GLfloat> values)
-    {
-        vertices = std::move(values);
-    }
+    void unbind() override;
 
-    void upload() const
-    {
-        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), vertices.data(), draw);
-    }
+    void setVertices(std::vector<GLfloat> values);
 
-    [[nodiscard]] unsigned int count() const
-    {
-        return vertices.size();
-    }
+    void upload() const;
 
-    [[nodiscard]] unsigned int byteSize() const
-    {
-        return count() * sizeof(GLfloat);
-    }
+    [[nodiscard]] unsigned int count() const;
+
+    [[nodiscard]] unsigned int byteSize() const;
 private:
     GLuint vbo;
 

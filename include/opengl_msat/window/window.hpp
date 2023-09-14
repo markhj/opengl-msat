@@ -15,9 +15,7 @@ public:
 
     void regenerate();
 
-    GLFWwindow* getGlfwWindow() const {
-        return glfwWindow;
-    }
+    [[nodiscard]] GLFWwindow* getGlfwWindow() const;
 
     void swapBuffers();
 
@@ -31,29 +29,17 @@ public:
 
     void close();
 
-    void setKeyboard(Keyboard* kb) {
-        keyboard = kb;
-    }
+    void setKeyboard(Keyboard* kb);
 
-    void setFullScreenMode(bool mode) {
-        fullScreenMode = mode;
-    }
+    void setFullScreenMode(bool mode);
 
-    void setMsaaSampling(int samples) {
-        msaaSamples = samples;
-    }
+    void setMsaaSampling(int samples);
 
-    [[nodiscard]] unsigned int getWidth() const {
-        return fullScreenMode ? monitorWidth : windowWidth;
-    }
+    [[nodiscard]] unsigned int getWidth() const;
 
-    [[nodiscard]] unsigned int getHeight() const {
-        return fullScreenMode ? monitorHeight : windowHeight;
-    }
+    [[nodiscard]] unsigned int getHeight() const;
 
-    [[nodiscard]] float getAspectRatio() const {
-        return static_cast<float>(getWidth()) / getHeight();
-    }
+    [[nodiscard]] float getAspectRatio() const;
 private:
     GLFWwindow* glfwWindow;
 

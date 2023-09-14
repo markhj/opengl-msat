@@ -13,50 +13,13 @@ class VAO : public Bindable {
 public:
     VAO();
 
-    void bind() override
-    {
-        glBindVertexArray(vao);
-    }
+    void bind() override;
 
-    void unbind() override
-    {
-        glBindVertexArray(0);
-    }
+    void unbind() override;
 
-    void associate(VBO& vbo, std::vector<VertexAttribute> attributes)
-    {
-        bind();
+    void associate(VBO& vbo, std::vector<VertexAttribute> attributes);
 
-        associatedVBOs.emplace_back(vbo);
-
-        Context::with(vbo, [&vbo, &attributes]() {
-            vbo.upload();
-
-            // Determine total vertex size
-            unsigned int totalSize = 0;
-            for (VertexAttribute attr : attributes) {
-                totalSize += getVertexAttributeSize(attr);
-            }
-
-            int i = 0;
-            int pos = 0;
-            for (VertexAttribute attr : attributes) {
-                unsigned int size = getVertexAttributeSize(attr);
-
-                glVertexAttribPointer(i, size, GL_FLOAT, GL_FALSE, totalSize * sizeof(float), (void*)(pos * sizeof(GLfloat)));
-                glEnableVertexAttribArray(i);
-
-                i++;
-                pos += size;
-            }
-        });
-        unbind();
-    }
-
-    std::vector<std::reference_wrapper<VBO>> getAssociatedVBOs()
-    {
-        return associatedVBOs;
-    }
+    std::vector<std::reference_wrapper<VBO>> getAssociatedVBOs();
 private:
     GLuint vao;
 

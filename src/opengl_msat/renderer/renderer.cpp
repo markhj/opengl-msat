@@ -36,7 +36,9 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
 {
     while (window.keepOpen())
     {
-        timer.start();
+        if (timer != nullptr) {
+            timer->start();
+        }
 
         clear();
 
@@ -45,7 +47,9 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
         window.swapBuffers();
         window.pollEvents();
 
-        timer.end();
+        if (timer != nullptr) {
+            timer->end();
+        }
     }
 }
 
@@ -57,6 +61,8 @@ void Renderer::clear() const
 
 void Renderer::applySettings() const
 {
-    glPointSize(settings.pointSize);
-    glLineWidth(settings.lineSize);
+    RenderSettings active = settings == nullptr ? RenderSettings {} : *settings;
+
+    glPointSize(active.pointSize);
+    glLineWidth(active.lineSize);
 }
