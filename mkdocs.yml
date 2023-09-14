@@ -6,11 +6,13 @@ nav:
   - Getting started:
     - Getting started: getting-started/getting-started.md
     - Window: window/window.md
+  - Vertices:
     - VAO: vertex/vao.md
     - VBO: vertex/vbo.md
+    - Vertex attributes: vertex/vertex-attribute.md
   - Shaders:
       - Shaders: shader/shader.md
-  - Rendering
+  - Rendering:
     - Rendering: render/render.md
     - Settings: render/render-settings.md
   - Controls:
