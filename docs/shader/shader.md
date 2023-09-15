@@ -25,13 +25,4 @@ Compilation and linking errors will be logged to the console.
 
 ## Shader stages
 
-These shader stages are available from ``shared/shader_types.hpp``:
-
-| Stage                        | Description             |
-|------------------------------|-------------------------|
-| ``ShaderStage::Vertex``      | Vertex                  |
-| ``ShaderStage::Fragment``    | Fragment                |
-| ``ShaderStage::Geometry``    | Geometry                |
-| ``ShaderStage::Compute``     | Compute                 |
-| ``ShaderStage::TessEval``    | Tessellation evaluation |
-| ``ShaderStage::TessControl`` | Tessellation control    |
+See list of available shader stages from: [Shader stages](/lists/shader-stage)
