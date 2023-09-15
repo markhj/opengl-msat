@@ -9,6 +9,7 @@ set(CLASSES
         geometry/vectors
         geometry/matrices
         renderer/renderer
+        renderer/renderstate
         shader/shader
         shader/vertex_sbldr
         shader/fragment_sbldr
