@@ -48,6 +48,8 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
 
         iter(this);
 
+        timer.endRenderTime();
+
         window.swapBuffers();
         window.pollEvents();
 
