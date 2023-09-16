@@ -32,3 +32,7 @@ renderer.applySettings();
 |-----------------|---------------------------------------|-------------------------|
 | ``pointSize``   | The pixel size of points | ``glPointSize``         |
 | ``lineSize``    | The pixel width of lines | ``glLineWidth``         |
+
+
+## Temporary swap
+For temporary swapping render settings see [Renderer](/render/render).

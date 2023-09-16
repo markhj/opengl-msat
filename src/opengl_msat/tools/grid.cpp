@@ -79,12 +79,12 @@ void Grid::render(Renderer *renderer)
     RenderState state;
     state.enable(RenderOption::DepthTesting);
 
-    renderer->withState(state, [&](Renderer* renderer) {
+    renderer->swapState(state, [&](Renderer* renderer) {
         RenderSettings newSettings {
             .lineSize = 2.0
         };
 
-        renderer->withSettings(newSettings, [&](Renderer* renderer) {
+        renderer->swapSettings(newSettings, [&](Renderer* renderer) {
             shader.uniform(renderer->getCamera());
 
             Context::safeWith(shader, [&] {

@@ -79,3 +79,6 @@ while (window.keepOpen()) {
     // Render
 }
 ````
+
+## Temporary swap
+For temporary swapping render state see [Renderer](/render/render).

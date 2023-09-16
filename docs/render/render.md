@@ -88,3 +88,28 @@ The three render/draw modes are:
 | ``DrawMode::Points``    | Renders singular points                                         |
 | ``DrawMode::Lines``     | Renders lines (requires pairs of vertices, i.e. an even number) |
 | ``DrawMode::Triangles`` | Renders triangles (requires 3 vertices for every triangle)      |
+
+## State and settings
+See chapters [Render settings](/render/render-settings) and [Render state](render/render-state)
+to learn about the two.
+
+### Temporary swap
+You can temporarily swap settings and state using the methods
+``swapSettings`` and ``swapState``.
+
+At the end of the method's execution the Renderer returns to the state
+it was in just prior to the ``swap*`` method being called.
+
+This is useful when you create helper classes which need to make
+changes to the render state or settings, and when you can't be certain
+which state you need to return to.
+
+````c++
+RenderSettings newSettings;
+
+renderer.swapSettings(newSettings, [&](Renderer* renderer) {
+    // Do something with the new settings
+});
+
+// Settings from before swapSettings was called are now back in effect
+````

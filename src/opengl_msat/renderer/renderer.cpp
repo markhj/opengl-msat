@@ -82,7 +82,7 @@ Camera &Renderer::getCamera()
     return camera;
 }
 
-void Renderer::withState(RenderState state, std::function<void(Renderer *)> iter)
+void Renderer::swapState(RenderState state, std::function<void(Renderer *)> iter)
 {
     RenderState restoreTo = renderState;
 
@@ -95,7 +95,7 @@ void Renderer::withState(RenderState state, std::function<void(Renderer *)> iter
     renderState.applyAll();
 }
 
-void Renderer::withSettings(RenderSettings newSettings, std::function<void(Renderer *)> iter)
+void Renderer::swapSettings(RenderSettings newSettings, std::function<void(Renderer *)> iter)
 {
     RenderSettings restoreTo = settings;
 

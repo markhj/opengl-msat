@@ -35,9 +35,9 @@ public:
 
     Camera& getCamera();
 
-    void withState(RenderState state, std::function<void(Renderer*)> iter);
+    void swapState(RenderState state, std::function<void(Renderer*)> iter);
 
-    void withSettings(RenderSettings settings, std::function<void(Renderer*)> iter);
+    void swapSettings(RenderSettings settings, std::function<void(Renderer*)> iter);
 private:
     Window& window;
 
