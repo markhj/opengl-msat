@@ -25,20 +25,22 @@ nav:
     - Settings: render/render-settings.md
     - State: render/render-state.md
   - Camera:
-      - Camera: camera/camera.md
-      - Projections: lists/projections.md
+    - Camera: camera/camera.md
+    - Projections: lists/projections.md
   - Controls:
     - Keyboard: controls/keyboard.md
     - Key enum: controls/key-enum.md
+  - Binding and context:
+      - Context: context/context.md
+      - Bindable: context/bindable.md
+      - Bindable classes: lists/bindable-classes.md
   - Misc.:
-    - Context: context/context.md
-    - Bindable classes: lists/bindable-classes.md
     - Timer: timer/timer.md
   - Enumerations:
-      - Projections: lists/projections.md
-      - Shader stages: lists/shader-stage.md
-      - Vertex attributes: vertex/vertex-attribute.md
-      - Keys: controls/key-enum.md
-      - Projections: lists/render-options.md
+    - Projections: lists/projections.md
+    - Shader stages: lists/shader-stage.md
+    - Vertex attributes: vertex/vertex-attribute.md
+    - Keys: controls/key-enum.md
+    - Projections: lists/render-options.md
   - Troubleshooting: troubleshooting.md
   - Roadmap: roadmap.md

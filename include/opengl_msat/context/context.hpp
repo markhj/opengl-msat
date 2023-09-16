@@ -7,6 +7,8 @@
 class Context {
 public:
     static void with(Bindable& bindable, const std::function<void()>& callable);
+
+    static void safeWith(Bindable& bindable, const std::function<void()>& callable);
 };
 
 #endif

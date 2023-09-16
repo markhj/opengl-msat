@@ -117,37 +117,37 @@ void ShaderProgram::uniform(Camera &camera)
 
 void ShaderProgram::uniform(const char *name, Mat4 value)
 {
-    bind();
+    safeBind();
     glUniformMatrix4fv(getLocation(name), 1, GL_FALSE, glm::value_ptr(value.toGlm()));
-    unbind();
+    safeUnbind();
 }
 
 void ShaderProgram::uniform(const char *name, int value)
 {
-    bind();
+    safeBind();
     glUniform1i(getLocation(name), value);
-    unbind();
+    safeUnbind();
 }
 
 void ShaderProgram::uniform(const char *name, unsigned int value)
 {
-    bind();
+    safeBind();
     glUniform1i(getLocation(name), value);
-    unbind();
+    safeUnbind();
 }
 
 void ShaderProgram::uniform(const char *name, float value)
 {
-    bind();
+    safeBind();
     glUniform1f(getLocation(name), value);
-    unbind();
+    safeUnbind();
 }
 
 void ShaderProgram::uniform(const char *name, Vec3 value)
 {
-    bind();
+    safeBind();
     glUniform3fv(getLocation(name), 1, glm::value_ptr(value.toGlm()));
-    unbind();
+    safeUnbind();
 }
 
 void ShaderProgram::fromBuilder(VertexShaderBuilder builder)

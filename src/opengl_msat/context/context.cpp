@@ -6,3 +6,10 @@ void Context::with(Bindable &bindable, const std::function<void()> &callable)
     callable();
     bindable.unbind();
 }
+
+void Context::safeWith(Bindable &bindable, const std::function<void()> &callable)
+{
+    bindable.safeBind();
+    callable();
+    bindable.safeUnbind();
+}

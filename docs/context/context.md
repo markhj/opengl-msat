@@ -32,3 +32,20 @@ What happens behind the scenes:
 For the full list of classes inheriting ``Bindable`` (i.e. list of classes
 which can be used with ``Context::with``), see:
 [List of Bindable classes](/lists/bindable-classes)
+
+## Safe binding
+
+You can use ``safeWith`` to utilize the [safeBind and safeUnbind methods](/context/bindable).
+
+````c++
+ShaderProgram shader;
+ShaderProgram shader2;
+
+shader.bind();
+
+Context::safeWith(shader2, [&]() {
+
+});
+
+// Shader will remain bound at this point
+````
