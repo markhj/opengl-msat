@@ -15,6 +15,7 @@ set(CLASSES
         shader/vertex_sbldr
         shader/fragment_sbldr
         tools/dump
+        tools/grid
         timer/timer
         vertex/vao
         vertex/vbo

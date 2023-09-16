@@ -18,6 +18,17 @@ void RenderState::set(RenderOption option, bool value)
     }
 }
 
+void RenderState::applyAll()
+{
+    for (auto item : mapping) {
+        if (item.second) {
+            glEnable(mapping[item.first]);
+        } else {
+            glDisable(mapping[item.first]);
+        }
+    }
+}
+
 void RenderState::setDefault(RenderOption option, bool value)
 {
     defaults[option] = value;

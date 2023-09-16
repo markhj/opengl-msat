@@ -8,16 +8,12 @@
 #include "opengl_msat/window/window.hpp"
 #include "opengl_msat/timer/timer.hpp"
 #include "renderstate.hpp"
+#include "opengl_msat/camera/camera.hpp"
 
 class Renderer {
 public:
-    Renderer(Window& window, Timer* timer, RenderSettings* settings)
-        : window(window), timer(timer), settings(settings), renderState(RenderState()) {
-        applySettings();
-    }
-
-    Renderer(Window& window)
-            : window(window), timer(nullptr), settings(nullptr), renderState(RenderState()) {
+    Renderer(Window& window, Camera& camera, Timer& timer, RenderSettings& settings)
+        : window(window), camera(camera), timer(timer), settings(settings), renderState(RenderState()) {
         applySettings();
     }
 
@@ -36,12 +32,18 @@ public:
     void setResetState(bool value);
 
     RenderState* state();
+
+    Camera& getCamera();
+
+    void withState(RenderState state, std::function<void(Renderer*)> iter);
 private:
     Window& window;
 
-    Timer* timer;
+    Camera& camera;
 
-    RenderSettings* settings;
+    Timer& timer;
+
+    RenderSettings& settings;
 
     RenderState renderState;
 

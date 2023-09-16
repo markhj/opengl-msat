@@ -9,13 +9,8 @@ Projects are listed in no particular order.
 - VAO/VBO 1:1 set
 
 ## Misc
-- Shader builder
 - System info (easily retrieve system-specific maximums and settings)
 - Calculator for normals, tangents, bitangents, etc.
-
-## 3D
-- Projections
-- Camera
 - Shape factory
 
 ## Framebuffer

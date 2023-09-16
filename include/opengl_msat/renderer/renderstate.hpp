@@ -22,6 +22,8 @@ public:
     bool isEnabled(RenderOption option);
 
     bool getDefault(RenderOption option);
+
+    void applyAll();
 private:
     std::map<RenderOption, bool> current;
 

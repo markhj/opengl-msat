@@ -1,3 +1,5 @@
+#include <utility>
+
 #include "opengl_msat/renderer/renderer.hpp"
 
 
@@ -36,9 +38,7 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
 {
     while (window.keepOpen())
     {
-        if (timer != nullptr) {
-            timer->start();
-        }
+        timer.start();
 
         if (resetState) {
             renderState.reset();
@@ -51,9 +51,7 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
         window.swapBuffers();
         window.pollEvents();
 
-        if (timer != nullptr) {
-            timer->end();
-        }
+        timer.end();
     }
 }
 
@@ -65,10 +63,8 @@ void Renderer::clear() const
 
 void Renderer::applySettings() const
 {
-    RenderSettings active = settings == nullptr ? RenderSettings {} : *settings;
-
-    glPointSize(active.pointSize);
-    glLineWidth(active.lineSize);
+    glPointSize(settings.pointSize);
+    glLineWidth(settings.lineSize);
 }
 
 void Renderer::setResetState(bool value)
@@ -79,4 +75,22 @@ void Renderer::setResetState(bool value)
 RenderState *Renderer::state()
 {
     return &renderState;
+}
+
+Camera &Renderer::getCamera()
+{
+    return camera;
+}
+
+void Renderer::withState(RenderState state, std::function<void(Renderer *)> iter)
+{
+    RenderState restoreTo = renderState;
+
+    renderState = std::move(state);
+    renderState.applyAll();
+
+    iter(this);
+
+    renderState = restoreTo;
+    renderState.applyAll();
 }
