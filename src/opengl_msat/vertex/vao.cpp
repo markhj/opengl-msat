@@ -6,12 +6,12 @@ VAO::VAO()
     glGenVertexArrays(1, &vao);
 }
 
-void VAO::bind()
+void VAO::doBind()
 {
     glBindVertexArray(vao);
 }
 
-void VAO::unbind()
+void VAO::doUnbind()
 {
     glBindVertexArray(0);
 }

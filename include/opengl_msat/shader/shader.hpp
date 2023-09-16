@@ -2,7 +2,7 @@
 #define OPENGL_MSAT_SHADER_HPP
 
 #include "opengl_msat/common.h"
-#include "opengl_msat/contracts/bindable.hpp"
+#include "opengl_msat/bindable/bindable.hpp"
 #include "opengl_msat/shared/shader_types.hpp"
 #include "vertex_sbldr.hpp"
 #include "fragment_sbldr.hpp"
@@ -23,9 +23,9 @@ public:
 
     unsigned int getProgramId() const;
 
-    void bind();
+    void doBind();
 
-    void unbind();
+    void doUnbind();
 
     GLint getLocation(const char* of);
 

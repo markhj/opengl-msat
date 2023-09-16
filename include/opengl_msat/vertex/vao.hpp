@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <memory>
-#include "opengl_msat/contracts/bindable.hpp"
+#include "opengl_msat/bindable/bindable.hpp"
 #include "opengl_msat/common.h"
 #include "opengl_msat/shared/vertex_types.hpp"
 #include "vbo.hpp"
@@ -13,9 +13,9 @@ class VAO : public Bindable {
 public:
     VAO();
 
-    void bind() override;
+    void doBind() override;
 
-    void unbind() override;
+    void doUnbind() override;
 
     void associate(VBO& vbo, std::vector<VertexAttribute> attributes);
 

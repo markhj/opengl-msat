@@ -2,7 +2,7 @@
 #define OPENGL_MSAT_CONTEXT_HPP
 
 #include <functional>
-#include "opengl_msat/contracts/bindable.hpp"
+#include "opengl_msat/bindable/bindable.hpp"
 
 class Context {
 public:

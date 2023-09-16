@@ -165,12 +165,12 @@ unsigned int ShaderProgram::getProgramId() const
     return programId;
 }
 
-void ShaderProgram::bind()
+void ShaderProgram::doBind()
 {
     glUseProgram(getProgramId());
 }
 
-void ShaderProgram::unbind()
+void ShaderProgram::doUnbind()
 {
     glUseProgram(0);
 }

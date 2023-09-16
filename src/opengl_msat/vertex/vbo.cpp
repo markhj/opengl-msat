@@ -13,12 +13,12 @@ VBO::VBO(std::vector<GLfloat> vertices)
     glGenBuffers(1, &vbo);
 }
 
-void VBO::bind()
+void VBO::doBind()
 {
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 }
 
-void VBO::unbind()
+void VBO::doUnbind()
 {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

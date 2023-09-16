@@ -1,5 +1,6 @@
 # The list of classes in the library
 set(CLASSES
+        bindable/bindable
         shared/keyboard_types
         shared/vertex_types
         camera/camera
@@ -21,7 +22,6 @@ set(CLASSES
 
 # The list of contracts in the library
 set(CONTRACTS
-        bindable
         shader_builder
         glm_derivative)
 

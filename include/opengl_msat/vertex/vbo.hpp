@@ -4,7 +4,7 @@
 #include <utility>
 #include <vector>
 #include "opengl_msat/common.h"
-#include "opengl_msat/contracts/bindable.hpp"
+#include "opengl_msat/bindable/bindable.hpp"
 
 class VBO : public Bindable {
 public:
@@ -12,9 +12,9 @@ public:
 
     VBO(std::vector<GLfloat> vertices);
 
-    void bind() override;
+    void doBind() override;
 
-    void unbind() override;
+    void doUnbind() override;
 
     void setVertices(std::vector<GLfloat> values);
 
