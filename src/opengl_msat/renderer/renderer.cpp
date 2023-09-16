@@ -94,3 +94,16 @@ void Renderer::withState(RenderState state, std::function<void(Renderer *)> iter
     renderState = restoreTo;
     renderState.applyAll();
 }
+
+void Renderer::withSettings(RenderSettings newSettings, std::function<void(Renderer *)> iter)
+{
+    RenderSettings restoreTo = settings;
+
+    settings = newSettings;
+    applySettings();
+
+    iter(this);
+
+    newSettings = restoreTo;
+    applySettings();
+}
