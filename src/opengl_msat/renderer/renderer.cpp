@@ -40,6 +40,10 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
             timer->start();
         }
 
+        if (resetState) {
+            renderState.reset();
+        }
+
         clear();
 
         iter(this);
@@ -65,4 +69,14 @@ void Renderer::applySettings() const
 
     glPointSize(active.pointSize);
     glLineWidth(active.lineSize);
+}
+
+void Renderer::setResetState(bool value)
+{
+    resetState = value;
+}
+
+RenderState *Renderer::state()
+{
+    return &renderState;
 }

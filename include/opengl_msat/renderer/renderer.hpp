@@ -7,16 +7,17 @@
 #include "opengl_msat/context/context.hpp"
 #include "opengl_msat/window/window.hpp"
 #include "opengl_msat/timer/timer.hpp"
+#include "renderstate.hpp"
 
 class Renderer {
 public:
     Renderer(Window& window, Timer* timer, RenderSettings* settings)
-        : window(window), timer(timer), settings(settings) {
+        : window(window), timer(timer), settings(settings), renderState(RenderState()) {
         applySettings();
     }
 
     Renderer(Window& window)
-            : window(window), timer(nullptr), settings(nullptr) {
+            : window(window), timer(nullptr), settings(nullptr), renderState(RenderState()) {
         applySettings();
     }
 
@@ -31,12 +32,20 @@ public:
     void loop(std::function<void(Renderer*)> iter);
 
     void clear() const;
+
+    void setResetState(bool value);
+
+    RenderState* state();
 private:
     Window& window;
 
     Timer* timer;
 
     RenderSettings* settings;
+
+    RenderState renderState;
+
+    bool resetState = true;
 };
 
 #endif

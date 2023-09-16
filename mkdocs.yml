@@ -23,6 +23,7 @@ nav:
   - Rendering:
     - Rendering: render/render.md
     - Settings: render/render-settings.md
+    - State: render/render-state.md
   - Camera:
       - Camera: camera/camera.md
       - Projections: lists/projections.md
@@ -38,5 +39,6 @@ nav:
       - Shader stages: lists/shader-stage.md
       - Vertex attributes: vertex/vertex-attribute.md
       - Keys: controls/key-enum.md
+      - Projections: lists/render-options.md
   - Troubleshooting: troubleshooting.md
   - Roadmap: roadmap.md
