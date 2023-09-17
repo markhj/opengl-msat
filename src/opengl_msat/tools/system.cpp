@@ -5,7 +5,16 @@ SystemInfo System::getSystemInfo(Window* window)
     return {
         .openGLVersion = getVersion(),
         .gpu = gpu(),
+
         .maxTextureUnits = getValue(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS),
+        .maxTextureSize = getValue(GL_MAX_TEXTURE_SIZE),
+        .maxTextureSizeCubemap = getValue(GL_MAX_CUBE_MAP_TEXTURE_SIZE),
+        .maxTextureSize3D = getValue(GL_MAX_3D_TEXTURE_SIZE),
+
+        .maxUniformLocations = getValue(GL_MAX_UNIFORM_LOCATIONS),
+
+        .framebufferMaxWidth = getValue(GL_MAX_FRAMEBUFFER_WIDTH),
+        .framebufferMaxHeight = getValue(GL_MAX_FRAMEBUFFER_HEIGHT),
     };
 }
 

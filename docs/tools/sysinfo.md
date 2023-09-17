@@ -32,12 +32,18 @@ Dump::dump(System::getSystemInfo(&window));
 
 ## List of options
 
-| Key                       | Type             | Description         |
-|---------------------------|------------------|---------------------|
-| ``openGLVersion.version`` | ``const char*``  | Full version        |
-| ``openGLVersion.major``   | ``unsigned int`` | Major version       |
-| ``openGLVersion.minor``   | ``unsigned int`` | Minor version       |
-| ``gpu.name``              | ``const char*``  | GPU name            |
-| ``gpu.vender``            | ``const char*``  | GPU vendor          |
-| ``gpu.driverVersion``     | ``const char*``  | GPU driver (version) |
-| ``maxTextureUnits``       | ``int``          | Max. texture units  |
+| Key                       | Type             | Description               |
+|---------------------------|------------------|---------------------------|
+| ``openGLVersion.version`` | ``const char*``  | Full version              |
+| ``openGLVersion.major``   | ``unsigned int`` | Major version             |
+| ``openGLVersion.minor``   | ``unsigned int`` | Minor version             |
+| ``gpu.name``              | ``const char*``  | GPU name                  |
+| ``gpu.vender``            | ``const char*``  | GPU vendor                |
+| ``gpu.driverVersion``     | ``const char*``  | GPU driver (version)      |
+| ``maxTextureUnits``       | ``int``          | Max. texture units        |
+| ``maxTextureSize``        | ``int``          | Max. texture size         |
+| ``maxTextureSize3D``      | ``int``          | Max. 3D texture size      |
+| ``maxTextureSizeCubemap`` | ``int``          | Max. cubemap texture size |
+| ``maxUniformLocations``   | ``int``          | Max. uniform locations    |
+| ``framebufferMaxWidth``   | ``int``          | Max. framebuffer width    |
+| ``framebufferMaxHeight``  | ``int``          | Max. framebuffer height   |

@@ -28,6 +28,10 @@ void Dump::dump(SystemInfo systemInfo)
 {
     std::string result = "SYSTEM INFO";
 
+    result += dumpTitle("OpenGL");
+    result += cell("Version", std::to_string(systemInfo.openGLVersion.major) + "." + std::to_string(systemInfo.openGLVersion.minor));
+    result += cell("Full version", systemInfo.openGLVersion.version);
+
     result += dumpTitle("GPU");
     result += cell("Name", systemInfo.gpu.name);
     result += cell("Vendor", systemInfo.gpu.vendor);
@@ -35,16 +39,40 @@ void Dump::dump(SystemInfo systemInfo)
 
     result += dumpTitle("Textures");
     result += cell("Texture units", std::to_string(systemInfo.maxTextureUnits));
+    result += cell("Max. texture size", std::to_string(systemInfo.maxTextureSize));
+    result += cell("Max. 3D texture size", std::to_string(systemInfo.maxTextureSize3D));
+    result += cell("Max. cubemap texture size", std::to_string(systemInfo.maxTextureSizeCubemap));
+
+    result += dumpTitle("Framebuffers");
+    result += cell("Max. dimensions", std::to_string(systemInfo.framebufferMaxWidth) + " x " + std::to_string(systemInfo.framebufferMaxHeight));
+
+    result += dumpTitle("Misc.");
+    result += cell("Max. uniform locations", std::to_string(systemInfo.maxUniformLocations));
 
     std::cout << result << std::endl;
 }
 
+std::string spacing(std::string input, int max)
+{
+    std::string result = input;
+
+    if (input.length() > max) {
+        return input.substr(0, max - 3) + "...";
+    }
+
+    for (int i = 0; i < max - input.length(); i++) {
+        result += " ";
+    }
+    return result;
+}
+
 std::string Dump::dumpTitle(std::string title)
 {
-    return "\n\n" + title + "\n------------------------------";
+    std::string bar = "-------------------------------------------------------------------------";
+    return "\n\n" + /*bar + "\n  " +*/ title + "\n" + bar;
 }
 
 std::string Dump::cell(std::string title, std::string value)
 {
-    return "\n" + title + " : " + value;
+    return "\n| " + spacing(title, 30) + " | " + spacing(value, 36) + " |";
 }

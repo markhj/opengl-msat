@@ -10,15 +10,19 @@ struct GPU {
     const char *name, *vendor, *driverVersion;
 };
 
-struct CPU {
-    unsigned int cores;
-};
-
 struct SystemInfo {
     const OpenGLVersion openGLVersion;
+
     const GPU gpu;
-    const CPU cpu;
+
     const int maxTextureUnits;
+    const int maxTextureSize;
+    const int maxTextureSizeCubemap;
+    const int maxTextureSize3D;
+
+    const int maxUniformLocations;
+
+    const int framebufferMaxWidth, framebufferMaxHeight;
 };
 
 #endif
