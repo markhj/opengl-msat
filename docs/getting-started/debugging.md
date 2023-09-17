@@ -18,3 +18,18 @@ Dump::dump(a);
 ````
 
 The coordinates of the vector will be logged to the console.
+
+### System info
+You can dump the system information with:
+
+````c++
+#include "opengl_msat/tools/system.hpp"
+
+// ...
+
+Window window;
+
+// ...
+
+Dump::dump(System::getSystemInformation(&window));
+````

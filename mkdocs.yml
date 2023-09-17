@@ -36,6 +36,8 @@ nav:
       - Bindable classes: lists/bindable-classes.md
   - Misc.:
     - Timer: timer/timer.md
+  - Debugging:
+    - System info: tools/sysinfo.md
   - Enumerations:
     - Projections: lists/projections.md
     - Shader stages: lists/shader-stage.md

@@ -17,6 +17,7 @@ set(CLASSES
         shader/shader_builder
         tools/dump
         tools/grid
+        tools/system
         timer/timer
         vertex/vao
         vertex/vbo
