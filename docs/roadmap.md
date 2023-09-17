@@ -4,14 +4,14 @@ Get an overview of what the plans are for this library.
 
 Projects are listed in no particular order.
 
-## VAO / VBO
-- Implement support for multiple VBOs per VAO
-- VAO/VBO 1:1 set
-
 ## Misc
 - System info (easily retrieve system-specific maximums and settings)
 - Calculator for normals, tangents, bitangents, etc.
+
+## 3D and animation
 - Shape factory
+- Shape manipulation (translate, scale, rotate)
+- Animation
 
 ## Framebuffer
 - Framebuffer
@@ -26,5 +26,5 @@ Projects are listed in no particular order.
 - Font (loading)
 - Text
 
-## Helpers
-- Grid
+## VAO / VBO
+- Implement support for multiple VBOs per VAO

@@ -5,7 +5,7 @@
 #include <utility>
 #include <vector>
 #include <iostream>
-#include "opengl_msat/contracts/shader_builder.hpp"
+#include "shader_builder.hpp"
 #include "opengl_msat/shared/vertex_types.hpp"
 
 class FragmentShaderBuilder : public ShaderBuilder {
@@ -14,7 +14,7 @@ public:
         : attributes(std::move(attributes))
     {}
 
-    std::string build();
+    void buildSource() override;
 private:
     std::vector<VertexAttribute> attributes;
 };

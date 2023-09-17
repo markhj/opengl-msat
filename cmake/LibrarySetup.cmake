@@ -14,6 +14,7 @@ set(CLASSES
         shader/shader
         shader/vertex_sbldr
         shader/fragment_sbldr
+        shader/shader_builder
         tools/dump
         tools/grid
         timer/timer
@@ -23,7 +24,6 @@ set(CLASSES
 
 # The list of contracts in the library
 set(CONTRACTS
-        shader_builder
         glm_derivative)
 
 # Declare the variable which will contain the parsed lists

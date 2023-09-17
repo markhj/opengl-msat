@@ -1,10 +1,8 @@
 #include <iostream>
 #include "opengl_msat/shader/vertex_sbldr.hpp"
 
-std::string VertexShaderBuilder::build()
+void VertexShaderBuilder::buildSource()
 {
-    std::string lines = "#version 330 core";
-
     int loc = 0;
     int posSize = 0;
     for (VertexAttribute attr : attributes) {
@@ -24,44 +22,32 @@ std::string VertexShaderBuilder::build()
         }
     }
 
-    lines += "\n";
-
     for (VertexAttribute attr : attributes) {
-        std::string varName = getVertexAttributeVarName(attr);
-        lines += "\nout vec"
-                + std::to_string(getVertexAttributeSize(attr))
-                + " "
-                + getVertexAttributeVarName(attr)
-                + ";";
+        out(attr);
     }
 
     if (projection != Projection::None) {
-        lines += "\nuniform mat4 model;";
-        lines += "\nuniform mat4 view;";
-        lines += "\nuniform mat4 projection;";
+        addLine("uniform mat4 model;");
+        addLine("uniform mat4 view;");
+        addLine("uniform mat4 projection;");
     }
 
-    lines += "\n\nvoid main() {";
+    addLine("void main() {");
 
     if (posSize == 2) {
-        lines += "\n\tgl_Position = vec4(vbo_pos, 0.0, 1.0);";
+        addLine("gl_Position = vec4(vbo_pos, 0.0, 1.0);");
     } else if (projection != Projection::None) {
-        lines += "\n\tgl_Position = projection * model * view * vec4(vbo_pos, 1.0);";
+        addLine("gl_Position = projection * model * view * vec4(vbo_pos, 1.0);");
     } else {
-        lines += "\n\tgl_Position = vec4(vbo_pos, 1.0);";
+        addLine("gl_Position = vec4(vbo_pos, 1.0);");
     }
 
     for (VertexAttribute attr : attributes) {
         std::string varName = getVertexAttributeVarName(attr);
-        lines += "\n\t"
-                + varName
-                + " = vbo_"
-                + varName
-                + ";";
+        addLine(varName + " = vbo_" + varName + ";");
     }
-    lines += "\n}";
 
-    return lines.c_str();
+    addLine("}");
 }
 
 VertexShaderBuilder &VertexShaderBuilder::setProjection(Projection value)
