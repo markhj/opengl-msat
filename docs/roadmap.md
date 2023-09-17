@@ -4,18 +4,22 @@ Get an overview of what the plans are for this library.
 
 Projects are listed in no particular order.
 
-## Misc
-- System info (easily retrieve system-specific maximums and settings)
-- Calculator for normals, tangents, bitangents, etc.
-
 ## 3D and animation
 - Shape factory
 - Shape manipulation (translate, scale, rotate)
 - Animation
 
+## Lights
+- Different types of lighting
+- Normal mapping
+
 ## Framebuffer
 - Framebuffer
 - Screen quad
+  - Misc. effects (grayscale, blur, etc.)
+
+## HUD
+- Tools to create interface
 
 ## Texture related
 - Textures
@@ -26,5 +30,6 @@ Projects are listed in no particular order.
 - Font (loading)
 - Text
 
-## VAO / VBO
+## Misc
 - Implement support for multiple VBOs per VAO
+- Calculator for normals, tangents, bitangents, etc.
