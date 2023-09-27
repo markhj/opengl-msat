@@ -9,6 +9,9 @@ set(CLASSES
         context/context
         geometry/vectors
         geometry/matrices
+        geometry/shape
+        geometry/rectangle
+        geometry/cube
         renderer/renderer
         renderer/renderstate
         shader/shader
@@ -19,6 +22,7 @@ set(CLASSES
         tools/grid
         tools/system
         timer/timer
+        types/color
         vertex/vao
         vertex/vbo
         window/window)
