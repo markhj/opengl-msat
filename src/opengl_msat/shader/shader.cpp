@@ -117,35 +117,35 @@ void ShaderProgram::uniform(Camera &camera)
     uniform("camera.target", camera.getTarget());
 }
 
-void ShaderProgram::uniform(const char *name, Mat4 value)
+void ShaderProgram::uniform(std::string name, Mat4 value)
 {
     safeBind();
     glUniformMatrix4fv(getLocation(name), 1, GL_FALSE, glm::value_ptr(value.toGlm()));
     safeUnbind();
 }
 
-void ShaderProgram::uniform(const char *name, int value)
+void ShaderProgram::uniform(std::string name, int value)
 {
     safeBind();
     glUniform1i(getLocation(name), value);
     safeUnbind();
 }
 
-void ShaderProgram::uniform(const char *name, unsigned int value)
+void ShaderProgram::uniform(std::string name, unsigned int value)
 {
     safeBind();
     glUniform1i(getLocation(name), value);
     safeUnbind();
 }
 
-void ShaderProgram::uniform(const char *name, float value)
+void ShaderProgram::uniform(std::string name, float value)
 {
     safeBind();
     glUniform1f(getLocation(name), value);
     safeUnbind();
 }
 
-void ShaderProgram::uniform(const char *name, Vec3 value)
+void ShaderProgram::uniform(std::string name, Vec3 value)
 {
     safeBind();
     glUniform3fv(getLocation(name), 1, glm::value_ptr(value.toGlm()));
@@ -177,7 +177,15 @@ void ShaderProgram::doUnbind()
     glUseProgram(0);
 }
 
-GLint ShaderProgram::getLocation(const char *of)
+GLint ShaderProgram::getLocation(std::string of)
 {
-    return glGetUniformLocation(getProgramId(), of);
+    return glGetUniformLocation(getProgramId(), of.c_str());
+}
+
+void ShaderProgram::uniform(std::string name, DirectionalLight value)
+{
+    uniform(name + ".direction", value.direction);
+    uniform(name + ".ambientColor", value.ambientColor);
+    uniform(name + ".diffuseColor", value.diffuseColor);
+    uniform(name + ".specularColor", value.specularColor);
 }

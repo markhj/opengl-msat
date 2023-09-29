@@ -8,6 +8,7 @@
 #include "fragment_sbldr.hpp"
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/camera/camera.hpp"
+#include "opengl_msat/shared/lights.hpp"
 #include <iostream>
 #include <map>
 
@@ -21,23 +22,25 @@ public:
 
     void fromBuilder(FragmentShaderBuilder builder);
 
-    unsigned int getProgramId() const;
+    [[nodiscard]] unsigned int getProgramId() const;
 
-    void doBind();
+    void doBind() override;
 
-    void doUnbind();
+    void doUnbind() override;
 
-    GLint getLocation(const char* of);
+    GLint getLocation(std::string of);
 
-    void uniform(const char* name, int value);
+    void uniform(std::string name, int value);
 
-    void uniform(const char* name, unsigned int value);
+    void uniform(std::string name, unsigned int value);
 
-    void uniform(const char* name, float value);
+    void uniform(std::string name, float value);
 
-    void uniform(const char* name, Vec3 value);
+    void uniform(std::string name, Vec3 value);
 
-    void uniform(const char* name, Mat4 value);
+    void uniform(std::string name, Mat4 value);
+
+    void uniform(std::string name, DirectionalLight value);
 
     void uniform(Camera& camera);
 private:
