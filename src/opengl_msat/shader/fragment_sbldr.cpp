@@ -46,7 +46,7 @@ void FragmentShaderBuilder::buildSource()
                 "vec3 diffuse = light.diffuseColor * max(dot(normal, lightDir), 0.0);"
                 "vec3 reflectDir = reflect(-lightDir, normal);"
                 "vec3 specular = light.specularColor * pow(max(dot(viewDir, reflectDir), 0.0), shininess);"
-                "return light.ambientColor + light.diffuseColor + diffuse + specular;"
+                "return light.ambientColor + diffuse + specular;"
                 "}");
     }
 
