@@ -32,21 +32,36 @@ public:
 
     void uniform(std::string name, int value);
 
+    void uniform(std::string arrName, unsigned int index, int value);
+
     void uniform(std::string name, unsigned int value);
+
+    void uniform(std::string arrName, unsigned int index, unsigned int value);
 
     void uniform(std::string name, float value);
 
+    void uniform(std::string arrName, unsigned int index, float value);
+
     void uniform(std::string name, Vec3 value);
+
+    void uniform(std::string arrName, unsigned int index, Vec3 value);
 
     void uniform(std::string name, Mat4 value);
 
+    void uniform(std::string arrName, unsigned int index, Mat4 value);
+
+
     void uniform(std::string name, DirectionalLight value);
+
+    void uniform(std::string arrName, unsigned int index, DirectionalLight value);
 
     void uniform(Camera& camera);
 private:
     GLuint programId;
 
     bool compileErrors = false;
+
+    std::string formKey(std::string arr, unsigned index);
 
     std::map<ShaderStage, std::string> sources = {};
 
