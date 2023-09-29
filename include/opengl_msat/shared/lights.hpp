@@ -4,49 +4,19 @@
 #include <cmath>
 #include "opengl_msat/types/color.hpp"
 
-struct Light {
-
-};
-
-struct LightWithDirection {
+struct DirectionalLight {
     Vec3 direction;
+    Color ambientColor, diffuseColor, specularColor;
 };
 
-struct LightWithPosition {
+struct PointLight {
     Vec3 position;
+    Color ambientColor, diffuseColor, specularColor;
 };
 
-struct AmbientLight : public Light {
-    Color ambientColor;
-};
-
-struct DiffuseLight : public Light {
-    Color diffuseColor;
-};
-
-struct SpecularLight : public Light {
-    Color specularColor;
-};
-
-struct DirectionalLight :
-        public LightWithDirection,
-        public AmbientLight,
-        public DiffuseLight,
-        public SpecularLight { };
-
-struct PointLight :
-        public LightWithPosition,
-        public AmbientLight,
-        public DiffuseLight,
-        public SpecularLight { };
-
-struct SpotLight :
-        public LightWithDirection,
-        public LightWithPosition,
-        public AmbientLight,
-        public DiffuseLight,
-        public SpecularLight {
-    float cutOff = cos(12 * M_PI / 180);
+struct SpotLight {
+    Vec3 position, direction;
+    Color ambientColor, diffuseColor, specularColor;
 };
 
 #endif

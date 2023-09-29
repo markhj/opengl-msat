@@ -15,8 +15,18 @@ public:
     {}
 
     void buildSource() override;
+
+    FragmentShaderBuilder& setLightSlots(int slots);
+
+    FragmentShaderBuilder& lighting();
+
 private:
     std::vector<VertexAttribute> attributes;
+
+    bool enableLighting = false;
+
+    int lightSlots = 20;
+
 };
 
 #endif
