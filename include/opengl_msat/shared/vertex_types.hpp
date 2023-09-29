@@ -6,9 +6,10 @@
 #include "opengl_msat/geometry/vectors.hpp"
 #include "opengl_msat/types/color.hpp"
 
-struct VertexElement {
+struct VertexElement3D {
     Vec3 position;
     Color color = Color(1.0, 1.0, 1.0);
+    std::optional<Vec3> normal;
 };
 
 enum class VertexAttribute {

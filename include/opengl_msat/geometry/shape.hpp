@@ -11,17 +11,17 @@ public:
 
     std::vector<GLfloat> getVerticesFlattened(const std::vector<VertexAttribute>& attributes);
 
-    std::vector<VertexElement> getVertices();
+    std::vector<VertexElement3D> getVertices();
 
 protected:
-    void addVertex(VertexElement vertex);
+    void addVertex(VertexElement3D vertex);
 
-    void addVertices(std::vector<VertexElement> elements);
+    void addVertices(std::vector<VertexElement3D> elements);
 
     void reset();
 
 private:
-    std::vector<VertexElement> vertices;
+    std::vector<VertexElement3D> vertices;
 };
 
 #endif

@@ -40,3 +40,13 @@ void Camera::setFieldOfView(float deg)
 {
     fov = deg;
 }
+
+Vec3 Camera::getPosition() const
+{
+    return position;
+}
+
+Vec3 Camera::getTarget() const
+{
+    return target;
+}

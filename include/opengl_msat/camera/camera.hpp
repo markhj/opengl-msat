@@ -15,6 +15,10 @@ public:
 
     [[nodiscard]] Mat4 getProjection() const;
 
+    [[nodiscard]] Vec3 getPosition() const;
+
+    [[nodiscard]] Vec3 getTarget() const;
+
     void setPosition(Vec3 value);
 
     void setTarget(Vec3 value);

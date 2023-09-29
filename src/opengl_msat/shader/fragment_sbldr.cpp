@@ -15,6 +15,10 @@ void FragmentShaderBuilder::buildSource()
         }
     }
 
+    // Camera
+    addLine("struct Camera { vec3 position; vec3 target; };");
+    addLine("uniform Camera camera;");
+
     if (enableLighting) {
         addLine("struct DirectionalLight {"
                 "vec3 direction, ambientColor, diffuseColor, specularColor;"
@@ -34,21 +38,31 @@ void FragmentShaderBuilder::buildSource()
                 "uniform int numDirectionalLights = 0;"
                 "uniform int numPointLights = 0;"
                 "uniform int numSpotLights = 0;");
+
+        addLine("vec3 calcDirectionalLight(DirectionalLight light) {"
+                "float shininess = 32.0;"
+                "vec3 viewDir = normalize(camera.position - pos);"
+                "vec3 lightDir = normalize(-light.direction);"
+                "vec3 diffuse = light.diffuseColor * max(dot(normal, lightDir), 0.0);"
+                "vec3 reflectDir = reflect(-lightDir, normal);"
+                "vec3 specular = light.specularColor * pow(max(dot(viewDir, reflectDir), 0.0), shininess);"
+                "return light.ambientColor + light.diffuseColor + diffuse + specular;"
+                "}");
     }
 
     addLine("void main() {");
 
     // When no other instructions are provided
     if (enableLighting) {
-        addLine("vec4 clr = vec4(color, 1.0);"
+        addLine("vec3 clr = vec3(0.0, 0.0, 0.0);"
                 "for (int i = 0; i <= numDirectionalLights; i++) {"
-                "clr *= vec4(directionalLights[i].ambientColor, 1.0);"
+                    "clr += calcDirectionalLight(directionalLights[i]);"
                 "}"
                 "for (int i = 0; i <= numPointLights; i++) {"
                 "}"
                 "for (int i = 0; i <= numSpotLights; i++) {"
                 "}"
-                "result = clr;");
+                "result = vec4(clr * color, 1.0);");
     } else if (hasColor) {
         addLine("result = vec4(color, 1.0);");
     } else {

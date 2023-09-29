@@ -7,10 +7,21 @@ std::vector<GLfloat> Shape::getVerticesFlattened(const std::vector<VertexAttribu
 
     std::vector<GLfloat> list;
 
-    for (VertexElement vertex : vertices) {
+    for (VertexElement3D vertex : vertices) {
+
         list.push_back(vertex.position.x);
         list.push_back(vertex.position.y);
         list.push_back(vertex.position.z);
+
+        if (vertex.normal.has_value()) {
+            list.push_back(vertex.normal.value().r);
+            list.push_back(vertex.normal.value().g);
+            list.push_back(vertex.normal.value().b);
+        } else {
+            list.push_back(0.0);
+            list.push_back(0.0);
+            list.push_back(0.0);
+        }
 
         list.push_back(vertex.color.r);
         list.push_back(vertex.color.g);
@@ -20,12 +31,12 @@ std::vector<GLfloat> Shape::getVerticesFlattened(const std::vector<VertexAttribu
     return list;
 }
 
-void Shape::addVertex(VertexElement vertex)
+void Shape::addVertex(VertexElement3D vertex)
 {
     vertices.push_back(vertex);
 }
 
-std::vector<VertexElement> Shape::getVertices()
+std::vector<VertexElement3D> Shape::getVertices()
 {
     reset();
     construct();
@@ -38,7 +49,7 @@ void Shape::reset()
     vertices.clear();
 }
 
-void Shape::addVertices(std::vector<VertexElement> elements)
+void Shape::addVertices(std::vector<VertexElement3D> elements)
 {
     vertices.insert(vertices.end(), elements.begin(), elements.end());
 }

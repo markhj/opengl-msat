@@ -12,6 +12,7 @@ set(CLASSES
         geometry/shape
         geometry/rectangle
         geometry/cube
+        math/math
         renderer/renderer
         renderer/renderstate
         shader/shader
