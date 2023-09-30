@@ -41,6 +41,7 @@ set(STRUCTS
 set(CONTRACTS
         glm_derivative
         vertex_element
+        vao_associable
         exports_vertices)
 
 # Declare the variable which will contain the parsed lists

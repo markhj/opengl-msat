@@ -35,12 +35,12 @@ void VBO::upload()
     safeUnbind();
 }
 
-unsigned int VBO::count() const
+unsigned int VBO::count()
 {
     return vertices.size();
 }
 
-unsigned int VBO::byteSize() const
+unsigned int VBO::byteSize()
 {
     return count() * sizeof(GLfloat);
 }

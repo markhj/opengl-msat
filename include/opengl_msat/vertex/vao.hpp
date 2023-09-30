@@ -8,6 +8,7 @@
 #include "opengl_msat/shared/vertex_types.hpp"
 #include "vbo.hpp"
 #include "opengl_msat/context/context.hpp"
+#include "opengl_msat/contracts/vao_associable.hpp"
 
 class VAO : public Bindable {
 public:
@@ -17,13 +18,13 @@ public:
 
     void doUnbind() override;
 
-    void associate(VBO& vbo, std::vector<VertexAttribute> attributes);
+    void associate(VAOAssociable& vbo, std::vector<VertexAttribute> attributes);
 
-    std::vector<std::reference_wrapper<VBO>> getAssociatedVBOs();
+    std::vector<std::reference_wrapper<VAOAssociable>> getAssociatedVBOs();
 private:
     GLuint vao;
 
-    std::vector<std::reference_wrapper<VBO>> associatedVBOs = {};
+    std::vector<std::reference_wrapper<VAOAssociable>> associatedVBOs = {};
 };
 
 #endif

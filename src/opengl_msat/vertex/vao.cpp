@@ -16,7 +16,7 @@ void VAO::doUnbind()
     glBindVertexArray(0);
 }
 
-void VAO::associate(VBO &vbo, std::vector<VertexAttribute> attributes)
+void VAO::associate(VAOAssociable &vbo, std::vector<VertexAttribute> attributes)
 {
     bind();
 
@@ -46,7 +46,7 @@ void VAO::associate(VBO &vbo, std::vector<VertexAttribute> attributes)
     unbind();
 }
 
-std::vector<std::reference_wrapper<VBO>> VAO::getAssociatedVBOs()
+std::vector<std::reference_wrapper<VAOAssociable>> VAO::getAssociatedVBOs()
 {
     return associatedVBOs;
 }

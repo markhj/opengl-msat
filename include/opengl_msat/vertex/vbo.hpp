@@ -7,8 +7,9 @@
 #include "opengl_msat/bindable/bindable.hpp"
 #include "opengl_msat/shared/vertex_types.hpp"
 #include "opengl_msat/contracts/exports_vertices.hpp"
+#include "opengl_msat/contracts/vao_associable.hpp"
 
-class VBO : public Bindable {
+class VBO : public VAOAssociable {
 public:
     VBO();
 
@@ -22,9 +23,9 @@ public:
 
     void upload();
 
-    [[nodiscard]] unsigned int count() const;
+    [[nodiscard]] unsigned int count() override;
 
-    [[nodiscard]] unsigned int byteSize() const;
+    [[nodiscard]] unsigned int byteSize() override;
 private:
     GLuint vbo;
 

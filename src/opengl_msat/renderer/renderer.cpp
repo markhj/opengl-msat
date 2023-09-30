@@ -8,7 +8,7 @@ void Renderer::render(VAO &vao)
     vao.bind();
 
     // @todo Implement support for multiple VBOs, instead of specifically targeting the first
-    VBO& vbo = vao.getAssociatedVBOs()[0].get();
+    VAOAssociable& vbo = vao.getAssociatedVBOs()[0].get();
 
     render(vao, DrawMode::Triangles, 0, vbo.count());
 
@@ -20,7 +20,7 @@ void Renderer::render(VAO vao, DrawMode drawMode)
     vao.bind();
 
     // @todo Implement support for multiple VBOs, instead of specifically targeting the first
-    VBO& vbo = vao.getAssociatedVBOs()[0].get();
+    VAOAssociable& vbo = vao.getAssociatedVBOs()[0].get();
 
     render(vao, drawMode, 0, vbo.count());
 
