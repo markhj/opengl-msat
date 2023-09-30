@@ -30,6 +30,7 @@ set(CLASSES
         types/color
         vertex/vao
         vertex/vbo
+        vertex/vbo_scene
         window/window)
 
 # The list of structs
