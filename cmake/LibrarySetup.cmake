@@ -13,6 +13,7 @@ set(CLASSES
         geometry/rectangle
         geometry/cube
         geometry/object_wrapper
+        geometry/object2d
         geometry/object3d
         geometry/object_collection
         math/math
