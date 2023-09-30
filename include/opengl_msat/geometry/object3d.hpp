@@ -4,12 +4,24 @@
 #include <iostream>
 #include "object_wrapper.hpp"
 
-class Object3D : public ObjectWrapper<VertexElement3D> {
+class Object3D : public ObjectWrapper<VertexElement3D, Vec3> {
 public:
+    std::vector<VertexElement3D> getVertices() override
+    {
+        std::vector<VertexElement3D> list;
+        for (VertexElement3D v : vertices) {
+            v.position.x += translation.x;
+            v.position.y += translation.y;
+            v.position.z += translation.z;
+            list.push_back(v);
+        }
+        return list;
+    }
+
     std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override
     {
         std::vector<GLfloat> list = {};
-        for (VertexElement3D vertex : vertices) {
+        for (VertexElement3D vertex : getVertices()) {
             for (VertexAttribute attr : attributes) {
                 switch (attr) {
                     case VertexAttribute::Position3D:

@@ -28,9 +28,11 @@ void VBO::setVertices(std::vector<GLfloat> values)
     vertices = std::move(values);
 }
 
-void VBO::upload() const
+void VBO::upload()
 {
+    safeBind();
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), vertices.data(), draw);
+    safeUnbind();
 }
 
 unsigned int VBO::count() const

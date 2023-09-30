@@ -53,3 +53,10 @@ void Shape3D::addVertices(std::vector<VertexElement3D> elements)
 {
     vertices.insert(vertices.end(), elements.begin(), elements.end());
 }
+
+Object3D Shape3D::toObject()
+{
+    Object3D wrapper;
+    wrapper.add(getVertices());
+    return wrapper;
+}

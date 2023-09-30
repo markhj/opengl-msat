@@ -20,7 +20,7 @@ public:
 
     void setVertices(std::vector<GLfloat> values);
 
-    void upload() const;
+    void upload();
 
     [[nodiscard]] unsigned int count() const;
 
