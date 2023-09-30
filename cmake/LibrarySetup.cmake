@@ -12,6 +12,8 @@ set(CLASSES
         geometry/shape
         geometry/rectangle
         geometry/cube
+        geometry/object_wrapper
+        geometry/object3d
         math/math
         renderer/renderer
         renderer/renderstate
@@ -30,7 +32,9 @@ set(CLASSES
 
 # The list of contracts in the library
 set(CONTRACTS
-        glm_derivative)
+        glm_derivative
+        vertex_element
+        exports_vertices)
 
 # Declare the variable which will contain the parsed lists
 # of sources and headers

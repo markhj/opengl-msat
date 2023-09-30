@@ -5,8 +5,15 @@
 #include <optional>
 #include "opengl_msat/geometry/vectors.hpp"
 #include "opengl_msat/types/color.hpp"
+#include "opengl_msat/contracts/vertex_element.hpp"
 
-struct VertexElement3D {
+struct VertexElement2D : public VertexElement {
+    Vec2 position;
+    Color color = Color(1.0, 1.0, 1.0);
+    std::optional<Vec2> normal;
+};
+
+struct VertexElement3D : public VertexElement {
     Vec3 position;
     Color color = Color(1.0, 1.0, 1.0);
     std::optional<Vec3> normal;

@@ -35,11 +35,11 @@ void FragmentShaderBuilder::buildSource()
                 "};");
 
         addLine("uniform DirectionalLight[" + std::to_string(lightSlots) + "] directionalLights;"
-                                                                           "uniform PointLight[" + std::to_string(lightSlots) + "] pointLights;"
-                                                                                                                                "uniform SpotLight[" + std::to_string(lightSlots) + "] spotLights;"
-                                                                                                                                                                                    "uniform int numDirectionalLights = 0;"
-                                                                                                                                                                                    "uniform int numPointLights = 0;"
-                                                                                                                                                                                    "uniform int numSpotLights = 0;");
+                "uniform PointLight[" + std::to_string(lightSlots) + "] pointLights;"
+                "uniform SpotLight[" + std::to_string(lightSlots) + "] spotLights;"
+                "uniform int numDirectionalLights = 0;"
+                "uniform int numPointLights = 0;"
+                "uniform int numSpotLights = 0;");
 
         addLine("vec3 calcDirectionalLight(DirectionalLight light) {"
                 "float shininess = 32.0;"
