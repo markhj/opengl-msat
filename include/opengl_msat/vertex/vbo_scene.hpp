@@ -5,11 +5,15 @@
 #include "opengl_msat/contracts/vao_associable.hpp"
 #include "opengl_msat/shared/scenes.hpp"
 #include <type_traits>
+#include <utility>
 
 template <typename ObjectCollection>
 class SceneManagedVBO : public VAOAssociable {
 public:
-    explicit SceneManagedVBO(ObjectCollection oc) : scene(oc), vbo(VBO())
+    explicit SceneManagedVBO(ObjectCollection* oc, std::vector<VertexAttribute> attributes) :
+        scene(oc),
+        attributes(std::move(attributes)),
+        vbo(VBO())
     {
 
     }
@@ -26,6 +30,7 @@ public:
 
     void upload() override
     {
+        vbo.setVertices(scene->getVerticesFlattened(attributes));
         vbo.upload();
     };
 
@@ -40,7 +45,9 @@ public:
     };
 
 protected:
-    ObjectCollection& scene;
+    ObjectCollection* scene;
+
+    std::vector<VertexAttribute> attributes;
 
     VBO vbo;
 };
