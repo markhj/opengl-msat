@@ -8,6 +8,16 @@
 
 If you have any ideas or problems, don't hesitate to open an issue, or create a pull request.
 
+## Current state of the project
+
+:warning: **DO NOT USE IN PRODUCTION** :warning:
+
+This library is being developed and shaped, and fundamental changes to the library's
+foundation and features happen very rapidly.
+
+It's highly unrecommended to use the library for any serious or real-world
+purpose at this stage.
+
 ## Getting started :rocket:
 
 To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.readthedocs.io

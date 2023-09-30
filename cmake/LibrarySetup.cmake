@@ -14,6 +14,7 @@ set(CLASSES
         geometry/cube
         geometry/object_wrapper
         geometry/object3d
+        geometry/object_collection
         math/math
         renderer/renderer
         renderer/renderstate
