@@ -1,6 +1,6 @@
 #include "opengl_msat/geometry/shape.hpp"
 
-std::vector<GLfloat> Shape::getVerticesFlattened(const std::vector<VertexAttribute>& attributes)
+std::vector<GLfloat> Shape3D::getVerticesFlattened(const std::vector<VertexAttribute> attributes)
 {
     reset();
     construct();
@@ -31,12 +31,12 @@ std::vector<GLfloat> Shape::getVerticesFlattened(const std::vector<VertexAttribu
     return list;
 }
 
-void Shape::addVertex(VertexElement3D vertex)
+void Shape3D::addVertex(VertexElement3D vertex)
 {
     vertices.push_back(vertex);
 }
 
-std::vector<VertexElement3D> Shape::getVertices()
+std::vector<VertexElement3D> Shape3D::getVertices()
 {
     reset();
     construct();
@@ -44,12 +44,12 @@ std::vector<VertexElement3D> Shape::getVertices()
     return vertices;
 }
 
-void Shape::reset()
+void Shape3D::reset()
 {
     vertices.clear();
 }
 
-void Shape::addVertices(std::vector<VertexElement3D> elements)
+void Shape3D::addVertices(std::vector<VertexElement3D> elements)
 {
     vertices.insert(vertices.end(), elements.begin(), elements.end());
 }

@@ -31,6 +31,10 @@ set(CLASSES
         vertex/vbo
         window/window)
 
+# The list of structs
+set(STRUCTS
+    scenes)
+
 # The list of contracts in the library
 set(CONTRACTS
         glm_derivative
@@ -52,6 +56,11 @@ endforeach()
 # Repeat the same for contracts (they only have header files)
 foreach (CONTRACT ${CONTRACTS})
     list(APPEND OPENGL_MSAT_HEADER_FILES "${PACKAGE_PREFIX_DIR}/include/opengl_msat/contracts/${CONTRACT}.hpp")
+endforeach ()
+
+# Repeat the same for structs (they only have header files)
+foreach (STRUCT ${STRUCTS})
+    list(APPEND OPENGL_MSAT_HEADER_FILES "${PACKAGE_PREFIX_DIR}/include/opengl_msat/shared/${STRUCT}.hpp")
 endforeach ()
 
 # Add the library with the source and header files

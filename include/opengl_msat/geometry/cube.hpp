@@ -5,7 +5,7 @@
 
 #include "shape.hpp"
 
-class Cube : public Shape {
+class Cube : public Shape3D {
 public:
     Cube(Vec3 a, Vec3 b) : a(std::move(a)), b(std::move(b)) { }
 

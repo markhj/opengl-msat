@@ -5,12 +5,14 @@
 #include <vector>
 #include "opengl_msat/common.h"
 #include "opengl_msat/bindable/bindable.hpp"
+#include "opengl_msat/shared/vertex_types.hpp"
+#include "opengl_msat/contracts/exports_vertices.hpp"
 
 class VBO : public Bindable {
 public:
     VBO();
 
-    VBO(std::vector<GLfloat> vertices);
+    explicit VBO(std::vector<GLfloat> vertices);
 
     void doBind() override;
 

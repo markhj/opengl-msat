@@ -6,7 +6,7 @@
 #include "shape.hpp"
 #include "vectors.hpp"
 
-class Rectangle : public Shape {
+class Rectangle : public Shape3D {
 public:
     Rectangle(Vec3 a, Vec3 b) : a(std::move(a)), b(std::move(b)) { }
 
