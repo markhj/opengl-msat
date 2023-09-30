@@ -26,18 +26,20 @@ void FragmentShaderBuilder::buildSource()
 
         addLine("struct PointLight {"
                 "vec3 position, ambientColor, diffuseColor, specularColor;"
+                "float constant, linear, quadratic;"
                 "};");
 
         addLine("struct SpotLight {"
                 "vec3 position, direction, ambientColor, diffuseColor, specularColor;"
+                "float cutOff;"
                 "};");
 
         addLine("uniform DirectionalLight[" + std::to_string(lightSlots) + "] directionalLights;"
-                "uniform PointLight[" + std::to_string(lightSlots) + "] pointLights;"
-                "uniform SpotLight[" + std::to_string(lightSlots) + "] spotLights;"
-                "uniform int numDirectionalLights = 0;"
-                "uniform int numPointLights = 0;"
-                "uniform int numSpotLights = 0;");
+                                                                           "uniform PointLight[" + std::to_string(lightSlots) + "] pointLights;"
+                                                                                                                                "uniform SpotLight[" + std::to_string(lightSlots) + "] spotLights;"
+                                                                                                                                                                                    "uniform int numDirectionalLights = 0;"
+                                                                                                                                                                                    "uniform int numPointLights = 0;"
+                                                                                                                                                                                    "uniform int numSpotLights = 0;");
 
         addLine("vec3 calcDirectionalLight(DirectionalLight light) {"
                 "float shininess = 32.0;"
@@ -48,6 +50,26 @@ void FragmentShaderBuilder::buildSource()
                 "vec3 specular = light.specularColor * pow(max(dot(viewDir, reflectDir), 0.0), shininess);"
                 "return light.ambientColor + diffuse + specular;"
                 "}");
+
+        addLine("vec3 calcPointLight(PointLight light) {"
+                "float shininess = 32.0;"
+                "vec3 viewDir = normalize(camera.position - pos);"
+                "vec3 lightDir = normalize(light.position - pos);"
+                "float diff = max(dot(normal, lightDir), 0.0);"
+                "vec3 reflectDir = reflect(-lightDir, normal);"
+                "float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);"
+                "float distance = length(light.position - pos);"
+                "float attenuation = 1.0 / (light.constant + light.linear * distance +"
+                "light.quadratic * (distance * distance));"
+                "vec3 ambient  = attenuation * light.ambientColor;"
+                "vec3 diffuse  = attenuation * light.diffuseColor * diff;"
+                "vec3 specular = attenuation * light.specularColor * spec;"
+                "return (ambient + diffuse + specular);"
+                "}");
+
+        addLine("vec3 calcSpotLight(SpotLight light) {"
+                "return vec3(0.0, 0.5, 0.0);"
+                "}");
     }
 
     addLine("void main() {");
@@ -55,12 +77,14 @@ void FragmentShaderBuilder::buildSource()
     // When no other instructions are provided
     if (enableLighting) {
         addLine("vec3 clr = vec3(0.0, 0.0, 0.0);"
-                "for (int i = 0; i <= numDirectionalLights; i++) {"
-                    "clr += calcDirectionalLight(directionalLights[i]);"
+                "for (int i = 0; i < numDirectionalLights; i++) {"
+                "clr += calcDirectionalLight(directionalLights[i]);"
                 "}"
-                "for (int i = 0; i <= numPointLights; i++) {"
+                "for (int i = 0; i < numPointLights; i++) {"
+                "clr += calcPointLight(pointLights[i]);"
                 "}"
-                "for (int i = 0; i <= numSpotLights; i++) {"
+                "for (int i = 0; i < numSpotLights; i++) {"
+                "clr += calcSpotLight(spotLights[i]);"
                 "}"
                 "result = vec4(clr * color, 1.0);");
     } else if (hasColor) {

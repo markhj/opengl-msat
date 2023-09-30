@@ -12,11 +12,13 @@ struct DirectionalLight {
 struct PointLight {
     Vec3 position;
     Color ambientColor, diffuseColor, specularColor;
+    float constant = 1.0, linear = 0.01, quadratic = 0.032;
 };
 
 struct SpotLight {
     Vec3 position, direction;
     Color ambientColor, diffuseColor, specularColor;
+    float cutOff = 12.0;
 };
 
 #endif

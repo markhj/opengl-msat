@@ -50,10 +50,17 @@ public:
 
     void uniform(std::string arrName, unsigned int index, Mat4 value);
 
-
     void uniform(std::string name, DirectionalLight value);
 
     void uniform(std::string arrName, unsigned int index, DirectionalLight value);
+
+    void uniform(std::string name, PointLight value);
+
+    void uniform(std::string arrName, unsigned int index, PointLight value);
+
+    void uniform(std::string name, SpotLight value);
+
+    void uniform(std::string arrName, unsigned int index, SpotLight value);
 
     void uniform(Camera& camera);
 private:

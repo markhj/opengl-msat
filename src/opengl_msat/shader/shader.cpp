@@ -190,12 +190,43 @@ void ShaderProgram::uniform(std::string name, DirectionalLight value)
     uniform(name + ".specularColor", value.specularColor);
 }
 
+void ShaderProgram::uniform(std::string name, PointLight value)
+{
+    uniform(name + ".position", value.position);
+    uniform(name + ".ambientColor", value.ambientColor);
+    uniform(name + ".diffuseColor", value.diffuseColor);
+    uniform(name + ".specularColor", value.specularColor);
+    uniform(name + ".constant", value.constant);
+    uniform(name + ".linear", value.linear);
+    uniform(name + ".quadratic", value.quadratic);
+}
+
+void ShaderProgram::uniform(std::string name, SpotLight value)
+{
+    uniform(name + ".direction", value.direction);
+    uniform(name + ".position", value.position);
+    uniform(name + ".cutOff", value.cutOff);
+    uniform(name + ".ambientColor", value.ambientColor);
+    uniform(name + ".diffuseColor", value.diffuseColor);
+    uniform(name + ".specularColor", value.specularColor);
+}
+
 std::string ShaderProgram::formKey(std::string arr, unsigned int index)
 {
     return arr + "[" + std::to_string(index) + "]";
 }
 
 void ShaderProgram::uniform(std::string arrName, unsigned int index, DirectionalLight value)
+{
+    uniform(formKey(arrName, index), value);
+}
+
+void ShaderProgram::uniform(std::string arrName, unsigned int index, PointLight value)
+{
+    uniform(formKey(arrName, index), value);
+}
+
+void ShaderProgram::uniform(std::string arrName, unsigned int index, SpotLight value)
 {
     uniform(formKey(arrName, index), value);
 }
