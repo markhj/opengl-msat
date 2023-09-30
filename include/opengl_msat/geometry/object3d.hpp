@@ -25,25 +25,19 @@ public:
             for (VertexAttribute attr : attributes) {
                 switch (attr) {
                     case VertexAttribute::Position3D:
-                        list.push_back(vertex.position.x);
-                        list.push_back(vertex.position.y);
-                        list.push_back(vertex.position.z);
+                        list.insert(list.end(), {vertex.position.x, vertex.position.y, vertex.position.z});
                         break;
                     case VertexAttribute::Normal3D:
                         if (vertex.normal.has_value()) {
-                            list.push_back(vertex.normal.value().x);
-                            list.push_back(vertex.normal.value().y);
-                            list.push_back(vertex.normal.value().z);
+                            list.insert(list.end(), {vertex.normal.value().x,
+                                                     vertex.normal.value().y,
+                                                     vertex.normal.value().z});
                         } else {
-                            list.push_back(0.0);
-                            list.push_back(0.0);
-                            list.push_back(0.0);
+                            list.insert(list.end(), {0.0, 0.0, 0.0});
                         }
                         break;
                     case VertexAttribute::ColorRGB:
-                        list.push_back(vertex.color.r);
-                        list.push_back(vertex.color.g);
-                        list.push_back(vertex.color.b);
+                        list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
                         break;
                     default:
                         std::cout << "WARNING: Implementation missing in Object3D::getVerticesFlattened: "
