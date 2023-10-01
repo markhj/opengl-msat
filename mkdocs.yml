@@ -5,6 +5,7 @@ nav:
   - Home: index.md
   - Getting started:
     - Getting started: getting-started/getting-started.md
+    - Public header: getting-started/public-header.md
     - Window: window/window.md
     - First app: getting-started/first-app.md
     - Shader builders: getting-started/shader-builders.md
