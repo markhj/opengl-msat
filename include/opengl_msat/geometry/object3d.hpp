@@ -3,8 +3,11 @@
 
 #include <iostream>
 #include "object_wrapper.hpp"
+#include "opengl_msat/traits/handles_attributes.hpp"
 
-class Object3D : public ObjectWrapper<VertexElement3D, Vec3> {
+class Object3D :
+        public HandlesAttributes,
+        public ObjectWrapper<VertexElement3D, Vec3> {
 public:
     std::vector<VertexElement3D> getVertices() override
     {
@@ -20,33 +23,7 @@ public:
 
     std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override
     {
-        std::vector<GLfloat> list = {};
-        for (VertexElement3D vertex : getVertices()) {
-            for (VertexAttribute attr : attributes) {
-                switch (attr) {
-                    case VertexAttribute::Position3D:
-                        list.insert(list.end(), {vertex.position.x, vertex.position.y, vertex.position.z});
-                        break;
-                    case VertexAttribute::Normal3D:
-                        if (vertex.normal.has_value()) {
-                            list.insert(list.end(), {vertex.normal.value().x,
-                                                     vertex.normal.value().y,
-                                                     vertex.normal.value().z});
-                        } else {
-                            list.insert(list.end(), {0.0, 0.0, 0.0});
-                        }
-                        break;
-                    case VertexAttribute::ColorRGB:
-                        list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
-                        break;
-                    default:
-                        std::cout << "WARNING: Implementation missing in Object3D::getVerticesFlattened: "
-                            << getVertexAttributeVarName(attr)
-                            << std::endl;
-                }
-            }
-        }
-        return list;
+        return flattenVertices3D(getVertices(), attributes);
     }
 };
 

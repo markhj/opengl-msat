@@ -3,17 +3,26 @@
 
 #include <iostream>
 #include "object_wrapper.hpp"
+#include "opengl_msat/traits/handles_attributes.hpp"
 
 /**
  * @todo Implement Object2D -- Currently just a placeholder
  */
-class Object2D : public ObjectWrapper<VertexElement2D, Vec2> {
+class Object2D :
+        public HandlesAttributes,
+        public ObjectWrapper<VertexElement2D, Vec2> {
 public:
+    /*
+     * @todo Implement getVertices
+     */
     std::vector<VertexElement2D> getVertices() override
     {
         return {};
     }
 
+    /*
+     * @todo Implement getVerticesFlattened
+     */
     std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override
     {
         return {};
