@@ -42,7 +42,6 @@ public:
                 if (v == obj) {
                     std::optional<unsigned int> index = scene->getIndex(v);
                     if (index.has_value()) {
-                        std::cout << index.value() * getSizeOfAttributes(attributes) << std::endl;
                         vbo.substitute(obj->getVerticesFlattened(attributes),
                                        index.value() * getSizeOfAttributes(attributes));
                     }
