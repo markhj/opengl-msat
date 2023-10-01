@@ -8,7 +8,7 @@ void ObjectWrapper<VertexElementXD, VecX>::add(
 }
 
 template<typename VertexElementXD, typename VecX>
-ObjectWrapper<VertexElementXD, VecX>& ObjectWrapper<VertexElementXD, VecX>::translate(Vec3 value)
+ObjectWrapper<VertexElementXD, VecX>& ObjectWrapper<VertexElementXD, VecX>::translate(VecX value)
 {
     translation = std::move(value);
     return *this;

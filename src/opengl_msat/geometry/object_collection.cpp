@@ -29,6 +29,26 @@ template<typename ObjectXD, typename VertexElementXD>
 void ObjectCollection<ObjectXD, VertexElementXD>::add(ObjectXD *obj)
 {
     objects.push_back(obj);
+//    currentIndex += obj
+}
+
+template<typename ObjectXD, typename VertexElementXD>
+std::optional<unsigned int> ObjectCollection<ObjectXD, VertexElementXD>::getIndex(ObjectXD *obj)
+{
+    std::optional<unsigned int> result;
+    auto f = indices.find(obj);
+    if (f != indices.end()) {
+        result = f->second;
+    }
+    return result;
+}
+
+template<typename ObjectXD, typename VertexElementXD>
+void ObjectCollection<ObjectXD, VertexElementXD>::add(std::vector<ObjectXD *> objs)
+{
+    for (ObjectXD *obj : objs) {
+        add(obj);
+    }
 }
 
 template class ObjectCollection<Object2D, VertexElement2D>;

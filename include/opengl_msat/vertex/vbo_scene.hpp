@@ -7,10 +7,10 @@
 #include <type_traits>
 #include <utility>
 
-template <typename ObjectCollection>
+template <typename ObjectCollection, typename VertexElementXD>
 class SceneManagedVBO : public VAOAssociable {
 public:
-    explicit SceneManagedVBO(ObjectCollection* oc, std::vector<VertexAttribute> attributes) :
+    SceneManagedVBO(ObjectCollection* oc, std::vector<VertexAttribute> attributes) :
         scene(oc),
         attributes(std::move(attributes)),
         vbo(VBO())
@@ -34,6 +34,17 @@ public:
         vbo.upload();
     };
 
+    void upload(std::vector<ObjectXD<VertexElementXD>*> objects)
+    {
+        for (ObjectXD<VertexElementXD>* obj : objects) {
+            for (auto v : scene->getVertices()) {
+                if (v == obj) {
+                    vbo.substitute(obj->getVerticesFlattened(attributes), scene->getIndex(v));
+                }
+            }
+        }
+    }
+
     unsigned int count() override
     {
         return vbo.count();
@@ -51,8 +62,5 @@ protected:
 
     VBO vbo;
 };
-
-template class SceneManagedVBO<Scene2D>;
-template class SceneManagedVBO<Scene3D>;
 
 #endif

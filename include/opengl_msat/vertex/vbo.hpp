@@ -21,7 +21,9 @@ public:
 
     void setVertices(std::vector<GLfloat> values);
 
-    void upload();
+    void substitute(std::vector<GLfloat> values, unsigned int from);
+
+    void upload() override;
 
     [[nodiscard]] unsigned int count() override;
 

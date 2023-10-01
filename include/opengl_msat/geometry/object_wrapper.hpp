@@ -6,18 +6,22 @@
 #include "opengl_msat/shared/vertex_types.hpp"
 #include "opengl_msat/contracts/exports_vertices.hpp"
 
+template <typename VertexElementXD>
+class ObjectXD : public ExportsVertices<VertexElementXD> {
+
+};
+
 template <typename VertexElementXD, typename VecX>
-class ObjectWrapper :
-        public ExportsVertices<VertexElementXD> {
+class ObjectWrapper : public ObjectXD<VertexElementXD> {
 public:
     void add(std::vector<VertexElementXD> elements);
 
-    ObjectWrapper& translate(Vec3 value);
+    ObjectWrapper& translate(VecX value);
 
 protected:
     std::vector<VertexElementXD> vertices = {};
 
-    Vec3 translation = Vec3(0.0);
+    VecX translation = VecX(0.0);
 };
 
 #endif

@@ -44,3 +44,13 @@ unsigned int VBO::byteSize()
 {
     return count() * sizeof(GLfloat);
 }
+
+void VBO::substitute(std::vector<GLfloat> values, unsigned int from)
+{
+    safeBind();
+    glBufferSubData(GL_ARRAY_BUFFER,
+                    from * sizeof(GLfloat),
+                    values.size() * sizeof(GLfloat),
+                    values.data());
+    safeUnbind();
+}

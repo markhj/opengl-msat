@@ -1,6 +1,7 @@
 #ifndef OPENGL_MSAT_OBJECT_COLLECTION_HPP
 #define OPENGL_MSAT_OBJECT_COLLECTION_HPP
 
+#include <map>
 #include "opengl_msat/contracts/exports_vertices.hpp"
 
 template <typename ObjectXD, typename VertexElementXD>
@@ -15,16 +16,15 @@ public:
 
     void add(std::vector<ObjectXD*> objs);
 
+    std::optional<unsigned int> getIndex(ObjectXD* obj);
+
 private:
     std::vector<ObjectXD*> objects;
-};
 
-template<typename ObjectXD, typename VertexElementXD>
-void ObjectCollection<ObjectXD, VertexElementXD>::add(std::vector<ObjectXD *> objs)
-{
-    for (ObjectXD *obj : objs) {
-        add(obj);
-    }
-}
+    std::map<ObjectXD*, unsigned int> indices;
+
+    unsigned int currentIndex = 0;
+
+};
 
 #endif
