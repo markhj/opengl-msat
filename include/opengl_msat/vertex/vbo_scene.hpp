@@ -4,11 +4,12 @@
 #include "opengl_msat/vertex/vbo.hpp"
 #include "opengl_msat/contracts/vao_associable.hpp"
 #include "opengl_msat/shared/scenes.hpp"
-#include <type_traits>
-#include <utility>
+#include "opengl_msat/traits/handles_attributes.hpp"
 
 template <typename ObjectCollection, typename VertexElementXD>
-class SceneManagedVBO : public VAOAssociable {
+class SceneManagedVBO :
+        public VAOAssociable,
+        public HandlesAttributes {
 public:
     SceneManagedVBO(ObjectCollection* oc, std::vector<VertexAttribute> attributes) :
         scene(oc),
@@ -37,9 +38,14 @@ public:
     void upload(std::vector<ObjectXD<VertexElementXD>*> objects)
     {
         for (ObjectXD<VertexElementXD>* obj : objects) {
-            for (auto v : scene->getVertices()) {
+            for (auto v : scene->getObjects()) {
                 if (v == obj) {
-                    vbo.substitute(obj->getVerticesFlattened(attributes), scene->getIndex(v));
+                    std::optional<unsigned int> index = scene->getIndex(v);
+                    if (index.has_value()) {
+                        std::cout << index.value() * getSizeOfAttributes(attributes) << std::endl;
+                        vbo.substitute(obj->getVerticesFlattened(attributes),
+                                       index.value() * getSizeOfAttributes(attributes));
+                    }
                 }
             }
         }

@@ -28,6 +28,7 @@ set(CLASSES
         tools/system
         timer/timer
         types/color
+        traits/handles_attributes
         vertex/vao
         vertex/vbo
         vertex/vbo_scene

@@ -18,6 +18,8 @@ public:
 
     std::optional<unsigned int> getIndex(ObjectXD* obj);
 
+    std::vector<ObjectXD*> getObjects();
+
 private:
     std::vector<ObjectXD*> objects;
 

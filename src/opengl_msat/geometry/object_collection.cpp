@@ -28,8 +28,10 @@ ObjectCollection<ObjectXD, VertexElementXD>::getVerticesFlattened(std::vector<Ve
 template<typename ObjectXD, typename VertexElementXD>
 void ObjectCollection<ObjectXD, VertexElementXD>::add(ObjectXD *obj)
 {
+    indices.insert(std::make_pair(obj, currentIndex));
     objects.push_back(obj);
-//    currentIndex += obj
+
+    currentIndex += obj->getVertices().size();
 }
 
 template<typename ObjectXD, typename VertexElementXD>
@@ -49,6 +51,12 @@ void ObjectCollection<ObjectXD, VertexElementXD>::add(std::vector<ObjectXD *> ob
     for (ObjectXD *obj : objs) {
         add(obj);
     }
+}
+
+template<typename ObjectXD, typename VertexElementXD>
+std::vector<ObjectXD *> ObjectCollection<ObjectXD, VertexElementXD>::getObjects()
+{
+    return objects;
 }
 
 template class ObjectCollection<Object2D, VertexElement2D>;
