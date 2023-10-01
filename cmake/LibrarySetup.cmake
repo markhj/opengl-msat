@@ -70,6 +70,7 @@ endforeach ()
 # Add the library with the source and header files
 add_library(opengl_msat
         ${PACKAGE_PREFIX_DIR}/include/opengl_msat/common.h
+        ${PACKAGE_PREFIX_DIR}/include/opengl_msat/public.hpp
         ${PACKAGE_PREFIX_DIR}/libs/glad/include/glad/glad.h
         ${PACKAGE_PREFIX_DIR}/libs/glad/src/glad.c
         ${OPENGL_MSAT_HEADER_FILES}
