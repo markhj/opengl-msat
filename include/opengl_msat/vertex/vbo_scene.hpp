@@ -40,7 +40,7 @@ public:
         for (ObjectXD<VertexElementXD>* obj : objects) {
             for (auto v : scene->getObjects()) {
                 if (v == obj) {
-                    std::optional<unsigned int> index = scene->getIndex(v);
+                    std::optional<unsigned int> index = scene->getVertexIndex(v);
                     if (index.has_value()) {
                         vbo.substitute(obj->getVerticesFlattened(attributes),
                                        index.value() * getSizeOfAttributes(attributes));
@@ -66,6 +66,16 @@ protected:
     std::vector<VertexAttribute> attributes;
 
     VBO vbo;
+};
+
+class VBOScene3D : public SceneManagedVBO<Scene3D, VertexElement3D> {
+public:
+    using SceneManagedVBO::SceneManagedVBO;
+};
+
+class VBOScene2D : public SceneManagedVBO<Scene2D, VertexElement2D> {
+public:
+    using SceneManagedVBO::SceneManagedVBO;
 };
 
 #endif

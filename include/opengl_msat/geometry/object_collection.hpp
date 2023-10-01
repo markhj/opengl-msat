@@ -16,7 +16,7 @@ public:
 
     void add(std::vector<ObjectXD*> objs);
 
-    std::optional<unsigned int> getIndex(ObjectXD* obj);
+    std::optional<unsigned int> getVertexIndex(ObjectXD* obj);
 
     std::vector<ObjectXD*> getObjects();
 

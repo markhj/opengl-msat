@@ -35,7 +35,7 @@ void ObjectCollection<ObjectXD, VertexElementXD>::add(ObjectXD *obj)
 }
 
 template<typename ObjectXD, typename VertexElementXD>
-std::optional<unsigned int> ObjectCollection<ObjectXD, VertexElementXD>::getIndex(ObjectXD *obj)
+std::optional<unsigned int> ObjectCollection<ObjectXD, VertexElementXD>::getVertexIndex(ObjectXD *obj)
 {
     std::optional<unsigned int> result;
     auto f = indices.find(obj);
