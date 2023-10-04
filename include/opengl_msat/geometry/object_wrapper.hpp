@@ -18,6 +18,8 @@ public:
 
     ObjectWrapper& translate(VecX value);
 
+    ObjectWrapper& colorize(Color color);
+
 protected:
     std::vector<VertexElementXD> vertices = {};
 
