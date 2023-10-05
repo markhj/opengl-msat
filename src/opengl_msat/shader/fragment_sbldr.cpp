@@ -19,6 +19,8 @@ void FragmentShaderBuilder::buildSource()
     addLine("struct Camera { vec3 position; vec3 target; };");
     addLine("uniform Camera camera;");
 
+    addLine("const float M_PI = 3.141592;");
+
     if (enableLighting) {
         addLine("struct DirectionalLight {"
                 "vec3 direction, ambientColor, diffuseColor, specularColor;"
@@ -32,6 +34,7 @@ void FragmentShaderBuilder::buildSource()
         addLine("struct SpotLight {"
                 "vec3 position, direction, ambientColor, diffuseColor, specularColor;"
                 "float cutOff;"
+                "float constant, linear, quadratic;"
                 "};");
 
         addLine("uniform DirectionalLight[" + std::to_string(lightSlots) + "] directionalLights;"
@@ -68,8 +71,28 @@ void FragmentShaderBuilder::buildSource()
                 "}");
 
         addLine("vec3 calcSpotLight(SpotLight light) {"
-                "return vec3(0.0, 0.5, 0.0);"
-                "}");
+                "float shininess = 32.0;"
+                "vec3 viewDir = normalize(camera.position - pos);"
+                "vec3 result = vec3(0.0, 0.0, 0.0);"
+                "vec3 lightDir = normalize(light.position - pos);"
+                "float theta = dot(lightDir, normalize(-light.direction));"
+                "float cutOff = cos(light.cutOff * M_PI / 180);"
+                "if (theta > cutOff) {"
+                    "vec3 ambient = light.ambientColor;"
+                    "vec3 norm = normalize(normal);"
+                    "float diff = max(dot(norm, lightDir), 0.0);"
+                    "vec3 diffuse = light.diffuseColor * diff;"
+                    "vec3 reflectDir = reflect(-lightDir, norm);"
+                    "float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);"
+                    "vec3 specular = light.specularColor * spec;"
+                    "float distance = length(light.position - pos);"
+                    "float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));"
+                    "diffuse   *= attenuation;"
+                    "specular *= attenuation;"
+                    "return ambient + diffuse + specular;"
+                "}"
+                "return vec3(0.0, 0.0, 0.0);"
+            "}");
     }
 
     addLine("void main() {");

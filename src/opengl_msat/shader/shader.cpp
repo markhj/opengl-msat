@@ -209,6 +209,9 @@ void ShaderProgram::uniform(std::string name, SpotLight value)
     uniform(name + ".ambientColor", value.ambientColor);
     uniform(name + ".diffuseColor", value.diffuseColor);
     uniform(name + ".specularColor", value.specularColor);
+    uniform(name + ".constant", value.constant);
+    uniform(name + ".linear", value.linear);
+    uniform(name + ".quadratic", value.quadratic);
 }
 
 std::string ShaderProgram::formKey(std::string arr, unsigned int index)
