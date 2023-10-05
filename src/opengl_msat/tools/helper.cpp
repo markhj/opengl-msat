@@ -45,8 +45,10 @@ void Helper::render(Renderer *renderer)
     }
 
     for (SpotLight* light : spotLights) {
+        glm::vec3 normDir = glm::normalize(light->direction);
+        normDir *= 0.3;
         Vec3 p = light->position;
-        Vec3 e = p + light->direction;
+        Vec3 e = p + normDir;
         Vec3 c = light->diffuseColor;
         data.insert(data.end(), {p.x, p.y, p.z, c.x, c.y, c.z, e.x, e.y, e.z, c.x, c.y, c.z});
         lines++;
