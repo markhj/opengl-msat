@@ -50,3 +50,21 @@ HandlesAttributes::flattenVertices3D(std::vector<VertexElement3D> elements, std:
     }
     return list;
 }
+
+Vec3 HandlesAttributes::findCenter3D(std::vector<VertexElement3D> elements)
+{
+    float x = 0.0, y = 0.0, z = 0.0, count = elements.size();
+
+    for (VertexElement3D vertex : elements) {
+        x += vertex.position.x;
+        y += vertex.position.y;
+        z += vertex.position.z;
+    }
+
+    return Vec3(x / count, y / count, z / count);
+}
+
+Vec2 HandlesAttributes::findCenter2D(std::vector<VertexElement3D> elements)
+{
+    return Vec2(0);
+}
