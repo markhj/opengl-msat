@@ -40,6 +40,7 @@
 #include "tools/dump.hpp"
 #include "tools/system.hpp"
 #include "tools/grid.hpp"
+#include "tools/helper.hpp"
 
 // Vertex, VAO, VBO
 #include "vertex/vao.hpp"

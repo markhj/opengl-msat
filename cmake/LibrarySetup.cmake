@@ -26,6 +26,7 @@ set(CLASSES
         tools/dump
         tools/grid
         tools/system
+        tools/helper
         timer/timer
         types/color
         traits/handles_attributes
