@@ -18,10 +18,16 @@ public:
 
     ObjectWrapper& translate(VecX value);
 
+    ObjectWrapper& scale(float value);
+
+    ObjectWrapper& rotate(VecX value);
+
 protected:
     std::vector<VertexElementXD> vertices = {};
 
-    VecX translation = VecX(0.0);
+    VecX translation = VecX(0.0), rotation = VecX(0.0);
+
+    float scaling = 1.0;
 };
 
 #endif
