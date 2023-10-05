@@ -5,12 +5,12 @@ void Cube::construct()
 {
     // Front:
     addVertices(Rectangle(a, Vec3(b.x, b.y, a.z))
-        .setNormal(Vec3(0.0, 0.0, 1.0))
+        .setNormal(Vec3(0.0, 0.0, -1.0))
         .getVertices());
 
     // Back:
     addVertices(Rectangle(b, Vec3(a.x, a.y, b.z))
-        .setNormal(Vec3(0.0, 0.0, -1.0))
+        .setNormal(Vec3(0.0, 0.0, 1.0))
         .getVertices());
 
     // Left:
