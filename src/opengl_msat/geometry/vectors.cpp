@@ -5,6 +5,12 @@ glm::vec2 Vec2::toGlm() const
     return static_cast<glm::vec2>(*this);
 }
 
+void Vec2::animate(float pct, Vec2 from, Vec2 to)
+{
+    x = from.x + pct * (to.x - from.x) / 100;
+    y = from.y + pct * (to.y - from.y) / 100;
+}
+
 glm::vec3 Vec3::toGlm() const
 {
     return static_cast<glm::vec3>(*this);

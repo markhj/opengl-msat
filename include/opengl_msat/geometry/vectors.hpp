@@ -12,7 +12,8 @@ class Vector : public GlmDerivative<GlmVectorType> {
 };
 
 class Vec2 : public glm::vec2,
-        public Vector<glm::vec2> {
+        public Vector<glm::vec2>,
+        public Animateable<Vec2> {
 public:
     explicit Vec2(float scalar) : glm::vec2(scalar) { }
 
@@ -23,6 +24,8 @@ public:
     Vec2(const glm::vec3& other) : glm::vec2(other) { }
 
     [[nodiscard]] glm::vec2 toGlm() const override;
+
+    void animate(float pct, Vec2 from, Vec2 to) override;
 };
 
 class Vec3 : public glm::vec3,
