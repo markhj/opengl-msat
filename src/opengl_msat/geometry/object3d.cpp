@@ -14,20 +14,16 @@ std::vector<VertexElement3D> Object3D::getVertices()
         v.position.y -= center.y;
         v.position.z -= center.z;
 
-        glm::mat4 rx = glm::rotate(glm::mat4(1.0f), rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-        glm::mat4 ry = glm::rotate(glm::mat4(1.0f), rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-        glm::mat4 rz = glm::rotate(glm::mat4(1.0f), rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+        glm::mat4 rx = glm::rotate(glm::mat4(1.0f), rotate.x, glm::vec3(1.0f, 0.0f, 0.0f));
+        glm::mat4 ry = glm::rotate(glm::mat4(1.0f), rotate.y, glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::mat4 rz = glm::rotate(glm::mat4(1.0f), rotate.z, glm::vec3(0.0f, 0.0f, 1.0f));
         v.position = glm::vec3(rx * ry * rz * glm::vec4(v.position, 1.0f));
 
-        v.position.x *= scaling;
-        v.position.y *= scaling;
-        v.position.z *= scaling;
+        v.position *= scale;
 
-
-
-        v.position.x += translation.x;
-        v.position.y += translation.y;
-        v.position.z += translation.z;
+        v.position.x += translate.x;
+        v.position.y += translate.y;
+        v.position.z += translate.z;
 
         list.push_back(v);
     }

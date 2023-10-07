@@ -113,8 +113,8 @@ void ShaderProgram::uniform(Camera &camera)
     uniform("view", camera.getView());
     uniform("model", camera.getModel());
     uniform("projection", camera.getProjection());
-    uniform("camera.position", camera.getPosition());
-    uniform("camera.target", camera.getTarget());
+    uniform("camera.position", camera.position);
+    uniform("camera.target", camera.target);
 }
 
 void ShaderProgram::uniform(std::string name, Mat4 value)

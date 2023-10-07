@@ -16,20 +16,14 @@ class ObjectWrapper : public ObjectXD<VertexElementXD> {
 public:
     void add(std::vector<VertexElementXD> elements);
 
-    ObjectWrapper& translate(VecX value);
-
-    ObjectWrapper& scale(float value);
-
-    ObjectWrapper& rotate(VecX value);
-
     ObjectWrapper& colorize(Color color);
+
+    VecX translate = VecX(0.0), rotate = VecX(0.0);
+
+    float scale = 1.0;
 
 protected:
     std::vector<VertexElementXD> vertices = {};
-
-    VecX translation = VecX(0.0), rotation = VecX(0.0);
-
-    float scaling = 1.0;
 };
 
 #endif
