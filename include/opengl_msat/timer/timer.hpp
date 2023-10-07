@@ -13,6 +13,8 @@ public:
 
     [[nodiscard]] double getDeltaTime() const;
 
+    [[nodiscard]] double getDeltaTimeOrFallback(double fallback) const;
+
     [[nodiscard]] unsigned int getFramesPerSecond() const;
 
     [[nodiscard]] unsigned int getFramesPerSecond(bool trueRender) const;
@@ -25,7 +27,8 @@ private:
     double deltaTime = 0.0,
         renderTime = 0.0;
 
-    bool absoluteStarted = false;
+    bool absoluteStarted = false,
+        hasDeltaTime = false;
 
     std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 

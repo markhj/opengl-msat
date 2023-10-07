@@ -1,5 +1,6 @@
 # The list of classes in the library
 set(CLASSES
+        animation/animation
         bindable/bindable
         shared/keyboard_types
         shared/vertex_types
@@ -41,6 +42,7 @@ set(STRUCTS
 
 # The list of contracts in the library
 set(CONTRACTS
+        animateable
         glm_derivative
         vertex_element
         vao_associable

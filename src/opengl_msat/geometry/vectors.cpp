@@ -9,3 +9,10 @@ glm::vec3 Vec3::toGlm() const
 {
     return static_cast<glm::vec3>(*this);
 }
+
+void Vec3::animate(float pct, Vec3 from, Vec3 to)
+{
+    x = from.x + pct * (to.x - from.x) / 100;
+    y = from.y + pct * (to.y - from.y) / 100;
+    z = from.z + pct * (to.z - from.z) / 100;
+}
