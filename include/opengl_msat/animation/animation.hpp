@@ -79,6 +79,15 @@ public:
         duration = value;
     }
 
+    void setIterations(unsigned int value)
+    {
+        if (isStarted()) {
+            return;
+        }
+
+        iterations = value;
+    }
+
     void tick()
     {
         if (!isStarted() || !isRunning()) {
@@ -108,6 +117,7 @@ public:
     void start()
     {
         rewind();
+        currentIteration = 1;
         started = true;
         running = true;
     }
@@ -169,10 +179,19 @@ private:
 
     float pos = 0.0;
 
+    unsigned int iterations = 1, currentIteration = 0;
+
     void checkForStop()
     {
-        if (pos >= duration) {
+        if (pos < duration) {
+            return;
+        }
+
+        if (currentIteration >= iterations) {
             stop();
+        } else {
+            currentIteration++;
+            rewind();
         }
     }
 
