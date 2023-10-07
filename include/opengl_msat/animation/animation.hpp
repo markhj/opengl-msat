@@ -13,77 +13,57 @@
 template <typename T>
 class AnimationStep {
 public:
-    std::optional<T> value;
+    float from, to;
+    std::optional<T> tFrom;
+    std::optional<T> tTo;
     std::optional<std::function<T(float)>> function;
 };
 
 template <typename T>
 class AnimationBlueprint {
 public:
-    AnimationBlueprint<T>& step(float pct, T prop)
+    AnimationBlueprint<T>& step(float pctFrom, float pctTo, T from, T to)
     {
-        steps.insert(std::make_pair(pct, AnimationStep<T> {
-            .value = prop,
-            }));
+        steps.push_back({
+            .from = pctFrom,
+            .to = pctTo,
+            .tFrom = from,
+            .tTo = to
+        });
 
         return *this;
     }
 
     AnimationBlueprint<T>& step(float pctFrom, float pctTo, std::function<T(float)> func)
     {
-        steps.insert(std::make_pair(pctFrom, AnimationStep<T> {
+        steps.push_back({
+            .from = pctFrom,
+            .to = pctTo,
             .function = func,
-        }));
-
-        steps.insert(std::make_pair(pctTo, AnimationStep<T> {
-            .value = func(100),
-        }));
+        });
 
         return *this;
     }
 
     void animate(float pct, Animateable<T>* target)
     {
-        float pctFrom = getBefore(pct);
-        float pctTo = getAfter(pct);
-        float usePct = 100 * (pct - pctFrom) / (pctTo - pctFrom);
-
-        AnimationStep<T> from = steps.find(pctFrom)->second;
-        AnimationStep<T> to = steps.find(pctTo)->second;
-
-        if (from.function.has_value()) {
-            target->animate(from.function.value()(usePct));
-        } else {
-            target->animate(usePct,
-                            from.function.has_value() ? from.function.value()(100) : from.value.value(),
-                            to.value.value());
-        }
-    }
-
-    float getBefore(float pct)
-    {
-        float tmp = 0.0;
-        for (auto x : steps) {
-            if (x.first >= pct) {
-                return tmp;
-            }
-            tmp = x.first;
-        }
-        return steps.begin()->first;
-    }
-
-    float getAfter(float pct)
-    {
-        for (auto x : steps) {
-            if (x.first >= pct) {
-                return x.first;
+        for (AnimationStep step : steps) {
+            if (step.from <= pct && pct <= step.to) {
+                float usePct = 100 * (pct - step.from) / (step.to - step.from);
+                if (step.function.has_value()) {
+                    target->animate(step.function.value()(usePct));
+                } else {
+                    target->animate(usePct,
+                                    step.tFrom.value(),
+                                    step.tTo.value()
+                                    );
+                }
             }
         }
-        return steps.end()->first;
     }
 
 private:
-    std::map<float, AnimationStep<T>> steps;
+    std::vector<AnimationStep<T>> steps;
 
 };
 
