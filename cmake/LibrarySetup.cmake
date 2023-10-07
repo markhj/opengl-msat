@@ -31,6 +31,7 @@ set(CLASSES
         timer/timer
         types/color
         traits/handles_attributes
+        traits/dev_messaging
         vertex/vao
         vertex/vbo
         vertex/vbo_scene

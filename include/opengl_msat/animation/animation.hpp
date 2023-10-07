@@ -10,6 +10,7 @@
 #include "opengl_msat/timer/timer.hpp"
 #include "opengl_msat/contracts/animateable.hpp"
 #include "opengl_msat/geometry/vectors.hpp"
+#include "opengl_msat/traits/dev_messaging.hpp"
 
 enum TimingFunction {
     Linear,
@@ -99,7 +100,8 @@ private:
 };
 
 template <typename T>
-class Animation {
+class Animation :
+        public DeveloperMessaging {
 public:
     Animation(Timer* timer,
               AnimationBlueprint<T>* blueprint,
@@ -145,6 +147,10 @@ public:
 
     Animation<T> setTimingFunction(std::function<float(float)> func)
     {
+        if (func(100) != 100) {
+            warn("Custom timing function does not return 100 when 100 is given.");
+        }
+
         timingFunction = func;
 
         return *this;
