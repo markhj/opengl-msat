@@ -1,6 +1,7 @@
 #ifndef OPENGL_MSAT_ANIMATION_HPP
 #define OPENGL_MSAT_ANIMATION_HPP
 
+#include <cmath>
 #include <map>
 #include <vector>
 #include <iostream>
@@ -9,6 +10,11 @@
 #include "opengl_msat/timer/timer.hpp"
 #include "opengl_msat/contracts/animateable.hpp"
 #include "opengl_msat/geometry/vectors.hpp"
+
+enum TimingFunction {
+    Linear,
+    Easing,
+};
 
 template <typename T>
 class AnimationStep {
@@ -56,7 +62,7 @@ public:
         return *this;
     }
 
-    void animate(float pct, Animateable<T>* target)
+    void animate(float pct, float realPct, Animateable<T>* target)
     {
         for (AnimationStep step : steps) {
             if (step.from <= pct && pct <= step.to) {
@@ -69,7 +75,7 @@ public:
                                     step.tFrom.value(),
                                     step.tTo.value()
                                     );
-                    if (usePct == 100) {
+                    if (realPct == 100) {
                         latest = step.tTo.value();
                     }
                 } else if (step.tTo.has_value() && latest.has_value()) {
@@ -77,7 +83,7 @@ public:
                                     latest.value(),
                                     step.tTo.value()
                     );
-                    if (usePct == 100) {
+                    if (realPct == 100) {
                         latest = step.tTo.value();
                     }
                 }
@@ -137,6 +143,37 @@ public:
         return *this;
     }
 
+    Animation<T> setTimingFunction(std::function<float(float)> func)
+    {
+        timingFunction = func;
+
+        return *this;
+    }
+
+    Animation<T> setTimingFunction(TimingFunction func)
+    {
+        switch (func) {
+            case TimingFunction::Linear:
+                setTimingFunction([](float pct) {
+                    return pct;
+                });
+                break;
+            case TimingFunction::Easing:
+                setTimingFunction([](float pct) {
+                    pct = std::clamp(pct / 100.0, 0.0, 1.0);
+                    float easedValue;
+                    if (pct < 0.5) {
+                        easedValue = 4.0 * pow(pct, 3);
+                    } else {
+                        easedValue = 1.0 + 4.0 * pow(pct - 1.0, 3);
+                    }
+                    return easedValue * 100.0;
+                });
+                break;
+        }
+        return *this;
+    }
+
     void tick()
     {
         if (!isStarted() || !isRunning()) {
@@ -148,10 +185,14 @@ public:
             pos = duration;
         }
 
-        float pct = 100 * pos / duration;
+        float realPct = 100 * pos / duration;
+        float usePct = realPct;
+        if (timingFunction.has_value()) {
+            usePct = timingFunction.value()(usePct);
+        }
 
         for (Animateable<T>* target : targets) {
-            blueprint->animate(pct, target);
+            blueprint->animate(usePct, realPct, target);
         }
 
         checkForStop();
@@ -225,6 +266,8 @@ private:
     float pos = 0.0;
 
     unsigned int iterations = 1, currentIteration = 0;
+
+    std::optional<std::function<float(float)>> timingFunction;
 
     void checkForStop()
     {
