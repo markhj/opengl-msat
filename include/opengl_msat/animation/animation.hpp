@@ -22,6 +22,17 @@ public:
 template <typename T>
 class AnimationBlueprint {
 public:
+    AnimationBlueprint<T>& step(float pctFrom, float pctTo, T to)
+    {
+        steps.push_back({
+            .from = pctFrom,
+            .to = pctTo,
+            .tTo = to
+        });
+
+        return *this;
+    }
+
     AnimationBlueprint<T>& step(float pctFrom, float pctTo, T from, T to)
     {
         steps.push_back({
@@ -51,12 +62,24 @@ public:
             if (step.from <= pct && pct <= step.to) {
                 float usePct = 100 * (pct - step.from) / (step.to - step.from);
                 if (step.function.has_value()) {
-                    target->animate(step.function.value()(usePct));
-                } else {
+                    latest = step.function.value()(usePct);
+                    target->animate(latest.value());
+                } else if (step.tFrom.has_value() && step.tTo.has_value()) {
                     target->animate(usePct,
                                     step.tFrom.value(),
                                     step.tTo.value()
                                     );
+                    if (usePct == 100) {
+                        latest = step.tTo.value();
+                    }
+                } else if (step.tTo.has_value() && latest.has_value()) {
+                    target->animate(usePct,
+                                    latest.value(),
+                                    step.tTo.value()
+                    );
+                    if (usePct == 100) {
+                        latest = step.tTo.value();
+                    }
                 }
             }
         }
@@ -64,6 +87,8 @@ public:
 
 private:
     std::vector<AnimationStep<T>> steps;
+
+    std::optional<T> latest;
 
 };
 
