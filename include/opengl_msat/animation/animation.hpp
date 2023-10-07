@@ -4,17 +4,60 @@
 #include <map>
 #include <vector>
 #include <iostream>
+#include <optional>
+#include <functional>
 #include "opengl_msat/timer/timer.hpp"
 #include "opengl_msat/contracts/animateable.hpp"
 #include "opengl_msat/geometry/vectors.hpp"
+
+template <typename T>
+class AnimationStep {
+public:
+    std::optional<T> value;
+    std::optional<std::function<T(float)>> function;
+};
 
 template <typename T>
 class AnimationBlueprint {
 public:
     AnimationBlueprint<T>& step(float pct, T prop)
     {
-        steps.insert(std::make_pair(pct, prop));
+        steps.insert(std::make_pair(pct, AnimationStep<T> {
+            .value = prop,
+            }));
+
         return *this;
+    }
+
+    AnimationBlueprint<T>& step(float pctFrom, float pctTo, std::function<T(float)> func)
+    {
+        steps.insert(std::make_pair(pctFrom, AnimationStep<T> {
+            .function = func,
+        }));
+
+        steps.insert(std::make_pair(pctTo, AnimationStep<T> {
+            .value = func(100),
+        }));
+
+        return *this;
+    }
+
+    void animate(float pct, Animateable<T>* target)
+    {
+        float pctFrom = getBefore(pct);
+        float pctTo = getAfter(pct);
+        float usePct = 100 * (pct - pctFrom) / (pctTo - pctFrom);
+
+        AnimationStep<T> from = steps.find(pctFrom)->second;
+        AnimationStep<T> to = steps.find(pctTo)->second;
+
+        if (from.function.has_value()) {
+            target->animate(from.function.value()(usePct));
+        } else {
+            target->animate(usePct,
+                            from.function.has_value() ? from.function.value()(100) : from.value.value(),
+                            to.value.value());
+        }
     }
 
     float getBefore(float pct)
@@ -39,18 +82,8 @@ public:
         return steps.end()->first;
     }
 
-    T getFrom(float pct)
-    {
-        return steps.find(getBefore(pct))->second;
-    }
-
-    T getTo(float pct)
-    {
-        return steps.find(getAfter(pct))->second;
-    }
-
 private:
-    std::map<float, T> steps;
+    std::map<float, AnimationStep<T>> steps;
 
 };
 
@@ -70,22 +103,33 @@ public:
               : timer(timer), blueprint(blueprint), targets(targets), duration(duration)
               { }
 
-    void setDuration(float value)
+    Animation<T> setDuration(float value)
     {
         if (isStarted()) {
-            return;
+            return *this;
         }
 
         duration = value;
+
+        return *this;
     }
 
-    void setIterations(unsigned int value)
+    Animation<T> setIterations(unsigned int value)
     {
         if (isStarted()) {
-            return;
+            return *this;
         }
 
         iterations = value;
+
+        return *this;
+    }
+
+    Animation<T> infinite()
+    {
+        infiniteIteration = true;
+
+        return *this;
     }
 
     void tick()
@@ -100,15 +144,9 @@ public:
         }
 
         float pct = 100 * pos / duration;
-        float pctFrom = blueprint->getBefore(pct);
-        float pctTo = blueprint->getAfter(pct);
-        float usePct = 100 * (pct - pctFrom) / (pctTo - pctFrom);
-
-        Vec3 from = blueprint->getFrom(pct);
-        Vec3 to = blueprint->getTo(pct);
 
         for (Animateable<T>* target : targets) {
-            target->animate(usePct, from, to);
+            blueprint->animate(pct, target);
         }
 
         checkForStop();
@@ -177,6 +215,8 @@ private:
 
     bool running = false;
 
+    bool infiniteIteration = false;
+
     float pos = 0.0;
 
     unsigned int iterations = 1, currentIteration = 0;
@@ -187,7 +227,7 @@ private:
             return;
         }
 
-        if (currentIteration >= iterations) {
+        if (currentIteration >= iterations && !infiniteIteration) {
             stop();
         } else {
             currentIteration++;

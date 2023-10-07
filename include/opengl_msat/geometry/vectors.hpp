@@ -26,6 +26,8 @@ public:
     [[nodiscard]] glm::vec2 toGlm() const override;
 
     void animate(float pct, Vec2 from, Vec2 to) override;
+
+    void animate(Vec2 value) override;
 };
 
 class Vec3 : public glm::vec3,
@@ -43,6 +45,8 @@ public:
     [[nodiscard]] glm::vec3 toGlm() const override;
 
     void animate(float pct, Vec3 from, Vec3 to) override;
+
+    void animate(Vec3 value) override;
 };
 
 #endif
