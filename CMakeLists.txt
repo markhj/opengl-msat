@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(include)
 include_directories(libs/glad/include)
+include_directories(libs/stb)
 
 # LibrarySetup.cmake needs the variable PACKAGE_PREFIX_DIR
 # In this case we just set it to the current directory

@@ -16,6 +16,14 @@
 #include "context/context.hpp"
 #include "timer/timer.hpp"
 
+// Animation
+#include "animation/animation.hpp"
+
+// Textures
+#include "textures/texture.hpp"
+#include "textures/texture_unit.hpp"
+#include "textures/material.hpp"
+
 // Types
 #include "types/color.hpp"
 #include "shared/keyboard_types.hpp"

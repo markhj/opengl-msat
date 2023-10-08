@@ -28,10 +28,15 @@ set(CLASSES
         tools/grid
         tools/system
         tools/helper
+        textures/texture
+        textures/texture_unit
+        textures/material
         timer/timer
         types/color
+        types/image
         traits/handles_attributes
         traits/dev_messaging
+        traits/loads_images
         vertex/vao
         vertex/vbo
         vertex/vbo_scene
@@ -77,5 +82,6 @@ add_library(opengl_msat
         ${PACKAGE_PREFIX_DIR}/include/opengl_msat/public.hpp
         ${PACKAGE_PREFIX_DIR}/libs/glad/include/glad/glad.h
         ${PACKAGE_PREFIX_DIR}/libs/glad/src/glad.c
+        ${PACKAGE_PREFIX_DIR}/libs/stb/stb_image.h
         ${OPENGL_MSAT_HEADER_FILES}
         ${OPENGL_MSAT_SOURCE_FILES})
