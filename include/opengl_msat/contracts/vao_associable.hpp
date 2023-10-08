@@ -2,7 +2,7 @@
 #define OPENGL_MSAT_VAO_ASSOCIABLE_HPP
 
 
-#include "opengl_msat/bindable/bindable.hpp"
+#include "opengl_msat/traits/bindable.hpp"
 
 class VAOAssociable : public Bindable {
 public:
