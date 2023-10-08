@@ -3,6 +3,7 @@
 
 #include <functional>
 #include "opengl_msat/traits/bindable.hpp"
+#include "opengl_msat/traits/binding_mng.hpp"
 
 class Context {
 public:

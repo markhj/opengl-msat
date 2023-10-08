@@ -37,6 +37,7 @@ set(CLASSES
         traits/dev_messaging
         traits/loads_images
         traits/bindable
+        traits/binding_mng
         vertex/vao
         vertex/vbo
         vertex/vbo_scene

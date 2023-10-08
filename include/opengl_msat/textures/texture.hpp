@@ -4,7 +4,7 @@
 #include <string>
 #include "opengl_msat/types/image.hpp"
 #include "opengl_msat/traits/loads_images.hpp"
-#include "opengl_msat/bindable/bindable.hpp"
+#include "opengl_msat/traits/bindable.hpp"
 
 enum TextureType {
     Texture2D,

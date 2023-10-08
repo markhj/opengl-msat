@@ -5,15 +5,16 @@ TextureUnitManager::TextureUnitManager(SystemInfo *systemInfo) : systemInfo(syst
 
 }
 
-unsigned int TextureUnitManager::getUnitsAvailable() const
+unsigned int TextureUnitManager::getAvailableSlots() const
 {
     return systemInfo->maxTextureUnits;
 }
 
 void TextureUnitManager::bindTextureTo(unsigned int unit, Texture *texture)
 {
-    glActiveTexture(GL_TEXTURE0 + unit - 1);
-    texture->bind();
-    glActiveTexture(0);
+    with(unit, [&]() {
+        texture->bind();
+    });
+
     texture->unbind();
 }
