@@ -1,4 +1,4 @@
-#include "opengl_msat/bindable/bindable.hpp"
+#include "opengl_msat/traits/bindable.hpp"
 
 #include <iostream>
 

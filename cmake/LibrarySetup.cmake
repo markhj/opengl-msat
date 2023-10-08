@@ -1,7 +1,6 @@
 # The list of classes in the library
 set(CLASSES
         animation/animation
-        bindable/bindable
         shared/keyboard_types
         shared/vertex_types
         camera/camera
@@ -37,6 +36,7 @@ set(CLASSES
         traits/handles_attributes
         traits/dev_messaging
         traits/loads_images
+        traits/bindable
         vertex/vao
         vertex/vbo
         vertex/vbo_scene
