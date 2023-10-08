@@ -4,6 +4,7 @@
 #include <string>
 #include "opengl_msat/types/image.hpp"
 #include "opengl_msat/traits/loads_images.hpp"
+#include "opengl_msat/bindable/bindable.hpp"
 
 enum TextureType {
     Texture2D,
@@ -12,13 +13,18 @@ enum TextureType {
 };
 
 class Texture :
-        LoadsImages {
+        LoadsImages,
+        public Bindable {
 public:
     explicit Texture(TextureType type, std::string filename);
 
     [[nodiscard]] unsigned int getTextureId() const;
 
     [[nodiscard]] bool isLoaded() const;
+
+    void doBind() override;
+
+    void doUnbind() override;
 
 protected:
     bool loaded = false;

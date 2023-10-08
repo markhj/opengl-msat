@@ -23,3 +23,13 @@ bool Texture::isLoaded() const
 {
     return loaded;
 }
+
+void Texture::doBind()
+{
+    glBindTexture(GL_TEXTURE_2D, getTextureId());
+}
+
+void Texture::doUnbind()
+{
+    glBindTexture(GL_TEXTURE_2D, 0);
+}

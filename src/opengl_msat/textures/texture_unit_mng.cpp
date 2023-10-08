@@ -9,3 +9,11 @@ unsigned int TextureUnitManager::getUnitsAvailable() const
 {
     return systemInfo->maxTextureUnits;
 }
+
+void TextureUnitManager::bindTextureTo(unsigned int unit, Texture *texture)
+{
+    glActiveTexture(GL_TEXTURE0 + unit - 1);
+    texture->bind();
+    glActiveTexture(0);
+    texture->unbind();
+}
