@@ -17,9 +17,14 @@ std::optional<Image> LoadsImages::loadImage(std::string filename)
         return std::nullopt;
     }
 
-    std::cout << "LOADED!";
+    Image result {
+        .data = data,
+        .width = static_cast<unsigned int>(width),
+        .height = static_cast<unsigned int>(height),
+        .channels = static_cast<unsigned int>(nrChannels)
+    };
 
     stbi_image_free(data);
 
-    return std::nullopt;
+    return result;
 }

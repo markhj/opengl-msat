@@ -16,7 +16,15 @@ class Texture :
 public:
     explicit Texture(TextureType type, std::string filename);
 
+    [[nodiscard]] unsigned int getTextureId() const;
+
+    [[nodiscard]] bool isLoaded() const;
+
 protected:
+    bool loaded = false;
+
+    unsigned int textureId;
+
     Image image;
 
     TextureType type;

@@ -21,7 +21,7 @@
 
 // Textures
 #include "textures/texture.hpp"
-#include "textures/texture_unit.hpp"
+#include "textures/texture_unit_mng.hpp"
 #include "textures/material.hpp"
 
 // Types
