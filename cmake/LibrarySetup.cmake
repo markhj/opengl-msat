@@ -29,7 +29,7 @@ set(CLASSES
         tools/system
         tools/helper
         textures/texture
-        textures/texture_unit
+        textures/texture_unit_mng
         textures/material
         timer/timer
         types/color
