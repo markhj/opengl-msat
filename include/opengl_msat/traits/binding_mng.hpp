@@ -4,6 +4,7 @@
 #include <optional>
 #include <functional>
 #include <iostream>
+#include "dev_messaging.hpp"
 
 /**
  * Trait for classes which handles bindings of "slot based" concepts
@@ -15,11 +16,15 @@
  * GL_TEXTURE0 rather than "nothing"
  */
 
-template <typename T>
-class ManagesMultipleBindings {
+class ManagesMultipleBindings :
+        DeveloperMessaging {
 public:
-    void bindTo(T target)
+    void bindTo(unsigned int target)
     {
+        if (target > getAvailableSlots()) {
+            warn("You are binding a higher slot number than what the current system has available");
+        }
+
         doBindTo(target);
     }
 
@@ -37,10 +42,10 @@ public:
 
     virtual unsigned int getAvailableSlots() const = 0;
 
-    virtual T getBoundTo() const = 0;
+    virtual unsigned int getBoundTo() const = 0;
 
 protected:
-    virtual void doBindTo(T target) = 0;
+    virtual void doBindTo(unsigned int slot) = 0;
 
 };
 

@@ -8,8 +8,7 @@
 #include "texture.hpp"
 
 class TextureUnitManager :
-        DeveloperMessaging,
-        public ManagesMultipleBindings<GLuint> {
+        public ManagesMultipleBindings {
 public:
     explicit TextureUnitManager(SystemInfo* systemInfo);
 
@@ -25,7 +24,7 @@ public:
     }
 
 protected:
-    void doBindTo(GLuint to) override
+    void doBindTo(unsigned int to) override
     {
         glActiveTexture(GL_TEXTURE0 + to);
     }

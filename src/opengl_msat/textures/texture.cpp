@@ -11,6 +11,14 @@ Texture::Texture(TextureType type, std::string filename) : type(type)
         image = img.value();
 
         glGenTextures(1, &textureId);
+
+        bind();
+        glTexParameteri(type, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(type, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(type, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+        glTexParameteri(type, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexImage2D(type, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
+        unbind();
     }
 }
 

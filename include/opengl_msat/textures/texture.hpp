@@ -7,9 +7,7 @@
 #include "opengl_msat/traits/bindable.hpp"
 
 enum TextureType {
-    Texture2D,
-    Texture3D,
-    Cubemap,
+    Texture2D = GL_TEXTURE_2D,
 };
 
 class Texture :

@@ -18,9 +18,9 @@ nav:
     - VBO: vertex/vbo.md
     - Vertex attributes: vertex/vertex-attribute.md
   - Shaders:
-      - Shaders: shader/shader.md
-      - Vertex shader builder: shader/vertex-shader-builder.md
-      - Fragment shader builder: shader/fragment-shader-builder.md
+    - Shaders: shader/shader.md
+    - Vertex shader builder: shader/vertex-shader-builder.md
+    - Fragment shader builder: shader/fragment-shader-builder.md
   - Rendering:
     - Rendering: render/render.md
     - Settings: render/render-settings.md
@@ -32,9 +32,9 @@ nav:
     - Keyboard: controls/keyboard.md
     - Key enum: controls/key-enum.md
   - Binding and context:
-      - Context: context/context.md
-      - Bindable: context/bindable.md
-      - Bindable classes: lists/bindable-classes.md
+    - Context: context/context.md
+    - Bindable: context/bindable.md
+    - Bindable classes: lists/bindable-classes.md
   - Misc.:
     - Timer: timer/timer.md
   - Debugging:
