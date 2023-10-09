@@ -15,6 +15,4 @@ void TextureUnitManager::bindTextureTo(unsigned int unit, Texture *texture)
     with(unit, [&]() {
         texture->bind();
     });
-
-    texture->unbind();
 }

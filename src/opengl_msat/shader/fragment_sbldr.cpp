@@ -21,6 +21,8 @@ void FragmentShaderBuilder::buildSource()
 
     addLine("const float M_PI = 3.141592;");
 
+    addLine("uniform sampler2D[] textures;");
+
     if (enableLighting) {
         addLine("struct DirectionalLight {"
                 "vec3 direction, ambientColor, diffuseColor, specularColor;"
@@ -109,7 +111,12 @@ void FragmentShaderBuilder::buildSource()
                 "for (int i = 0; i < numSpotLights; i++) {"
                 "clr += calcSpotLight(spotLights[i]);"
                 "}"
-                "result = vec4(clr * color, 1.0);");
+                "result = vec4(texture(textures[4], texCoords).rgb + vec3(0.2, 0.2, 0.2), 1.0);"
+
+                // @todo If color is set
+
+                //"result = vec4(clr * color, 1.0);"
+                );
     } else if (hasColor) {
         addLine("result = vec4(color, 1.0);");
     } else {

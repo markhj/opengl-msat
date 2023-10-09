@@ -18,6 +18,7 @@ Texture::Texture(TextureType type, std::string filename) : type(type)
         glTexParameteri(type, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
         glTexParameteri(type, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         glTexImage2D(type, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
+        glGenerateMipmap(type);
         unbind();
     }
 }
