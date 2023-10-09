@@ -9,6 +9,7 @@
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/camera/camera.hpp"
 #include "opengl_msat/shared/lights.hpp"
+#include "opengl_msat/textures/material.hpp"
 #include <iostream>
 #include <map>
 
@@ -61,6 +62,10 @@ public:
     void uniform(std::string name, SpotLight value);
 
     void uniform(std::string arrName, unsigned int index, SpotLight value);
+
+    void uniform(std::string name, Material value);
+
+    void uniform(std::string arrName, unsigned int index, Material value);
 
     void uniform(Camera& camera);
 private:

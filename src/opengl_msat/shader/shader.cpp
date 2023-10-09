@@ -1,6 +1,7 @@
 #include <vector>
 #include "opengl_msat/shader/shader.hpp"
 #include <glm/gtc/type_ptr.hpp>
+#include "opengl_msat/shared/types.hpp"
 
 void ShaderProgram::compileShaderStage(ShaderStage stage)
 {
@@ -255,6 +256,16 @@ void ShaderProgram::uniform(std::string arrName, unsigned int index, Vec3 value)
 }
 
 void ShaderProgram::uniform(std::string arrName, unsigned int index, Mat4 value)
+{
+    uniform(formKey(arrName, index), value);
+}
+
+void ShaderProgram::uniform(std::string name, Material value)
+{
+    uniform(name + ".diffuseColor", value.diffuseColor);
+}
+
+void ShaderProgram::uniform(std::string arrName, unsigned int index, Material value)
 {
     uniform(formKey(arrName, index), value);
 }

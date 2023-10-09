@@ -45,7 +45,8 @@ set(CLASSES
 
 # The list of structs
 set(STRUCTS
-    scenes)
+    scenes
+    types)
 
 # The list of contracts in the library
 set(CONTRACTS

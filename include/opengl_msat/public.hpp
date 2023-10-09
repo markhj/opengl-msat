@@ -15,6 +15,7 @@
 #include "camera/camera.hpp"
 #include "context/context.hpp"
 #include "timer/timer.hpp"
+#include "shared/types.hpp"
 
 // Animation
 #include "animation/animation.hpp"

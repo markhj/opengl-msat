@@ -21,7 +21,11 @@ void FragmentShaderBuilder::buildSource()
 
     addLine("const float M_PI = 3.141592;");
 
-    addLine("uniform sampler2D[] textures;");
+    // Materials
+    addLine("struct Material { vec3 diffuseColor; };");
+    addLine("uniform Material[10] materials;");
+
+    //addLine("uniform sampler2D[] textures;");
 
     if (enableLighting) {
         addLine("struct DirectionalLight {"
@@ -112,8 +116,9 @@ void FragmentShaderBuilder::buildSource()
                 "clr += calcSpotLight(spotLights[i]);"
                 "}"
 
+                "result = vec4(clr * materials[materialId].diffuseColor, 1.0);"
                 //"result = vec4(texture(textures[int(4.0)], texCoords).rgb * clr, 1.0);"
-                "result = vec4(clr * color, 1.0);"
+                //"result = vec4(clr * color, 1.0);"
                 );
     } else if (hasColor) {
         addLine("result = vec4(color, 1.0);");
