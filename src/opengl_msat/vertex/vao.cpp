@@ -36,7 +36,7 @@ void VAO::associate(VAOAssociable &vbo, std::vector<VertexAttribute> attributes)
         for (VertexAttribute attr : attributes) {
             unsigned int size = getVertexAttributeSize(attr);
 
-            glVertexAttribPointer(i, size, GL_FLOAT, GL_FALSE, totalSize * sizeof(float), (void*)(pos * sizeof(GLfloat)));
+            glVertexAttribPointer(i, size, getVertexAttributeDataType(attr), GL_FALSE, totalSize * sizeof(float), (void*)(pos * sizeof(GLfloat)));
             glEnableVertexAttribArray(i);
 
             i++;
