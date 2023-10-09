@@ -10,8 +10,8 @@ void VertexShaderBuilder::buildSource()
         unsigned int size = getVertexAttributeSize(attr);
         lines += "\nlayout (location = "
                 + std::to_string(loc)
-                + ") in vec"
-                + std::to_string(size)
+                + ") in "
+                + (size == 1 ? "int" : "vec" + std::to_string(size))
                 + " vbo_"
                 + varName
                 + ";";

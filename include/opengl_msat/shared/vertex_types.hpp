@@ -3,6 +3,7 @@
 
 #include <stdexcept>
 #include <optional>
+#include "opengl_msat/common.h"
 #include "opengl_msat/geometry/vectors.hpp"
 #include "opengl_msat/types/color.hpp"
 #include "opengl_msat/contracts/vertex_element.hpp"
@@ -23,6 +24,8 @@ enum class VertexAttribute {
     Position2D,
     Position3D,
 
+    MaterialId,
+
     ColorRGB,
 
     TextureCoord,
@@ -38,5 +41,6 @@ enum class VertexAttribute {
 
 unsigned int getVertexAttributeSize(VertexAttribute attr);
 const char* getVertexAttributeVarName(VertexAttribute attr);
+GLenum getVertexAttributeDataType(VertexAttribute attr);
 
 #endif

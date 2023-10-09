@@ -17,8 +17,9 @@ public:
 
     void in(VertexAttribute attribute)
     {
-        addLine("in vec"
-                 + std::to_string(getVertexAttributeSize(attribute))
+        unsigned int size = getVertexAttributeSize(attribute);
+        addLine("in "
+                 + (size == 1 ? "int" : "vec" + std::to_string(size))
                  + " "
                  + getVertexAttributeVarName(attribute)
                  + ";");
@@ -26,8 +27,9 @@ public:
 
     void out(VertexAttribute attribute)
     {
-        addLine("out vec"
-                 + std::to_string(getVertexAttributeSize(attribute))
+        unsigned int size = getVertexAttributeSize(attribute);
+        addLine("out "
+                 + (size == 1 ? "int" : "vec" + std::to_string(size))
                  + " "
                  + getVertexAttributeVarName(attribute)
                  + ";");
