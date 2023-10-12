@@ -4,7 +4,7 @@
 #include <string>
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/geometry/vectors.hpp"
-#include "opengl_msat/shared/systeminfo.hpp"
+#include "systeminfo.hpp"
 
 class Dump {
 public:

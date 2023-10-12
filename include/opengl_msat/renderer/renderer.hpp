@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "opengl_msat/vertex/vao.hpp"
-#include "opengl_msat/shared/render_types.hpp"
+#include "opengl_msat/types/render_types.hpp"
 #include "opengl_msat/context/context.hpp"
 #include "opengl_msat/window/window.hpp"
 #include "opengl_msat/timer/timer.hpp"

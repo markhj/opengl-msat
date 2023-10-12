@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "opengl_msat/common.h"
-#include "opengl_msat/shared/vertex_types.hpp"
+#include "opengl_msat/types/vertex_types.hpp"
 
 class HandlesAttributes {
 protected:

@@ -2,7 +2,7 @@
 #define OPENGL_MSAT_EXPORTS_VERTICES_HPP
 
 #include "opengl_msat/common.h"
-#include "opengl_msat/shared/vertex_types.hpp"
+#include "opengl_msat/types/vertex_types.hpp"
 #include <vector>
 
 template <typename VertexElementXD>

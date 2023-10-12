@@ -3,7 +3,7 @@
 
 #include <map>
 #include <iostream>
-#include "opengl_msat/shared/render_types.hpp"
+#include "opengl_msat/types/render_types.hpp"
 
 class RenderState {
 public:

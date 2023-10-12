@@ -5,7 +5,7 @@
 #include <vector>
 #include "opengl_msat/common.h"
 #include "opengl_msat/traits/bindable.hpp"
-#include "opengl_msat/shared/vertex_types.hpp"
+#include "opengl_msat/types/vertex_types.hpp"
 #include "opengl_msat/contracts/exports_vertices.hpp"
 #include "opengl_msat/contracts/vao_associable.hpp"
 

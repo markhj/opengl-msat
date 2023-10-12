@@ -1,11 +1,10 @@
 # The list of classes in the library
 set(CLASSES
         animation/animation
-        shared/keyboard_types
-        shared/vertex_types
         camera/camera
         controls/keyboard
         controls/keyboard_mapping
+        controls/keyboard_types
         context/context
         geometry/vectors
         geometry/matrices
@@ -33,6 +32,7 @@ set(CLASSES
         timer/timer
         types/color
         types/image
+        types/vertex_types
         traits/handles_attributes
         traits/dev_messaging
         traits/loads_images
@@ -45,8 +45,7 @@ set(CLASSES
 
 # The list of structs
 set(STRUCTS
-    scenes
-    types)
+    types/scenes)
 
 # The list of contracts in the library
 set(CONTRACTS
@@ -75,7 +74,7 @@ endforeach ()
 
 # Repeat the same for structs (they only have header files)
 foreach (STRUCT ${STRUCTS})
-    list(APPEND OPENGL_MSAT_HEADER_FILES "${PACKAGE_PREFIX_DIR}/include/opengl_msat/shared/${STRUCT}.hpp")
+    list(APPEND OPENGL_MSAT_HEADER_FILES "${PACKAGE_PREFIX_DIR}/include/opengl_msat/${STRUCT}.hpp")
 endforeach ()
 
 # Add the library with the source and header files

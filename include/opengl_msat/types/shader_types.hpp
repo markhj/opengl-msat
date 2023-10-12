@@ -1,7 +1,7 @@
 #ifndef OPENGL_MSAT_SHADER_TYPES_HPP
 #define OPENGL_MSAT_SHADER_TYPES_HPP
 
-#include <opengl_msat/common.h>
+#include "opengl_msat/common.h"
 
 enum ShaderStage {
     Vertex = GL_VERTEX_SHADER,

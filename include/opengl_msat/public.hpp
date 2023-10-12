@@ -15,7 +15,6 @@
 #include "camera/camera.hpp"
 #include "context/context.hpp"
 #include "timer/timer.hpp"
-#include "shared/types.hpp"
 
 // Animation
 #include "animation/animation.hpp"
@@ -26,15 +25,15 @@
 #include "textures/material.hpp"
 
 // Types
-#include "types/color.hpp"
-#include "shared/keyboard_types.hpp"
-#include "shared/lights.hpp"
-#include "shared/projections.hpp"
-#include "shared/render_types.hpp"
-#include "shared/scenes.hpp"
-#include "shared/shader_types.hpp"
-#include "shared/systeminfo.hpp"
-#include "shared/vertex_types.hpp"
+#include "opengl_msat/types/color.hpp"
+#include "opengl_msat/controls/keyboard_types.hpp"
+#include "opengl_msat/types/lights.hpp"
+#include "opengl_msat/types/projections.hpp"
+#include "opengl_msat/types/render_types.hpp"
+#include "opengl_msat/types/scenes.hpp"
+#include "opengl_msat/types/shader_types.hpp"
+#include "opengl_msat/tools/systeminfo.hpp"
+#include "opengl_msat/types/vertex_types.hpp"
 
 // Shader
 #include "shader/shader.hpp"

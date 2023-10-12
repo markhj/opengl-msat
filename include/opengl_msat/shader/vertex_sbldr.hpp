@@ -2,8 +2,8 @@
 #define OPENGL_MSAT_VERTEX_SBLDR_HPP
 
 #include "shader_builder.hpp"
-#include "opengl_msat/shared/vertex_types.hpp"
-#include "opengl_msat/shared/projections.hpp"
+#include "opengl_msat/types/vertex_types.hpp"
+#include "opengl_msat/types/projections.hpp"
 #include <utility>
 #include <vector>
 

@@ -2,7 +2,7 @@
 #define OPENGL_MSAT_SHADER_BUILDER_HPP
 
 #include <iostream>
-#include "opengl_msat/shared/vertex_types.hpp"
+#include "opengl_msat/types/vertex_types.hpp"
 
 class ShaderBuilder {
 public:

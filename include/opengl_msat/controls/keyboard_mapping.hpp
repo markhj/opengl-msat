@@ -7,7 +7,7 @@
 #include <memory>
 #include <optional>
 #include "opengl_msat/common.h"
-#include "opengl_msat/shared/keyboard_types.hpp"
+#include "keyboard_types.hpp"
 
 class KeyboardMapping {
 public:

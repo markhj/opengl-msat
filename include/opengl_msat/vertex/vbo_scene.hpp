@@ -3,7 +3,7 @@
 
 #include "opengl_msat/vertex/vbo.hpp"
 #include "opengl_msat/contracts/vao_associable.hpp"
-#include "opengl_msat/shared/scenes.hpp"
+#include "opengl_msat/types/scenes.hpp"
 #include "opengl_msat/traits/handles_attributes.hpp"
 
 template <typename ObjectCollection, typename VertexElementXD>

@@ -1,7 +1,7 @@
 #ifndef OPENGL_MSAT_TEXTURE_UNIT_MNG_HPP
 #define OPENGL_MSAT_TEXTURE_UNIT_MNG_HPP
 
-#include "opengl_msat/shared/systeminfo.hpp"
+#include "opengl_msat/tools/systeminfo.hpp"
 #include "opengl_msat/traits/dev_messaging.hpp"
 #include "opengl_msat/traits/binding_mng.hpp"
 #include "opengl_msat/common.h"

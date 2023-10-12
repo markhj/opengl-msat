@@ -3,12 +3,12 @@
 
 #include "opengl_msat/common.h"
 #include "opengl_msat/traits/bindable.hpp"
-#include "opengl_msat/shared/shader_types.hpp"
+#include "opengl_msat/types/shader_types.hpp"
 #include "vertex_sbldr.hpp"
 #include "fragment_sbldr.hpp"
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/camera/camera.hpp"
-#include "opengl_msat/shared/lights.hpp"
+#include "opengl_msat/types/lights.hpp"
 #include "opengl_msat/textures/material.hpp"
 #include <iostream>
 #include <map>

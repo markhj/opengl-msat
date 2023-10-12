@@ -1,7 +1,6 @@
 #include <vector>
 #include "opengl_msat/shader/shader.hpp"
 #include <glm/gtc/type_ptr.hpp>
-#include "opengl_msat/shared/types.hpp"
 
 void ShaderProgram::compileShaderStage(ShaderStage stage)
 {

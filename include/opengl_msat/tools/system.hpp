@@ -3,7 +3,7 @@
 
 #include "opengl_msat/common.h"
 #include "opengl_msat/window/window.hpp"
-#include "opengl_msat/shared/systeminfo.hpp"
+#include "systeminfo.hpp"
 
 class System {
 public:
