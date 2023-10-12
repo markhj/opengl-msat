@@ -18,8 +18,8 @@ public:
     void in(VertexAttribute attribute)
     {
         unsigned int size = getVertexAttributeSize(attribute);
-        addLine("in "
-                 + (size == 1 ? "float" : "vec" + std::to_string(size))
+        addLine((size == 1 ? "flat in " : "in ")
+                 + (size == 1 ? "int" : "vec" + std::to_string(size))
                  + " "
                  + getVertexAttributeVarName(attribute)
                  + ";");
@@ -28,11 +28,16 @@ public:
     void out(VertexAttribute attribute)
     {
         unsigned int size = getVertexAttributeSize(attribute);
-        addLine("out "
-                 + (size == 1 ? "float" : "vec" + std::to_string(size))
+        addLine((size == 1 ? "flat out " : "out ")
+                 + (size == 1 ? "int" : "vec" + std::to_string(size))
                  + " "
                  + getVertexAttributeVarName(attribute)
                  + ";");
+    }
+
+    void print()
+    {
+        std::cout << "===\n" << lines << "===\n" << std::endl;
     }
 protected:
     std::string lines = "#version 330 core\n";

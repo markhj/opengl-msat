@@ -4,7 +4,7 @@ void FragmentShaderBuilder::buildSource()
 {
     addLine("out vec4 result;");
 
-    bool hasColor = false, hasMaterial = false;
+    bool hasColor = false;
 
     for (VertexAttribute attr : attributes) {
         in(attr);
@@ -12,8 +12,6 @@ void FragmentShaderBuilder::buildSource()
         std::string varName = getVertexAttributeVarName(attr);
         if (varName == "color") {
             hasColor = true;
-        } else if (varName == "materialId") {
-            hasMaterial = true;
         }
     }
 
@@ -105,7 +103,6 @@ void FragmentShaderBuilder::buildSource()
 
     addLine("void main() {");
 
-    // When no other instructions are provided
     if (enableLighting) {
         addLine("vec3 clr = vec3(0.0, 0.0, 0.0);"
                 "for (int i = 0; i < numDirectionalLights; i++) {"
@@ -117,13 +114,13 @@ void FragmentShaderBuilder::buildSource()
                 "for (int i = 0; i < numSpotLights; i++) {"
                 "clr += calcSpotLight(spotLights[i]);"
                 "}"
-                );
+        );
+    }
 
-        if (hasMaterial) {
-            addLine("result = vec4(clr * materials[materialId > 0.2 ? 1 : 0].diffuseColor, 1.0);");
-        } else {
-            addLine("result = vec4(clr * color, 1.0);");
-        }
+    if (enableLighting && enableMaterials) {
+        addLine("result = vec4(clr * materials[materialId].diffuseColor, 1.0);");
+    } else if (enableLighting) {
+        addLine("result = vec4(clr * color, 1.0);");
     } else if (hasColor) {
         addLine("result = vec4(color, 1.0);");
     } else {
