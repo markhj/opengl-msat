@@ -138,3 +138,9 @@ FragmentShaderBuilder& FragmentShaderBuilder::lighting()
     enableLighting = true;
     return *this;
 }
+
+FragmentShaderBuilder &FragmentShaderBuilder::materials()
+{
+    enableMaterials = true;
+    return *this;
+}

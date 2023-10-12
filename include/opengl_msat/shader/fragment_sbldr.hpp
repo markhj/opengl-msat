@@ -18,14 +18,17 @@ public:
 
     FragmentShaderBuilder& lighting();
 
-private:
-    std::vector<VertexAttribute> attributes;
-
-    bool enableLighting = false;
+    FragmentShaderBuilder& materials();
 
     unsigned int lightSlots = 20;
 
     unsigned int materialSlots = 20;
+
+private:
+    std::vector<VertexAttribute> attributes;
+
+    bool enableLighting = false,
+        enableMaterials = false;
 
 };
 

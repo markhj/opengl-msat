@@ -2,12 +2,7 @@
 
 GLenum getVertexAttributeDataType(VertexAttribute attr)
 {
-    switch (attr) {
-//        case VertexAttribute::MaterialId:
-//            return GL_INT;
-        default:
-            return GL_FLOAT;
-    }
+    return GL_FLOAT;
 }
 
 unsigned int getVertexAttributeSize(VertexAttribute attr)
@@ -25,8 +20,6 @@ unsigned int getVertexAttributeSize(VertexAttribute attr)
         case VertexAttribute::Tangent2D:
         case VertexAttribute::Bitangent2D:
             return 2;
-        case VertexAttribute::MaterialId:
-            return 1;
         default:
             throw std::runtime_error("OpenGL MSAT: Missing implementation in getVertexAttributeSize");
     }
@@ -51,8 +44,6 @@ const char* getVertexAttributeVarName(VertexAttribute attr)
         case VertexAttribute::Bitangent3D:
         case VertexAttribute::Bitangent2D:
             return "bitangent";
-        case VertexAttribute::MaterialId:
-            return "materialId";
         default:
             throw std::runtime_error("OpenGL MSAT: Missing implementation in getVertexAttributeSize");
     }
