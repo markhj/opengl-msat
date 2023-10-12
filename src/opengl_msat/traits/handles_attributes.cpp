@@ -29,6 +29,13 @@ HandlesAttributes::flattenVertices3D(std::vector<VertexElement3D> elements, std:
                 case VertexAttribute::Position3D:
                     list.insert(list.end(), {vertex.position.x, vertex.position.y, vertex.position.z});
                     break;
+                case VertexAttribute::MaterialId:
+                    if (vertex.materialId.has_value()) {
+                        list.push_back(vertex.materialId.value());
+                    } else {
+                        list.push_back(-1);
+                    }
+                    break;
                 case VertexAttribute::Normal3D:
                     if (vertex.normal.has_value()) {
                         list.insert(list.end(), {vertex.normal.value().x,
@@ -42,7 +49,7 @@ HandlesAttributes::flattenVertices3D(std::vector<VertexElement3D> elements, std:
                     list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
                     break;
                 default:
-                    std::cout << "WARNING: Implementation missing in Object3D::getVerticesFlattened: "
+                    std::cout << "WARNING: Implementation missing in HandlesAttributes::flattenVertices3D: "
                               << getVertexAttributeVarName(attr)
                               << std::endl;
             }

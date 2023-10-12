@@ -16,8 +16,6 @@ public:
 
     void buildSource() override;
 
-    FragmentShaderBuilder& setLightSlots(int slots);
-
     FragmentShaderBuilder& lighting();
 
 private:
@@ -25,7 +23,9 @@ private:
 
     bool enableLighting = false;
 
-    int lightSlots = 20;
+    unsigned int lightSlots = 20;
+
+    unsigned int materialSlots = 20;
 
 };
 

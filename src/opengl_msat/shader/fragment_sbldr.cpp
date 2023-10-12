@@ -4,7 +4,7 @@ void FragmentShaderBuilder::buildSource()
 {
     addLine("out vec4 result;");
 
-    bool hasColor = false;
+    bool hasColor = false, hasMaterial = false;
 
     for (VertexAttribute attr : attributes) {
         in(attr);
@@ -12,6 +12,8 @@ void FragmentShaderBuilder::buildSource()
         std::string varName = getVertexAttributeVarName(attr);
         if (varName == "color") {
             hasColor = true;
+        } else if (varName == "materialId") {
+            hasMaterial = true;
         }
     }
 
@@ -23,7 +25,7 @@ void FragmentShaderBuilder::buildSource()
 
     // Materials
     addLine("struct Material { vec3 diffuseColor; };");
-    addLine("uniform Material[10] materials;");
+    addLine("uniform Material[" + std::to_string(materialSlots) + "] materials;");
 
     //addLine("uniform sampler2D[] textures;");
 
@@ -115,11 +117,13 @@ void FragmentShaderBuilder::buildSource()
                 "for (int i = 0; i < numSpotLights; i++) {"
                 "clr += calcSpotLight(spotLights[i]);"
                 "}"
-
-                "result = vec4(clr * materials[materialId].diffuseColor, 1.0);"
-                //"result = vec4(texture(textures[int(4.0)], texCoords).rgb * clr, 1.0);"
-                //"result = vec4(clr * color, 1.0);"
                 );
+
+        if (hasMaterial) {
+            addLine("result = vec4(clr * materials[materialId > 0.2 ? 1 : 0].diffuseColor, 1.0);");
+        } else {
+            addLine("result = vec4(clr * color, 1.0);");
+        }
     } else if (hasColor) {
         addLine("result = vec4(color, 1.0);");
     } else {
@@ -132,11 +136,5 @@ void FragmentShaderBuilder::buildSource()
 FragmentShaderBuilder& FragmentShaderBuilder::lighting()
 {
     enableLighting = true;
-    return *this;
-}
-
-FragmentShaderBuilder& FragmentShaderBuilder::setLightSlots(int slots)
-{
-    lightSlots = slots;
     return *this;
 }

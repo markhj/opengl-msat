@@ -3,8 +3,8 @@
 GLenum getVertexAttributeDataType(VertexAttribute attr)
 {
     switch (attr) {
-        case VertexAttribute::MaterialId:
-            return GL_INT;
+//        case VertexAttribute::MaterialId:
+//            return GL_INT;
         default:
             return GL_FLOAT;
     }
