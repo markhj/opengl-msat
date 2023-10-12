@@ -11,7 +11,7 @@ void VertexShaderBuilder::buildSource()
         lines += "\nlayout (location = "
                 + std::to_string(loc)
                 + ") in "
-                + (size == 1 ? "int" : "vec" + std::to_string(size))
+                + (size == 1 ? "float" : "vec" + std::to_string(size))
                 + " vbo_"
                 + varName
                 + ";";

@@ -2,12 +2,7 @@
 
 GLenum getVertexAttributeDataType(VertexAttribute attr)
 {
-    switch (attr) {
-        case VertexAttribute::MaterialId:
-            return GL_INT;
-        default:
-            return GL_FLOAT;
-    }
+    return GL_FLOAT;
 }
 
 unsigned int getVertexAttributeSize(VertexAttribute attr)

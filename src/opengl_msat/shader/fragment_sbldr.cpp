@@ -118,7 +118,7 @@ void FragmentShaderBuilder::buildSource()
     }
 
     if (enableLighting && enableMaterials) {
-        addLine("result = vec4(clr * materials[materialId].diffuseColor, 1.0);");
+        addLine("result = vec4(clr * materials[int(materialId)].diffuseColor, 1.0);");
     } else if (enableLighting) {
         addLine("result = vec4(clr * color, 1.0);");
     } else if (hasColor) {
