@@ -1,7 +1,7 @@
 # ShaderStage
 
 The ``ShaderStage`` enum is used around the code, but you might encounter it
-for the first time when [creating a custom shader](/getting-started/custom-shaders).
+for the first time when [creating a custom shader](../getting-started/custom-shaders.md).
 
 ## Enumerations
 

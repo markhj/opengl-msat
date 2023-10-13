@@ -25,4 +25,4 @@ Compilation and linking errors will be logged to the console.
 
 ## Shader stages
 
-See list of available shader stages from: [Shader stages](/lists/shader-stage)
+See list of available shader stages from: [Shader stages](../lists/shader-stage.md)

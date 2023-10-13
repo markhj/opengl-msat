@@ -55,7 +55,7 @@ keyboard events take place. The ``Window`` class then checks if there's an assig
 We track two keyboard states: Press and release.
 
 The mapping of the actual keys come from the ``Key`` enum.
-[See full list of keys](/controls/key-enum)
+[See full list of keys](key-enum.md)
 
 ````c++
 keyboardMapping.onPress(Key::A, []() {

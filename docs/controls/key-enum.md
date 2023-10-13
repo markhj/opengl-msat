@@ -4,7 +4,7 @@ Here is the full list of keys you can interact with using the ``Key`` enum.
 
 The ``Key`` enum originates from the file: ``include/opengl_msat/shared/keyboard_types.hpp``
 
-For usage, please read: [Keyboard](/controls/keyboard)
+For usage, please read: [Keyboard](keyboard.md)
 
 ## Controls
 | Enum     | Description     |

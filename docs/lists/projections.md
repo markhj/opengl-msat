@@ -1,6 +1,6 @@
 # Projections
 The ``Projection`` enumeration is used in various places in the code,
-such as in [Camera](/camera/camera) and [shader builders](/getting-started/shader-builders) to
+such as in [Camera](../camera/camera.md) and [shader builders](../getting-started/shader-builders.md) to
 ensure appropriate calculations and structures.
 
 ## Enumerations

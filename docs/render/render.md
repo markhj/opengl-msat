@@ -90,7 +90,7 @@ The three render/draw modes are:
 | ``DrawMode::Triangles`` | Renders triangles (requires 3 vertices for every triangle)      |
 
 ## State and settings
-See chapters [Render settings](/render/render-settings) and [Render state](render/render-state)
+See chapters [Render settings](render-settings.md) and [Render state](render-state.md)
 to learn about the two.
 
 ### Temporary swap

@@ -2,7 +2,7 @@
 
 Enumerations contained in the ``RenderOption`` enum in ``shared/render_types.hpp``.
 
-These properties are used by the [renderer state](/render/render-state).
+These properties are used by the [renderer state](../render/render-state.md).
 
 ## Enumerations
 

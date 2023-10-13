@@ -25,7 +25,7 @@ renderer->state()->enable(RenderOption::XXX);
 renderer->state()->disable(RenderOption::XXX);
 ````
 
-Replace ``RenderOption::XXX`` with a property from [the list of render options](/lists/render-option).
+Replace ``RenderOption::XXX`` with a property from [the list of render options](../lists/render-options.md).
 
 You can also use the direct ``set`` function:
 ````c++
@@ -81,4 +81,4 @@ while (window.keepOpen()) {
 ````
 
 ## Temporary swap
-For temporary swapping render state see [Renderer](/render/render).
+For temporary swapping render state see [Renderer](render.md).

@@ -2,7 +2,7 @@
 
 ## Data dumping
 
-You can dump various objects, such as [vertices and matrices](/getting-started/vertices-matrices).
+You can dump various objects, such as [vertices and matrices](vectors-matrices.md).
 
 Start by including:
 ````c++

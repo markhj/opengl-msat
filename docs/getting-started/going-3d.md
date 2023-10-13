@@ -1,8 +1,8 @@
 # Going 3D
-Going from [the white 2D triangle](/getting-started/first-app) to 3D, requires only a few steps.
+Going from [the white 2D triangle](first-app.md) to 3D, requires only a few steps.
 
-- Use 3D [vertex attribute(s)](/vertex/vertex-attribute)
-- Use [perspective projection](/lists/projections)
+- Use 3D [vertex attribute(s)](../vertex/vertex-attribute.md)
+- Use [perspective projection](../lists/projections.md)
 - Provide vertex data suitable for new VAO structure
 
 On top of adding 3D, we will also make the color customizable.
@@ -11,7 +11,7 @@ In other words: We're going to end up with the 'rainbow triangle'.
 ## Prerequisites
 
 This tutorial will probably only make sense, if you've read
-the [First app](/getting-started/first-app) chapter. We're going
+the [First app](first-app.md) chapter. We're going
 to skip over some details covered in that guide, but this example is built
 on top of it.
 
@@ -25,7 +25,7 @@ std::vector<VertexAttribute> attributes = { VertexAttribute::Position3D, VertexA
 We changed from ``Position2D`` to ``Position3D``. We also added ``ColorRGB``.
 
 ## Camera
-The ``Camera`` class is instantiated with the [Window](/getting-started/window) instance.
+The ``Camera`` class is instantiated with the [Window](../window/window.md) instance.
 
 ````c++
 Camera camera(window);
@@ -68,7 +68,7 @@ shader.fromBuilder(vsb);
 ````
 
 ## Initialize renderer
-We're also going to add [Timer](/timer/timer) and [RenderSettings](/render/render-settings) to
+We're also going to add [Timer](../timer/timer.md) and [RenderSettings](../render/render-settings.md) to
 the instantiation of the ``Renderer``.
 
 ````c++

@@ -4,12 +4,12 @@
 basic shader programs (without having to specifically code them).
 
 ## How it works
-They work by providing [the vertex attribute structure](/vertex/vertex-attribute),
+They work by providing [the vertex attribute structure](../vertex/vertex-attribute.md),
 and then a number of optional commands.
 
 Based on this a builder will 
 create the source code for the shader. It can be passed directly into
-the [Shader class](/shader/shader) with the ``fromBuilder`` method.
+the [Shader class](../shader/shader.md) with the ``fromBuilder`` method.
 
 ````c++
 std::vector<VertexAttribute> attributes = { /* List of attributes */ };

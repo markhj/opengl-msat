@@ -24,7 +24,7 @@ int main()
 ````
 
 ## Window
-We start by creating the (GLFW) [window instance](/getting-started/window).
+We start by creating the (GLFW) [window instance](../window/window.md).
 ````c++
 Window window(800, 600, "OpenGL MSAT");
 window.generate();
@@ -32,7 +32,7 @@ window.generate();
 You can change the dimensions and window title.
 
 ## Attributes
-Next, we need to define the [vertex attributes](/vertex/vertex-attribute) which are used across
+Next, we need to define the [vertex attributes](../vertex/vertex-attribute.md) which are used across
 several components of the OpenGL MSAT library to ensure streamlined data structures
 across vertex data, shaders, etc.
 ````c++
@@ -43,7 +43,7 @@ need color, because we've already decided it should just be plain white.
 
 ## Shader
 Becauase our program is so simple, we don't need anything fancy for the
-[vertex](/shader/vertex-shader-buider) or [fragment shader builders](/shader/fragment-shader-builder).
+[vertex](../shader/vertex-shader-builder.md) or [fragment shader builders](../shader/fragment-shader-builder.md).
 
 All they need to fulfill the criteria to render a white 2D triangle, is the existence of the 2D position
 (which is provided via the ``attributes`` variable defined earlier).
@@ -57,7 +57,7 @@ shader.bind();
 ````
 
 ## VAO & VBO
-Now, we initialize the [VAO](/vertex/vao) and [VBO](/vertex/vbo), and associate them.
+Now, we initialize the [VAO](../vertex/vao.md) and [VBO](../vertex/vbo.md), and associate them.
 
 ````c++
 VAO vao;
@@ -69,7 +69,7 @@ The constructor of the VBO contains the vertex data. It's not necessary to provi
 but one of several ways to do it.
 
 ## Render loop
-Now it's time to set up the [Renderer](/render/render).
+Now it's time to set up the [Renderer](../render/render.md).
 In its simplest form it just takes the ``Window`` instance.
 
 ````c++

@@ -31,11 +31,11 @@ What happens behind the scenes:
 
 For the full list of classes inheriting ``Bindable`` (i.e. list of classes
 which can be used with ``Context::with``), see:
-[List of Bindable classes](/lists/bindable-classes)
+[List of Bindable classes](../lists/bindable-classes.md)
 
 ## Safe binding
 
-You can use ``safeWith`` to utilize the [safeBind and safeUnbind methods](/context/bindable).
+You can use ``safeWith`` to utilize the [safeBind and safeUnbind methods](bindable.md).
 
 ````c++
 ShaderProgram shader;

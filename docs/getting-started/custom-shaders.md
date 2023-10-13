@@ -1,6 +1,6 @@
 # Custom shaders
 
-You (fortunately) aren't obligated to use [shader builders](/getting-started/shader-builders).
+You (fortunately) aren't obligated to use [shader builders](shader-builders.md).
 If you want, you can create shader with custom source code.
 
 ````c++
@@ -13,4 +13,4 @@ shader.setSource(ShaderStage::Fragment, fragmentShader);
 shader.compile();
 ````
 
-See more about [shader stages](/lists/shader-stage).
+See more about [shader stages](../lists/shader-stage.md).

@@ -35,4 +35,4 @@ renderer.applySettings();
 
 
 ## Temporary swap
-For temporary swapping render settings see [Renderer](/render/render).
+For temporary swapping render settings see [Renderer](render.md).

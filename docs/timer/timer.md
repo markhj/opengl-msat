@@ -106,5 +106,5 @@ You can get the value in frames per second (FPS) with:
 float trueRenderTimeFPS = timer.getFramesPerSecond(true);
 ````
 
-The [Renderer](/render/render) keeps track of the true render time,
+The [Renderer](../render/render.md) keeps track of the true render time,
 as well as the regular delta time.

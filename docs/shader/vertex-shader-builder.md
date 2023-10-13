@@ -21,7 +21,7 @@ shader.fromBuilder(vsb);
 ### Projection
 
 You can set the perspective of the vertex shader with ``setProjection``.
-You can provide enumeration values from [Projections enum](/lists/projections).
+You can provide enumeration values from [Projections enum](../lists/projections.md).
 
 For instance:
 
@@ -41,4 +41,4 @@ which automatically picks the values it needs from the ``Camera`` instance.
 shader.uniform(camera);
 ````
 
-You can learn more about this in [Going 3D](/getting-started/going-3d).
+You can learn more about this in [Going 3D](../getting-started/going-3d.md).
