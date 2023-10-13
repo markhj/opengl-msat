@@ -5,6 +5,28 @@ GLenum getVertexAttributeDataType(VertexAttribute attr)
     return GL_FLOAT;
 }
 
+std::string getVertexAttributeShaderType(VertexAttribute attr)
+{
+    std::string size = std::to_string(getVertexAttributeSize(attr));
+
+    switch (attr) {
+        case VertexAttribute::MaterialId:
+            return "float";
+        default:
+            return "vec" + size;
+    }
+}
+
+std::string getVertexAttributeShaderPrefix(VertexAttribute attr)
+{
+    switch (attr) {
+        case VertexAttribute::MaterialId:
+            return "flat";
+        default:
+            return "";
+    }
+}
+
 unsigned int getVertexAttributeSize(VertexAttribute attr)
 {
     switch (attr) {

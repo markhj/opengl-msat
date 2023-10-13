@@ -17,22 +17,30 @@ public:
 
     void in(VertexAttribute attribute)
     {
-        unsigned int size = getVertexAttributeSize(attribute);
-        addLine((size == 1 ? "flat in " : "in ")
-                 + (size == 1 ? "float" : "vec" + std::to_string(size))
-                 + " "
-                 + getVertexAttributeVarName(attribute)
-                 + ";");
+        std::string prefix = getVertexAttributeShaderPrefix(attribute);
+        if (!prefix.empty()) {
+            prefix += " ";
+        }
+        addLine(prefix
+            + "in "
+            + getVertexAttributeShaderType(attribute)
+            + " "
+            + getVertexAttributeVarName(attribute)
+            + ";");
     }
 
     void out(VertexAttribute attribute)
     {
-        unsigned int size = getVertexAttributeSize(attribute);
-        addLine((size == 1 ? "flat out " : "out ")
-                 + (size == 1 ? "float" : "vec" + std::to_string(size))
-                 + " "
-                 + getVertexAttributeVarName(attribute)
-                 + ";");
+        std::string prefix = getVertexAttributeShaderPrefix(attribute);
+        if (!prefix.empty()) {
+            prefix += " ";
+        }
+        addLine(prefix
+            + "out "
+            + getVertexAttributeShaderType(attribute)
+            + " "
+            + getVertexAttributeVarName(attribute)
+            + ";");
     }
 
     void print()

@@ -44,5 +44,7 @@ enum class VertexAttribute {
 unsigned int getVertexAttributeSize(VertexAttribute attr);
 const char* getVertexAttributeVarName(VertexAttribute attr);
 GLenum getVertexAttributeDataType(VertexAttribute attr);
+std::string getVertexAttributeShaderType(VertexAttribute attr);
+std::string getVertexAttributeShaderPrefix(VertexAttribute attr);
 
 #endif
