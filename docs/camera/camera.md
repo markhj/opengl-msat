@@ -10,7 +10,7 @@ Include with:
 #include <opengl_msat/camera/camera.hpp>
 ````
 
-The camera must be provided instance of [Window](/window/window) upon 
+The camera must be provided instance of [Window](../window/window.md) upon 
 initialization:
 
 ````c++

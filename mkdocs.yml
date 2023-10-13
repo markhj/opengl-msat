@@ -39,6 +39,7 @@ nav:
     - Timer: timer/timer.md
   - Debugging:
     - System info: tools/sysinfo.md
+    - Messaging: tools/messaging.md
   - Enumerations:
     - Projections: lists/projections.md
     - Shader stages: lists/shader-stage.md

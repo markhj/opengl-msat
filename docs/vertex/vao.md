@@ -1,6 +1,6 @@
 # VAO (Vertex Array Object)
 
-The ``VAO`` is [Bindable class](/context/context) representing a Vertex Array Object.
+The ``VAO`` is [Bindable class](../context/context.md) representing a Vertex Array Object.
 
 ## Include
 ````c++
@@ -25,7 +25,7 @@ vao.bind();
 // vao.unbind();
 ````
 
-Or with our [Context](/context/context) class:
+Or with our [Context](../context/context.md) class:
 
 ````c++
 Context(vao, [&]() {
@@ -34,4 +34,4 @@ Context(vao, [&]() {
 ````
 
 ## Associating with VBO
-See [VBO chapter](/vertex/vbo)
+See [VBO chapter](vbo.md)

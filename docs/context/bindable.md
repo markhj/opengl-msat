@@ -1,6 +1,6 @@
 # Bindable
 
-As mentioned in the [Context](/context/context) chapter, some classes
+As mentioned in the [Context](context.md) chapter, some classes
 are bindable, which means there are features to aid in keeping control of what is and isn't currently bound.
 
 In this chapter, we're going to introduce some additional features.

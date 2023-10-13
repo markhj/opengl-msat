@@ -3,7 +3,7 @@
 The **render(er) state** class is used to manage render options such
 as depth testing, stencil testing, blending and more.
 
-The render state automatically restores to defaults when a new [render loop](/render/render) iteration begins.
+The render state automatically restores to defaults when a new [render loop](render.md) iteration begins.
 This is predicated on using ``Renderer::loop``.
 
 ````c++

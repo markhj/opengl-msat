@@ -55,7 +55,7 @@ vao.associate(vbo, { VertexAttribute::Position3D });
 ````
 
 The second parameter of the ``associate`` method takes a vector of
-[Vertex attributes](/vertex/vertex-attribute). Click on the link to learn
+[Vertex attributes](vertex-attribute.md). Click on the link to learn
 which are available.
 
 The ``associate`` will create an association between the VAO and VBO.

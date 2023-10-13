@@ -52,7 +52,7 @@ while (window.keepOpen()) {
 }
 ````
 
-Note: We will address how to actually map the ESC button in the [Keyboard chapter](/controls/keyboard).
+Note: We will address how to actually map the ESC button in the [Keyboard chapter](../controls/keyboard.md).
 This code only demonstrates the idea of calling the ``Window::close`` method.
 
 ## Swap buffers and poll events

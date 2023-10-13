@@ -23,7 +23,7 @@ Timer timer();
 For proper usage, you put ``Timer::start`` at the very beginning of your render loop,
 and ``Timer::end`` at the very end.
 
-It's important that ``end`` follows [Window](/window/window) class'es
+It's important that ``end`` follows [Window](../window/window.md) class'es
 ``swapBuffers`` and ``pollEvents`` functions, otherwise it can produce wildly
 incorrect results, especially when vertical sync. is enabled.
 

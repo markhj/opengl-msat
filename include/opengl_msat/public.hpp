@@ -49,6 +49,7 @@
 #include "tools/system.hpp"
 #include "tools/grid.hpp"
 #include "tools/helper.hpp"
+#include "traits/dev_messaging.hpp"
 
 // Vertex, VAO, VBO
 #include "vertex/vao.hpp"
