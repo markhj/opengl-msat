@@ -23,6 +23,7 @@
 #include "textures/texture.hpp"
 #include "textures/texture_unit_mng.hpp"
 #include "textures/material.hpp"
+#include "textures/cubemap.hpp"
 
 // Types
 #include "opengl_msat/types/color.hpp"

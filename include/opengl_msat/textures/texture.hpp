@@ -8,9 +8,15 @@
 #include "opengl_msat/traits/loads_images.hpp"
 #include "opengl_msat/traits/bindable.hpp"
 
+enum class TextureLoadStatus {
+    None,
+    Partial,
+    Success,
+};
+
 enum TextureType {
     Texture2D = GL_TEXTURE_2D,
-    CubeMap = GL_TEXTURE_CUBE_MAP,
+    TextureCubeMap = GL_TEXTURE_CUBE_MAP,
 };
 
 enum TexturePattern {
@@ -63,9 +69,11 @@ public:
 
     Texture(TextureType type, std::string filename, TextureOptions options);
 
+    Texture(TextureType type, std::vector<std::string> files, TextureOptions options);
+
     [[nodiscard]] unsigned int getTextureId() const;
 
-    [[nodiscard]] bool isLoaded() const;
+    [[nodiscard]] TextureLoadStatus isLoaded() const;
 
     void doBind() override;
 
@@ -76,7 +84,7 @@ public:
     void applyOptions(TextureOptions options);
 
 protected:
-    bool loaded = false;
+    TextureLoadStatus loaded = TextureLoadStatus::None;
 
     unsigned int textureId;
 

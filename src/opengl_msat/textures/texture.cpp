@@ -12,33 +12,53 @@ Texture::Texture(TextureType type, std::string filename, TextureOptions options)
     load({std::move(filename)}, options);
 }
 
+Texture::Texture(TextureType type, std::vector<std::string> files, TextureOptions options) : type(type)
+{
+    load(files, options);
+}
+
 void Texture::load(const std::vector<std::string>& filenames, TextureOptions options)
 {
     glGenTextures(1, &textureId);
 
+    int noLoaded = 0;
+
     std::vector<std::optional<Image>> images;
     for (std::string filename : filenames) {
         std::optional<Image> img = loadImage(std::move(filename));
-        if (img.has_value()) {
-            image = img.value();
 
-            bind();
-            glTexImage2D(type,
-                         0,
-                         options.format,
-                         image.width,
-                         image.height,
-                         0,
-                         options.format,
-                         GL_UNSIGNED_BYTE,
-                         image.data);
-            unbind();
-
-            applyOptions(options);
+        if (!img.has_value()) {
+            continue;
         }
+
+        noLoaded++;
+
+        image = img.value();
+
+        bind();
+        glTexImage2D(type,
+                     0,
+                     options.format,
+                     image.width,
+                     image.height,
+                     0,
+                     options.format,
+                     GL_UNSIGNED_BYTE,
+                     image.data);
+        unbind();
+
+        applyOptions(options);
     }
 
-    loaded = true;
+    // Keep in mind that the Image trait will throw errors when an image
+    // couldn't get loaded. This status can be retrieved at later points.
+    if (noLoaded == 0) {
+        loaded = TextureLoadStatus::None;
+    } else if (noLoaded < filenames.size()) {
+        loaded = TextureLoadStatus::Partial;
+    } else {
+        loaded = TextureLoadStatus::Success;
+    }
 }
 
 unsigned int Texture::getTextureId() const
@@ -46,7 +66,7 @@ unsigned int Texture::getTextureId() const
     return textureId;
 }
 
-bool Texture::isLoaded() const
+TextureLoadStatus Texture::isLoaded() const
 {
     return loaded;
 }
