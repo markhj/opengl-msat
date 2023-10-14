@@ -6,6 +6,7 @@
 #include "opengl_msat/traits/binding_mng.hpp"
 #include "opengl_msat/common.h"
 #include "texture.hpp"
+#include "opengl_msat/shader/shader.hpp"
 
 class TextureUnitManager :
         public ManagesMultipleBindings {
@@ -13,6 +14,27 @@ public:
     explicit TextureUnitManager(SystemInfo* systemInfo);
 
     [[nodiscard]] unsigned int getAvailableSlots() const override;
+
+    /**
+     * Shaders which are attached automatically have their uniform
+     * texture mapping arrays updated
+     *
+     * @param shader
+     */
+    void attachShader(ShaderProgram* shader)
+    {
+        shaders.insert(std::make_pair(shader->getProgramId(), shader));
+
+        // Create entries and assign values on all available texture units
+        for (int i = 0; i < systemInfo->maxTextureUnits; i++) {
+            shader->uniform("textures", i, i);
+        }
+    }
+
+    void detachShader(ShaderProgram* shader)
+    {
+        shaders.erase(shader->getProgramId());
+    }
 
     void bindTextureTo(unsigned int unit, Texture* texture)
     {
@@ -29,6 +51,10 @@ public:
 
         texture->boundToUnit = unit;
         bindings.insert(std::make_pair(unit, texture));
+
+//        for (auto [k, v] : shaders) {
+//            v->uniform();
+//        }
     }
 
     [[nodiscard]] unsigned int getBoundTo() const override
@@ -82,6 +108,8 @@ private:
     SystemInfo* systemInfo;
 
     std::map<unsigned int, Texture*> bindings;
+
+    std::map<unsigned int, ShaderProgram*> shaders;
 
 };
 
