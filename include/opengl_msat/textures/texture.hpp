@@ -94,6 +94,8 @@ protected:
 
     GLint getGlType(TextureType type);
 
+    GLint getGlTypeIter(TextureType type, int i);
+
 private:
     void load(const std::vector<std::string>& filenames, TextureOptions options);
 

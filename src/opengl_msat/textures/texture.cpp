@@ -21,13 +21,14 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
 {
     glGenTextures(1, &textureId);
 
-    int noLoaded = 0;
+    int noLoaded = 0, i = 0;
 
     std::vector<std::optional<Image>> images;
     for (std::string filename : filenames) {
         std::optional<Image> img = loadImage(std::move(filename));
 
         if (!img.has_value()) {
+            i++;
             continue;
         }
 
@@ -36,7 +37,7 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
         image = img.value();
 
         bind();
-        glTexImage2D(getGlType(type),
+        glTexImage2D(getGlTypeIter(type, i),
                      0,
                      options.format,
                      image.width,
@@ -48,6 +49,8 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
         unbind();
 
         applyOptions(options);
+
+        i++;
     }
 
     // Keep in mind that the Image trait will throw errors when an image
@@ -95,6 +98,7 @@ void Texture::applyOptions(TextureOptions options)
 
     glTexParameteri(tp, GL_TEXTURE_WRAP_S, options.wrapping);
     glTexParameteri(tp, GL_TEXTURE_WRAP_T, options.wrapping);
+    glTexParameteri(tp, GL_TEXTURE_WRAP_R, options.wrapping);
     glTexParameteri(tp, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(options.downSampling));
     glTexParameteri(tp, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(options.upSampling));
 
@@ -112,5 +116,15 @@ GLint Texture::getGlType(TextureType type)
             return GL_TEXTURE_2D;
         case TextureType::CubeMap:
             return GL_TEXTURE_CUBE_MAP;
+    }
+}
+
+GLint Texture::getGlTypeIter(TextureType type, int i)
+{
+    switch (type) {
+        case TextureType::Texture2D:
+            return GL_TEXTURE_2D;
+        case TextureType::CubeMap:
+            return GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
     }
 }
