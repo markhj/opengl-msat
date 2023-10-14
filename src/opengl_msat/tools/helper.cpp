@@ -18,6 +18,7 @@ void Helper::render(Renderer *renderer)
 {
     RenderState state;
     state.enable(RenderOption::DepthTesting);
+    state.applyAll();
 
     std::vector<GLfloat> data;
 

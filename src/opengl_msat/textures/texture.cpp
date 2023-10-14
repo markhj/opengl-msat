@@ -12,14 +12,7 @@ Texture::Texture(TextureType type, std::string filename) : type(type)
 
         glGenTextures(1, &textureId);
 
-        bind();
-        glTexParameteri(type, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(type, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(type, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-        glTexParameteri(type, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexImage2D(type, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
-        glGenerateMipmap(type);
-        unbind();
+        applyOptions({});
     }
 }
 
@@ -41,4 +34,16 @@ void Texture::doBind()
 void Texture::doUnbind()
 {
     glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void Texture::applyOptions(TextureOptions options)
+{
+    bind();
+    glTexParameteri(type, GL_TEXTURE_WRAP_S, options.wrapping);
+    glTexParameteri(type, GL_TEXTURE_WRAP_T, options.wrapping);
+    glTexParameteri(type, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(options.downSampling));
+    glTexParameteri(type, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(options.upSampling));
+    glTexImage2D(type, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
+    glGenerateMipmap(type);
+    unbind();
 }

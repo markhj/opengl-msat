@@ -51,10 +51,6 @@ public:
 
         texture->boundToUnit = unit;
         bindings.insert(std::make_pair(unit, texture));
-
-//        for (auto [k, v] : shaders) {
-//            v->uniform();
-//        }
     }
 
     [[nodiscard]] unsigned int getBoundTo() const override
