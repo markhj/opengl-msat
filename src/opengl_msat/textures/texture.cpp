@@ -2,7 +2,12 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/textures/texture.hpp"
 
-Texture::Texture(TextureType type, std::string filename) : type(type)
+Texture::Texture(TextureType type, std::string filename) : Texture(type, filename, {})
+{
+
+}
+
+Texture::Texture(TextureType type, std::string filename, TextureOptions options) : type(type)
 {
     std::optional<Image> img = loadImage(std::move(filename));
 
@@ -12,7 +17,7 @@ Texture::Texture(TextureType type, std::string filename) : type(type)
 
         glGenTextures(1, &textureId);
 
-        applyOptions({});
+        applyOptions(options);
     }
 }
 

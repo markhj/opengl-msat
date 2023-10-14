@@ -40,7 +40,9 @@ class Texture :
         LoadsImages,
         public Bindable {
 public:
-    explicit Texture(TextureType type, std::string filename);
+    Texture(TextureType type, std::string filename);
+
+    Texture(TextureType type, std::string filename, TextureOptions options);
 
     [[nodiscard]] unsigned int getTextureId() const;
 
