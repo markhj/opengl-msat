@@ -27,6 +27,7 @@ set(CLASSES
         tools/system
         tools/helper
         textures/texture
+        textures/texture2d
         textures/texture_unit_mng
         textures/material
         textures/cubemap

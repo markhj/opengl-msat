@@ -21,6 +21,7 @@
 
 // Textures
 #include "textures/texture.hpp"
+#include "textures/texture2d.hpp"
 #include "textures/texture_unit_mng.hpp"
 #include "textures/material.hpp"
 #include "textures/cubemap.hpp"

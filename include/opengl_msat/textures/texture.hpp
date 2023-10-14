@@ -14,9 +14,9 @@ enum class TextureLoadStatus {
     Success,
 };
 
-enum TextureType {
-    Texture2D = GL_TEXTURE_2D,
-    TextureCubeMap = GL_TEXTURE_CUBE_MAP,
+enum class TextureType {
+    Texture2D,
+    CubeMap,
 };
 
 enum TexturePattern {
@@ -91,6 +91,8 @@ protected:
     Image image;
 
     TextureType type;
+
+    GLint getGlType(TextureType type);
 
 private:
     void load(const std::vector<std::string>& filenames, TextureOptions options);

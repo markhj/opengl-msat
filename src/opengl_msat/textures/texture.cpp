@@ -36,7 +36,7 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
         image = img.value();
 
         bind();
-        glTexImage2D(type,
+        glTexImage2D(getGlType(type),
                      0,
                      options.format,
                      image.width,
@@ -73,12 +73,12 @@ TextureLoadStatus Texture::isLoaded() const
 
 void Texture::doBind()
 {
-    glBindTexture(type, getTextureId());
+    glBindTexture(getGlType(type), getTextureId());
 }
 
 void Texture::doUnbind()
 {
-    glBindTexture(type, 0);
+    glBindTexture(getGlType(type), 0);
 }
 
 void Texture::applyOptions(TextureOptions options)
@@ -91,14 +91,26 @@ void Texture::applyOptions(TextureOptions options)
         warn("You are using mipmap related options without generating a mipmap. This may cause the texture to not render.");
     }
 
-    glTexParameteri(type, GL_TEXTURE_WRAP_S, options.wrapping);
-    glTexParameteri(type, GL_TEXTURE_WRAP_T, options.wrapping);
-    glTexParameteri(type, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(options.downSampling));
-    glTexParameteri(type, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(options.upSampling));
+    GLint tp = getGlType(type);
+
+    glTexParameteri(tp, GL_TEXTURE_WRAP_S, options.wrapping);
+    glTexParameteri(tp, GL_TEXTURE_WRAP_T, options.wrapping);
+    glTexParameteri(tp, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(options.downSampling));
+    glTexParameteri(tp, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(options.upSampling));
 
     if (options.mipmap) {
-        glGenerateMipmap(type);
+        glGenerateMipmap(tp);
     }
 
     unbind();
+}
+
+GLint Texture::getGlType(TextureType type)
+{
+    switch (type) {
+        case TextureType::Texture2D:
+            return GL_TEXTURE_2D;
+        case TextureType::CubeMap:
+            return GL_TEXTURE_CUBE_MAP;
+    }
 }

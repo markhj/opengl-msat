@@ -6,13 +6,13 @@
 class CubeMap : public Texture {
 public:
     explicit CubeMap(const std::vector<std::string>& files)
-        : Texture(TextureType::TextureCubeMap, files, {})
+        : Texture(TextureType::CubeMap, files, {})
     {
         validateCreation(files);
     }
 
     CubeMap(const std::vector<std::string>& files, TextureOptions options)
-        : Texture(TextureType::TextureCubeMap, files, options)
+        : Texture(TextureType::CubeMap, files, options)
     {
         validateCreation(files);
     }
