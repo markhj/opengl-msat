@@ -2,13 +2,15 @@
 #define OPENGL_MSAT_BINDABLE_HPP
 
 #include <map>
+#include "dev_messaging.hpp"
 
 /**
  * Bindable trait
  *
  * @see https://opengl-msat.readthedocs.io/en/latest/lists/bindable-classes/
  */
-class Bindable {
+class Bindable :
+        protected DeveloperMessaging {
 public:
     void bind();
 

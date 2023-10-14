@@ -33,7 +33,6 @@ protected:
         handleMessage("CRITICAL: " + msg, criticalBehavior);
     }
 
-protected:
     std::string getClassName()
     {
         return typeid(*this).name();

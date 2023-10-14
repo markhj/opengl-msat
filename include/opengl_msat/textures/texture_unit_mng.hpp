@@ -14,13 +14,62 @@ public:
 
     [[nodiscard]] unsigned int getAvailableSlots() const override;
 
-    void bindTextureTo(unsigned int unit, Texture* texture);
+    void bindTextureTo(unsigned int unit, Texture* texture)
+    {
+        // Indicate on the texture currently bound to this slot (if any)
+        // that it's no longer bound
+        std::optional<Texture*> current = get(unit);
+        if (current.has_value()) {
+            current.value()->boundToUnit = std::nullopt;
+        }
+
+        with(unit, [&]() {
+            texture->bind();
+        });
+
+        texture->boundToUnit = unit;
+        bindings.insert(std::make_pair(unit, texture));
+    }
 
     [[nodiscard]] unsigned int getBoundTo() const override
     {
         GLuint activeTextureUnit;
         glGetIntegerv(GL_ACTIVE_TEXTURE, (GLint*)&activeTextureUnit);
         return activeTextureUnit - GL_TEXTURE0;
+    }
+
+    /**
+     * Retrieve the texture currently bound to the specified unit
+     * Returns std::nullopt if nothing is bound on the slot
+     *
+     * @param slot
+     * @return std::optional<Texture*>
+     */
+    std::optional<Texture*> get(unsigned int slot)
+    {
+        auto find = bindings.find(slot);
+        if (find != bindings.end()) {
+            return find->second;
+        }
+        return std::nullopt;
+    }
+
+    /**
+     * Returns either the slot number where the texture is bound, or
+     * a std::nullopt if the texture isn't bound
+     *
+     * @param texture
+     * @return std::optional<unsigned int>
+     */
+    std::optional<unsigned int> getTextureBinding(Texture* texture)
+    {
+        for (const auto& [unit, boundTexture] : bindings) {
+            if (boundTexture == texture) {
+                return unit;
+            }
+        }
+
+        return std::nullopt;
     }
 
 protected:
@@ -31,6 +80,8 @@ protected:
 
 private:
     SystemInfo* systemInfo;
+
+    std::map<unsigned int, Texture*> bindings;
 
 };
 

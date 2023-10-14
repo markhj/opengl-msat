@@ -13,7 +13,8 @@
 #include <iostream>
 #include <map>
 
-class ShaderProgram : public Bindable {
+class ShaderProgram :
+        public Bindable {
 public:
     void compile();
 
@@ -82,6 +83,9 @@ private:
     GLenum getShaderStage(ShaderStage stage);
 
     void compileShaderStage(ShaderStage stage);
+
+    void uniformBindTexture(const std::string& name, std::optional<Texture*> texture);
+
 };
 
 #endif

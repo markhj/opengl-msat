@@ -9,10 +9,3 @@ unsigned int TextureUnitManager::getAvailableSlots() const
 {
     return systemInfo->maxTextureUnits;
 }
-
-void TextureUnitManager::bindTextureTo(unsigned int unit, Texture *texture)
-{
-    with(unit, [&]() {
-        texture->bind();
-    });
-}

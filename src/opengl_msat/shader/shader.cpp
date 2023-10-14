@@ -259,12 +259,22 @@ void ShaderProgram::uniform(std::string arrName, unsigned int index, Mat4 value)
     uniform(formKey(arrName, index), value);
 }
 
+void ShaderProgram::uniformBindTexture(const std::string& name, std::optional<Texture*> texture)
+{
+    if (!texture.has_value()) {
+        uniform(name, -1);
+    } else if (!texture.value()->boundToUnit.has_value()) {
+        warn("Attempting to use texture which isn't bound to any texture unit");
+        uniform(name, -1);
+    } else {
+        uniform(name, texture.value()->boundToUnit.value());
+    }
+}
+
 void ShaderProgram::uniform(std::string name, Material value)
 {
     uniform(name + ".diffuseColor", value.diffuseColor);
-    uniform(
-            name + ".albedoTextureUnit",
-            value.albedoTextureUnit.has_value() ? value.albedoTextureUnit.value() : -1);
+    uniformBindTexture(name + ".albedoTextureUnit", value.albedoTexture);
 }
 
 void ShaderProgram::uniform(std::string arrName, unsigned int index, Material value)

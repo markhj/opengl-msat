@@ -3,11 +3,12 @@
 
 #include <optional>
 #include "opengl_msat/types/color.hpp"
+#include "texture.hpp"
 
 class Material {
 public:
     Color diffuseColor;
-    std::optional<int> albedoTextureUnit;
+    std::optional<Texture*> albedoTexture;
 };
 
 #endif

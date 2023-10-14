@@ -42,6 +42,10 @@ public:
 
     virtual unsigned int getAvailableSlots() const = 0;
 
+    /**
+     * Returns the ID of the currently bound context,
+     * for instance currently bound texture unit
+     */
     virtual unsigned int getBoundTo() const = 0;
 
 protected:

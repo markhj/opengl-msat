@@ -2,6 +2,7 @@
 #define OPENGL_MSAT_TEXTURE_HPP
 
 #include <string>
+#include "opengl_msat/common.h"
 #include "opengl_msat/types/image.hpp"
 #include "opengl_msat/traits/loads_images.hpp"
 #include "opengl_msat/traits/bindable.hpp"
@@ -23,6 +24,8 @@ public:
     void doBind() override;
 
     void doUnbind() override;
+
+    std::optional<unsigned int> boundToUnit;
 
 protected:
     bool loaded = false;
