@@ -1,5 +1,7 @@
 #include "opengl_msat/tools/system.hpp"
 
+std::map<GLint, int> System::fakedValues = {};
+
 SystemInfo System::getSystemInfo(Window* window)
 {
     return {
@@ -7,6 +9,7 @@ SystemInfo System::getSystemInfo(Window* window)
         .gpu = gpu(),
 
         .maxTextureUnits = getValue(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS),
+
         .maxTextureSize = getValue(GL_MAX_TEXTURE_SIZE),
         .maxTextureSizeCubemap = getValue(GL_MAX_CUBE_MAP_TEXTURE_SIZE),
         .maxTextureSize3D = getValue(GL_MAX_3D_TEXTURE_SIZE),
@@ -47,7 +50,17 @@ OpenGLVersion System::getVersion()
 
 GLint System::getValue(GLint input)
 {
+    auto find = fakedValues.find(input);
+    if (find != fakedValues.end()) {
+        return find->second;
+    }
+
     GLint value;
     glGetIntegerv(input, &value);
     return value;
+}
+
+void System::fake(GLint variable, int value)
+{
+    fakedValues.insert(std::make_pair(variable, value));
 };

@@ -8,6 +8,9 @@
 class System {
 public:
     static SystemInfo getSystemInfo(Window* window);
+
+    static void fake(GLint variable, int value);
+
 private:
     static GLint getValue(GLint input);
 
@@ -16,6 +19,9 @@ private:
     static GPU gpu();
 
     static const char* getChar(GLint input);
+
+    static std::map<GLint, int> fakedValues;
+
 };
 
 #endif
