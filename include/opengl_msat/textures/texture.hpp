@@ -2,6 +2,7 @@
 #define OPENGL_MSAT_TEXTURE_HPP
 
 #include <string>
+#include <vector>
 #include "opengl_msat/common.h"
 #include "opengl_msat/types/image.hpp"
 #include "opengl_msat/traits/loads_images.hpp"
@@ -9,6 +10,7 @@
 
 enum TextureType {
     Texture2D = GL_TEXTURE_2D,
+    CubeMap = GL_TEXTURE_CUBE_MAP,
 };
 
 enum TexturePattern {
@@ -81,6 +83,9 @@ protected:
     Image image;
 
     TextureType type;
+
+private:
+    void load(const std::vector<std::string>& filenames, TextureOptions options);
 
 };
 

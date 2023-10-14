@@ -29,6 +29,7 @@ set(CLASSES
         textures/texture
         textures/texture_unit_mng
         textures/material
+        textures/cubemap
         timer/timer
         types/color
         types/image
