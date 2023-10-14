@@ -262,6 +262,9 @@ void ShaderProgram::uniform(std::string arrName, unsigned int index, Mat4 value)
 void ShaderProgram::uniform(std::string name, Material value)
 {
     uniform(name + ".diffuseColor", value.diffuseColor);
+    uniform(
+            name + ".albedoTextureUnit",
+            value.albedoTextureUnit.has_value() ? value.albedoTextureUnit.value() : -1);
 }
 
 void ShaderProgram::uniform(std::string arrName, unsigned int index, Material value)

@@ -24,6 +24,8 @@ public:
 
     unsigned int materialSlots = 20;
 
+    unsigned int textureSlots = 20;
+
 private:
     std::vector<VertexAttribute> attributes;
 
