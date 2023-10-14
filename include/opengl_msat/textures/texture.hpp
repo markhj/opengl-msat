@@ -18,6 +18,18 @@ enum TexturePattern {
     ClampToBorder = GL_CLAMP_TO_BORDER
 };
 
+enum TextureFormat {
+    Red = GL_RED,
+    Green = GL_GREEN,
+    Blue = GL_BLUE,
+    RGB = GL_RGB,
+    RGBA = GL_RGBA,
+    DepthComponent = GL_DEPTH_COMPONENT,
+    StencilComponent = GL_DEPTH_STENCIL,
+    Luminance = GL_LUMINANCE,
+    LuminanceAlpha = GL_LUMINANCE_ALPHA,
+};
+
 enum class TextureSampling {
     Nearest = GL_NEAREST,
     Linear = GL_LINEAR,
@@ -32,8 +44,11 @@ enum class TextureDownsampling {
 
 struct TextureOptions {
     TexturePattern wrapping = TexturePattern::Repeat;
+
     TextureDownsampling downSampling = TextureDownsampling::Nearest;
     TextureSampling upSampling = TextureSampling::Nearest;
+
+    TextureFormat format = TextureFormat::RGB;
 
     bool mipmap = false;
 };

@@ -56,7 +56,7 @@ void Texture::applyOptions(TextureOptions options)
     glTexParameteri(type, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(options.downSampling));
     glTexParameteri(type, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(options.upSampling));
 
-    glTexImage2D(type, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
+    glTexImage2D(type, 0, options.format, image.width, image.height, 0, options.format, GL_UNSIGNED_BYTE, image.data);
 
     if (options.mipmap) {
         glGenerateMipmap(type);
