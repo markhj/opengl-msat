@@ -32,8 +32,10 @@ enum class TextureDownsampling {
 
 struct TextureOptions {
     TexturePattern wrapping = TexturePattern::Repeat;
-    TextureDownsampling downSampling = TextureDownsampling::MipmapNearest;
+    TextureDownsampling downSampling = TextureDownsampling::Nearest;
     TextureSampling upSampling = TextureSampling::Nearest;
+
+    bool mipmap = false;
 };
 
 class Texture :
