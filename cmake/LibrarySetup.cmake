@@ -31,6 +31,7 @@ set(CLASSES
         textures/texture_unit_mng
         textures/material
         textures/cubemap
+        textures/skybox
         timer/timer
         types/color
         types/image

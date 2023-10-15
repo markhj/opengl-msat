@@ -25,6 +25,7 @@
 #include "textures/texture_unit_mng.hpp"
 #include "textures/material.hpp"
 #include "textures/cubemap.hpp"
+#include "textures/skybox.hpp"
 
 // Types
 #include "opengl_msat/types/color.hpp"
