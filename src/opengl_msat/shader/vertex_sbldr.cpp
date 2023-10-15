@@ -26,18 +26,12 @@ void VertexShaderBuilder::buildSource()
         out(attr);
     }
 
-    if (projection != ProjectionType::None) {
-        addLine("uniform mat4 model;");
-        addLine("uniform mat4 view;");
-        addLine("uniform mat4 projection;");
-    }
+    addLine("uniform mat4 projection;");
 
     addLine("void main() {");
 
-    if (posSize == 2) {
-        addLine("gl_Position = vec4(vbo_pos, 0.0, 1.0);");
-    } else if (projection != ProjectionType::None) {
-        addLine("gl_Position = projection * model * view * vec4(vbo_pos, 1.0);");
+    if (projection.has_value()) {
+        addLine("gl_Position = projection * vec4(vbo_pos, 1.0);");
     } else {
         addLine("gl_Position = vec4(vbo_pos, 1.0);");
     }
@@ -48,11 +42,4 @@ void VertexShaderBuilder::buildSource()
     }
 
     addLine("}");
-}
-
-VertexShaderBuilder &VertexShaderBuilder::setProjection(ProjectionType value)
-{
-    projection = value;
-
-    return *this;
 }

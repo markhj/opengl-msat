@@ -9,7 +9,8 @@ Helper::Helper() : vao(VAO()), vbo(VBO()), shader(ShaderProgram())
     });
     vao.associate(vbo, attributes);
 
-    shader.fromBuilder(VertexShaderBuilder(attributes).setProjection(ProjectionType::Perspective));
+    // .setProjection(ProjectionType::Perspective)
+    shader.fromBuilder(VertexShaderBuilder(attributes));
     shader.fromBuilder(FragmentShaderBuilder(attributes));
     shader.compile();
 }

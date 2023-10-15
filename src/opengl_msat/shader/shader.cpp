@@ -110,9 +110,6 @@ GLenum ShaderProgram::getShaderStage(ShaderStage stage)
 
 void ShaderProgram::uniform(Camera &camera)
 {
-    uniform("view", camera.getView());
-    uniform("model", camera.getModel());
-    uniform("projection", camera.getProjection());
     uniform("camera.position", camera.position);
     uniform("camera.target", camera.target);
 }
@@ -280,4 +277,9 @@ void ShaderProgram::uniform(std::string name, Material value)
 void ShaderProgram::uniform(std::string arrName, unsigned int index, Material value)
 {
     uniform(formKey(arrName, index), value);
+}
+
+void ShaderProgram::uniform(Projection &projection)
+{
+    uniform("projection", projection.calculate());
 }

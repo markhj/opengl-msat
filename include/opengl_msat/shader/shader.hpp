@@ -69,6 +69,9 @@ public:
     void uniform(std::string arrName, unsigned int index, Material value);
 
     void uniform(Camera& camera);
+
+    void uniform(Projection& projection);
+
 private:
     GLuint programId;
 

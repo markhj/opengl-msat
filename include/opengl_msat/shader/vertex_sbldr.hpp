@@ -15,11 +15,11 @@ public:
 
     void buildSource() override;
 
-    VertexShaderBuilder& setProjection(ProjectionType value);
+    std::optional<Projection*> projection;
+
 private:
     std::vector<VertexAttribute> attributes;
 
-    ProjectionType projection = ProjectionType::None;
 };
 
 #endif
