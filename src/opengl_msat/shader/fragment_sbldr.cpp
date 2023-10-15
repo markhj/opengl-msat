@@ -5,6 +5,7 @@ void FragmentShaderBuilder::buildSource()
     addLine("out vec4 result;");
 
     bool hasColor = false;
+    int colorSize = 3;
 
     for (VertexAttribute attr : attributes) {
         in(attr);
@@ -12,6 +13,7 @@ void FragmentShaderBuilder::buildSource()
         std::string varName = getVertexAttributeVarName(attr);
         if (varName == "color") {
             hasColor = true;
+            colorSize = getVertexAttributeSize(attr);
         }
     }
 
@@ -136,10 +138,14 @@ void FragmentShaderBuilder::buildSource()
                 "result = vec4(clr * materials[int(materialId)].diffuseColor, 1.0);\n"
                 "}\n"
                 );
-    } else if (enableLighting) {
+    } else if (enableLighting && colorSize == 3) {
         addLine("result = vec4(clr * color, 1.0);\n");
-    } else if (hasColor) {
+    } else if (enableLighting && colorSize == 4) {
+        addLine("result = vec4(clr, 1.0) * color;\n");
+    } else if (hasColor && colorSize == 3) {
         addLine("result = vec4(color, 1.0);\n");
+    } else if (hasColor && colorSize == 4) {
+        addLine("result = vec4(1.0, 0.0, 0.0, 0.5);\n");
     } else {
         addLine("result = vec4(1.0, 1.0, 1.0, 1.0);\n");
     }

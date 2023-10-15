@@ -30,6 +30,8 @@ std::string getVertexAttributeShaderPrefix(VertexAttribute attr)
 unsigned int getVertexAttributeSize(VertexAttribute attr)
 {
     switch (attr) {
+        case VertexAttribute::ColorRGBA:
+            return 4;
         case VertexAttribute::Position3D:
         case VertexAttribute::ColorRGB:
         case VertexAttribute::Normal3D:
@@ -56,6 +58,7 @@ const char* getVertexAttributeVarName(VertexAttribute attr)
         case VertexAttribute::Position2D:
             return "pos";
         case VertexAttribute::ColorRGB:
+        case VertexAttribute::ColorRGBA:
             return "color";
         case VertexAttribute::TextureCoord:
             return "texCoords";

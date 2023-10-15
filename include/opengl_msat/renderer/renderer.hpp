@@ -12,7 +12,7 @@
 
 class Renderer {
 public:
-    Renderer(Window& window, Camera& camera, Timer& timer, RenderSettings& settings)
+    Renderer(Window* window, Camera* camera, Timer* timer, RenderSettings& settings)
         : window(window), camera(camera), timer(timer), settings(settings), renderState(RenderState()) {
         applySettings();
     }
@@ -33,17 +33,17 @@ public:
 
     RenderState* state();
 
-    Camera& getCamera();
+    Camera* getCamera();
 
     void swapState(RenderState state, std::function<void(Renderer*)> iter);
 
     void swapSettings(RenderSettings settings, std::function<void(Renderer*)> iter);
 private:
-    Window& window;
+    Window* window;
 
-    Camera& camera;
+    Camera* camera;
 
-    Timer& timer;
+    Timer* timer;
 
     RenderSettings& settings;
 

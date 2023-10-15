@@ -24,6 +24,9 @@ public:
     bool getDefault(RenderOption option);
 
     void applyAll();
+
+    void setBlendingFunction();
+
 private:
     std::map<RenderOption, bool> current;
 

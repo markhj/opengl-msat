@@ -71,4 +71,7 @@
 #include "geometry/rectangle.hpp"
 #include "geometry/cube.hpp"
 
+// UI
+#include "ui/hud.hpp"
+
 #endif

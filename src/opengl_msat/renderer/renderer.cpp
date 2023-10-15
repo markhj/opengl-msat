@@ -36,9 +36,9 @@ void Renderer::render(VAO &vao, DrawMode drawMode, unsigned int from, unsigned i
 
 void Renderer::loop(std::function<void(Renderer *)> iter)
 {
-    while (window.keepOpen())
+    while (window->keepOpen())
     {
-        timer.start();
+        timer->start();
 
         if (resetState) {
             renderState.reset();
@@ -48,12 +48,12 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
 
         iter(this);
 
-        timer.endRenderTime();
+        timer->endRenderTime();
 
-        window.swapBuffers();
-        window.pollEvents();
+        window->swapBuffers();
+        window->pollEvents();
 
-        timer.end();
+        timer->end();
     }
 }
 
@@ -79,7 +79,7 @@ RenderState *Renderer::state()
     return &renderState;
 }
 
-Camera &Renderer::getCamera()
+Camera* Renderer::getCamera()
 {
     return camera;
 }
