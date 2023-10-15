@@ -32,8 +32,6 @@ public:
     [[nodiscard]] Mat4 calculate() const
     {
         switch (type) {
-            case ProjectionType::None:
-                return Mat4(1.0);
             case ProjectionType::Perspective:
                 return glm::perspective(
                     glm::radians(camera->fov),
@@ -44,11 +42,13 @@ public:
                                                 camera->up);
             case ProjectionType::Orthographic:
                 return glm::ortho(0.0f,
-                                  static_cast<float>(window->getWidth()),
-                                  static_cast<float>(window->getHeight()),
-                                  0.0f,
-                                  camera->zNear,
-                                  camera->zFar);
+                  static_cast<float>(window->getWidth()),
+                  static_cast<float>(window->getHeight()),
+                  0.0f,
+                  camera->zNear,
+                  camera->zFar);
+            default:
+                return Mat4(1.0);
         }
     }
 

@@ -30,8 +30,12 @@ void VertexShaderBuilder::buildSource()
 
     addLine("void main() {");
 
-    if (projection.has_value()) {
+    if (projection.has_value() && posSize == 2) {
+        addLine("gl_Position = projection * vec4(vbo_pos, 0.0, 1.0);");
+    } else if (projection.has_value() && posSize == 3) {
         addLine("gl_Position = projection * vec4(vbo_pos, 1.0);");
+    } else if (posSize == 2) {
+        addLine("gl_Position = vec4(vbo_pos, 0.0, 1.0);");
     } else {
         addLine("gl_Position = vec4(vbo_pos, 1.0);");
     }
