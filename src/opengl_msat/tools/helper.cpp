@@ -1,6 +1,7 @@
 #include "opengl_msat/tools/helper.hpp"
 
-Helper::Helper() : vao(VAO()), vbo(VBO()), shader(ShaderProgram())
+Helper::Helper(Window* window, Camera* camera)
+    : vao(VAO()), vbo(VBO()), shader(ShaderProgram()), projection(Projection(window, camera))
 {
     std::vector<VertexAttribute> attributes = { VertexAttribute::Position3D, VertexAttribute::ColorRGB };
 
@@ -9,8 +10,12 @@ Helper::Helper() : vao(VAO()), vbo(VBO()), shader(ShaderProgram())
     });
     vao.associate(vbo, attributes);
 
-    // .setProjection(ProjectionType::Perspective)
-    shader.fromBuilder(VertexShaderBuilder(attributes));
+    projection.perspective();
+
+    VertexShaderBuilder vsb(attributes);
+    vsb.projection = &projection;
+
+    shader.fromBuilder(vsb);
     shader.fromBuilder(FragmentShaderBuilder(attributes));
     shader.compile();
 }
@@ -66,7 +71,7 @@ void Helper::render(Renderer *renderer)
         };
 
         renderer->swapSettings(newSettings, [&](Renderer* renderer) {
-            shader.uniform(renderer->getCamera());
+            shader.uniform(projection);
 
             Context::safeWith(shader, [&] {
                 renderer->render(vao, DrawMode::Points, 0, points);

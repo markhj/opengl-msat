@@ -8,7 +8,7 @@
 
 class Helper {
 public:
-    Helper();
+    Helper(Window* window, Camera* camera);
 
     void render(Renderer* renderer);
 
@@ -26,6 +26,8 @@ private:
     VBO vbo;
 
     ShaderProgram shader;
+
+    Projection projection;
 
 };
 

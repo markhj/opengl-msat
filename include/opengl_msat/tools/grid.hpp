@@ -8,12 +8,14 @@
 
 class Grid {
 public:
-    Grid();
+    Grid(Window* window, Camera* camera);
 
     void refresh();
 
     void render(Renderer* renderer);
 private:
+    Projection projection;
+
     ShaderProgram shader;
 
     VAO vao;

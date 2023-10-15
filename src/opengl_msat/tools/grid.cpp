@@ -1,6 +1,6 @@
 #include "opengl_msat/tools/grid.hpp"
 
-Grid::Grid()
+Grid::Grid(Window* window, Camera* camera) : projection(Projection(window, camera))
 {
     std::vector<VertexAttribute> attributes = {
             VertexAttribute::Position3D,
@@ -11,10 +11,12 @@ Grid::Grid()
 
     vao.associate(vbo, attributes);
 
+    projection.perspective();
+
     VertexShaderBuilder vsb(attributes);
     FragmentShaderBuilder fsb(attributes);
 
-//    vsb.setProjection(ProjectionType::Perspective);
+    vsb.projection = &projection;
 
     shader = ShaderProgram();
     shader.fromBuilder(vsb);
@@ -85,7 +87,7 @@ void Grid::render(Renderer *renderer)
         };
 
         renderer->swapSettings(newSettings, [&](Renderer* renderer) {
-            shader.uniform(renderer->getCamera());
+            shader.uniform(projection);
 
             Context::safeWith(shader, [&] {
                 renderer->render(vao, DrawMode::Lines);
