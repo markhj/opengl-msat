@@ -9,7 +9,15 @@ public:
 
     Color(float r, float g, float b);
 
-    Color(float r, float g, float b, float a);
+};
+
+class ColorRGBA : public Vec4 {
+public:
+    explicit ColorRGBA(float scalar);
+
+    ColorRGBA(float r, float g, float b);
+
+    ColorRGBA(float r, float g, float b, float a);
 };
 
 #endif
