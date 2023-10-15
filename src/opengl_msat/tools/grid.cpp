@@ -14,7 +14,7 @@ Grid::Grid()
     VertexShaderBuilder vsb(attributes);
     FragmentShaderBuilder fsb(attributes);
 
-    vsb.setProjection(Projection::Perspective);
+    vsb.setProjection(ProjectionType::Perspective);
 
     shader = ShaderProgram();
     shader.fromBuilder(vsb);
