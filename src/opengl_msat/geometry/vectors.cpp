@@ -35,3 +35,24 @@ void Vec3::animate(Vec3 value)
     y = value.y;
     z = value.z;
 }
+
+glm::vec4 Vec4::toGlm() const
+{
+    return static_cast<glm::vec4>(*this);
+}
+
+void Vec4::animate(float pct, Vec4 from, Vec4 to)
+{
+    x = from.x + pct * (to.x - from.x) / 100;
+    y = from.y + pct * (to.y - from.y) / 100;
+    z = from.z + pct * (to.z - from.z) / 100;
+    w = from.w + pct * (to.w - from.w) / 100;
+}
+
+void Vec4::animate(Vec4 value)
+{
+    x = value.x;
+    y = value.y;
+    z = value.z;
+    w = value.w;
+}

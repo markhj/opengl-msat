@@ -3,6 +3,7 @@
 
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
 #include "opengl_msat/contracts/glm_derivative.hpp"
 #include "opengl_msat/contracts/animateable.hpp"
 
@@ -47,6 +48,25 @@ public:
     void animate(float pct, Vec3 from, Vec3 to) override;
 
     void animate(Vec3 value) override;
+};
+
+class Vec4 : public glm::vec4,
+             public Vector<glm::vec4>,
+             public Animateable<Vec4> {
+public:
+    explicit Vec4(float scalar) : glm::vec4(scalar) { }
+
+    Vec4() : Vec4(0.0) { }
+
+    Vec4(float x, float y, float z, float w) : glm::vec4(x, y, z, w) { }
+
+    Vec4(const glm::vec4& other) : glm::vec4(other) { }
+
+    [[nodiscard]] glm::vec4 toGlm() const override;
+
+    void animate(float pct, Vec4 from, Vec4 to) override;
+
+    void animate(Vec4 value) override;
 };
 
 #endif
