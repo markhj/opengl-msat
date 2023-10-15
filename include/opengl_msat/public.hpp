@@ -73,5 +73,6 @@
 
 // UI
 #include "ui/hud.hpp"
+#include "ui/hud_element.hpp"
 
 #endif

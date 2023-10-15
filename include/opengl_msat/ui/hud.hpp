@@ -5,16 +5,12 @@
 #include "opengl_msat/vertex/vao.hpp"
 #include "opengl_msat/renderer/renderer.hpp"
 
-class HUDElement {
-
-};
-
 class HUD {
 public:
     HUD(Window* window, Camera* camera)
         : vao(VAO()), vbo(VBO()), shader(ShaderProgram()), projection(Projection(window, camera))
     {
-        std::vector<VertexAttribute> attributes = { VertexAttribute::Position2D,
+        std::vector<VertexAttribute> attributes = { VertexAttribute::Position3D,
                                                     VertexAttribute::ColorRGBA };
 
         vbo.setVertices({});

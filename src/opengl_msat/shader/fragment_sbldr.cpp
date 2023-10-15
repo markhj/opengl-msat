@@ -145,7 +145,7 @@ void FragmentShaderBuilder::buildSource()
     } else if (hasColor && colorSize == 3) {
         addLine("result = vec4(color, 1.0);\n");
     } else if (hasColor && colorSize == 4) {
-        addLine("result = vec4(1.0, 0.0, 0.0, 0.5);\n");
+        addLine("result = color;\n");
     } else {
         addLine("result = vec4(1.0, 1.0, 1.0, 1.0);\n");
     }

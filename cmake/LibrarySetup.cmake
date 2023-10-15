@@ -44,7 +44,8 @@ set(CLASSES
         vertex/vbo
         vertex/vbo_scene
         window/window
-        ui/hud)
+        ui/hud
+        ui/hud_element)
 
 # The list of structs
 set(STRUCTS
