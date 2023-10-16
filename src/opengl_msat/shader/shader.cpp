@@ -149,6 +149,13 @@ void ShaderProgram::uniform(std::string name, Vec3 value)
     safeUnbind();
 }
 
+void ShaderProgram::uniform(std::string name, Vec4 value)
+{
+    safeBind();
+    glUniform4fv(getLocation(name), 1, glm::value_ptr(value.toGlm()));
+    safeUnbind();
+}
+
 void ShaderProgram::fromBuilder(VertexShaderBuilder builder)
 {
     setSource(ShaderStage::Vertex, builder.build());
@@ -247,6 +254,11 @@ void ShaderProgram::uniform(std::string arrName, unsigned int index, unsigned in
 }
 
 void ShaderProgram::uniform(std::string arrName, unsigned int index, Vec3 value)
+{
+    uniform(formKey(arrName, index), value);
+}
+
+void ShaderProgram::uniform(std::string arrName, unsigned int index, Vec4 value)
 {
     uniform(formKey(arrName, index), value);
 }

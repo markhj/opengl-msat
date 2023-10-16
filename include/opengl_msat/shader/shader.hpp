@@ -48,6 +48,10 @@ public:
 
     void uniform(std::string arrName, unsigned int index, Vec3 value);
 
+    void uniform(std::string name, Vec4 value);
+
+    void uniform(std::string arrName, unsigned int index, Vec4 value);
+
     void uniform(std::string name, Mat4 value);
 
     void uniform(std::string arrName, unsigned int index, Mat4 value);
