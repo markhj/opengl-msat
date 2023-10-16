@@ -72,7 +72,7 @@
 #include "geometry/cube.hpp"
 
 // UI
-#include "ui/hud.hpp"
-#include "ui/hud_element.hpp"
+#include "ui/ui.hpp"
+#include "ui/ui_element.hpp"
 
 #endif

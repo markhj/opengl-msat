@@ -1,5 +1,5 @@
-#ifndef OPENGL_MSAT_HUD_ELEMENT_HPP
-#define OPENGL_MSAT_HUD_ELEMENT_HPP
+#ifndef OPENGL_MSAT_UI_ELEMENT_HPP
+#define OPENGL_MSAT_UI_ELEMENT_HPP
 
 #include <vector>
 #include <iostream>
@@ -7,15 +7,16 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/geometry/vectors.hpp"
 #include "opengl_msat/types/color.hpp"
+#include "opengl_msat/geometry/rectangle.hpp"
 
-class HUDElement {
+class UIElement {
 public:
     virtual std::vector<GLfloat> getVertices() = 0;
 
     Vec2 position = Vec2(0.0);
 };
 
-class ProgressBar : public HUDElement {
+class ProgressBar : public UIElement {
 public:
     std::vector<GLfloat> getVertices() override
     {
@@ -58,9 +59,9 @@ public:
 
 };
 
-class HUDElementManager {
+class UIElementManager {
 public:
-    void attach(HUDElement* element)
+    void attach(UIElement* element)
     {
         elements.push_back(element);
     }
@@ -68,7 +69,7 @@ public:
     std::vector<GLfloat> getVertices()
     {
         std::vector<GLfloat> result;
-        for (HUDElement* elm : elements) {
+        for (UIElement* elm : elements) {
             std::vector<GLfloat> output = elm->getVertices();
             result.insert(result.end(), output.begin(), output.end());
         }
@@ -76,7 +77,7 @@ public:
     }
 
 private:
-    std::vector<HUDElement*> elements;
+    std::vector<UIElement*> elements;
 
 };
 

@@ -1,13 +1,13 @@
-#ifndef OPENGL_MSAT_HUD_HPP
-#define OPENGL_MSAT_HUD_HPP
+#ifndef OPENGL_MSAT_UI_HPP
+#define OPENGL_MSAT_UI_HPP
 
 #include "opengl_msat/shader/shader.hpp"
 #include "opengl_msat/vertex/vao.hpp"
 #include "opengl_msat/renderer/renderer.hpp"
 
-class HUD {
+class UI {
 public:
-    HUD(Window* window, Camera* camera)
+    UI(Window* window, Camera* camera)
         : vao(VAO()), vbo(VBO()), shader(ShaderProgram()), projection(Projection(window, camera))
     {
         std::vector<VertexAttribute> attributes = { VertexAttribute::Position3D,
