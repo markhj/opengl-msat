@@ -27,25 +27,25 @@ public:
             bottomRight(position.x + width, position.y + height),
             progressCoord(position.x + progressWidth, position.y + height);
 
-        Color bg = background,
+        ColorRGBA bg = background,
             fg = foreground;
 
         return {
-            topLeft.x, topLeft.y, z1,               bg.r, bg.g, bg.b, 1.0,
-            topLeft.x, bottomRight.y, z1,           bg.r, bg.g, bg.b, 1.0,
-            bottomRight.x, bottomRight.y, z1,       bg.r, bg.g, bg.b, 1.0,
+            topLeft.x, topLeft.y, z1,               bg.r, bg.g, bg.b, bg.a,
+            topLeft.x, bottomRight.y, z1,           bg.r, bg.g, bg.b, bg.a,
+            bottomRight.x, bottomRight.y, z1,       bg.r, bg.g, bg.b, bg.a,
 
-            topLeft.x, topLeft.y,  z1,              bg.r, bg.g, bg.b, 1.0,
-            bottomRight.x, bottomRight.y,  z1,      bg.r, bg.g, bg.b, 1.0,
-            bottomRight.x, topLeft.y,  z1,          bg.r, bg.g, bg.b, 1.0,
+            topLeft.x, topLeft.y,  z1,              bg.r, bg.g, bg.b, bg.a,
+            bottomRight.x, bottomRight.y,  z1,      bg.r, bg.g, bg.b, bg.a,
+            bottomRight.x, topLeft.y,  z1,          bg.r, bg.g, bg.b, bg.a,
 
-            topLeft.x, topLeft.y, z2,               fg.r, fg.g, fg.b, 1.0,
-            topLeft.x, progressCoord.y, z2,         fg.r, fg.g, fg.b, 1.0,
-            progressCoord.x, progressCoord.y, z2,   fg.r, fg.g, fg.b, 1.0,
+            topLeft.x, topLeft.y, z2,               fg.r, fg.g, fg.b, fg.a,
+            topLeft.x, progressCoord.y, z2,         fg.r, fg.g, fg.b, fg.a,
+            progressCoord.x, progressCoord.y, z2,   fg.r, fg.g, fg.b, fg.a,
 
-            topLeft.x, topLeft.y, z2,               fg.r, fg.g, fg.b, 1.0,
-            progressCoord.x, progressCoord.y, z2,   fg.r, fg.g, fg.b, 1.0,
-            progressCoord.x, topLeft.y, z2,         fg.r, fg.g, fg.b, 1.0,
+            topLeft.x, topLeft.y, z2,               fg.r, fg.g, fg.b, fg.a,
+            progressCoord.x, progressCoord.y, z2,   fg.r, fg.g, fg.b, fg.a,
+            progressCoord.x, topLeft.y, z2,         fg.r, fg.g, fg.b, fg.a,
         };
     }
 
@@ -53,8 +53,8 @@ public:
         width = 200.0,
         height = 30.0;
 
-    Color background = Color(0.5),
-        foreground = Color(1.0);
+    ColorRGBA background = ColorRGBA(1.0, 1.0, 1.0, 0.5),
+        foreground = ColorRGBA(1.0);
 
 };
 
