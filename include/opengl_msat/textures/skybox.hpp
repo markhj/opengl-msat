@@ -63,12 +63,13 @@ public:
     void render(Renderer* renderer)
     {
         RenderState state;
+//        state.enable(RenderOption::DepthTesting);
 //        state.disable(RenderOption::DepthTesting);
 //        glDisable(GL_CULL_FACE);
         renderer->swapState(state, [&](Renderer* renderer) {
-            shader.uniform(projection);
-            shader.uniform("view", glm::mat4(glm::mat3(projection.getView())));
-            shader.uniform("skybox", 0);
+//            shader.uniform(projection);
+//            shader.uniform("view", glm::mat4(glm::mat3(projection.getView())));
+//            shader.uniform("skybox", 0);
 
 //            glDepthMask(GL_TRUE);
             Context::safeWith(shader, [&] {

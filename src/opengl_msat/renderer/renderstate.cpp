@@ -27,10 +27,10 @@ void RenderState::set(RenderOption option, bool value)
 void RenderState::applyAll()
 {
     for (auto item : mapping) {
-        if (item.second) {
-            glEnable(mapping[item.first]);
+        if (current[item.first]) {
+            glEnable(item.second);
         } else {
-            glDisable(mapping[item.first]);
+            glDisable(item.second);
         }
     }
 

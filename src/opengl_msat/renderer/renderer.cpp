@@ -36,6 +36,8 @@ void Renderer::render(VAO &vao, DrawMode drawMode, unsigned int from, unsigned i
 
 void Renderer::loop(std::function<void(Renderer *)> iter)
 {
+    renderState.applyAll();
+
     while (window->keepOpen())
     {
         timer->start();
