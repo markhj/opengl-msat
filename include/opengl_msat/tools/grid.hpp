@@ -5,11 +5,11 @@
 #include "opengl_msat/context/context.hpp"
 #include "opengl_msat/vertex/vao.hpp"
 #include "opengl_msat/renderer/renderer.hpp"
-#include "factory.hpp"
+#include "service_provider.hpp"
 
 class Grid {
 public:
-    Grid(Factory* factory);
+    Grid(Window* window, Camera* camera);
 
     void refresh();
 

@@ -2,6 +2,7 @@
 #define OPENGL_MSAT_RENDERER_HPP
 
 #include <iostream>
+#include <utility>
 #include "opengl_msat/vertex/vao.hpp"
 #include "opengl_msat/types/render_types.hpp"
 #include "opengl_msat/context/context.hpp"
@@ -9,23 +10,23 @@
 #include "opengl_msat/timer/timer.hpp"
 #include "renderstate.hpp"
 #include "opengl_msat/camera/camera.hpp"
-#include "opengl_msat/tools/factory.hpp"
+#include "opengl_msat/tools/service_provider.hpp"
 
 class Renderer {
 public:
-    explicit Renderer(Factory* factory)
-        : window(factory->window),
-          camera(factory->camera),
-          timer(factory->timer),
+    explicit Renderer(Window* window, Camera* camera, Timer* timer)
+        : window(window),
+          camera(camera),
+          timer(timer),
           renderState({})
     {
     }
 
-    Renderer(Factory* factory, RenderState state)
-        : window(factory->window),
-        camera(factory->camera),
-        timer(factory->timer),
-        renderState(state)
+    Renderer(Window* window, Camera* camera, Timer* timer, RenderState state)
+        : window(window),
+        camera(camera),
+        timer(timer),
+        renderState(std::move(state))
     {
     }
 

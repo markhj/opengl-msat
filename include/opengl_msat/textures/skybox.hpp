@@ -39,7 +39,9 @@ void main()
 
 class Skybox {
 public:
-    explicit Skybox(Factory* factory, CubeMap* cubemap) : cubemap(cubemap), projection(factory->createProjection())
+    explicit Skybox(CubeMap* cubemap, Window* window, Camera* camera)
+        : cubemap(cubemap),
+        projection(Projection(window, camera))
     {
         std::vector<VertexAttribute> attributes = { VertexAttribute::Position3D };
 

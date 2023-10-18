@@ -26,7 +26,7 @@ set(CLASSES
         tools/grid
         tools/system
         tools/helper
-        tools/factory
+        tools/service_provider
         textures/texture
         textures/texture2d
         textures/texture_unit_mng
