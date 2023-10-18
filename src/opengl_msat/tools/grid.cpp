@@ -80,18 +80,13 @@ void Grid::render(Renderer *renderer)
 {
     RenderState state;
     state.enable(RenderOption::DepthTesting);
+    state.settings.lineSize = 4.0;
 
     renderer->swapState(state, [&](Renderer* renderer) {
-        RenderSettings newSettings {
-            .lineSize = 2.0
-        };
+        shader.uniform(projection);
 
-        renderer->swapSettings(newSettings, [&](Renderer* renderer) {
-            shader.uniform(projection);
-
-            Context::safeWith(shader, [&] {
-                renderer->render(vao, DrawMode::Lines);
-            });
+        Context::safeWith(shader, [&] {
+            renderer->render(vao, DrawMode::Lines);
         });
     });
 }

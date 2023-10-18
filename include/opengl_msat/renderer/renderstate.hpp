@@ -27,6 +27,8 @@ public:
 
     void setBlendingFunction();
 
+    RenderSettings settings = RenderSettings();
+
 private:
     std::map<RenderOption, bool> current;
 

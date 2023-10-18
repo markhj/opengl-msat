@@ -22,9 +22,6 @@ Helper::Helper(Window* window, Camera* camera)
 
 void Helper::render(Renderer *renderer)
 {
-    RenderState state;
-    state.enable(RenderOption::DepthTesting);
-    state.applyAll();
 
     std::vector<GLfloat> data;
 
@@ -64,19 +61,17 @@ void Helper::render(Renderer *renderer)
     vbo.setVertices(data);
     vbo.upload();
 
+    RenderState state;
+    state.enable(RenderOption::DepthTesting);
+    state.settings.pointSize = 10.0;
+    state.settings.lineSize = 3.0;
+
     renderer->swapState(state, [&](Renderer* renderer) {
-        RenderSettings newSettings {
-            .pointSize = 10.0,
-            .lineSize = 3.0
-        };
+        shader.uniform(projection);
 
-        renderer->swapSettings(newSettings, [&](Renderer* renderer) {
-            shader.uniform(projection);
-
-            Context::safeWith(shader, [&] {
-                renderer->render(vao, DrawMode::Points, 0, points);
-                renderer->render(vao, DrawMode::Lines, points, lines * 2);
-            });
+        Context::safeWith(shader, [&] {
+            renderer->render(vao, DrawMode::Points, 0, points);
+            renderer->render(vao, DrawMode::Lines, points, lines * 2);
         });
     });
 }

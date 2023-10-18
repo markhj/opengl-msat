@@ -5,6 +5,12 @@ void RenderState::reset()
     for (auto item : mapping) {
         set(item.first, getDefault(item.first));
     }
+
+    // Create the default render settings
+    settings = RenderSettings();
+
+    // Set the blend function back to default mode
+    glBlendFunc(GL_ONE, GL_ZERO);
 }
 
 void RenderState::set(RenderOption option, bool value)
@@ -27,6 +33,9 @@ void RenderState::applyAll()
             glDisable(mapping[item.first]);
         }
     }
+
+    glPointSize(settings.pointSize);
+    glLineWidth(settings.lineSize);
 }
 
 void RenderState::setDefault(RenderOption option, bool value)

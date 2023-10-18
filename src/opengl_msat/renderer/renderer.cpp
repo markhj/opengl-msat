@@ -63,17 +63,6 @@ void Renderer::clear() const
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
-void Renderer::applySettings() const
-{
-    glPointSize(settings.pointSize);
-    glLineWidth(settings.lineSize);
-}
-
-void Renderer::setResetState(bool value)
-{
-    resetState = value;
-}
-
 RenderState *Renderer::state()
 {
     return &renderState;
@@ -95,17 +84,4 @@ void Renderer::swapState(RenderState state, std::function<void(Renderer *)> iter
 
     renderState = restoreTo;
     renderState.applyAll();
-}
-
-void Renderer::swapSettings(RenderSettings newSettings, std::function<void(Renderer *)> iter)
-{
-    RenderSettings restoreTo = settings;
-
-    settings = newSettings;
-    applySettings();
-
-    iter(this);
-
-    newSettings = restoreTo;
-    applySettings();
 }

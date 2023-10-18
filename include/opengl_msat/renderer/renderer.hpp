@@ -12,12 +12,10 @@
 
 class Renderer {
 public:
-    Renderer(Window* window, Camera* camera, Timer* timer, RenderSettings& settings)
-        : window(window), camera(camera), timer(timer), settings(settings), renderState(RenderState()) {
-        applySettings();
-    }
-
-    void applySettings() const;
+    Renderer(Window* window, Camera* camera, Timer* timer, RenderState state)
+        : window(window), camera(camera), timer(timer), renderState(state)
+        {
+        }
 
     void render(VAO& vao);
 
@@ -29,15 +27,14 @@ public:
 
     void clear() const;
 
-    void setResetState(bool value);
-
     RenderState* state();
 
     Camera* getCamera();
 
     void swapState(RenderState state, std::function<void(Renderer*)> iter);
 
-    void swapSettings(RenderSettings settings, std::function<void(Renderer*)> iter);
+    bool resetState = true;
+
 private:
     Window* window;
 
@@ -45,11 +42,8 @@ private:
 
     Timer* timer;
 
-    RenderSettings& settings;
-
     RenderState renderState;
 
-    bool resetState = true;
 };
 
 #endif
