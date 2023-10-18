@@ -3,7 +3,7 @@
 
 #include "cubemap.hpp"
 #include "opengl_msat/shader/shader.hpp"
-#include "opengl_msat/renderer/renderer.hpp"
+#include "opengl_msat/rendering/renderer.hpp"
 #include "opengl_msat/geometry/cube.hpp"
 
 const char* skyboxVert = R"(

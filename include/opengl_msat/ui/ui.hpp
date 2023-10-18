@@ -3,7 +3,7 @@
 
 #include "opengl_msat/shader/shader.hpp"
 #include "opengl_msat/vertex/vao.hpp"
-#include "opengl_msat/renderer/renderer.hpp"
+#include "opengl_msat/rendering/renderer.hpp"
 
 class UI {
 public:
@@ -43,7 +43,7 @@ public:
         camera->zNear = -1.0;
         camera->zFar = 1.0;
 
-//        renderer->swapState(state, [&](Renderer* renderer) {
+//        rendering->swapState(state, [&](Renderer* rendering) {
             shader.uniform(projection);
             shader.bind();
 

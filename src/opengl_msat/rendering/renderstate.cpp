@@ -1,4 +1,4 @@
-#include "opengl_msat/renderer/renderstate.hpp"
+#include "opengl_msat/rendering/renderstate.hpp"
 
 void RenderState::reset()
 {

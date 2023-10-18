@@ -44,9 +44,11 @@
 #include "shader/vertex_sbldr.hpp"
 #include "shader/fragment_sbldr.hpp"
 
-// Renderer
-#include "renderer/renderer.hpp"
-#include "renderer/renderstate.hpp"
+// Rendering
+#include "rendering/renderer.hpp"
+#include "rendering/renderstate.hpp"
+#include "rendering/framebuffer.hpp"
+#include "rendering/framebuffer_mng.hpp"
 
 // Debugging
 #include "tools/dump.hpp"

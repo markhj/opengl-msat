@@ -22,7 +22,7 @@ struct SystemInfo {
 
     const int maxUniformLocations;
 
-    const int framebufferMaxWidth, framebufferMaxHeight;
+    const int maxFramebuffers, framebufferMaxWidth, framebufferMaxHeight;
 };
 
 #endif

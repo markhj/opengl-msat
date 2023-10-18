@@ -4,7 +4,7 @@
 #include "opengl_msat/shader/shader.hpp"
 #include "opengl_msat/context/context.hpp"
 #include "opengl_msat/vertex/vao.hpp"
-#include "opengl_msat/renderer/renderer.hpp"
+#include "opengl_msat/rendering/renderer.hpp"
 #include "service_provider.hpp"
 
 class Grid {

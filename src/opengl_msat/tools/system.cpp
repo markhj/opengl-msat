@@ -16,6 +16,7 @@ SystemInfo System::getSystemInfo(Window* window)
 
         .maxUniformLocations = getValue(GL_MAX_UNIFORM_LOCATIONS),
 
+        .maxFramebuffers = getValue(GL_MAX_DRAW_BUFFERS),
         .framebufferMaxWidth = getValue(GL_MAX_FRAMEBUFFER_WIDTH),
         .framebufferMaxHeight = getValue(GL_MAX_FRAMEBUFFER_HEIGHT),
     };

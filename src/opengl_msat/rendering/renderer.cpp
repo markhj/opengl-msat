@@ -1,6 +1,6 @@
 #include <utility>
 
-#include "opengl_msat/renderer/renderer.hpp"
+#include "opengl_msat/rendering/renderer.hpp"
 
 
 void Renderer::render(VAO &vao)

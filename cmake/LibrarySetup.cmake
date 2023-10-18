@@ -16,8 +16,10 @@ set(CLASSES
         geometry/object3d
         geometry/object_collection
         math/math
-        renderer/renderer
-        renderer/renderstate
+        rendering/renderer
+        rendering/renderstate
+        rendering/framebuffer
+        rendering/framebuffer_mng
         shader/shader
         shader/vertex_sbldr
         shader/fragment_sbldr
