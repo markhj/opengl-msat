@@ -36,7 +36,7 @@ public:
                            camera->up);
     }
 
-    [[nodiscard]] Mat4 calculate() const
+    [[nodiscard]] Mat4 getProjection() const
     {
         switch (type) {
             case ProjectionType::Perspective:
@@ -44,17 +44,22 @@ public:
                     glm::radians(camera->fov),
                     window->getAspectRatio(),
                     camera->zNear,
-                    camera->zFar) * getView();
+                    camera->zFar);
             case ProjectionType::Orthographic:
                 return glm::ortho(0.0f,
-                  static_cast<float>(window->getWidth()),
-                  static_cast<float>(window->getHeight()),
-                  0.0f,
-                  camera->zNear,
-                  camera->zFar);
+                    static_cast<float>(window->getWidth()),
+                    static_cast<float>(window->getHeight()),
+                    0.0f,
+                    camera->zNear,
+                    camera->zFar);
             default:
                 return Mat4(1.0);
         }
+    }
+
+    [[nodiscard]] Mat4 calculate() const
+    {
+        return getProjection() * getView();
     }
 
 private:

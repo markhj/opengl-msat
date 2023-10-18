@@ -50,9 +50,7 @@ public:
         shader.setSource(ShaderStage::Fragment, skyboxFrag);
         shader.compile();
 
-//        projection.orthographic();
-
-        Object3D cube(Cube(Vec3(-0.25, 0.0, -0.25), Vec3(0.25, 0.5, 0.25)));
+        Object3D cube(Cube(Vec3(-1.0), Vec3(1.0)));
 
         vao = VAO();
         vbo = VBO();
@@ -63,19 +61,18 @@ public:
     void render(Renderer* renderer)
     {
         RenderState state;
-//        state.enable(RenderOption::DepthTesting);
-//        state.disable(RenderOption::DepthTesting);
-//        glDisable(GL_CULL_FACE);
-        renderer->swapState(state, [&](Renderer* renderer) {
-//            shader.uniform(projection);
-//            shader.uniform("view", glm::mat4(glm::mat3(projection.getView())));
-//            shader.uniform("skybox", 0);
+        state.disable(RenderOption::DepthTesting);
 
-//            glDepthMask(GL_TRUE);
+        renderer->swapState(state, [&](Renderer* renderer) {
+            shader.uniform(projection);
+            shader.uniform("view", glm::mat4(glm::mat3(projection.getView())));
+            shader.uniform("skybox", 0);
+
+            glDepthMask(GL_FALSE);
             Context::safeWith(shader, [&] {
                 renderer->render(vao);
             });
-//            glDepthMask(GL_FALSE);
+            glDepthMask(GL_TRUE);
         });
     }
 
