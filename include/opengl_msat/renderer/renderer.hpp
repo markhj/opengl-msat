@@ -13,6 +13,14 @@
 
 class Renderer {
 public:
+    explicit Renderer(Factory* factory)
+        : window(factory->window),
+          camera(factory->camera),
+          timer(factory->timer),
+          renderState({})
+    {
+    }
+
     Renderer(Factory* factory, RenderState state)
         : window(factory->window),
         camera(factory->camera),
