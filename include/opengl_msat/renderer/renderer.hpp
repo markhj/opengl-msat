@@ -9,13 +9,17 @@
 #include "opengl_msat/timer/timer.hpp"
 #include "renderstate.hpp"
 #include "opengl_msat/camera/camera.hpp"
+#include "opengl_msat/tools/factory.hpp"
 
 class Renderer {
 public:
-    Renderer(Window* window, Camera* camera, Timer* timer, RenderState state)
-        : window(window), camera(camera), timer(timer), renderState(state)
-        {
-        }
+    Renderer(Factory* factory, RenderState state)
+        : window(factory->window),
+        camera(factory->camera),
+        timer(factory->timer),
+        renderState(state)
+    {
+    }
 
     void render(VAO& vao);
 

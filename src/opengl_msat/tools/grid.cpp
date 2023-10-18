@@ -1,6 +1,6 @@
 #include "opengl_msat/tools/grid.hpp"
 
-Grid::Grid(Window* window, Camera* camera) : projection(Projection(window, camera))
+Grid::Grid(Factory* factory) : projection(factory->createProjection())
 {
     std::vector<VertexAttribute> attributes = {
             VertexAttribute::Position3D,

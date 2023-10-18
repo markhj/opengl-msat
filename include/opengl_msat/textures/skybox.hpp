@@ -61,7 +61,9 @@ public:
         state.disable(RenderOption::DepthTesting);
 
         renderer->swapState(state, [&](Renderer* renderer) {
-            shader.uniform(renderer->getCamera());
+//            shader.uniform(renderer->getCamera());
+
+            // We need to create a projection
 
             Context::safeWith(shader, [&] {
                 renderer->render(vao);

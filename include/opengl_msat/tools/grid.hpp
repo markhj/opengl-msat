@@ -5,14 +5,16 @@
 #include "opengl_msat/context/context.hpp"
 #include "opengl_msat/vertex/vao.hpp"
 #include "opengl_msat/renderer/renderer.hpp"
+#include "factory.hpp"
 
 class Grid {
 public:
-    Grid(Window* window, Camera* camera);
+    Grid(Factory* factory);
 
     void refresh();
 
     void render(Renderer* renderer);
+
 private:
     Projection projection;
 
@@ -25,6 +27,7 @@ private:
     int lines = 10;
 
     float spacing = 0.5;
+
 };
 
 #endif
