@@ -29,6 +29,13 @@ public:
         return *this;
     }
 
+    [[nodiscard]] Mat4 getView() const
+    {
+        return glm::lookAt(camera->position,
+                           camera->target,
+                           camera->up);
+    }
+
     [[nodiscard]] Mat4 calculate() const
     {
         switch (type) {
@@ -37,9 +44,7 @@ public:
                     glm::radians(camera->fov),
                     window->getAspectRatio(),
                     camera->zNear,
-                    camera->zFar) * glm::lookAt(camera->position,
-                                                camera->target,
-                                                camera->up);
+                    camera->zFar) * getView();
             case ProjectionType::Orthographic:
                 return glm::ortho(0.0f,
                   static_cast<float>(window->getWidth()),

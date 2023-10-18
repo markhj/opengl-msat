@@ -29,6 +29,14 @@ HandlesAttributes::flattenVertices3D(std::vector<VertexElement3D> elements, std:
                 case VertexAttribute::Position3D:
                     list.insert(list.end(), {vertex.position.x, vertex.position.y, vertex.position.z});
                     break;
+                case VertexAttribute::TextureCoord:
+                    if (vertex.textureCoords.has_value()) {
+                        Vec2 texCoords = vertex.textureCoords.value();
+                        list.insert(list.end(), {texCoords.x, texCoords.y});
+                    } else {
+                        list.insert(list.end(), {0.0, 0.0});
+                    }
+                    break;
                 case VertexAttribute::MaterialId:
                     if (vertex.materialId.has_value()) {
                         list.push_back(vertex.materialId.value());

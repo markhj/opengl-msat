@@ -9,16 +9,16 @@
 const char* skyboxVert = R"(
 #version 330 core
 layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec2 aTexCoords;
 
-out vec2 texCoords;
+out vec3 texCoords;
 
-uniform mat4 ortho;
+uniform mat4 projection;
+uniform mat4 view;
 
 void main()
 {
-    gl_Position = ortho * vec4(aPos, 1.0);
-    texCoords = aTexCoords;
+    gl_Position = projection * view * vec4(aPos, 1.0);
+    texCoords = aPos;
 }
 )";
 
@@ -28,6 +28,7 @@ out vec4 FragColor;
 
 in vec3 texCoords;
 
+//uniform sampler2D skybox;
 uniform samplerCube skybox;
 
 void main()
@@ -38,7 +39,7 @@ void main()
 
 class Skybox {
 public:
-    explicit Skybox(CubeMap* cubemap) : cubemap(cubemap)
+    explicit Skybox(Factory* factory, CubeMap* cubemap) : cubemap(cubemap), projection(factory->createProjection())
     {
         std::vector<VertexAttribute> attributes = { VertexAttribute::Position3D };
 
@@ -46,6 +47,8 @@ public:
         shader.setSource(ShaderStage::Vertex, skyboxVert);
         shader.setSource(ShaderStage::Fragment, skyboxFrag);
         shader.compile();
+
+//        projection.orthographic();
 
         Object3D cube(Cube(Vec3(-0.25, 0.0, -0.25), Vec3(0.25, 0.5, 0.25)));
 
@@ -58,20 +61,24 @@ public:
     void render(Renderer* renderer)
     {
         RenderState state;
-        state.disable(RenderOption::DepthTesting);
-
+//        state.disable(RenderOption::DepthTesting);
+//        glDisable(GL_CULL_FACE);
         renderer->swapState(state, [&](Renderer* renderer) {
-//            shader.uniform(renderer->getCamera());
+            shader.uniform(projection);
+            shader.uniform("view", glm::mat4(glm::mat3(projection.getView())));
+            shader.uniform("skybox", 0);
 
-            // We need to create a projection
-
+//            glDepthMask(GL_TRUE);
             Context::safeWith(shader, [&] {
                 renderer->render(vao);
             });
+//            glDepthMask(GL_FALSE);
         });
     }
 
 private:
+    Projection projection;
+
     CubeMap* cubemap;
 
     VAO vao;
