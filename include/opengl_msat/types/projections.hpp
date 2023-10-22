@@ -59,6 +59,9 @@ public:
 
     [[nodiscard]] Mat4 calculate() const
     {
+        if (type == ProjectionType::Orthographic) {
+            return getProjection();
+        }
         return getProjection() * getView();
     }
 
