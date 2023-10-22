@@ -20,11 +20,15 @@ public:
 
     FragmentShaderBuilder& materials();
 
-    unsigned int lightSlots = 20;
+    unsigned int lightSlots = 32;
 
-    unsigned int materialSlots = 20;
+    unsigned int materialSlots = 32;
 
-    unsigned int textureSlots = 20;
+    /**
+     * If you bind to a texture unit above this value - 1, the texture will most likely
+     * not be rendered.
+     */
+    unsigned int textureSlots = 32;
 
 private:
     std::vector<VertexAttribute> attributes;

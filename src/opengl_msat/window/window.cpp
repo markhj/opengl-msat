@@ -11,7 +11,7 @@ void Window::generate()
         }
     }
 
-    glfwWindowHint(GLFW_SAMPLES, msaaSamples);
+    glfwWindowHint(GLFW_SAMPLES, 1);
     glfwWindowHint(GLFW_DECORATED, getDecoration());
 
     glfwWindow = createWindow();
