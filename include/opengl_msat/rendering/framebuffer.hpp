@@ -5,6 +5,11 @@
 #include "opengl_msat/textures/texture2d.hpp"
 #include "opengl_msat/context/context.hpp"
 
+enum class FramebufferAttachment {
+    Color,
+    Depth,
+};
+
 /**
  * Framebuffer
  *
@@ -17,17 +22,27 @@ public:
         generate();
     }
 
+    Framebuffer(unsigned int width, unsigned int height, FramebufferAttachment attachment)
+        : width(width), height(height), attachment(attachment)
+    {
+        generate();
+    }
+
     void attach(Texture2D* texture)
     {
         safeBind();
 
         texture->safeBind();
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexImage2D(GL_TEXTURE_2D, 0, getFormat(), width, height, 0, getFormat(), GL_UNSIGNED_BYTE, nullptr);
+
+        texture->applyOptions({
+            .downSampling = TextureDownsampling::Linear,
+            .upSampling = TextureSampling::Linear,
+        });
+
         texture->safeUnbind();
 
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture->getTextureId(), 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, getGLAttachment(), GL_TEXTURE_2D, texture->getTextureId(), 0);
 
         safeUnbind();
     }
@@ -54,6 +69,28 @@ public:
 
 protected:
     unsigned int fboId, width, height;
+
+    FramebufferAttachment attachment = FramebufferAttachment::Color;
+
+    GLint getFormat()
+    {
+        switch (attachment) {
+            case FramebufferAttachment::Color:
+                return GL_RGB;
+            case FramebufferAttachment::Depth:
+                return GL_DEPTH_COMPONENT;
+        }
+    }
+
+    GLint getGLAttachment()
+    {
+        switch (attachment) {
+            case FramebufferAttachment::Color:
+                return GL_COLOR_ATTACHMENT0;
+            case FramebufferAttachment::Depth:
+                return GL_DEPTH_ATTACHMENT;
+        }
+    }
 
     void generate()
     {
