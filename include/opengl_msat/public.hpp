@@ -49,6 +49,7 @@
 #include "rendering/renderstate.hpp"
 #include "rendering/framebuffer.hpp"
 #include "rendering/framebuffer_mng.hpp"
+#include "rendering/scrquad.hpp"
 
 // Debugging
 #include "tools/dump.hpp"

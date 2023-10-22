@@ -20,6 +20,7 @@ set(CLASSES
         rendering/renderstate
         rendering/framebuffer
         rendering/framebuffer_mng
+        rendering/scrquad
         shader/shader
         shader/vertex_sbldr
         shader/fragment_sbldr
