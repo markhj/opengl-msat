@@ -19,20 +19,37 @@ public:
 
     void attach(Texture2D* texture)
     {
+        safeBind();
+
         texture->safeBind();
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         texture->safeUnbind();
 
-        safeBind();
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture->getTextureId(), 0);
+
         safeUnbind();
     }
 
     unsigned int getId()
     {
         return fboId;
+    }
+
+    void clear()
+    {
+        safeBind();
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+        safeUnbind();
+    }
+
+    void use(std::function<void()> fnc)
+    {
+        clear();
+        bind();
+        fnc();
+        unbind();
     }
 
 protected:
