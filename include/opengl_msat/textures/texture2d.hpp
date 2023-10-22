@@ -18,6 +18,14 @@ public:
         : Texture(TextureType::Texture2D, std::move(filename), options)
     {}
 
+    Texture2D(unsigned int width, unsigned int height, TextureOptions options)
+            : Texture(TextureType::Texture2D, width, height, options)
+    {}
+
+    Texture2D(unsigned int width, unsigned int height)
+            : Texture(TextureType::Texture2D, width, height, {})
+    {}
+
 };
 
 #endif

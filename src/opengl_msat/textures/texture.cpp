@@ -2,6 +2,16 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/textures/texture.hpp"
 
+Texture::Texture(TextureType type, unsigned int width, unsigned int height) : type(type)
+{
+    generate(getGlType(type), width, height, nullptr, {});
+}
+
+Texture::Texture(TextureType type, unsigned int width, unsigned int height, TextureOptions options) : type(type)
+{
+    generate(getGlType(type), width, height, nullptr, options);
+}
+
 Texture::Texture(TextureType type, std::string filename) : type(type)
 {
     load({std::move(filename)}, {});
@@ -36,17 +46,7 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
 
         image = img.value();
 
-        bind();
-        glTexImage2D(getGlTypeIter(type, i),
-                     0,
-                     options.format,
-                     image.width,
-                     image.height,
-                     0,
-                     options.format,
-                     GL_UNSIGNED_BYTE,
-                     image.data);
-        unbind();
+        generate(getGlTypeIter(type, i), image.width, image.height, image.data, options);
 
         applyOptions(options);
 
@@ -62,6 +62,25 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
     } else {
         loaded = TextureLoadStatus::Success;
     }
+}
+
+void Texture::generate(GLint txType,
+                       unsigned int width,
+                       unsigned int height,
+                       unsigned char *data,
+                       TextureOptions options)
+{
+    bind();
+    glTexImage2D(txType,
+                 0,
+                 options.format,
+                 width,
+                 height,
+                 0,
+                 options.format,
+                 GL_UNSIGNED_BYTE,
+                 data);
+    unbind();
 }
 
 unsigned int Texture::getTextureId() const

@@ -65,6 +65,10 @@ class Texture :
         LoadsImages,
         public Bindable {
 public:
+    Texture(TextureType type, unsigned int width, unsigned int height);
+
+    Texture(TextureType type, unsigned int width, unsigned int height, TextureOptions options);
+
     Texture(TextureType type, std::string filename);
 
     Texture(TextureType type, std::string filename, TextureOptions options);
@@ -95,6 +99,12 @@ protected:
     GLint getGlType(TextureType type);
 
     GLint getGlTypeIter(TextureType type, int i);
+
+    void generate(GLint txType,
+                  unsigned int width,
+                  unsigned int height,
+                  unsigned char* data,
+                  TextureOptions options);
 
 private:
     void load(const std::vector<std::string>& filenames, TextureOptions options);

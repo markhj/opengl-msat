@@ -6,7 +6,7 @@
 
 class Framebuffer {
 public:
-    Framebuffer() : texture(Texture2D())
+    Framebuffer(unsigned int  width, unsigned int  height) : texture(Texture2D(width, height))
     {
         glGenFramebuffers(1, &fboId);
 
