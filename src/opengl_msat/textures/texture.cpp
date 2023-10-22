@@ -4,11 +4,13 @@
 
 Texture::Texture(TextureType type, unsigned int width, unsigned int height) : type(type)
 {
+    generateId();
     generate(getGlType(type), width, height, nullptr, {});
 }
 
 Texture::Texture(TextureType type, unsigned int width, unsigned int height, TextureOptions options) : type(type)
 {
+    generateId();
     generate(getGlType(type), width, height, nullptr, options);
 }
 
@@ -29,7 +31,7 @@ Texture::Texture(TextureType type, std::vector<std::string> files, TextureOption
 
 void Texture::load(const std::vector<std::string>& filenames, TextureOptions options)
 {
-    glGenTextures(1, &textureId);
+    generateId();
 
     int noLoaded = 0, i = 0;
 
@@ -146,4 +148,9 @@ GLint Texture::getGlTypeIter(TextureType type, int i)
         case TextureType::CubeMap:
             return GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
     }
+}
+
+void Texture::generateId()
+{
+    glGenTextures(1, &textureId);
 }

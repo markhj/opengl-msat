@@ -100,6 +100,8 @@ protected:
 
     GLint getGlTypeIter(TextureType type, int i);
 
+    void generateId();
+
     void generate(GLint txType,
                   unsigned int width,
                   unsigned int height,

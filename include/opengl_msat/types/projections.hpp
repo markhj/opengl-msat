@@ -1,6 +1,7 @@
 #ifndef OPENGL_MSAT_PROJECTIONS_HPP
 #define OPENGL_MSAT_PROJECTIONS_HPP
 
+#include <iostream>
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/window/window.hpp"
 #include "opengl_msat/camera/camera.hpp"
@@ -47,11 +48,11 @@ public:
                     camera->zFar);
             case ProjectionType::Orthographic:
                 return glm::ortho(0.0f,
-                    static_cast<float>(window->getWidth()),
-                    static_cast<float>(window->getHeight()),
-                    0.0f,
-                    camera->zNear,
-                    camera->zFar);
+                                  static_cast<float>(window->getWidth()),
+                                  0.0f,
+                                  static_cast<float>(window->getHeight()),
+                                  0.0f,
+                                  1.0f);
             default:
                 return Mat4(1.0);
         }

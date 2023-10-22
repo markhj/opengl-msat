@@ -12,19 +12,19 @@
  */
 class Framebuffer : public Bindable {
 public:
-    Framebuffer()
+    Framebuffer(unsigned int width, unsigned int height) : width(width), height(height)
     {
         generate();
-    }
-
-    Framebuffer(Texture2D* texture)
-    {
-        generate();
-        attach(texture);
     }
 
     void attach(Texture2D* texture)
     {
+        texture->safeBind();
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        texture->safeUnbind();
+
         safeBind();
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture->getTextureId(), 0);
         safeUnbind();
@@ -36,7 +36,7 @@ public:
     }
 
 protected:
-    unsigned int fboId;
+    unsigned int fboId, width, height;
 
     void generate()
     {

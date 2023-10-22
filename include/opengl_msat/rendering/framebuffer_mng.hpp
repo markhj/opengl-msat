@@ -4,6 +4,7 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/traits/binding_mng.hpp"
 #include "opengl_msat/tools/systeminfo.hpp"
+#include "framebuffer.hpp"
 
 class FramebufferManager : public ManagesMultipleBindings {
 public:
