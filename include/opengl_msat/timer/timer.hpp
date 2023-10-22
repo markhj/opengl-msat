@@ -23,9 +23,13 @@ public:
 
     [[nodiscard]] double getRenderTime() const;
 
+    void trackDeltaTimeOn(float* target);
+
 private:
     double deltaTime = 0.0,
         renderTime = 0.0;
+
+    float* trackDelta;
 
     bool absoluteStarted = false,
         hasDeltaTime = false;

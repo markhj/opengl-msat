@@ -17,6 +17,10 @@ void Timer::end()
 {
     deltaTime = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - startTime).count();
     hasDeltaTime = true;
+
+    if (trackDelta != nullptr) {
+        *trackDelta += static_cast<float>(deltaTime);
+    }
 }
 
 double Timer::getDeltaTime() const
@@ -56,4 +60,9 @@ double Timer::getRenderTime() const
 unsigned int Timer::getFramesPerSecond(bool trueRender) const
 {
     return static_cast<unsigned int>(floor(1 / (trueRender ? getRenderTime() : getDeltaTime())));
+}
+
+void Timer::trackDeltaTimeOn(float *target)
+{
+    trackDelta = target;
 }
