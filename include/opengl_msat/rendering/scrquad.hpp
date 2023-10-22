@@ -8,6 +8,7 @@
 #include "opengl_msat/shader/shader.hpp"
 #include "opengl_msat/vertex/vao.hpp"
 #include "renderer.hpp"
+#include "opengl_msat/textures/texture2d.hpp"
 
 const char* scrquadFragmentSource = R"(
 #version 330 core
@@ -23,12 +24,17 @@ void main()
 }
 )";
 
-class ScreenQuad {
+class ScreenQuad : DeveloperMessaging {
 public:
-    ScreenQuad(Window* window, Camera* camera, const Vec2& position, const Vec2& size)
+    ScreenQuad(Window* window,
+               Camera* camera,
+               const Vec2& position,
+               const Vec2& size,
+               Texture2D* texture)
         : projection(Projection(window, camera)),
         shader(ShaderProgram()),
-        state(RenderState())
+        state(RenderState()),
+        texture(texture)
     {
         std::vector<VertexAttribute> attrs = { VertexAttribute::Position3D, VertexAttribute::TextureCoord };
 
@@ -40,7 +46,6 @@ public:
         shader.setSource(ShaderStage::Fragment, scrquadFragmentSource);
         shader.fromBuilder(vsb);
         shader.compile();
-        shader.uniform("tx", 0);
 
         Vec2 bl(position.x, position.y),
             br(position.x + size.x, position.y),
@@ -66,6 +71,13 @@ public:
         shader.safeBind();
         shader.uniform(projection);
 
+        if (texture->boundToUnit.has_value()) {
+            shader.uniform("tx", texture->boundToUnit.value());
+        } else {
+            shader.uniform("tx", 0);
+            warn("The texture attached to the screen quad is not bound to a texture unit.");
+        }
+
         renderer->swapState(state, [&](Renderer* renderer) {
             renderer->render(vao);
         });
@@ -83,6 +95,8 @@ private:
     VAO vao;
 
     VBO vbo;
+
+    Texture2D* texture;
 
 };
 
