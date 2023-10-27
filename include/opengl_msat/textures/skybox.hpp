@@ -13,10 +13,11 @@ layout (location = 0) in vec3 aPos;
 out vec3 texCoords;
 
 uniform mat4 projection;
+uniform mat4 view;
 
 void main()
 {
-    gl_Position = projection * vec4(aPos, 1.0);
+    gl_Position = projection * view * vec4(aPos, 1.0);
     texCoords = aPos;
 }
 )";
@@ -62,16 +63,16 @@ public:
     {
         RenderState state;
         state.disable(RenderOption::DepthTesting);
-
         renderer->swapState(state, [&](Renderer* renderer) {
+
             shader.uniform(projection);
             shader.uniform("skybox", 0);
+            shader.uniform("view", glm::mat4(glm::mat3(projection.getView())));
+            shader.uniform("projection", projection.getProjection());
 
-            glDepthMask(GL_FALSE);
             Context::safeWith(shader, [&] {
                 renderer->render(vao);
             });
-            glDepthMask(GL_TRUE);
         });
     }
 
