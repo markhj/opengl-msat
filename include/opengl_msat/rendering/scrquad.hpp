@@ -18,14 +18,30 @@ in vec2 texCoords;
 
 uniform sampler2D tx;
 
+uniform bool grayscale;
+uniform bool inverse;
+
 void main()
 {
     result = texture(tx, texCoords);
+
+    if (grayscale) {
+        float luminance = dot(result.rgb, vec3(0.299, 0.587, 0.114));
+        result = vec4(luminance, luminance, luminance, 1.0);
+    }
+
+    if (inverse) {
+        result = 1.0 - result;
+    }
 }
 )";
 
 class ScreenQuad : DeveloperMessaging {
 public:
+    bool grayscale = false;
+
+    bool inverse = false;
+
     ScreenQuad(Window* window,
                Camera* camera,
                const Vec2& position,
@@ -70,6 +86,8 @@ public:
     {
         shader.safeBind();
         shader.uniform(projection);
+        shader.uniform("grayscale", grayscale);
+        shader.uniform("inverse", inverse);
 
         if (texture->boundToUnit.has_value()) {
             shader.uniform("tx", texture->boundToUnit.value());
