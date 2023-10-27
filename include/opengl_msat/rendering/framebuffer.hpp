@@ -22,18 +22,25 @@ public:
         generate();
     }
 
-    Framebuffer(unsigned int width, unsigned int height, FramebufferAttachment attachment)
-        : width(width), height(height), attachment(attachment)
+    void attach(Texture2D* texture)
     {
-        generate();
+        attach(texture, FramebufferAttachment::Color);
     }
 
-    void attach(Texture2D* texture)
+    void attach(Texture2D* texture, FramebufferAttachment attachment)
     {
         safeBind();
 
         texture->safeBind();
-        glTexImage2D(GL_TEXTURE_2D, 0, getFormat(), width, height, 0, getFormat(), GL_UNSIGNED_BYTE, nullptr);
+        glTexImage2D(GL_TEXTURE_2D,
+                     0,
+                     getFormat(attachment),
+                     width,
+                     height,
+                     0,
+                     getFormat(attachment),
+                     GL_UNSIGNED_BYTE,
+                     nullptr);
 
         texture->applyOptions({
             .downSampling = TextureDownsampling::Linear,
@@ -42,7 +49,11 @@ public:
 
         texture->safeUnbind();
 
-        glFramebufferTexture2D(GL_FRAMEBUFFER, getGLAttachment(), GL_TEXTURE_2D, texture->getTextureId(), 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER,
+                               getGLAttachment(attachment),
+                               GL_TEXTURE_2D,
+                               texture->getTextureId(),
+                               0);
 
         safeUnbind();
     }
@@ -70,9 +81,7 @@ public:
 protected:
     unsigned int fboId, width, height;
 
-    FramebufferAttachment attachment = FramebufferAttachment::Color;
-
-    GLint getFormat()
+    GLint getFormat(FramebufferAttachment attachment)
     {
         switch (attachment) {
             case FramebufferAttachment::Color:
@@ -82,7 +91,7 @@ protected:
         }
     }
 
-    GLint getGLAttachment()
+    GLint getGLAttachment(FramebufferAttachment attachment)
     {
         switch (attachment) {
             case FramebufferAttachment::Color:
