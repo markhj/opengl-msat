@@ -27,10 +27,12 @@ public:
 };
 
 template <typename T>
-class AnimationBlueprint {
+class AnimationBlueprint : DeveloperMessaging {
 public:
     AnimationBlueprint<T>& step(float pctFrom, float pctTo, T to)
     {
+        validateInterval(pctFrom, pctTo);
+
         steps.push_back({
             .from = pctFrom,
             .to = pctTo,
@@ -42,6 +44,8 @@ public:
 
     AnimationBlueprint<T>& step(float pctFrom, float pctTo, T from, T to)
     {
+        validateInterval(pctFrom, pctTo);
+
         steps.push_back({
             .from = pctFrom,
             .to = pctTo,
@@ -54,6 +58,8 @@ public:
 
     AnimationBlueprint<T>& step(float pctFrom, float pctTo, std::function<T(float)> func)
     {
+        validateInterval(pctFrom, pctTo);
+
         steps.push_back({
             .from = pctFrom,
             .to = pctTo,
@@ -97,11 +103,41 @@ private:
 
     std::optional<T> latest;
 
+    void validateInterval(float from, float to)
+    {
+        if (isIntervalOccupied(from, to)) {
+            warn("You have overlapping intervals in an animation.");
+        }
+    }
+
+    bool isIntervalOccupied(float from, float to) const
+    {
+        for (auto step : steps) {
+            if (from >= step.from && from <= step.to) {
+                return true;
+            }
+
+            if (to >= step.from && to <= step.to) {
+                return true;
+            }
+
+            if (from <= step.from && to >= step.from) {
+                return true;
+            }
+
+            if (from <= step.to && to >= step.to) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 };
 
 template <typename T>
 class Animation :
-        public DeveloperMessaging {
+        DeveloperMessaging {
 public:
     Animation(Timer* timer,
               AnimationBlueprint<T>* blueprint,
