@@ -36,7 +36,7 @@ void main()
 }
 )";
 
-class Skybox {
+class Skybox : DeveloperMessaging {
 public:
     explicit Skybox(CubeMap* cubemap, Window* window, Camera* camera)
         : cubemap(cubemap),
@@ -63,10 +63,15 @@ public:
     {
         RenderState state;
         state.disable(RenderOption::DepthTesting);
+
+        if (!cubemap->boundToUnit.has_value()) {
+            warn("Attempting to use cubemap in skybox. But cubemap isn't bound to a texture unit.");
+        }
+
         renderer->swapState(state, [&](Renderer* renderer) {
 
             shader.uniform(projection);
-            shader.uniform("skybox", 0);
+            shader.uniform("skybox", cubemap->boundToUnit.has_value() ? cubemap->boundToUnit.value() : 0);
             shader.uniform("view", glm::mat4(glm::mat3(projection.getView())));
             shader.uniform("projection", projection.getProjection());
 
