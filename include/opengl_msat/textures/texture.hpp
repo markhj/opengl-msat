@@ -8,17 +8,32 @@
 #include "opengl_msat/traits/loads_images.hpp"
 #include "opengl_msat/traits/bindable.hpp"
 
+/**
+ * Texture load status
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/texture-enums/
+ */
 enum class TextureLoadStatus {
     None,
     Partial,
     Success,
 };
 
+/**
+ * Texture type
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/texture-enums/
+ */
 enum class TextureType {
     Texture2D,
     CubeMap,
 };
 
+/**
+ * Texture pattern
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/texture-enums/
+ */
 enum TexturePattern {
     Repeat = GL_REPEAT,
     RepeatMirrored = GL_MIRRORED_REPEAT,
@@ -26,6 +41,11 @@ enum TexturePattern {
     ClampToBorder = GL_CLAMP_TO_BORDER
 };
 
+/**
+ * Texture format
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/texture-enums/
+ */
 enum TextureFormat {
     Red = GL_RED,
     Green = GL_GREEN,
@@ -38,11 +58,21 @@ enum TextureFormat {
     LuminanceAlpha = GL_LUMINANCE_ALPHA,
 };
 
+/**
+ * Texture sampling (general, up)
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/texture-enums/
+ */
 enum class TextureSampling {
     Nearest = GL_NEAREST,
     Linear = GL_LINEAR,
 };
 
+/**
+ * Texture down sampling
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/texture-enums/
+ */
 enum class TextureDownsampling {
     MipmapNearest = GL_NEAREST_MIPMAP_NEAREST,
     MipmapLinear = GL_NEAREST_MIPMAP_NEAREST,
@@ -61,6 +91,11 @@ struct TextureOptions {
     bool mipmap = false;
 };
 
+/**
+ * Texture
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/textures/textures/
+ */
 class Texture :
         LoadsImages,
         public Bindable {

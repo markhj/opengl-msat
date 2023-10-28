@@ -24,6 +24,11 @@ struct VertexElement3D : public VertexElement {
     std::optional<unsigned int> materialId;
 };
 
+/**
+ * Vertex attribute
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/vertex/vertex-attribute/
+ */
 enum class VertexAttribute {
     Position2D,
     Position3D,

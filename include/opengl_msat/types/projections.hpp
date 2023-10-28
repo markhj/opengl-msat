@@ -6,12 +6,22 @@
 #include "opengl_msat/window/window.hpp"
 #include "opengl_msat/camera/camera.hpp"
 
+/**
+ * Project type
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/projections/
+ */
 enum class ProjectionType {
     None,
     Orthographic,
     Perspective
 };
 
+/**
+ * Projection
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/camera/projections/
+ */
 class Projection {
 public:
     ProjectionType type = ProjectionType::None;

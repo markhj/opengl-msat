@@ -12,6 +12,10 @@
 #include "opengl_msat/geometry/vectors.hpp"
 #include "opengl_msat/traits/dev_messaging.hpp"
 
+/**
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/animation-enums/
+ * @see https://opengl-msat.readthedocs.io/en/latest/animation/timing-functions/
+ */
 enum TimingFunction {
     Linear,
     Easing,
@@ -26,6 +30,11 @@ public:
     std::optional<std::function<T(float)>> function;
 };
 
+/**
+ * Animation blueprint
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/animation/blueprint/
+ */
 template <typename T>
 class AnimationBlueprint : DeveloperMessaging {
 public:
@@ -48,6 +57,11 @@ private:
 
 };
 
+/**
+ * Animation
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/animation/animation/
+ */
 template <typename T>
 class Animation :
         DeveloperMessaging {

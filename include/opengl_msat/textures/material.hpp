@@ -5,6 +5,11 @@
 #include "opengl_msat/types/color.hpp"
 #include "texture.hpp"
 
+/**
+ * Material
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/textures/materials/
+ */
 class Material {
 public:
     Color diffuseColor;

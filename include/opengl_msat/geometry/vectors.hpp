@@ -12,6 +12,11 @@ class Vector : public GlmDerivative<GlmVectorType> {
 
 };
 
+/**
+ * 2-dimensional vector
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/vectors-matrices/
+ */
 class Vec2 : public glm::vec2,
         public Vector<glm::vec2>,
         public Animateable<Vec2> {
@@ -31,6 +36,11 @@ public:
     void animate(Vec2 value) override;
 };
 
+/**
+ * 3-dimensional vector
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/vectors-matrices/
+ */
 class Vec3 : public glm::vec3,
         public Vector<glm::vec3>,
         public Animateable<Vec3> {
@@ -50,6 +60,11 @@ public:
     void animate(Vec3 value) override;
 };
 
+/**
+ * 4-dimensional vector
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/vectors-matrices/
+ */
 class Vec4 : public glm::vec4,
              public Vector<glm::vec4>,
              public Animateable<Vec4> {

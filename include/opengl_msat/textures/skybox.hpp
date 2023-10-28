@@ -6,6 +6,11 @@
 #include "opengl_msat/rendering/renderer.hpp"
 #include "opengl_msat/geometry/cube.hpp"
 
+/**
+ * Skybox
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/textures/skybox/
+ */
 class Skybox : DeveloperMessaging {
 public:
     explicit Skybox(CubeMap* cubemap, Window* window, Camera* camera);

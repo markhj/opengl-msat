@@ -10,6 +10,11 @@
 #include "opengl_msat/context/context.hpp"
 #include "opengl_msat/contracts/vao_associable.hpp"
 
+/**
+ * VAO
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/vertex/vao/
+ */
 class VAO : public Bindable {
 public:
     VAO();

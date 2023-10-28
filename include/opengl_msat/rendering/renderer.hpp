@@ -12,6 +12,11 @@
 #include "opengl_msat/camera/camera.hpp"
 #include "opengl_msat/tools/service_provider.hpp"
 
+/**
+ * Renderer
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/render/render/
+ */
 class Renderer {
 public:
     explicit Renderer(Window* window, Camera* camera, Timer* timer)
@@ -38,6 +43,11 @@ public:
 
     void loop(std::function<void(Renderer*)> iter);
 
+    /**
+     * Clear color/depth/stencil buffer
+     *
+     * @see https://opengl-msat.readthedocs.io/en/latest/render/buffer-clearing/
+     */
     void clear() const;
 
     RenderState* state();

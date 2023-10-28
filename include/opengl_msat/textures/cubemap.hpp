@@ -3,6 +3,11 @@
 
 #include "texture.hpp"
 
+/**
+ * Cubemap
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/textures/cubemaps/
+ */
 class CubeMap : public Texture {
 public:
     explicit CubeMap(const std::vector<std::string>& files);

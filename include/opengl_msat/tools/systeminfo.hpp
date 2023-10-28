@@ -10,6 +10,11 @@ struct GPU {
     const char *name, *vendor, *driverVersion;
 };
 
+/**
+ * System info
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/tools/sysinfo/
+ */
 struct SystemInfo {
     const OpenGLVersion openGLVersion;
 

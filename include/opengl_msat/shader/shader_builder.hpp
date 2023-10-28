@@ -4,6 +4,11 @@
 #include <iostream>
 #include "opengl_msat/types/vertex_types.hpp"
 
+/**
+ * Shader builder
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/shader-builders/
+ */
 class ShaderBuilder {
 public:
     virtual void buildSource() = 0;

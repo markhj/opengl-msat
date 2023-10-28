@@ -5,6 +5,11 @@
 #include "opengl_msat/window/window.hpp"
 #include "systeminfo.hpp"
 
+/**
+ * System
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/tools/sysinfo/
+ */
 class System {
 public:
     static SystemInfo getSystemInfo(Window* window);

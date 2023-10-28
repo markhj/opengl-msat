@@ -8,6 +8,13 @@
 #include "shader_builder.hpp"
 #include "opengl_msat/types/vertex_types.hpp"
 
+/**
+ * Fragment shader builder
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/shader-builders/
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/shader/fragment-shader-builder/
+ */
 class FragmentShaderBuilder : public ShaderBuilder {
 public:
     explicit FragmentShaderBuilder(std::vector<VertexAttribute> attributes)

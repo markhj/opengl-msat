@@ -3,6 +3,11 @@
 
 #include <chrono>
 
+/**
+ * Timer
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/misc/timer/
+ */
 class Timer {
 public:
     void start();

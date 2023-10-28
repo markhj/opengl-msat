@@ -6,6 +6,11 @@
 #include "opengl_msat/geometry/vectors.hpp"
 #include "systeminfo.hpp"
 
+/**
+ * Dump
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/tools/dump/
+ */
 class Dump {
 public:
     static void dump(Mat4 value);

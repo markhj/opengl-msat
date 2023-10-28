@@ -11,6 +11,11 @@ enum MessagingBehavior {
     ThrowException,
 };
 
+/**
+ * Developer messaging (trait)
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/tools/messaging/
+ */
 class DeveloperMessaging {
 public:
     static MessagingBehavior noticeBehavior,

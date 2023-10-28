@@ -5,6 +5,11 @@
 #include <iostream>
 #include "opengl_msat/types/render_types.hpp"
 
+/**
+ * Render state
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/render/render-state/
+ */
 class RenderState {
 public:
     RenderState();

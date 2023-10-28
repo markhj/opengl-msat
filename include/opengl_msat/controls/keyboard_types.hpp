@@ -25,6 +25,11 @@ struct KeyboardEvent {
     }
 };
 
+/**
+ * Key enumeration
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/key-enum/
+ */
 enum Key {
     // Controls
     Esc = GLFW_KEY_ESCAPE,

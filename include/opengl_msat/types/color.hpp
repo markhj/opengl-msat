@@ -3,6 +3,11 @@
 
 #include "opengl_msat/geometry/vectors.hpp"
 
+/**
+ * Color (RGB)
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/misc/color/
+ */
 class Color : public Vec3 {
 public:
     explicit Color(float scalar);
@@ -11,6 +16,11 @@ public:
 
 };
 
+/**
+ * Color (RGB + alpha)
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/misc/color/
+ */
 class ColorRGBA : public Vec4 {
 public:
     explicit ColorRGBA(float scalar);

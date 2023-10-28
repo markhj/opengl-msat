@@ -9,6 +9,11 @@
 #include "opengl_msat/contracts/exports_vertices.hpp"
 #include "opengl_msat/contracts/vao_associable.hpp"
 
+/**
+ * VBO
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/vertex/vbo/
+ */
 class VBO : public VAOAssociable {
 public:
     VBO();

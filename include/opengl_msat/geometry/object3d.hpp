@@ -5,6 +5,11 @@
 #include "object_wrapper.hpp"
 #include "opengl_msat/traits/handles_attributes.hpp"
 
+/**
+ * 3D object
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/geometry/object-xd/
+ */
 class Object3D :
         public HandlesAttributes,
         public ObjectWrapper<VertexElement3D, Vec3> {

@@ -7,6 +7,11 @@
 #include "opengl_msat/rendering/renderer.hpp"
 #include "service_provider.hpp"
 
+/**
+ * Grid
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/tools/grid/
+ */
 class Grid {
 public:
     Grid(Window* window, Camera* camera);

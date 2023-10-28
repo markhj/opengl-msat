@@ -5,6 +5,11 @@
 #include "opengl_msat/controls/keyboard.hpp"
 #include "opengl_msat/controls/keyboard_types.hpp"
 
+/**
+ * Window
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/window/window/
+ */
 class Window {
 public:
     Window(unsigned int width, unsigned int height, const char* title)

@@ -7,6 +7,13 @@
 #include <utility>
 #include <vector>
 
+/**
+ * Shader builder
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/shader-builders/
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/shader/vertex-shader-builder/
+ */
 class VertexShaderBuilder : public ShaderBuilder {
 public:
     explicit VertexShaderBuilder(std::vector<VertexAttribute> attributes)

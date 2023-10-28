@@ -6,6 +6,13 @@
 #include "opengl_msat/types/scenes.hpp"
 #include "opengl_msat/traits/handles_attributes.hpp"
 
+/**
+ * VBO managed scene
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/render/scene-management/
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/manage-scene/
+ */
 template <typename ObjectCollection, typename VertexElementXD>
 class SceneManagedVBO :
         public VAOAssociable,

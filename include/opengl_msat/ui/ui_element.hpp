@@ -9,6 +9,11 @@
 #include "opengl_msat/types/color.hpp"
 #include "opengl_msat/geometry/rectangle.hpp"
 
+/**
+ * UI element (base class)
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/ui/ui-elements/
+ */
 class UIElement {
 public:
     virtual std::vector<GLfloat> getVertices() = 0;
@@ -16,6 +21,11 @@ public:
     Vec2 position = Vec2(0.0);
 };
 
+/**
+ * Progress bar
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/ui/progress-bar/
+ */
 class ProgressBar : public UIElement {
 public:
     std::vector<GLfloat> getVertices() override;
@@ -29,6 +39,11 @@ public:
 
 };
 
+/**
+ * UI element mananger
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/ui/ui-elements/
+ */
 class UIElementManager {
 public:
     void attach(UIElement* element);

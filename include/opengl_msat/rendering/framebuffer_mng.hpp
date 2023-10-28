@@ -6,6 +6,11 @@
 #include "opengl_msat/tools/systeminfo.hpp"
 #include "framebuffer.hpp"
 
+/**
+ * Framebuffer manager
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/fbo/fbo-mng/
+ */
 class FramebufferManager : public ManagesMultipleBindings {
 public:
     explicit FramebufferManager(SystemInfo* systemInfo);

@@ -6,6 +6,11 @@
 #include "opengl_msat/shader/vertex_sbldr.hpp"
 #include "opengl_msat/shader/fragment_sbldr.hpp"
 
+/**
+ * Helper
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/tools/helper/
+ */
 class Helper {
 public:
     Helper(Window* window, Camera* camera);

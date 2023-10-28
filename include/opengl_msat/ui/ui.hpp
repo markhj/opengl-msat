@@ -5,6 +5,11 @@
 #include "opengl_msat/vertex/vao.hpp"
 #include "opengl_msat/rendering/renderer.hpp"
 
+/**
+ * User interface (UI)
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/ui/ui/
+ */
 class UI {
 public:
     UI(Window* window, Camera* camera);

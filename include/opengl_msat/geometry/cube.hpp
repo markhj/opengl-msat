@@ -5,6 +5,11 @@
 
 #include "shape.hpp"
 
+/**
+ * Cube
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/geometry/cube/
+ */
 class Cube : public Shape3D {
 public:
     Cube(Vec3 a, Vec3 b) : a(std::move(a)), b(std::move(b)) { }

@@ -5,6 +5,11 @@
 #include "opengl_msat/textures/texture2d.hpp"
 #include "opengl_msat/context/context.hpp"
 
+/**
+ * Framebuffer attachment
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/framebuffer-enums/
+ */
 enum class FramebufferAttachment {
     Color,
     Depth,
@@ -12,6 +17,8 @@ enum class FramebufferAttachment {
 
 /**
  * Framebuffer
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/fbo/fbo/
  *
  * @todo Implement support for multiple color attachment points
  */

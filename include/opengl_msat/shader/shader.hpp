@@ -13,6 +13,13 @@
 #include <iostream>
 #include <map>
 
+/**
+ * Shader program
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/shader/shader/
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/shader/uniform/
+ */
 class ShaderProgram :
         public Bindable {
 public:

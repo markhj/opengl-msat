@@ -5,6 +5,11 @@
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/window/window.hpp"
 
+/**
+ * Camera
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/camera/camera/
+ */
 class Camera {
 public:
     Vec3 position = Vec3(1.0),

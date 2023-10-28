@@ -8,6 +8,11 @@
 #include "texture.hpp"
 #include "opengl_msat/shader/shader.hpp"
 
+/**
+ * Texture unit manager
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/textures/tum/
+ */
 class TextureUnitManager :
         public ManagesMultipleBindings {
 public:

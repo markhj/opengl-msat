@@ -10,6 +10,11 @@ class Matrix : public GlmDerivative<GlmMatrixType> {
 
 };
 
+/**
+ * 4x4 Matrix
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/vectors-matrices/
+ */
 class Mat4 : public glm::mat4, public Matrix<glm::mat4> {
 public:
     explicit Mat4(float val) : glm::mat4(val) { }

@@ -10,6 +10,13 @@
 #include "renderer.hpp"
 #include "opengl_msat/textures/texture2d.hpp"
 
+/**
+ * Screen quad
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/fbo/screen-quad/
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/fbo/screen-quad-fx/
+ */
 class ScreenQuad : DeveloperMessaging {
 public:
     bool grayscale = false;

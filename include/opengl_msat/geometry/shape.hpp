@@ -7,6 +7,11 @@
 #include "opengl_msat/contracts/exports_vertices.hpp"
 #include "object3d.hpp"
 
+/**
+ * 3D shape
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/geometry/shapes/
+ */
 class Shape3D :
         public ExportsVertices<VertexElement3D> {
 public:
@@ -31,6 +36,7 @@ protected:
 
 private:
     std::vector<VertexElement3D> vertices;
+
 };
 
 #endif

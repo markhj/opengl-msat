@@ -9,6 +9,11 @@
 #include "opengl_msat/common.h"
 #include "keyboard_types.hpp"
 
+/**
+ * Keyboard mapping
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/keyboard/
+ */
 class KeyboardMapping {
 public:
     void onPress(Key key, std::function<void()> action);

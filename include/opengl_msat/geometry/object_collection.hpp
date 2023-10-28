@@ -6,6 +6,11 @@
 #include "object3d.hpp"
 #include "object2d.hpp"
 
+/**
+ * Object collection
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/geometry/object-collection/
+ */
 template <typename ObjectXD, typename VertexElementXD>
 class ObjectCollection :
         public ExportsVertices<VertexElementXD> {

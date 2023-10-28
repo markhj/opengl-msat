@@ -4,6 +4,11 @@
 #include "opengl_msat/common.h"
 #include "keyboard_mapping.hpp"
 
+/**
+ * Keyboard
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/keyboard/
+ */
 class Keyboard {
 public:
     Keyboard() = default;

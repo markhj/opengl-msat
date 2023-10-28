@@ -3,6 +3,11 @@
 
 #include "opengl_msat/common.h"
 
+/**
+ * Shader stage
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/shader-stage/
+ */
 enum ShaderStage {
     Vertex = GL_VERTEX_SHADER,
     Fragment = GL_FRAGMENT_SHADER,
