@@ -3,6 +3,8 @@
 
 #include <map>
 #include "opengl_msat/contracts/exports_vertices.hpp"
+#include "object3d.hpp"
+#include "object2d.hpp"
 
 template <typename ObjectXD, typename VertexElementXD>
 class ObjectCollection :
@@ -28,5 +30,8 @@ private:
     unsigned int currentIndex = 0;
 
 };
+
+template class ObjectCollection<Object3D, VertexElement3D>;
+template class ObjectCollection<Object2D, VertexElement2D>;
 
 #endif

@@ -29,7 +29,7 @@ private:
     double deltaTime = 0.0,
         renderTime = 0.0;
 
-    float* trackDelta;
+    float* trackDelta = nullptr;
 
     bool absoluteStarted = false,
         hasDeltaTime = false;

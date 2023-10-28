@@ -40,6 +40,7 @@ set(CLASSES
         types/color
         types/image
         types/projections
+        types/scenes
         types/vertex_types
         traits/handles_attributes
         traits/dev_messaging

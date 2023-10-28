@@ -59,5 +59,3 @@ std::vector<ObjectXD *> ObjectCollection<ObjectXD, VertexElementXD>::getObjects(
     return objects;
 }
 
-template class ObjectCollection<Object2D, VertexElement2D>;
-template class ObjectCollection<Object3D, VertexElement3D>;

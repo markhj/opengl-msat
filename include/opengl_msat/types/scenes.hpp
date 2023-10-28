@@ -8,23 +8,15 @@
 class Scene2D :
         public ObjectCollection<Object2D, VertexElement2D> {
 public:
-    explicit Scene2D(const std::vector<Object2D*>& objects)
-    {
-        for (Object2D* obj : objects) {
-            add(obj);
-        }
-    }
+    explicit Scene2D(const std::vector<Object2D*>& objects);
+
 };
 
 class Scene3D :
         public ObjectCollection<Object3D, VertexElement3D> {
 public:
-    explicit Scene3D(const std::vector<Object3D*>& objects)
-    {
-        for (Object3D* obj : objects) {
-            add(obj);
-        }
-    }
+    explicit Scene3D(const std::vector<Object3D*>& objects);
+
 };
 
 #endif
