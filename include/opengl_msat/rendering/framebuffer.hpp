@@ -17,104 +17,30 @@ enum class FramebufferAttachment {
  */
 class Framebuffer : public Bindable {
 public:
-    Framebuffer(unsigned int width, unsigned int height) : width(width), height(height)
-    {
-        generate();
-    }
+    Framebuffer(unsigned int width, unsigned int height);
 
-    void attach(Texture2D* texture)
-    {
-        attach(texture, FramebufferAttachment::Color);
-    }
+    void attach(Texture2D* texture);
 
-    void attach(Texture2D* texture, FramebufferAttachment attachment)
-    {
-        safeBind();
+    void attach(Texture2D* texture, FramebufferAttachment attachment);
 
-        texture->safeBind();
-        glTexImage2D(GL_TEXTURE_2D,
-                     0,
-                     getFormat(attachment),
-                     width,
-                     height,
-                     0,
-                     getFormat(attachment),
-                     GL_UNSIGNED_BYTE,
-                     nullptr);
+    [[nodiscard]] unsigned int getId() const;
 
-        texture->applyOptions({
-            .downSampling = TextureDownsampling::Linear,
-            .upSampling = TextureSampling::Linear,
-        });
+    void clear();
 
-        texture->safeUnbind();
-
-        glFramebufferTexture2D(GL_FRAMEBUFFER,
-                               getGLAttachment(attachment),
-                               GL_TEXTURE_2D,
-                               texture->getTextureId(),
-                               0);
-
-        safeUnbind();
-    }
-
-    unsigned int getId()
-    {
-        return fboId;
-    }
-
-    void clear()
-    {
-        safeBind();
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-        safeUnbind();
-    }
-
-    void use(std::function<void()> fnc)
-    {
-        clear();
-        bind();
-        fnc();
-        unbind();
-    }
+    void use(std::function<void()> fnc);
 
 protected:
     unsigned int fboId, width, height;
 
-    GLint getFormat(FramebufferAttachment attachment)
-    {
-        switch (attachment) {
-            case FramebufferAttachment::Color:
-                return GL_RGB;
-            case FramebufferAttachment::Depth:
-                return GL_DEPTH_COMPONENT;
-        }
-    }
+    GLint getFormat(FramebufferAttachment attachment);
 
-    GLint getGLAttachment(FramebufferAttachment attachment)
-    {
-        switch (attachment) {
-            case FramebufferAttachment::Color:
-                return GL_COLOR_ATTACHMENT0;
-            case FramebufferAttachment::Depth:
-                return GL_DEPTH_ATTACHMENT;
-        }
-    }
+    GLint getGLAttachment(FramebufferAttachment attachment);
 
-    void generate()
-    {
-        glGenFramebuffers(1, &fboId);
-    }
+    void generate();
 
-    void doBind() override
-    {
-        glBindFramebuffer(GL_FRAMEBUFFER, fboId);
-    }
+    void doBind() override;
 
-    void doUnbind() override
-    {
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    }
+    void doUnbind() override;
 
 };
 
