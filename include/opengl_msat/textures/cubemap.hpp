@@ -5,25 +5,12 @@
 
 class CubeMap : public Texture {
 public:
-    explicit CubeMap(const std::vector<std::string>& files)
-        : Texture(TextureType::CubeMap, files, {})
-    {
-        validateCreation(files);
-    }
+    explicit CubeMap(const std::vector<std::string>& files);
 
-    CubeMap(const std::vector<std::string>& files, TextureOptions options)
-        : Texture(TextureType::CubeMap, files, options)
-    {
-        validateCreation(files);
-    }
+    CubeMap(const std::vector<std::string>& files, TextureOptions options);
 
 private:
-    void validateCreation(const std::vector<std::string>& files)
-    {
-        if (files.size() != 6) {
-            warn("You should provide exactly 6 filenames to a cubemap.");
-        }
-    }
+    void validateCreation(const std::vector<std::string>& files);
 
 };
 

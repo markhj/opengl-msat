@@ -8,28 +8,14 @@
 
 class FramebufferManager : public ManagesMultipleBindings {
 public:
-    explicit FramebufferManager(SystemInfo* systemInfo) : systemInfo(systemInfo)
-    {
+    explicit FramebufferManager(SystemInfo* systemInfo);
 
-    }
+    [[nodiscard]] unsigned int getAvailableSlots() const override;
 
-    [[nodiscard]] unsigned int getAvailableSlots() const
-    {
-        return systemInfo->maxFramebuffers;
-    }
-
-    [[nodiscard]] unsigned int getBoundTo() const
-    {
-        GLuint boundFramebuffer;
-        glGetIntegerv(GL_FRAMEBUFFER_BINDING, reinterpret_cast<GLint*>(&boundFramebuffer));
-        return boundFramebuffer;
-    }
+    [[nodiscard]] unsigned int getBoundTo() const override;
 
 protected:
-    void doBindTo(unsigned int slot) override
-    {
-        glBindFramebuffer(GL_FRAMEBUFFER, slot);
-    }
+    void doBindTo(unsigned int slot) override;
 
     SystemInfo* systemInfo;
 

@@ -19,26 +19,11 @@
 class ManagesMultipleBindings :
         DeveloperMessaging {
 public:
-    void bindTo(unsigned int target)
-    {
-        if (target > getAvailableSlots()) {
-            warn("You are binding a higher slot number than what the current system has available");
-        }
+    void bindTo(unsigned int target);
 
-        doBindTo(target);
-    }
+    void unbind();
 
-    void unbind()
-    {
-        bindTo(0);
-    }
-
-    void with(unsigned int slot, const std::function<void()>& callable)
-    {
-        bindTo(slot);
-        callable();
-        unbind();
-    }
+    void with(unsigned int slot, const std::function<void()>& callable);
 
     virtual unsigned int getAvailableSlots() const = 0;
 
