@@ -1,6 +1,9 @@
 # Texture related enumerations
 
 ## Texture load status
+
+Indicates the success rate of a [Texture](../textures/textures.md) to load its image files.
+
 | Enumeration                    | Description                                                                                      |
 |--------------------------------|--------------------------------------------------------------------------------------------------|
 | ``TextureLoadStatus::None``    | If no texture is loaded                                                                          |
@@ -25,6 +28,9 @@ How should a texture behave when the coordinates are above ``1.0``.
 | ``TexturePattern::ClampToBorder``               | Clamp to border             |
 
 ## Texture format
+
+Used to specify the format of a [Texture](../textures/textures.md).
+
 | Enumeration                         | Description       |
 |-------------------------------------|-------------------|
 | ``TextureFormat::Red``              | Red               |

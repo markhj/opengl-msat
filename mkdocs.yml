@@ -63,6 +63,7 @@ nav:
       - Framebuffers:
         - Framebuffer basics: fbo/fbo.md
         - Framebuffer manager: fbo/fbo-mng.md
+        - Attachments: fbo/attachments.md
         - Depth mapping: fbo/depth-mapping.md
         - Screen quad: fbo/screen-quad.md
         - Screen quad effects: fbo/screen-quad-fx.md
