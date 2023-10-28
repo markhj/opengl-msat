@@ -20,14 +20,14 @@ struct SystemInfo {
 
     const GPU gpu;
 
-    const int maxTextureUnits;
-    const int maxTextureSize;
-    const int maxTextureSizeCubemap;
-    const int maxTextureSize3D;
-
-    const int maxUniformLocations;
-
-    const int maxFramebuffers, framebufferMaxWidth, framebufferMaxHeight;
+    const int maxTextureUnits,
+        maxTextureSize,
+        maxTextureSizeCubemap,
+        maxTextureSize3D,
+        maxUniformLocations,
+        maxFramebuffers,
+        framebufferMaxWidth,
+        framebufferMaxHeight;
 };
 
 #endif

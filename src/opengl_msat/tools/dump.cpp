@@ -14,6 +14,11 @@ void Dump::dump(Mat4 value)
     std::cout << std::endl;
 }
 
+void Dump::dump(Vec4 value)
+{
+    std::cout << "{ " << value.x << " , " << value.y << " , " << value.z << " , " << value.w << " }";
+}
+
 void Dump::dump(Vec3 value)
 {
     std::cout << "{ " << value.x << " , " << value.y << " , " << value.z << " }";
@@ -44,6 +49,7 @@ void Dump::dump(SystemInfo systemInfo)
     result += cell("Max. cubemap texture size", std::to_string(systemInfo.maxTextureSizeCubemap));
 
     result += dumpTitle("Framebuffers");
+    result += cell("Max. framebuffers", std::to_string(systemInfo.maxFramebuffers));
     result += cell("Max. dimensions", std::to_string(systemInfo.framebufferMaxWidth) + " x " + std::to_string(systemInfo.framebufferMaxHeight));
 
     result += dumpTitle("Misc.");

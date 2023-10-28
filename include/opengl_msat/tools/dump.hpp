@@ -15,6 +15,8 @@ class Dump {
 public:
     static void dump(Mat4 value);
 
+    static void dump(Vec4 value);
+
     static void dump(Vec3 value);
 
     static void dump(Vec2 value);
