@@ -39,6 +39,7 @@ set(CLASSES
         timer/timer
         types/color
         types/image
+        types/projections
         types/vertex_types
         traits/handles_attributes
         traits/dev_messaging
