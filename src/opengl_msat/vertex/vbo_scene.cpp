@@ -6,7 +6,7 @@ unsigned int SceneManagedVBO<ObjectCollection, VertexElementXD>::byteSize()
     return vbo.byteSize();
 }
 
-template<typename ObjectCollection, tgit ypename VertexElementXD>
+template<typename ObjectCollection, typename VertexElementXD>
 unsigned int SceneManagedVBO<ObjectCollection, VertexElementXD>::count()
 {
     return vbo.count();
