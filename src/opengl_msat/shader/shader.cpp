@@ -285,6 +285,7 @@ void ShaderProgram::uniform(std::string name, Material value)
     uniform(name + ".diffuseColor", value.diffuseColor);
     uniform(name + ".shininess", value.shininess);
     uniformBindTexture(name + ".albedoTextureUnit", value.albedoTexture);
+    uniformBindTexture(name + ".normalTextureUnit", value.normalTexture);
 }
 
 void ShaderProgram::uniform(std::string arrName, unsigned int index, Material value)

@@ -25,7 +25,9 @@ void FragmentShaderBuilder::buildSource()
 
     // Materials
     if (enableMaterials) {
-        addLine("struct Material { vec3 diffuseColor; int albedoTextureUnit; float shininess; };");
+        addLine("struct Material {"
+                "vec3 diffuseColor; int albedoTextureUnit; int normalTextureUnit; float shininess;"
+                "};");
         addLine("uniform Material[" + std::to_string(materialSlots) + "] materials;");
 
         addLine("uniform sampler2D[" + std::to_string(textureSlots) + "] textures;");
