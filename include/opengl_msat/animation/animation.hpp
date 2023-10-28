@@ -29,109 +29,22 @@ public:
 template <typename T>
 class AnimationBlueprint : DeveloperMessaging {
 public:
-    AnimationBlueprint<T>& step(float pctFrom, float pctTo, T to)
-    {
-        validateInterval(pctFrom, pctTo);
+    AnimationBlueprint<T>& step(float pctFrom, float pctTo, T to);
 
-        steps.push_back({
-            .from = pctFrom,
-            .to = pctTo,
-            .tTo = to
-        });
+    AnimationBlueprint<T>& step(float pctFrom, float pctTo, T from, T to);
 
-        return *this;
-    }
+    AnimationBlueprint<T>& step(float pctFrom, float pctTo, std::function<T(float)> func);
 
-    AnimationBlueprint<T>& step(float pctFrom, float pctTo, T from, T to)
-    {
-        validateInterval(pctFrom, pctTo);
-
-        steps.push_back({
-            .from = pctFrom,
-            .to = pctTo,
-            .tFrom = from,
-            .tTo = to
-        });
-
-        return *this;
-    }
-
-    AnimationBlueprint<T>& step(float pctFrom, float pctTo, std::function<T(float)> func)
-    {
-        validateInterval(pctFrom, pctTo);
-
-        steps.push_back({
-            .from = pctFrom,
-            .to = pctTo,
-            .function = func,
-        });
-
-        return *this;
-    }
-
-    void animate(float pct, float realPct, Animateable<T>* target)
-    {
-        for (AnimationStep step : steps) {
-            if (step.from <= pct && pct <= step.to) {
-                float usePct = 100 * (pct - step.from) / (step.to - step.from);
-                if (step.function.has_value()) {
-                    latest = step.function.value()(usePct);
-                    target->animate(latest.value());
-                } else if (step.tFrom.has_value() && step.tTo.has_value()) {
-                    target->animate(usePct,
-                                    step.tFrom.value(),
-                                    step.tTo.value()
-                                    );
-                    if (realPct == 100) {
-                        latest = step.tTo.value();
-                    }
-                } else if (step.tTo.has_value() && latest.has_value()) {
-                    target->animate(usePct,
-                                    latest.value(),
-                                    step.tTo.value()
-                    );
-                    if (realPct == 100) {
-                        latest = step.tTo.value();
-                    }
-                }
-            }
-        }
-    }
+    void animate(float pct, float realPct, Animateable<T>* target);
 
 private:
     std::vector<AnimationStep<T>> steps;
 
     std::optional<T> latest;
 
-    void validateInterval(float from, float to)
-    {
-        if (isIntervalOccupied(from, to)) {
-            warn("You have overlapping intervals in an animation.");
-        }
-    }
+    void validateInterval(float from, float to);
 
-    bool isIntervalOccupied(float from, float to) const
-    {
-        for (auto step : steps) {
-            if (from >= step.from && from <= step.to) {
-                return true;
-            }
-
-            if (to >= step.from && to <= step.to) {
-                return true;
-            }
-
-            if (from <= step.from && to >= step.from) {
-                return true;
-            }
-
-            if (from <= step.to && to >= step.to) {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    bool isIntervalOccupied(float from, float to) const;
 
 };
 
@@ -141,152 +54,38 @@ class Animation :
 public:
     Animation(Timer* timer,
               AnimationBlueprint<T>* blueprint,
-              std::vector<Animateable<T>*> targets)
-              : timer(timer), blueprint(blueprint), targets(targets)
-              { }
+              std::vector<Animateable<T>*> targets);
 
     Animation(Timer* timer,
               AnimationBlueprint<T>* blueprint,
               std::vector<Animateable<T>*> targets,
-              float duration)
-              : timer(timer), blueprint(blueprint), targets(targets), duration(duration)
-              { }
+              float duration);
 
-    Animation<T> setDuration(float value)
-    {
-        if (isStarted()) {
-            return *this;
-        }
+    Animation<T> setDuration(float value);
 
-        duration = value;
+    Animation<T> setIterations(unsigned int value);
 
-        return *this;
-    }
+    Animation<T> infinite();
 
-    Animation<T> setIterations(unsigned int value)
-    {
-        if (isStarted()) {
-            return *this;
-        }
+    Animation<T> setTimingFunction(std::function<float(float)> func);
 
-        iterations = value;
+    Animation<T> setTimingFunction(TimingFunction func);
 
-        return *this;
-    }
+    void tick();
 
-    Animation<T> infinite()
-    {
-        infiniteIteration = true;
+    void start();
 
-        return *this;
-    }
+    void resume();
 
-    Animation<T> setTimingFunction(std::function<float(float)> func)
-    {
-        if (func(100) != 100) {
-            warn("Custom timing function does not return 100 when 100 is given.");
-        }
+    void pause();
 
-        timingFunction = func;
+    void stop();
 
-        return *this;
-    }
+    void rewind();
 
-    Animation<T> setTimingFunction(TimingFunction func)
-    {
-        switch (func) {
-            case TimingFunction::Linear:
-                setTimingFunction([](float pct) {
-                    return pct;
-                });
-                break;
-            case TimingFunction::Easing:
-                setTimingFunction([](float pct) {
-                    pct = std::clamp(pct / 100.0, 0.0, 1.0);
-                    float easedValue;
-                    if (pct < 0.5) {
-                        easedValue = 4.0 * pow(pct, 3);
-                    } else {
-                        easedValue = 1.0 + 4.0 * pow(pct - 1.0, 3);
-                    }
-                    return easedValue * 100.0;
-                });
-                break;
-        }
-        return *this;
-    }
+    bool isStarted();
 
-    void tick()
-    {
-        if (!isStarted() || !isRunning()) {
-            return;
-        }
-
-        pos += timer->getDeltaTime();
-        if (pos > duration) {
-            pos = duration;
-        }
-
-        float realPct = 100 * pos / duration;
-        float usePct = realPct;
-        if (timingFunction.has_value()) {
-            usePct = timingFunction.value()(usePct);
-        }
-
-        for (Animateable<T>* target : targets) {
-            blueprint->animate(usePct, realPct, target);
-        }
-
-        checkForStop();
-    }
-
-    void start()
-    {
-        rewind();
-        currentIteration = 1;
-        started = true;
-        running = true;
-    }
-
-    void resume()
-    {
-        if (!isStarted()) {
-            return;
-        }
-
-        running = true;
-    }
-
-    void pause()
-    {
-        if (!isStarted()) {
-            return;
-        }
-
-        running = false;
-    }
-
-    void stop()
-    {
-        rewind();
-        started = false;
-        running = false;
-    }
-
-    void rewind()
-    {
-        pos = 0.0;
-    }
-
-    bool isStarted()
-    {
-        return started;
-    }
-
-    bool isRunning()
-    {
-        return running;
-    }
+    bool isRunning();
 
 private:
     Timer *timer;
@@ -311,20 +110,11 @@ private:
 
     std::optional<std::function<float(float)>> timingFunction;
 
-    void checkForStop()
-    {
-        if (pos < duration) {
-            return;
-        }
-
-        if (currentIteration >= iterations && !infiniteIteration) {
-            stop();
-        } else {
-            currentIteration++;
-            rewind();
-        }
-    }
+    void checkForStop();
 
 };
+
+template class AnimationBlueprint<Vec3>;
+template class Animation<Vec3>;
 
 #endif
