@@ -28,6 +28,8 @@ public:
 
     [[nodiscard]] Mat4 calculate() const;
 
+    Camera* getCamera() const;
+
 private:
     Window* window;
 

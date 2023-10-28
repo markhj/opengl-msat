@@ -25,7 +25,7 @@ void FragmentShaderBuilder::buildSource()
 
     // Materials
     if (enableMaterials) {
-        addLine("struct Material { vec3 diffuseColor; int albedoTextureUnit; };");
+        addLine("struct Material { vec3 diffuseColor; int albedoTextureUnit; float shininess; };");
         addLine("uniform Material[" + std::to_string(materialSlots) + "] materials;");
 
         addLine("uniform sampler2D[" + std::to_string(textureSlots) + "] textures;");
@@ -54,8 +54,7 @@ void FragmentShaderBuilder::buildSource()
                 "uniform int numPointLights = 0;\n"
                 "uniform int numSpotLights = 0;\n");
 
-        addLine("vec3 calcDirectionalLight(DirectionalLight light) {\n"
-                "float shininess = 32.0;\n"
+        addLine("vec3 calcDirectionalLight(DirectionalLight light, float shininess) {\n"
                 "vec3 viewDir = normalize(camera.position - pos);\n"
                 "vec3 lightDir = normalize(-light.direction);\n"
                 "vec3 diffuse = light.diffuseColor * max(dot(normal, lightDir), 0.0);\n"
@@ -64,8 +63,7 @@ void FragmentShaderBuilder::buildSource()
                 "return light.ambientColor + diffuse + specular;\n"
                 "}");
 
-        addLine("vec3 calcPointLight(PointLight light) {\n"
-                "float shininess = 32.0;\n"
+        addLine("vec3 calcPointLight(PointLight light, float shininess) {\n"
                 "vec3 viewDir = normalize(camera.position - pos);\n"
                 "vec3 lightDir = normalize(light.position - pos);\n"
                 "float diff = max(dot(normal, lightDir), 0.0);\n"
@@ -80,8 +78,7 @@ void FragmentShaderBuilder::buildSource()
                 "return (ambient + diffuse + specular);\n"
                 "}\n");
 
-        addLine("vec3 calcSpotLight(SpotLight light) {\n"
-                "float shininess = 32.0;\n"
+        addLine("vec3 calcSpotLight(SpotLight light, float shininess) {\n"
                 "vec3 viewDir = normalize(camera.position - pos);\n"
                 "vec3 result = vec3(0.0, 0.0, 0.0);\n"
                 "vec3 lightDir = normalize(light.position - pos);\n"
@@ -116,15 +113,18 @@ void FragmentShaderBuilder::buildSource()
     addLine("void main() {\n");
 
     if (enableLighting) {
+        std::string shininess = enableMaterials
+                ? "materials[int(materialId)].shininess"
+                : "32.0";
         addLine("vec3 clr = vec3(0.0, 0.0, 0.0);\n"
                 "for (int i = 0; i < numDirectionalLights; i++) {\n"
-                "clr += calcDirectionalLight(directionalLights[i]);\n"
+                "clr += calcDirectionalLight(directionalLights[i], " + shininess + ");\n"
                 "}\n"
                 "for (int i = 0; i < numPointLights; i++) {\n"
-                "clr += calcPointLight(pointLights[i]);\n"
+                "clr += calcPointLight(pointLights[i], " + shininess + ");\n"
                 "}\n"
                 "for (int i = 0; i < numSpotLights; i++) {\n"
-                "clr += calcSpotLight(spotLights[i]);\n"
+                "clr += calcSpotLight(spotLights[i], " + shininess + ");\n"
                 "}\n"
         );
     }

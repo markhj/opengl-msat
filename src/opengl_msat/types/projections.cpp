@@ -52,3 +52,8 @@ Mat4 Projection::calculate() const
     }
     return getProjection() * getView();
 }
+
+Camera *Projection::getCamera() const
+{
+    return camera;
+}

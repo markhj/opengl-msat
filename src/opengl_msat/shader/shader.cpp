@@ -283,6 +283,7 @@ void ShaderProgram::uniformBindTexture(const std::string& name, std::optional<Te
 void ShaderProgram::uniform(std::string name, Material value)
 {
     uniform(name + ".diffuseColor", value.diffuseColor);
+    uniform(name + ".shininess", value.shininess);
     uniformBindTexture(name + ".albedoTextureUnit", value.albedoTexture);
 }
 
@@ -294,4 +295,5 @@ void ShaderProgram::uniform(std::string arrName, unsigned int index, Material va
 void ShaderProgram::uniform(Projection &projection)
 {
     uniform("projection", projection.calculate());
+    uniform(*projection.getCamera());
 }

@@ -9,6 +9,7 @@ class Material {
 public:
     Color diffuseColor;
     std::optional<Texture*> albedoTexture;
+    float shininess = 32.0;
 };
 
 #endif
