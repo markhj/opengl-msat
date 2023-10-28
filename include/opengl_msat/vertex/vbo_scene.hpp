@@ -11,54 +11,19 @@ class SceneManagedVBO :
         public VAOAssociable,
         public HandlesAttributes {
 public:
-    SceneManagedVBO(ObjectCollection* oc, std::vector<VertexAttribute> attributes) :
-        scene(oc),
-        attributes(std::move(attributes)),
-        vbo(VBO())
-    {
+    SceneManagedVBO(ObjectCollection* oc, std::vector<VertexAttribute> attributes);
 
-    }
+    void doBind() override;
 
-    void doBind() override
-    {
-        vbo.bind();
-    }
+    void doUnbind() override;
 
-    void doUnbind() override
-    {
-        vbo.unbind();
-    }
+    void upload() override;
 
-    void upload() override
-    {
-        vbo.setVertices(scene->getVerticesFlattened(attributes));
-        vbo.upload();
-    };
+    void upload(std::vector<ObjectXD<VertexElementXD>*> objects);
 
-    void upload(std::vector<ObjectXD<VertexElementXD>*> objects)
-    {
-        for (ObjectXD<VertexElementXD>* obj : objects) {
-            for (auto v : scene->getObjects()) {
-                if (v == obj) {
-                    std::optional<unsigned int> index = scene->getVertexIndex(v);
-                    if (index.has_value()) {
-                        vbo.substitute(obj->getVerticesFlattened(attributes),
-                                       index.value() * getSizeOfAttributes(attributes));
-                    }
-                }
-            }
-        }
-    }
+    unsigned int count() override;
 
-    unsigned int count() override
-    {
-        return vbo.count();
-    };
-
-    unsigned int byteSize() override
-    {
-        return vbo.byteSize();
-    };
+    unsigned int byteSize() override;
 
 protected:
     ObjectCollection* scene;
@@ -67,6 +32,9 @@ protected:
 
     VBO vbo;
 };
+
+template class SceneManagedVBO<Scene3D, VertexElement3D>;
+template class SceneManagedVBO<Scene2D, VertexElement2D>;
 
 class VBOScene3D : public SceneManagedVBO<Scene3D, VertexElement3D> {
 public:
