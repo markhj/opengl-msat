@@ -13,38 +13,90 @@ nav:
     - Going 3D: getting-started/going-3d.md
     - Custom shaders: getting-started/custom-shaders.md
     - Debugging: getting-started/debugging.md
-  - Vertices:
-    - VAO: vertex/vao.md
-    - VBO: vertex/vbo.md
-    - Vertex attributes: vertex/vertex-attribute.md
-  - Shaders:
-    - Shaders: shader/shader.md
-    - Vertex shader builder: shader/vertex-shader-builder.md
-    - Fragment shader builder: shader/fragment-shader-builder.md
-  - Rendering:
+  - Guides:
+    - Texturing and materials: getting-started/texturing.md
+    - Adding lights: getting-started/lights.md
+    - Basic animations: getting-started/animations.md
+    - Managing a scene: getting-started/manage-scene.md
+    - Normal mapping: getting-started/normal-mapping.md
+    - Use a framebuffer: getting-started/framebuffer.md
+    - Create picture-in-picture: getting-started/pip.md
+    - Creating a UI: getting-started/ui.md
+  - Concepts:
+      - Vertices:
+          - VAO: vertex/vao.md
+          - VBO: vertex/vbo.md
+          - Vertex attributes: vertex/vertex-attribute.md
+      - Geometry:
+          - Cube: geometry/cube.md
+          - Shapes: geometry/shapes.md
+          - ObjectXD: geometry/object-xd.md
+          - Transforms: geometry/transforms.md
+      - Shaders:
+          - Shaders: shader/shader.md
+          - Uniform values: shader/uniform.md
+          - Vertex shader builder: shader/vertex-shader-builder.md
+          - Fragment shader builder: shader/fragment-shader-builder.md
+      - Camera and projection:
+          - Camera: camera/camera.md
+          - Projections: lists/projections.md
+      - Lights:
+        - Directional light: lights/directional.md
+        - Point light: lights/point-light.md
+        - Spot light: lights/spot-light.md
+        - Normal mapping: lights/normal-mapping.md
+      - Textures:
+        - Texture basics: textures/textures.md
+        - Materials: textures/materials.md
+        - Texture unit manager: textures/tum.md
+        - Cubemaps: textures/cubemaps.md
+        - Skybox: textures/skybox.md
+      - Controls:
+        - Keyboard: controls/keyboard.md
+        - Key enum: controls/key-enum.md
+      - Animation:
+          - Animation basics: animation/animation.md
+          - Blueprints: animation/blueprint.md
+          - Control: animation/control.md
+          - Timing functions: animation/timing-functions.md
+      - Framebuffers:
+        - Framebuffer basics: fbo/fbo.md
+        - Depth mapping: fbo/depth-mapping.md
+        - Screen quad: fbo/screen-quad.md
+        - Screen quad effects: fbo/screen-quad-fx.md
+      - UI:
+        - UI basics: ui/ui.md
+        - UI elements: ui/ui-elements.md
+  - Rendering and management:
     - Rendering: render/render.md
     - Settings: render/render-settings.md
     - State: render/render-state.md
-  - Camera:
-    - Camera: camera/camera.md
-    - Projections: lists/projections.md
-  - Controls:
-    - Keyboard: controls/keyboard.md
-    - Key enum: controls/key-enum.md
-  - Binding and context:
-    - Context: context/context.md
-    - Bindable: context/bindable.md
-    - Bindable classes: lists/bindable-classes.md
+    - Scene management: render/scene-management.md
+    - Buffer clearing: render/buffer-clearing.md
   - Misc.:
-    - Timer: timer/timer.md
-  - Debugging:
+    - Timer: misc/timer.md
+    - Math: misc/math.md
+    - Types:
+      - Color: misc/color.md
+      - Image: misc/image.md
+    - Binding and context:
+      - Context: context/context.md
+      - Bindable: context/bindable.md
+      - Bindable classes: lists/bindable-classes.md
+  - Debugging and helpers:
     - System info: tools/sysinfo.md
     - Messaging: tools/messaging.md
+    - Helper: tools/helper.md
+    - Grid: tools/grid.md
+    - Dump: tools/dump.md
   - Enumerations:
     - Projections: lists/projections.md
     - Shader stages: lists/shader-stage.md
     - Vertex attributes: vertex/vertex-attribute.md
     - Keys: controls/key-enum.md
-    - Projections: lists/render-options.md
+    - Render options: lists/render-options.md
+    - Framebuffers: lists/framebuffer-enums.md
+    - Animations: lists/animation-enums.md
+    - Textures: lists/texture-enums.md
   - Troubleshooting: troubleshooting.md
   - Roadmap: roadmap.md

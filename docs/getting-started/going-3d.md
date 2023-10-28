@@ -68,7 +68,7 @@ shader.fromBuilder(vsb);
 ````
 
 ## Initialize renderer
-We're also going to add [Timer](../timer/timer.md) and [RenderSettings](../render/render-settings.md) to
+We're also going to add [Timer](../misc/timer.md) and [RenderSettings](../render/render-settings.md) to
 the instantiation of the ``Renderer``.
 
 ````c++

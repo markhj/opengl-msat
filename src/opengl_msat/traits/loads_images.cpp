@@ -24,7 +24,5 @@ std::optional<Image> LoadsImages::loadImage(std::string filename)
         .channels = static_cast<unsigned int>(nrChannels)
     };
 
-//    stbi_image_free(data);
-
     return result;
 }
