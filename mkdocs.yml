@@ -73,7 +73,7 @@ nav:
         - UI elements: ui/ui-elements.md
         - Components:
           - Progress bar: ui/progress-bar.md
-  - Rendering and management:
+  - Rendering:
     - Rendering: render/render.md
     - Settings: render/render-settings.md
     - State: render/render-state.md
@@ -89,7 +89,7 @@ nav:
       - Context: context/context.md
       - Bindable: context/bindable.md
       - Bindable classes: lists/bindable-classes.md
-  - Debugging and helpers:
+  - Debugging:
     - System info: tools/sysinfo.md
     - Messaging: tools/messaging.md
     - Helper: tools/helper.md
