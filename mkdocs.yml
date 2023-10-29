@@ -42,6 +42,7 @@ nav:
           - Camera: camera/camera.md
           - Projections: camera/projections.md
       - Lights:
+        - Light basics: lights/lights.md
         - Directional light: lights/directional.md
         - Point light: lights/point-light.md
         - Spot light: lights/spot-light.md
