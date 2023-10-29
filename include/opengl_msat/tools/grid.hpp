@@ -20,6 +20,10 @@ public:
 
     void render(Renderer* renderer);
 
+    int lines = 10;
+
+    float spacing = 0.5;
+
 private:
     Projection projection;
 
@@ -28,10 +32,6 @@ private:
     VAO vao;
 
     VBO vbo;
-
-    int lines = 10;
-
-    float spacing = 0.5;
 
 };
 
