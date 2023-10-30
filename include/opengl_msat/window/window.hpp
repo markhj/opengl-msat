@@ -4,6 +4,7 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/controls/keyboard.hpp"
 #include "opengl_msat/controls/keyboard_types.hpp"
+#include "opengl_msat/controls/mouse.hpp"
 
 /**
  * Window
@@ -36,6 +37,8 @@ public:
 
     void setKeyboard(Keyboard* kb);
 
+    void setMouse(Mouse* ms);
+
     void setFullScreenMode(bool mode);
 
     void setMsaaSampling(int samples);
@@ -45,10 +48,15 @@ public:
     [[nodiscard]] unsigned int getHeight() const;
 
     [[nodiscard]] float getAspectRatio() const;
+
 private:
     GLFWwindow* glfwWindow;
 
     static Keyboard* keyboard;
+
+    static Mouse* mouse;
+
+    static std::optional<float> mouseLastX, mouseLastY;
 
     bool instantiated = false;
 
@@ -71,6 +79,8 @@ private:
 
     static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
+    static void mouseCallback(GLFWwindow* glfwWindow, double x, double y);
+
     // Window decoration is the title bar with minimize, maximize and close buttons
     // The setting of this value in practice is overruled by fullScreenMode (if true)
     // NOTE: Requires the window to be re-generated when changed after initialization
@@ -84,6 +94,7 @@ private:
     // When setting of decoration conflicts with full screen mode, this mode takes priority
     // NOTE: Requires the window to be re-generated when changed after initialization
     bool fullScreenMode = false;
+
 };
 
 #endif

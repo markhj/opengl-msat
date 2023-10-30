@@ -5,6 +5,7 @@ set(CLASSES
         controls/keyboard
         controls/keyboard_mapping
         controls/keyboard_types
+        controls/mouse
         context/context
         geometry/vectors
         geometry/matrices

@@ -2,6 +2,9 @@
 #include "opengl_msat/window/window.hpp"
 
 Keyboard* Window::keyboard = nullptr;
+Mouse* Window::mouse = nullptr;
+
+std::optional<float> Window::mouseLastX = std::nullopt, Window::mouseLastY = std::nullopt;
 
 void Window::generate()
 {
@@ -35,6 +38,7 @@ void Window::generate()
     monitorHeight = mode->height;
 
     glfwSetKeyCallback(glfwWindow, keyboardCallback);
+    glfwSetCursorPosCallback(glfwWindow, mouseCallback);
 
     instantiated = true;
     glfwInitiated = true;
@@ -180,4 +184,33 @@ unsigned int Window::getHeight() const
 float Window::getAspectRatio() const
 {
     return static_cast<float>(getWidth()) / getHeight();
+}
+
+void Window::mouseCallback(GLFWwindow *glfwWindow, double x, double y)
+{
+    if (!mouse) {
+        return;
+    }
+
+    if (!mouseLastX.has_value()) {
+        mouseLastX = x;
+    }
+
+    if (!mouseLastY.has_value()) {
+        mouseLastY = y;
+    }
+
+    float diffX = x - mouseLastX.value(),
+        diffY = y - mouseLastY.value();
+
+    mouseLastX = x;
+    mouseLastY = y;
+
+    mouse->moved({static_cast<float>(x), static_cast<float>(y)},
+                 {diffX, diffY});
+}
+
+void Window::setMouse(Mouse *ms)
+{
+    mouse = ms;
 }
