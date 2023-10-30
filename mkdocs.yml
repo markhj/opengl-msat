@@ -19,7 +19,6 @@ nav:
     - Basic animations: getting-started/animations.md
     - Managing a scene: getting-started/manage-scene.md
     - Normal mapping: getting-started/normal-mapping.md
-    - Use a framebuffer: getting-started/framebuffer.md
     - Create picture-in-picture: getting-started/pip.md
     - Creating a UI: getting-started/ui.md
   - Concepts:

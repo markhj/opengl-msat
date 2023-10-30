@@ -22,5 +22,3 @@ Cube cube(Vec3(1.5));
 
 The ``Cube`` class is based on the [Shape3D class](shapes.md) which
 means you have access various transform methods (translate, scale, rotate, etc.).
-
-Read more under [Transforms](transforms.md).
