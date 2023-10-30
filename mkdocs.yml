@@ -27,6 +27,7 @@ nav:
           - VAO: vertex/vao.md
           - VBO: vertex/vbo.md
           - Vertex attributes: vertex/vertex-attribute.md
+          - VBO-managed scene: vertex/vbo-scene.md
       - Geometry:
           - Cube: geometry/cube.md
           - Shapes: geometry/shapes.md
@@ -60,6 +61,7 @@ nav:
         - Animation basics: animation/animation.md
         - Blueprints: animation/blueprint.md
         - Control: animation/control.md
+        - Iterations: animation/iterations.md
         - Timing functions: animation/timing-functions.md
       - Framebuffers:
         - Framebuffer basics: fbo/fbo.md
@@ -78,6 +80,7 @@ nav:
     - Settings: render/render-settings.md
     - State: render/render-state.md
     - Scene management: render/scene-management.md
+    - VBO-managed scene: vertex/vbo-scene.md
     - Buffer clearing: render/buffer-clearing.md
   - Misc.:
     - Timer: misc/timer.md
