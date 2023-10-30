@@ -32,7 +32,6 @@ nav:
           - Cube: geometry/cube.md
           - Shapes: geometry/shapes.md
           - ObjectXD: geometry/object-xd.md
-          - Transforms: geometry/transforms.md
           - Object collection: geometry/object-collection.md
       - Shaders:
           - Shaders: shader/shader.md
