@@ -12,7 +12,6 @@ nav:
     - Vectors and matrices: getting-started/vectors-matrices.md
     - Going 3D: getting-started/going-3d.md
     - Custom shaders: getting-started/custom-shaders.md
-    - Debugging: getting-started/debugging.md
   - Guides:
     - Texturing and materials: getting-started/texturing.md
     - Adding lights: getting-started/lights.md

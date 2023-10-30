@@ -4,16 +4,10 @@ The simplest program you can write with OpenGL MSAT that makes just a tiny
 bit of sense is one displaying a white 2D triangle.
 
 ## Include
-Start by including the necessary libraries and set up the ``main`` function.
+Start by including ``public.hpp`` and set up the ``main`` function.
 
 ````c++
-#include <opengl_msat/window/window.hpp>
-#include <opengl_msat/vertex/vao.hpp>
-#include <opengl_msat/vertex/vbo.hpp>
-#include <opengl_msat/renderer/renderer.hpp>
-#include <opengl_msat/shader/shader.hpp>
-#include <opengl_msat/shader/vertex_sbldr.hpp>
-#include <opengl_msat/shader/fragment_sbldr.hpp>
+#include <opengl_msat/public.hpp>
 
 int main()
 {
@@ -87,13 +81,7 @@ When everything is put together, we get the code below.
 It should generate a window and display a white triangle.
 
 ````c++
-#include <opengl_msat/window/window.hpp>
-#include <opengl_msat/vertex/vao.hpp>
-#include <opengl_msat/vertex/vbo.hpp>
-#include <opengl_msat/renderer/renderer.hpp>
-#include <opengl_msat/shader/shader.hpp>
-#include <opengl_msat/shader/vertex_sbldr.hpp>
-#include <opengl_msat/shader/fragment_sbldr.hpp>
+#include <opengl_msat/public.hpp>
 
 int main()
 {

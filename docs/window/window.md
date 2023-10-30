@@ -3,15 +3,8 @@
 The first step to coding OpenGL is creating a (GLFW) window.
 With OpenGL MSAT, this is relatively easy.
 
-## Include
-Start by including the ``Window`` class:
-
-````c++
-#include "opengl_msat/window/window.hpp"
-````
-
 ## Instantiating
-Next, instantiate the ``Window`` with width, height and window title.
+Instantiate the ``Window`` with width, height and window title.
 
 ````c++
 Window window(800, 600, "My OpenGL App");

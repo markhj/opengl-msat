@@ -94,15 +94,7 @@ A full program (with camera rotation).
 The parts with comments are the changes compared to the 2D triangle example.
 
 ````c++
-#include <opengl_msat/window/window.hpp>
-#include <opengl_msat/vertex/vao.hpp>
-#include <opengl_msat/vertex/vbo.hpp>
-#include <opengl_msat/renderer/renderer.hpp>
-#include <opengl_msat/shader/shader.hpp>
-#include <opengl_msat/shader/vertex_sbldr.hpp>
-#include <opengl_msat/shader/fragment_sbldr.hpp>
-#include <opengl_msat/camera/camera.hpp>
-#include <opengl_msat/tools/dump.hpp>
+#include <opengl_msat/public.hpp>
 
 int main()
 {
