@@ -80,6 +80,11 @@ enum class TextureDownsampling {
     Linear = GL_LINEAR,
 };
 
+/**
+ * Texture options
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/textures/texture-options/
+ */
 struct TextureOptions {
     TexturePattern wrapping = TexturePattern::Repeat;
 

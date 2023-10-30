@@ -49,6 +49,8 @@ nav:
         - Normal mapping: lights/normal-mapping.md
       - Textures:
         - Texture basics: textures/textures.md
+        - Texture options: textures/texture-options.md
+        - 2D textures: textures/texture-2d.md
         - Materials: textures/materials.md
         - Texture unit manager: textures/tum.md
         - Cubemaps: textures/cubemaps.md
