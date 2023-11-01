@@ -24,6 +24,12 @@ public:
 
     float spacing = 0.5;
 
+    bool center = true;
+
+    float centerMargin = 0.1;
+
+    float lineWidth = 4.0;
+
 private:
     Projection projection;
 
