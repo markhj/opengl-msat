@@ -82,3 +82,44 @@ std::string Dump::cell(std::string title, std::string value)
 {
     return "\n| " + spacing(title, 30) + " | " + spacing(value, 36) + " |";
 }
+
+void Dump::dump(std::optional<Mat4> value)
+{
+    if (value.has_value()) {
+        dump(value.value());
+    } else {
+        printNoValue("Mat4");
+    }
+}
+
+void Dump::dump(std::optional<Vec4> value)
+{
+    if (value.has_value()) {
+        dump(value.value());
+    } else {
+        printNoValue("Vec4");
+    }
+}
+
+void Dump::dump(std::optional<Vec3> value)
+{
+    if (value.has_value()) {
+        dump(value.value());
+    } else {
+        printNoValue("Vec3");
+    }
+}
+
+void Dump::dump(std::optional<Vec2> value)
+{
+    if (value.has_value()) {
+        dump(value.value());
+    } else {
+        printNoValue("Vec2");
+    }
+}
+
+void Dump::printNoValue(std::string type)
+{
+    std::cout << type << " { Optional without value }" << std::endl;
+}
