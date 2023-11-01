@@ -21,10 +21,13 @@ grid.render(renderer);
 
 You can modify the look of the grid by adjusting these properties:
 
-| Property | Default | Description |
-| --- | --- | --- |
-| ``lines`` | ``10`` | Total number of lines to be drawn in each direction |
-| ``spacing`` | ``0.5`` | The space between each line |
+| Property         | Data type       | Default  | Description                                                 |
+|------------------|-----------------|----------|-------------------------------------------------------------|
+| ``lines``        | ``float``       | ``10``   | Total number of lines to be drawn in each direction         |
+| ``lineWidth``    | ``float``       | ``4.0``  | Width/thickness of the individual lines                     |
+| ``spacing``      | ``float``       | ``0.5``  | The space between each line                                 |
+| ``center``       | ``bool`` | ``true`` | Display the red/green/blue center axis indicator            |
+| ``centerMargin`` | ``float``       | ``0.1``  | The space between the center axis lines and the white lines |
 
 To apply a change, do something like this:
 

@@ -13,6 +13,8 @@ struct VertexElement2D : public VertexElement {
     Color color = Color(1.0);
     std::optional<Vec2> normal;
     std::optional<Vec2> textureCoords;
+    std::optional<Vec2> tangent;
+    std::optional<Vec2> bitangent;
     std::optional<unsigned int> materialId;
 };
 
@@ -20,6 +22,8 @@ struct VertexElement3D : public VertexElement {
     Vec3 position;
     Color color = Color(1.0);
     std::optional<Vec3> normal;
+    std::optional<Vec3> tangent;
+    std::optional<Vec3> bitangent;
     std::optional<Vec2> textureCoords;
     std::optional<unsigned int> materialId;
 };

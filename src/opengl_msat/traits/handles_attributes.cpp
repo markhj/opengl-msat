@@ -53,6 +53,24 @@ HandlesAttributes::flattenVertices3D(std::vector<VertexElement3D> elements, std:
                         list.insert(list.end(), {0.0, 0.0, 0.0});
                     }
                     break;
+                case VertexAttribute::Tangent3D:
+                    if (vertex.tangent.has_value()) {
+                        list.insert(list.end(), {vertex.tangent.value().x,
+                                                 vertex.tangent.value().y,
+                                                 vertex.tangent.value().z});
+                    } else {
+                        list.insert(list.end(), {0.0, 0.0, 0.0});
+                    }
+                    break;
+                case VertexAttribute::Bitangent3D:
+                    if (vertex.bitangent.has_value()) {
+                        list.insert(list.end(), {vertex.bitangent.value().x,
+                                                 vertex.bitangent.value().y,
+                                                 vertex.bitangent.value().z});
+                    } else {
+                        list.insert(list.end(), {0.0, 0.0, 0.0});
+                    }
+                    break;
                 case VertexAttribute::ColorRGB:
                     list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
                     break;

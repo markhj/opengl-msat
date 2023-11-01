@@ -16,6 +16,7 @@
 #include "context/context.hpp"
 #include "timer/timer.hpp"
 #include "tools/service_provider.hpp"
+#include "math/math.hpp"
 
 // Animation
 #include "animation/animation.hpp"
