@@ -15,9 +15,9 @@ include(cmake/ThirdPartyLibs.cmake)
 
 # Set the option OPENGL_MSAT_BUILD_TESTS depending on the environment
 # variable of the same name
-option(OPENGL_MSAT_BUILD_TESTS "Build tests" OFF)
+set(OPENGL_MSAT_BUILD_TESTS OFF)
 if (DEFINED ENV{OPENGL_MSAT_BUILD_TESTS})
-    option(OPENGL_MSAT_BUILD_TESTS "Build tests" $ENV{OPENGL_MSAT_BUILD_TESTS})
+    set(OPENGL_MSAT_BUILD_TESTS $ENV{OPENGL_MSAT_BUILD_TESTS})
 endif ()
 
 # Build tests (if requested by the env. variable OPENGL_MSAT_BUILD_TESTS)
