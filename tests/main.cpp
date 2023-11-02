@@ -3,6 +3,7 @@
 
 #include "cases/texture_tests.hpp"
 #include "cases/math_tests.hpp"
+#include "cases/animation_tests.hpp"
 
 /**
  * @todo Figure out if it's possible to initialize GLAD and GLFW
@@ -14,10 +15,13 @@ int main()
     window.generate();
 
     BBUnit::TestSuite<TextureBindingTest> textureBindings(&TextureBindingTest::textureToUnitBinding);
+
     BBUnit::TestSuite<MathTest> math(&MathTest::tangent,
                                      &MathTest::bitangent);
+    
+    BBUnit::TestSuite<AnimationTest> animation(&AnimationTest::validateInterval);
 
-    BBUnit::TestRunner().run(textureBindings, math);
+    BBUnit::TestRunner().run(textureBindings, math, animation);
 
     return 0;
 }

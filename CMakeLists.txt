@@ -29,7 +29,8 @@ endif ()
 if (OPENGL_MSAT_BUILD_TESTS)
     set(TEST_CASES
         texture_tests
-        math_tests)
+        math_tests
+        animation_tests)
 
     set(OPENGL_MSAT_TEST_FILES "")
     foreach (TEST_CASE ${TEST_CASES})

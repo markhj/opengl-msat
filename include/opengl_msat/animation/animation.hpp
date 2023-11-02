@@ -46,14 +46,14 @@ public:
 
     void animate(float pct, float realPct, Animateable<T>* target);
 
+    [[nodiscard]] bool isIntervalOccupied(float from, float to) const;
+
 private:
     std::vector<AnimationStep<T>> steps;
 
     std::optional<T> latest;
 
     void validateInterval(float from, float to);
-
-    bool isIntervalOccupied(float from, float to) const;
 
 };
 
