@@ -2,6 +2,7 @@
 #include "opengl_msat/public.hpp"
 
 #include "cases/texture_tests.hpp"
+#include "cases/math_tests.hpp"
 
 /**
  * @todo Figure out if it's possible to initialize GLAD and GLFW
@@ -12,9 +13,11 @@ int main()
     Window window(100, 100, "Test");
     window.generate();
 
-    BBUnit::TestSuite<TextureBindingTest> mySuite(&TextureBindingTest::textureToUnitBinding);
+    BBUnit::TestSuite<TextureBindingTest> textureBindings(&TextureBindingTest::textureToUnitBinding);
+    BBUnit::TestSuite<MathTest> math(&MathTest::tangent,
+                                     &MathTest::bitangent);
 
-    BBUnit::TestRunner().run(mySuite);
+    BBUnit::TestRunner().run(textureBindings, math);
 
     return 0;
 }
