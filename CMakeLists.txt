@@ -22,10 +22,19 @@ endif ()
 
 # Build tests (if requested by the env. variable OPENGL_MSAT_BUILD_TESTS)
 if (OPENGL_MSAT_BUILD_TESTS)
+    set(TEST_CASES
+        texture_tests
+        math_tests)
+
+    set(OPENGL_MSAT_TEST_FILES "")
+    foreach (TEST_CASE ${TEST_CASES})
+        list(APPEND OPENGL_MSAT_TEST_FILES "tests/cases/${TEST_CASE}.hpp")
+        list(APPEND OPENGL_MSAT_TEST_FILES "tests/cases/${TEST_CASE}.cpp")
+    endforeach ()
+
     include_directories(libs/bbunit)
     add_executable(tests
             tests/main.cpp
-            tests/cases/texture_tests.hpp
-            tests/cases/texture_tests.cpp)
+            ${OPENGL_MSAT_TEST_FILES})
     target_link_libraries(tests opengl_msat)
 endif()

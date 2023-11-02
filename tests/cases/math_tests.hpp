@@ -1,0 +1,8 @@
+//
+// Created by pc on 02-11-2023.
+//
+
+#ifndef OPENGL_MSAT_MATH_TESTS_HPP
+#define OPENGL_MSAT_MATH_TESTS_HPP
+
+#endif //OPENGL_MSAT_MATH_TESTS_HPP
