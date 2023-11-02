@@ -56,6 +56,11 @@ at https://opengl-msat.readthedocs.io
 
 The tests contained within the ``tests`` directory can be built using the
 included ``CMakeLists.txt`` file and setting the environment variable
-``OPENGL_MSAT_BUILD_TESTS`` to ``1`` or ``ON``.
+``OPENGL_MSAT_BUILD_TESTS`` to ``1``.
 
 This generates an executable which runs the tests suites.
+
+## Samples
+
+You can compile the samples included in the ``samples`` directory, by adding
+the environment variable ``OPENGL_MSAT_BUILD_SAMPLES`` and setting it to ``1``.
