@@ -11,11 +11,36 @@ You can set these properties which will then apply to all vertices of an object.
 They take effect when using ``ObjectXD``'s methods to retrieve the contained 
 vertices.
 
-| Property      | Data type | Default       | Description                       |
-|---------------|-----------|---------------|-----------------------------------|
-| ``translate`` | ``Vec3``  | ``Vec3(0.0)`` | Translation (moving the position) |
-| ``rotate``    | ``Vec3``  | ``Vec3(0.0)`` | Rotation around each axis         |
-| ``scale``     | ``float`` | ``1.0``       | Scaling                           |
+| Property       | Data type | Default       | Description                                                   |
+|----------------|-----------|---------------|---------------------------------------------------------------|
+| ``translate``  | ``Vec3``  | ``Vec3(0.0)`` | Translation (moving the position)                             |
+| ``rotate``     | ``Vec3``  | ``Vec3(0.0)`` | Rotation around each axis                                     |
+| ``scale``      | ``float`` | ``1.0``       | Scaling                                                       |
+| ``autoCenter`` | ``bool``  | ``false``     | When true, will move the basic object structure to the center |
+
+### ``autoCenter``
+There are essentially two ways in OpenGL MSAT to position an object. You can define the position, size and shape
+of an object using vertices, or you can define the size and shape with vertices, and then use ``translation``
+to position it.
+
+Some may prefer to separate the two. The enforce this behavior you can set ``autoCenter`` to true.
+
+Example without using ``autoCenter``:
+
+````c++
+// Create a cube with the size of 1x1x1 and position it far away from the center
+Object3D cube = Cube(Vec3(10.0, 0.0, 10.0), Vec3(9.0, 1.0, 9.0));
+````
+
+Example using ``autoCenter``:
+````c++
+Object3D cube = Cube(Vec3(1.0));
+cube.autoCenter = true;
+cube.translate = Vec3(9.0, 0.0, 9.0);
+````
+
+It's your choice whether you want to combine position and size in vertices, or if you prefer a separated
+approach where vertice define the size and shape, and then apply translation to position it.
 
 ## Methods
 ````c++

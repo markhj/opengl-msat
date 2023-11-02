@@ -10,9 +10,11 @@ std::vector<VertexElement3D> Object3D::getVertices()
 
     for (VertexElement3D v : vertices) {
         // Simulate moving the object to the center
-//        v.position.x -= center.x;
-//        v.position.y -= center.y;
-//        v.position.z -= center.z;
+        if (autoCenter) {
+            v.position.x -= center.x;
+            v.position.y -= center.y;
+            v.position.z -= center.z;
+        }
 
         glm::mat4 rx = glm::rotate(glm::mat4(1.0f), rotate.x, glm::vec3(1.0f, 0.0f, 0.0f));
         glm::mat4 ry = glm::rotate(glm::mat4(1.0f), rotate.y, glm::vec3(0.0f, 1.0f, 0.0f));

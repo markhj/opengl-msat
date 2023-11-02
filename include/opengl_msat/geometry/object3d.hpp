@@ -18,6 +18,13 @@ public:
 
     std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override;
 
+    /**
+     * If you want your application to rely on the use of translations (rather than coordinates)
+     * you can enable automatic centering which will ensure that all objects start at (0, 0, 0)
+     * and need translation to move somewhere else
+     */
+    bool autoCenter = false;
+
 };
 
 #endif
