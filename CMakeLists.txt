@@ -13,11 +13,16 @@ set(PACKAGE_PREFIX_DIR "${CMAKE_CURRENT_LIST_DIR}")
 include(cmake/LibrarySetup.cmake)
 include(cmake/ThirdPartyLibs.cmake)
 
-# Set the option OPENGL_MSAT_BUILD_TESTS depending on the environment
-# variable of the same name
+# Check for build options in the environment variables
 set(OPENGL_MSAT_BUILD_TESTS OFF)
+set(OPENGL_MSAT_BUILD_SAMPLES OFF)
+
 if (DEFINED ENV{OPENGL_MSAT_BUILD_TESTS})
     set(OPENGL_MSAT_BUILD_TESTS $ENV{OPENGL_MSAT_BUILD_TESTS})
+endif ()
+
+if (DEFINED ENV{OPENGL_MSAT_BUILD_SAMPLES})
+    set(OPENGL_MSAT_BUILD_SAMPLES $ENV{OPENGL_MSAT_BUILD_SAMPLES})
 endif ()
 
 # Build tests (if requested by the env. variable OPENGL_MSAT_BUILD_TESTS)
@@ -37,4 +42,15 @@ if (OPENGL_MSAT_BUILD_TESTS)
             tests/main.cpp
             ${OPENGL_MSAT_TEST_FILES})
     target_link_libraries(tests opengl_msat)
-endif()
+endif ()
+
+# Build samples (if requested)
+if (OPENGL_MSAT_BUILD_SAMPLES)
+    set(SAMPLES
+        hello_triangle)
+
+    foreach (SAMPLE ${SAMPLES})
+        add_executable(${SAMPLE} samples/${SAMPLE}.cpp)
+        target_link_libraries(${SAMPLE} opengl_msat)
+    endforeach ()
+endif ()
