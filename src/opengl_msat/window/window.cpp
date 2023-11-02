@@ -8,11 +8,7 @@ std::optional<float> Window::mouseLastX = std::nullopt, Window::mouseLastY = std
 
 void Window::generate()
 {
-    if (!glfwInitiated) {
-        if (!glfwInit()) {
-            std::cerr << "Failed to initialize GLFW" << std::endl;
-        }
-    }
+    initializeGLFW();
 
     glfwWindowHint(GLFW_SAMPLES, 1);
     glfwWindowHint(GLFW_DECORATED, getDecoration());
@@ -26,12 +22,7 @@ void Window::generate()
 
     glfwMakeContextCurrent(glfwWindow);
 
-    if (!glfwInitiated) {
-        if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-            std::cerr << "Failed to initialize GLAD" << std::endl;
-            glfwTerminate();
-        }
-    }
+    initializeGLAD();
 
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     monitorWidth = mode->width;
@@ -41,6 +32,26 @@ void Window::generate()
     glfwSetCursorPosCallback(glfwWindow, mouseCallback);
 
     instantiated = true;
+}
+
+void Window::initializeGLFW()
+{
+    if (!glfwInitiated) {
+        if (!glfwInit()) {
+            std::cerr << "Failed to initialize GLFW" << std::endl;
+        }
+    }
+}
+
+void Window::initializeGLAD()
+{
+    if (glfwInitiated) {
+        return;
+    }
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+        std::cerr << "Failed to initialize GLAD" << std::endl;
+        glfwTerminate();
+    }
     glfwInitiated = true;
 }
 
