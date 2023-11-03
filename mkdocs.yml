@@ -74,6 +74,7 @@ nav:
         - UI elements: ui/ui-elements.md
         - Components:
           - Progress bar: ui/progress-bar.md
+        - Custom UI element: ui/custom-ui-element.md
   - Rendering:
     - Rendering: render/render.md
     - Settings: render/render-settings.md
