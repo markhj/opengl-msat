@@ -152,3 +152,13 @@ void Dump::dump(std::vector<GLfloat> values, std::vector<VertexAttribute> attrib
     }
     dump(values, sizeOfAttributes);
 }
+
+void Dump::dump(Object2D obj, std::vector<VertexAttribute> attributes)
+{
+    dump(obj.getVerticesFlattened(attributes), attributes);
+}
+
+void Dump::dump(Object3D obj, std::vector<VertexAttribute> attributes)
+{
+    dump(obj.getVerticesFlattened(attributes), attributes);
+}

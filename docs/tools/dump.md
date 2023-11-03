@@ -10,6 +10,7 @@ It currently supports:
 - ``Mat4``
 - ``SystemInfo``
 - ``std::vector<GLfloat>``
+- ``Object2D``, ``Object3D``
 
 ### ``std::vector<GLfloat>``
 There are three relevant signatures for dumping ``std::vector<GLfloat>``:

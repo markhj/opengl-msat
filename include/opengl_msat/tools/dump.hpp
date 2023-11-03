@@ -8,6 +8,8 @@
 #include "opengl_msat/types/vertex_types.hpp"
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/geometry/vectors.hpp"
+#include "opengl_msat/geometry/object2d.hpp"
+#include "opengl_msat/geometry/object3d.hpp"
 #include "systeminfo.hpp"
 
 /**
@@ -40,6 +42,10 @@ public:
     static void dump(std::vector<GLfloat> values, unsigned int perRow);
 
     static void dump(std::vector<GLfloat> values, std::vector<VertexAttribute> attributes);
+
+    static void dump(Object2D obj, std::vector<VertexAttribute> attributes);
+
+    static void dump(Object3D obj, std::vector<VertexAttribute> attributes);
 
 private:
     static std::string dumpTitle(std::string title);
