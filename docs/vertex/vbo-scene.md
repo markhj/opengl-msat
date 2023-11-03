@@ -1,12 +1,15 @@
 # VBO managed scene
 
-The ``VBOScene3D`` class takes the concept of scene management a step further,
+The ``VBOScene2D`` and ``VBOScene3D`` class takes the concept of scene management a step further,
 by also integrating the ``VBO`` to its pipeline.
 
 ## Prerequisites
 * [Scene management](../vertex/vbo-scene.md)
 
 ## Setting up
+> Example here is given in a 3D scene, but you can do the same using
+> 2D versions of the same classes.
+
 Set up a scene with a number of objects.
 ````c++
 Object3D floor = Cube(Vec3(5.0));

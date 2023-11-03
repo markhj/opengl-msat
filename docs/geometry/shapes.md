@@ -1,10 +1,11 @@
 # Shapes
 
-The ``Shape3D`` class is a (still somewhat primitive) way of organizing vertices into more
+The ``Shape2D`` and ``Shape3D`` classes are (still somewhat primitive) ways of organizing vertices into more
 complete shapes, such as cubes.
 
 ## Role
-The ``Shape3D`` is a class that sits underneath shapes such as ``Cube``.
+The ``ShapeXD`` is a class that sits underneath shapes such as ``Cube``, ``Rectangle2D`` and ``Rectangle3D``.
+
 It behaves as an abstract class (although that isn't a strict necessity, but it can't form any
 vertices from a public perspective).
 
@@ -19,12 +20,17 @@ std::vector<VertexElement3D> getVertices();
 ````
 
 ## Casting to ``ObjectXD``
+Instances of ``Shape2D`` and ``Shape3D`` can be cast to ``Object2D`` and ``Object3D`` respectively.
 
-Instances of ``Shape3D`` can be cast to ``Object3D``.
 This works for instance on the [Cube class](cube.md).
 
 ````c++
 Object3D cube = Cube(Vec3(1.0));
+````
+
+Or on ``Rectangle2D``:
+````c++
+Object2D rect = Rectangle2D(Vec2(0.5), Vec2(0.7));
 ````
 
 And that means you can now apply the various transforms on it:
