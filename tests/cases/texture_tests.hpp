@@ -12,6 +12,17 @@ public:
      */
     void textureToUnitBinding();
 
+    /**
+     * Test of the lock, unlock and isLocked methods
+     */
+    void lockUnlock();
+
+    /**
+     * A test to ensure that a unit cannot be overwritten while
+     * it is locked
+     */
+    void lock();
+
 };
 
 

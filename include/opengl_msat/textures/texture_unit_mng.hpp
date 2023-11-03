@@ -52,6 +52,14 @@ public:
      */
     std::optional<unsigned int> getTextureBinding(Texture* texture);
 
+    void lock(unsigned int slot);
+
+    void unlock(unsigned int slot);
+
+    bool isLocked(unsigned int slot);
+
+    bool warnWhenBindingToLockedUnit = true;
+
 protected:
     void doBindTo(unsigned int to) override;
 
@@ -61,6 +69,8 @@ private:
     std::map<unsigned int, Texture*> bindings;
 
     std::map<unsigned int, ShaderProgram*> shaders;
+
+    std::vector<unsigned int> lockedSlots;
 
 };
 

@@ -96,3 +96,34 @@ if (myTexture.boundToUnit.has_value()) {
     std::cout << "Texture is not bound to a unit" << std::endl;
 }
 ````
+
+## Locking
+Sometimes you'll want to bind a texture to a unit and keep it that way for your
+entire application. This could be useful with fonts, for instance.
+
+To ensure you don't accidentally overwrite a texture unit you can lock it.
+
+When attempting to set a texture to a locked unit, the process will simply be ignored.
+
+### Relevant methods
+````c++
+void lock(unsigned int slot);
+void unlock(unsigned int slot);
+bool isLocked(unsigned int slot);
+````
+
+#### Example
+In this example texture unit 6 will be locked, until you may free it back up
+with ``unlock``.
+````c++
+tum.lock(5);
+````
+It means that if you try to bind a texture to unit 5 after this point,
+nothing will happen.
+
+### Warning
+During your development process you may be interested to know when you try to 
+bind a texture to a locked unit.
+
+This happens by default. If you want to turn this off, set ``warnWhenBindingToLockedUnit``
+to ``false``.

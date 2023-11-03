@@ -14,12 +14,22 @@ int main()
     Window window(100, 100, "Test");
     window.generate();
 
-    BBUnit::TestSuite<TextureBindingTest> textureBindings(&TextureBindingTest::textureToUnitBinding);
+    DeveloperMessaging::warningBehavior = MessagingBehavior::Silent;
 
-    BBUnit::TestSuite<MathTest> math(&MathTest::tangent,
-                                     &MathTest::bitangent);
+    BBUnit::TestSuite<TextureBindingTest> textureBindings(
+            &TextureBindingTest::textureToUnitBinding,
+            &TextureBindingTest::lockUnlock,
+            &TextureBindingTest::lock
+            );
+
+    BBUnit::TestSuite<MathTest> math(
+            &MathTest::tangent,
+            &MathTest::bitangent
+            );
     
-    BBUnit::TestSuite<AnimationTest> animation(&AnimationTest::validateInterval);
+    BBUnit::TestSuite<AnimationTest> animation(
+            &AnimationTest::validateInterval
+            );
 
     BBUnit::TestRunner().run(textureBindings, math, animation);
 

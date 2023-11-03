@@ -27,6 +27,13 @@ void TextureUnitManager::detachShader(ShaderProgram *shader)
 
 void TextureUnitManager::bindTextureTo(unsigned int unit, Texture *texture)
 {
+    if (isLocked((unit))) {
+        if (warnWhenBindingToLockedUnit) {
+            warn("Attempting to bind to unit " + std::to_string(unit) + " while it is locked.");
+        }
+        return;
+    }
+
     // Indicate on the texture currently bound to this slot (if any)
     // that it's no longer bound
     std::optional<Texture*> current = get(unit);
@@ -39,7 +46,8 @@ void TextureUnitManager::bindTextureTo(unsigned int unit, Texture *texture)
     });
 
     texture->boundToUnit = unit;
-    bindings.insert(std::make_pair(unit, texture));
+
+    bindings[unit] = texture;
 }
 
 unsigned int TextureUnitManager::getBoundTo() const
@@ -72,4 +80,25 @@ std::optional<unsigned int> TextureUnitManager::getTextureBinding(Texture *textu
 void TextureUnitManager::doBindTo(unsigned int to)
 {
     glActiveTexture(GL_TEXTURE0 + to);
+}
+
+void TextureUnitManager::lock(unsigned int slot)
+{
+    if (!isLocked(slot)) {
+        lockedSlots.push_back(slot);
+    }
+}
+
+void TextureUnitManager::unlock(unsigned int slot)
+{
+    lockedSlots.erase(std::remove(lockedSlots.begin(),
+                                  lockedSlots.end(),
+                                  slot), lockedSlots.end());
+}
+
+bool TextureUnitManager::isLocked(unsigned int slot)
+{
+    return std::find(lockedSlots.begin(),
+                     lockedSlots.end(),
+                     slot) != lockedSlots.end();
 }

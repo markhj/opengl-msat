@@ -17,7 +17,7 @@
  */
 
 class ManagesMultipleBindings :
-        DeveloperMessaging {
+        protected DeveloperMessaging {
 public:
     void bindTo(unsigned int target);
 
