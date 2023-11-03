@@ -9,7 +9,8 @@ set(CLASSES
         context/context
         geometry/vectors
         geometry/matrices
-        geometry/shape
+        geometry/shape2d
+        geometry/shape3d
         geometry/rectangle
         geometry/cube
         geometry/object_wrapper

@@ -3,7 +3,8 @@
 
 #include <utility>
 
-#include "shape.hpp"
+#include "shape2d.hpp"
+#include "shape3d.hpp"
 #include "vectors.hpp"
 
 class Rectangle3D : public Shape3D {

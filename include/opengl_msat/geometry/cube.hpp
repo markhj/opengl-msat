@@ -3,7 +3,7 @@
 
 #include <utility>
 
-#include "shape.hpp"
+#include "shape3d.hpp"
 
 /**
  * Cube
