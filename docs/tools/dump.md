@@ -9,6 +9,34 @@ It currently supports:
 - ``Vec2``, ``Vec3``, ``Vec4``
 - ``Mat4``
 - ``SystemInfo``
+- ``std::vector<GLfloat>``
+
+### ``std::vector<GLfloat>``
+There are three relevant signatures for dumping ``std::vector<GLfloat>``:
+
+````c++
+void dump(std::vector<GLfloat> values);
+void dump(std::vector<GLfloat> values, unsigned int perRow);
+void dump(std::vector<GLfloat> values, std::vector<VertexAttribute> attributes);
+````
+
+These makes it easier to dump vectors with ``GLfloat`` - often that would be your (final/flattened)
+list of numbers which up the vertices you're uploading to the VBO.
+
+Example:
+````c++
+std::vector<VertexAttribute> attributes = {
+        VertexAttribute::Position2D,
+        VertexAttribute::ColorRGB
+};
+
+Object2D triangle;
+triangle.add({
+    // List of vertices
+});
+
+Dump::dump(triangle.getVerticesFlattened(attributes));
+````
 
 ## Usage
 You can dump an object with:

@@ -3,6 +3,9 @@
 
 #include <string>
 #include <optional>
+#include <vector>
+#include "opengl_msat/common.h"
+#include "opengl_msat/types/vertex_types.hpp"
 #include "opengl_msat/geometry/matrices.hpp"
 #include "opengl_msat/geometry/vectors.hpp"
 #include "systeminfo.hpp"
@@ -31,6 +34,12 @@ public:
     static void dump(std::optional<Vec2> value);
 
     static void dump(SystemInfo systemInfo);
+
+    static void dump(std::vector<GLfloat> values);
+
+    static void dump(std::vector<GLfloat> values, unsigned int perRow);
+
+    static void dump(std::vector<GLfloat> values, std::vector<VertexAttribute> attributes);
 
 private:
     static std::string dumpTitle(std::string title);

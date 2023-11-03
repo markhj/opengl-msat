@@ -123,3 +123,32 @@ void Dump::printNoValue(std::string type)
 {
     std::cout << type << " { Optional without value }" << std::endl;
 }
+
+void Dump::dump(std::vector<GLfloat> values)
+{
+    dump(values, 10);
+}
+
+void Dump::dump(std::vector<GLfloat> values, unsigned int perRow)
+{
+    unsigned int i = 0;
+    std::cout << "{ ";
+    for (GLfloat value : values) {
+        bool isLast = i >= values.size() - 1;
+        std::cout << value << (!isLast ? ", " : "");
+        i++;
+        if (i % perRow == 0 && !isLast) {
+            std::cout << "\n  ";
+        }
+    }
+    std::cout << " }" << std::endl;
+}
+
+void Dump::dump(std::vector<GLfloat> values, std::vector<VertexAttribute> attributes)
+{
+    int sizeOfAttributes = 0;
+    for (VertexAttribute attribute : attributes) {
+        sizeOfAttributes += getVertexAttributeSize(attribute);
+    }
+    dump(values, sizeOfAttributes);
+}
