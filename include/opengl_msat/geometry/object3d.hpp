@@ -25,6 +25,11 @@ public:
      */
     bool autoCenter = false;
 
+    /**
+     * Rotation (around each axis) - given in radians
+     */
+    Vec3 rotate = Vec3(0.0);
+
 };
 
 #endif

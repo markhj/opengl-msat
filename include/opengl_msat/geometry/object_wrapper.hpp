@@ -28,7 +28,7 @@ public:
 
     ObjectWrapper& colorize(Color color);
 
-    VecX translate = VecX(0.0), rotate = VecX(0.0);
+    VecX translate = VecX(0.0);
 
     float scale = 1.0;
 

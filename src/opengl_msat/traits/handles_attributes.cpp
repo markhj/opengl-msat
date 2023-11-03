@@ -20,8 +20,47 @@ HandlesAttributes::flattenVertices2D(std::vector<VertexElement2D> elements, std:
                 case VertexAttribute::Position2D:
                     list.insert(list.end(), {vertex.position.x, vertex.position.y});
                     break;
+                case VertexAttribute::TextureCoord:
+                    if (vertex.textureCoords.has_value()) {
+                        Vec2 texCoords = vertex.textureCoords.value();
+                        list.insert(list.end(), {texCoords.x, texCoords.y});
+                    } else {
+                        list.insert(list.end(), {0.0, 0.0});
+                    }
+                    break;
+                case VertexAttribute::MaterialId:
+                    if (vertex.materialId.has_value()) {
+                        list.push_back(vertex.materialId.value());
+                    } else {
+                        list.push_back(-1);
+                    }
+                    break;
                 case VertexAttribute::ColorRGB:
                     list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
+                    break;
+                case VertexAttribute::Normal2D:
+                    if (vertex.normal.has_value()) {
+                        list.insert(list.end(), {vertex.normal.value().x,
+                                                 vertex.normal.value().y});
+                    } else {
+                        list.insert(list.end(), {0.0, 0.0});
+                    }
+                    break;
+                case VertexAttribute::Tangent2D:
+                    if (vertex.tangent.has_value()) {
+                        list.insert(list.end(), {vertex.tangent.value().x,
+                                                 vertex.tangent.value().y});
+                    } else {
+                        list.insert(list.end(), {0.0, 0.0});
+                    }
+                    break;
+                case VertexAttribute::Bitangent2D:
+                    if (vertex.bitangent.has_value()) {
+                        list.insert(list.end(), {vertex.bitangent.value().x,
+                                                 vertex.bitangent.value().y});
+                    } else {
+                        list.insert(list.end(), {0.0, 0.0});
+                    }
                     break;
                 default:
                     std::cout << "WARNING: Implementation missing in HandlesAttributes::flattenVertices2D: "

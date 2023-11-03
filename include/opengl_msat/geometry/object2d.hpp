@@ -27,6 +27,11 @@ public:
      */
     bool autoCenter = false;
 
+    /**
+     * Rotation value (given in radians)
+     */
+    float rotate = 0.0;
+
 };
 
 #endif
