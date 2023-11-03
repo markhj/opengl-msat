@@ -7,7 +7,7 @@
 
 class HandlesAttributes {
 protected:
-    std::vector<GLfloat> flattenVertices2D(std::vector<VertexElement3D> elements,
+    std::vector<GLfloat> flattenVertices2D(std::vector<VertexElement2D> elements,
                                            std::vector<VertexAttribute> attributes);
 
     std::vector<GLfloat> flattenVertices3D(std::vector<VertexElement3D> elements,
@@ -15,7 +15,7 @@ protected:
 
     Vec3 findCenter3D(std::vector<VertexElement3D> elements);
 
-    Vec2 findCenter2D(std::vector<VertexElement3D> elements);
+    Vec2 findCenter2D(std::vector<VertexElement2D> elements);
 
     unsigned int getSizeOfAttributes(std::vector<VertexAttribute>& attributes) const;
 

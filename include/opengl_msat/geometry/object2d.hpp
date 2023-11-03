@@ -16,21 +16,17 @@ class Object2D :
         public HandlesAttributes,
         public ObjectWrapper<VertexElement2D, Vec2> {
 public:
-    /*
-     * @todo Implement getVertices
-     */
-    std::vector<VertexElement2D> getVertices() override
-    {
-        return {};
-    }
+    std::vector<VertexElement2D> getVertices() override;
 
-    /*
-     * @todo Implement getVerticesFlattened
+    std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override;
+
+    /**
+     * If you want your application to rely on the use of translations (rather than coordinates)
+     * you can enable automatic centering which will ensure that all objects start at (0, 0, 0)
+     * and need translation to move somewhere else
      */
-    std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override
-    {
-        return {};
-    }
+    bool autoCenter = false;
+
 };
 
 #endif

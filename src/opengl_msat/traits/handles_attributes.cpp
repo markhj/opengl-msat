@@ -10,13 +10,27 @@ unsigned int HandlesAttributes::getSizeOfAttributes(std::vector<VertexAttribute>
     return size;
 }
 
-/**
- * @todo Implement flattenVertices2D
- */
 std::vector<GLfloat>
-HandlesAttributes::flattenVertices2D(std::vector<VertexElement3D> elements, std::vector<VertexAttribute> attributes)
+HandlesAttributes::flattenVertices2D(std::vector<VertexElement2D> elements, std::vector<VertexAttribute> attributes)
 {
-    return {};
+    std::vector<GLfloat> list = {};
+    for (VertexElement2D vertex : elements) {
+        for (VertexAttribute attr: attributes) {
+            switch (attr) {
+                case VertexAttribute::Position2D:
+                    list.insert(list.end(), {vertex.position.x, vertex.position.y});
+                    break;
+                case VertexAttribute::ColorRGB:
+                    list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
+                    break;
+                default:
+                    std::cout << "WARNING: Implementation missing in HandlesAttributes::flattenVertices2D: "
+                              << getVertexAttributeVarName(attr)
+                              << std::endl;
+            }
+        }
+    }
+    return list;
 }
 
 std::vector<GLfloat>
@@ -97,7 +111,14 @@ Vec3 HandlesAttributes::findCenter3D(std::vector<VertexElement3D> elements)
     return Vec3(x / count, y / count, z / count);
 }
 
-Vec2 HandlesAttributes::findCenter2D(std::vector<VertexElement3D> elements)
+Vec2 HandlesAttributes::findCenter2D(std::vector<VertexElement2D> elements)
 {
-    return Vec2(0);
+    float x = 0.0, y = 0.0, count = elements.size();
+
+    for (VertexElement2D vertex : elements) {
+        x += vertex.position.x;
+        y += vertex.position.y;
+    }
+
+    return Vec2(x / count, y / count);
 }
