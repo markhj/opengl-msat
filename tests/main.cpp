@@ -6,8 +6,8 @@
 #include "cases/animation_tests.hpp"
 
 /**
- * @todo Figure out if it's possible to initialize GLAD and GLFW
- *      without generating a window
+ * It's not possible to initialize GLAD without a GLFW context,
+ * which means a window must be created to perform these tests.
  */
 int main()
 {
