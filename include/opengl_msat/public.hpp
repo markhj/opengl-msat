@@ -12,11 +12,14 @@
 
 // Essentials and misc.
 #include "window/window.hpp"
-#include "camera/camera.hpp"
 #include "context/context.hpp"
 #include "timer/timer.hpp"
 #include "tools/service_provider.hpp"
 #include "math/math.hpp"
+
+// Camera
+#include "camera/camera.hpp"
+#include "camera/camera_controller.hpp"
 
 // Animation
 #include "animation/animation.hpp"
