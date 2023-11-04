@@ -5,9 +5,20 @@
 #include <map>
 #include "opengl_msat/common.h"
 
+class ControlSignals {
+public:
+    static const unsigned int ExitProgram = 1;
+
+    static const unsigned int MoveForward = 8000;
+    static const unsigned int MoveLeft = 8001;
+    static const unsigned int MoveRight = 8002;
+    static const unsigned int MoveBackward = 8003;
+};
+
 enum KeyState {
     Press,
-    Release
+    Down,
+    Release,
 };
 
 struct KeyboardEvent {

@@ -5,6 +5,7 @@
 #include "opengl_msat/controls/keyboard.hpp"
 #include "opengl_msat/controls/keyboard_types.hpp"
 #include "opengl_msat/controls/mouse.hpp"
+#include "opengl_msat/controls/input_controller.hpp"
 
 /**
  * Window
@@ -29,6 +30,8 @@ public:
 
     void swapAndPoll();
 
+    void handleInputs();
+
     void setSize(unsigned int width, unsigned int height);
 
     [[nodiscard]] bool keepOpen() const;
@@ -38,6 +41,8 @@ public:
     void setKeyboard(Keyboard* kb);
 
     void setMouse(Mouse* ms);
+
+    void setInputController(InputController* ic);
 
     void setFullScreenMode(bool mode);
 
@@ -56,7 +61,11 @@ private:
 
     static Mouse* mouse;
 
+    static InputController* inputController;
+
     static std::optional<float> mouseLastX, mouseLastY;
+
+    static std::map<Key, bool> pressedKeys;
 
     bool instantiated = false;
 

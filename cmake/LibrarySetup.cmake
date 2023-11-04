@@ -2,10 +2,10 @@
 set(CLASSES
         animation/animation
         camera/camera
-        camera/camera_controller
         controls/keyboard
         controls/keyboard_mapping
         controls/keyboard_types
+        controls/input_controller
         controls/mouse
         context/context
         geometry/vectors

@@ -4,6 +4,8 @@
 Keyboard* Window::keyboard = nullptr;
 Mouse* Window::mouse = nullptr;
 bool Window::shouldClose = false;
+InputController* Window::inputController = nullptr;
+std::map<Key, bool> Window::pressedKeys = {};
 
 std::optional<float> Window::mouseLastX = std::nullopt, Window::mouseLastY = std::nullopt;
 
@@ -145,11 +147,11 @@ void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int act
     switch (action) {
         case GLFW_PRESS:
             state = KeyState::Press;
-            keyboard->keyPressed(glfwToKey->second);
+            pressedKeys[glfwToKey->second] = true;
             break;
         case GLFW_RELEASE:
             state = KeyState::Release;
-            keyboard->keyReleased(glfwToKey->second);
+            pressedKeys[glfwToKey->second] = false;
             break;
         default:
             return;
@@ -161,8 +163,8 @@ void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int act
     };
 
     auto handle = keyboard->getKeyboardMapping()->getHandle(kbEvent);
-    if (handle.has_value()) {
-        handle.value()();
+    if (handle.has_value() && inputController != nullptr) {
+        inputController->process({ handle.value() });
     }
 }
 
@@ -233,4 +235,34 @@ void Window::setMouse(Mouse *ms)
 void Window::windowCloseCallback(GLFWwindow *window)
 {
     shouldClose = true;
+}
+
+void Window::setInputController(InputController *ic)
+{
+    inputController = ic;
+}
+
+void Window::handleInputs()
+{
+    if (!inputController) {
+        return;
+    }
+
+    std::vector<unsigned int> list;
+    for (auto k : pressedKeys) {
+        if (!k.second) {
+            continue;
+        }
+
+        KeyboardEvent kbEvent {
+            .key = k.first,
+            .event = KeyState::Down
+        };
+
+        auto handle = keyboard->getKeyboardMapping()->getHandle(kbEvent);
+        if (handle.has_value()) {
+            list.push_back(handle.value());
+        }
+    }
+    inputController->process(list);
 }

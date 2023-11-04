@@ -16,15 +16,19 @@
  */
 class KeyboardMapping {
 public:
-    void onPress(Key key, std::function<void()> action);
+    void onKeyPress(Key key, unsigned int signal);
 
-    void onRelease(Key key, std::function<void()> action);
+    void onKeyRelease(Key key, unsigned int signal);
 
-    std::optional<std::function<void()>> getHandle(KeyboardEvent ev);
+    void onKeyDown(Key key, unsigned int signal);
+
+    std::optional<unsigned int> getHandle(KeyboardEvent ev);
+
 private:
-    std::map<KeyboardEvent, std::function<void()>> mapping;
+    std::map<KeyboardEvent, unsigned int> mapping;
 
-    void addEvent(Key key, std::function<void()> action, KeyState state);
+    void addEvent(Key key, unsigned int action, KeyState state);
+
 };
 
 #endif
