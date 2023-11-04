@@ -231,6 +231,15 @@ void Window::mouseCallback(GLFWwindow *glfwWindow, double x, double y)
 
     mouse->moved({static_cast<float>(x), static_cast<float>(y)},
                  {diffX, diffY});
+
+    if (inputController) {
+        inputController->mouseMoved(CursorMoved {
+            .x = static_cast<unsigned int>(x),
+            .y = static_cast<unsigned int>(y),
+            .diffX = static_cast<int>(diffX),
+            .diffY = static_cast<int>(diffY),
+        });
+    }
 }
 
 void Window::setMouse(Mouse *ms)

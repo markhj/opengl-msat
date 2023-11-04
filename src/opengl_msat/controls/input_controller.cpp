@@ -30,3 +30,15 @@ void InputController::process(std::vector<unsigned int> list)
         }
     }
 }
+
+void InputController::mouseMoved(CursorMoved cursorMoved)
+{
+    for (InputControllerRole* role : roles) {
+        role->onMouseMove(cursorMoved);
+    }
+}
+
+void InputControllerRole::onMouseMove(CursorMoved cursorMoved)
+{
+
+}

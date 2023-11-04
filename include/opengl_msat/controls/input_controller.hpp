@@ -21,6 +21,8 @@ class InputControllerRole {
 public:
     virtual void handle(SignalList inputStates) = 0;
 
+    virtual void onMouseMove(CursorMoved cursorMoved);
+
 };
 
 class InputController {
@@ -30,6 +32,8 @@ public:
     void attach(InputControllerRole* role);
 
     void process(std::vector<unsigned int> list);
+
+    void mouseMoved(CursorMoved cursorMoved);
 
 private:
     std::map<unsigned int, std::function<void()>> onSignals;
