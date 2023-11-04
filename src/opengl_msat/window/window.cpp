@@ -34,11 +34,8 @@ void Window::generate()
 
     glfwSetKeyCallback(glfwWindow, keyboardCallback);
     glfwSetCursorPosCallback(glfwWindow, mouseCallback);
-<<<<<<< HEAD
     glfwSetWindowCloseCallback(glfwWindow, windowCloseCallback);
-=======
     glfwSetMouseButtonCallback(glfwWindow, mouseButtonCallback);
->>>>>>> 78ec332 (Mouse mapping)
 
     instantiated = true;
 }
