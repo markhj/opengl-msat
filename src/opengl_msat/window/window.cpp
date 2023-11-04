@@ -6,6 +6,7 @@ Mouse* Window::mouse = nullptr;
 bool Window::shouldClose = false;
 InputController* Window::inputController = nullptr;
 std::map<Key, bool> Window::pressedKeys = {};
+std::map<MouseButton, bool> Window::pressedMouseButtons = {};
 
 std::optional<float> Window::mouseLastX = std::nullopt, Window::mouseLastY = std::nullopt;
 
@@ -33,7 +34,11 @@ void Window::generate()
 
     glfwSetKeyCallback(glfwWindow, keyboardCallback);
     glfwSetCursorPosCallback(glfwWindow, mouseCallback);
+<<<<<<< HEAD
     glfwSetWindowCloseCallback(glfwWindow, windowCloseCallback);
+=======
+    glfwSetMouseButtonCallback(glfwWindow, mouseButtonCallback);
+>>>>>>> 78ec332 (Mouse mapping)
 
     instantiated = true;
 }
@@ -249,20 +254,83 @@ void Window::handleInputs()
     }
 
     std::vector<unsigned int> list;
-    for (auto k : pressedKeys) {
-        if (!k.second) {
-            continue;
-        }
 
-        KeyboardEvent kbEvent {
-            .key = k.first,
-            .event = KeyState::Down
-        };
+    if (keyboard) {
+        for (auto k: pressedKeys) {
+            if (!k.second) {
+                continue;
+            }
 
-        auto handle = keyboard->getKeyboardMapping()->getHandle(kbEvent);
-        if (handle.has_value()) {
-            list.push_back(handle.value());
+            KeyboardEvent kbEvent{
+                    .key = k.first,
+                    .event = KeyState::Down
+            };
+
+            auto handle = keyboard->getKeyboardMapping()->getHandle(kbEvent);
+            if (handle.has_value()) {
+                list.push_back(handle.value());
+            }
         }
     }
+
+    if (mouse) {
+        for (auto k: pressedMouseButtons) {
+            if (!k.second) {
+                continue;
+            }
+
+            auto handle = mouse->mouseMapping->getHandle({
+                .button = k.first,
+                .event = MouseButtonState::Down,
+            });
+
+            if (handle.has_value()) {
+                list.push_back(handle.value());
+            }
+        }
+    }
+
     inputController->process(list);
+}
+
+void Window::mouseButtonCallback(GLFWwindow *window, int button, int action, int mods)
+{
+    if (!mouse) {
+        return;
+    }
+
+    if (!mouse->mouseMapping) {
+        return;
+    }
+
+    // Currently, we only support primary and secondary buttons
+    if (button != 0 && button != 1) {
+        return;
+    }
+
+    MouseButtonState state;
+    MouseButton mouseButton((button == 0 ? MouseButton::Primary : MouseButton::Secondary));
+
+    switch (action) {
+        case GLFW_PRESS:
+            state = MouseButtonState::Press;
+            pressedMouseButtons[mouseButton] = true;
+            break;
+        case GLFW_RELEASE:
+            state = MouseButtonState::Release;
+            pressedMouseButtons[mouseButton] = false;
+            break;
+        default:
+            return;
+    }
+
+    MouseButtonEvent kbEvent {
+        .button = mouseButton,
+        .event = state
+    };
+
+    auto handle = mouse->mouseMapping->getHandle(kbEvent);
+    if (handle.has_value() && inputController != nullptr) {
+        inputController->process({ handle.value() });
+    }
 }

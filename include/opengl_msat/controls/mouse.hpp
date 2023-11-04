@@ -4,6 +4,7 @@
 #include <functional>
 #include <optional>
 #include <array>
+#include "mouse_mapping.hpp"
 
 /**
  * Mouse
@@ -15,6 +16,8 @@ public:
     void onMove(std::function<void(std::array<float, 2>, std::array<float, 2>)> func);
 
     void moved(std::array<float, 2> pos, std::array<float, 2> diff);
+
+    MouseMapping* mouseMapping;
 
 private:
     std::optional<std::function<void(std::array<float, 2>, std::array<float, 2>)>> onMoveFunc = std::nullopt;

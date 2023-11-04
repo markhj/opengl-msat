@@ -1,4 +1,4 @@
-#include "opengl_msat/controls/keyboard_types.hpp"
+#include "opengl_msat/controls/control_types.hpp"
 
 #include <map>
 

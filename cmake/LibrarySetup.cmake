@@ -4,9 +4,10 @@ set(CLASSES
         camera/camera
         controls/keyboard
         controls/keyboard_mapping
-        controls/keyboard_types
+        controls/control_types
         controls/input_controller
         controls/mouse
+        controls/mouse_mapping
         context/context
         geometry/vectors
         geometry/matrices

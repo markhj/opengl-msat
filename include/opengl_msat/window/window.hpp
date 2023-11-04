@@ -3,7 +3,7 @@
 
 #include "opengl_msat/common.h"
 #include "opengl_msat/controls/keyboard.hpp"
-#include "opengl_msat/controls/keyboard_types.hpp"
+#include "opengl_msat/controls/control_types.hpp"
 #include "opengl_msat/controls/mouse.hpp"
 #include "opengl_msat/controls/input_controller.hpp"
 
@@ -67,6 +67,8 @@ private:
 
     static std::map<Key, bool> pressedKeys;
 
+    static std::map<MouseButton, bool> pressedMouseButtons;
+
     bool instantiated = false;
 
     bool glfwInitiated = false;
@@ -93,6 +95,8 @@ private:
     static void windowCloseCallback(GLFWwindow* window);
 
     static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+    static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 
     static void mouseCallback(GLFWwindow* glfwWindow, double x, double y);
 

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "opengl_msat/controls/mouse.hpp"
 
 void Mouse::onMove(std::function<void(std::array<float, 2>, std::array<float, 2>)> func)

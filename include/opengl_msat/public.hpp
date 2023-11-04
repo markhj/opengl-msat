@@ -31,7 +31,7 @@
 
 // Types
 #include "opengl_msat/types/color.hpp"
-#include "opengl_msat/controls/keyboard_types.hpp"
+#include "opengl_msat/controls/control_types.hpp"
 #include "opengl_msat/types/lights.hpp"
 #include "opengl_msat/types/projections.hpp"
 #include "opengl_msat/types/render_types.hpp"
@@ -67,7 +67,7 @@
 // Controls
 #include "controls/keyboard.hpp"
 #include "controls/keyboard_mapping.hpp"
-#include "controls/keyboard_types.hpp"
+#include "controls/control_types.hpp"
 #include "controls/mouse.hpp"
 #include "controls/input_controller.hpp"
 

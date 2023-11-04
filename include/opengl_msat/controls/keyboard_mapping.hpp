@@ -7,7 +7,7 @@
 #include <memory>
 #include <optional>
 #include "opengl_msat/common.h"
-#include "keyboard_types.hpp"
+#include "control_types.hpp"
 
 /**
  * Keyboard mapping
