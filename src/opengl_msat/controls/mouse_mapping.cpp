@@ -1,5 +1,10 @@
 #include "opengl_msat/controls/mouse_mapping.hpp"
 
+void MouseMapping::onMove(std::function<void(CursorMoved cursorMoved)> func)
+{
+    onMoveFunc = func;
+}
+
 void MouseMapping::onButtonPress(MouseButton button, unsigned int signal)
 {
     addEvent(button, signal, MouseButtonState::Press);
@@ -33,4 +38,9 @@ void MouseMapping::addEvent(MouseButton button, unsigned int action, MouseButton
         },
         action
     ));
+}
+
+std::optional<std::function<void(CursorMoved cursorMoved)>> MouseMapping::getOnMove()
+{
+    return onMoveFunc;
 }

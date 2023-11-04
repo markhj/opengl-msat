@@ -41,6 +41,11 @@ struct MouseButtonEvent {
     }
 };
 
+struct CursorMoved {
+    unsigned int x, y;
+    int diffX, diffY;
+};
+
 enum KeyState {
     Press,
     Down,

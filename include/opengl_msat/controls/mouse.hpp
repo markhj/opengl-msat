@@ -13,14 +13,9 @@
  */
 class Mouse {
 public:
-    void onMove(std::function<void(std::array<float, 2>, std::array<float, 2>)> func);
-
     void moved(std::array<float, 2> pos, std::array<float, 2> diff);
 
     MouseMapping* mouseMapping;
-
-private:
-    std::optional<std::function<void(std::array<float, 2>, std::array<float, 2>)>> onMoveFunc = std::nullopt;
 
 };
 
