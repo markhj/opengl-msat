@@ -143,9 +143,11 @@ void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int act
     switch (action) {
         case GLFW_PRESS:
             state = KeyState::Press;
+            keyboard->keyPressed(glfwToKey->second);
             break;
         case GLFW_RELEASE:
             state = KeyState::Release;
+            keyboard->keyReleased(glfwToKey->second);
             break;
         default:
             return;

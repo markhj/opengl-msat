@@ -68,8 +68,8 @@ keyboardMapping.onRelease(Key::A, []() {
 ````
 
 ### Key held down
-We do not keep track of the state when the key is held down. But you can implement this on your
-own by storing the state of the key in a variable accessible to you.
+#### Implementation 1
+You can implement this on your own by storing the state of the key in a variable accessible to you.
 
 Here's a simple example, where the ``W`` key makes the character move forward.
 
@@ -87,3 +87,12 @@ keyboardMapping.onRelease(Key::W, [&characterMovingForward]() {
 
 This is just an example. Obviously, you may want to approach this differently in an actual
 implementation of character controls.
+
+#### Implementation 2
+The ``Keyboard`` class keeps track of the key states. You can use ``isDown`` for this purpose.
+
+````c++
+if (keyboard.isDown(Key::W)) {
+    // When W is down
+}
+````

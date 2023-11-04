@@ -18,8 +18,18 @@ public:
     void setKeyboardMapping(KeyboardMapping* kbm);
 
     KeyboardMapping* getKeyboardMapping();
+
+    bool isDown(Key key);
+
+    void keyPressed(Key key);
+
+    void keyReleased(Key key);
+
 private:
     KeyboardMapping* keyboardMapping{};
+
+    std::map<Key, bool> pressedKeys;
+
 };
 
 #endif
