@@ -15,7 +15,7 @@ class Mouse {
 public:
     void moved(std::array<float, 2> pos, std::array<float, 2> diff);
 
-    MouseMapping* mouseMapping;
+    MouseMapping* mouseMapping = nullptr;
 
 };
 

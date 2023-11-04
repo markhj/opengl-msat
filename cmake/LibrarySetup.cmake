@@ -2,6 +2,7 @@
 set(CLASSES
         animation/animation
         camera/camera
+        camera/camera_roles
         controls/keyboard
         controls/keyboard_mapping
         controls/control_types

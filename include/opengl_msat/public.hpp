@@ -16,7 +16,10 @@
 #include "timer/timer.hpp"
 #include "tools/service_provider.hpp"
 #include "math/math.hpp"
+
+// Camera
 #include "camera/camera.hpp"
+#include "camera/camera_roles.hpp"
 
 // Animation
 #include "animation/animation.hpp"

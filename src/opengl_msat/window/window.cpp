@@ -232,7 +232,7 @@ void Window::mouseCallback(GLFWwindow *glfwWindow, double x, double y)
     mouse->moved({static_cast<float>(x), static_cast<float>(y)},
                  {diffX, diffY});
 
-    if (inputController) {
+    if (inputController != nullptr) {
         inputController->mouseMoved(CursorMoved {
             .x = static_cast<unsigned int>(x),
             .y = static_cast<unsigned int>(y),
@@ -309,7 +309,7 @@ void Window::mouseButtonCallback(GLFWwindow *window, int button, int action, int
         return;
     }
 
-    if (!mouse->mouseMapping) {
+    if (mouse->mouseMapping == nullptr) {
         return;
     }
 
