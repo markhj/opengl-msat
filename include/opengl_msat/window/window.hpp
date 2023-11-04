@@ -62,7 +62,7 @@ private:
 
     bool glfwInitiated = false;
 
-    bool shouldClose = false;
+    static bool shouldClose;
 
     unsigned int windowWidth,
         windowHeight,
@@ -80,6 +80,8 @@ private:
     void initializeGLAD();
 
     [[nodiscard]] int getDecoration() const;
+
+    static void windowCloseCallback(GLFWwindow* window);
 
     static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

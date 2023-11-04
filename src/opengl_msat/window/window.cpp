@@ -3,6 +3,7 @@
 
 Keyboard* Window::keyboard = nullptr;
 Mouse* Window::mouse = nullptr;
+bool Window::shouldClose = false;
 
 std::optional<float> Window::mouseLastX = std::nullopt, Window::mouseLastY = std::nullopt;
 
@@ -30,6 +31,7 @@ void Window::generate()
 
     glfwSetKeyCallback(glfwWindow, keyboardCallback);
     glfwSetCursorPosCallback(glfwWindow, mouseCallback);
+    glfwSetWindowCloseCallback(glfwWindow, windowCloseCallback);
 
     instantiated = true;
 }
@@ -226,4 +228,9 @@ void Window::mouseCallback(GLFWwindow *glfwWindow, double x, double y)
 void Window::setMouse(Mouse *ms)
 {
     mouse = ms;
+}
+
+void Window::windowCloseCallback(GLFWwindow *window)
+{
+    shouldClose = true;
 }
