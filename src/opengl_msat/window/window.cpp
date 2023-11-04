@@ -140,6 +140,10 @@ void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int act
         return;
     }
 
+    if (!keyboard->keyboardMapping) {
+        return;
+    }
+
     auto glfwToKey = keyGlfwLookup.find(key);
     if (!glfwToKey->first) {
         return;
@@ -164,7 +168,7 @@ void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int act
         .event = state
     };
 
-    auto handle = keyboard->getKeyboardMapping()->getHandle(kbEvent);
+    auto handle = keyboard->keyboardMapping->getHandle(kbEvent);
     if (handle.has_value() && inputController != nullptr) {
         inputController->process({ handle.value() });
     }
@@ -252,18 +256,18 @@ void Window::handleInputs()
 
     std::vector<unsigned int> list;
 
-    if (keyboard) {
+    if (keyboard && keyboard->keyboardMapping) {
         for (auto k: pressedKeys) {
             if (!k.second) {
                 continue;
             }
 
             KeyboardEvent kbEvent{
-                    .key = k.first,
-                    .event = KeyState::Down
+                .key = k.first,
+                .event = KeyState::Down,
             };
 
-            auto handle = keyboard->getKeyboardMapping()->getHandle(kbEvent);
+            auto handle = keyboard->keyboardMapping->getHandle(kbEvent);
             if (handle.has_value()) {
                 list.push_back(handle.value());
             }
