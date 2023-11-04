@@ -16,10 +16,7 @@
 #include "timer/timer.hpp"
 #include "tools/service_provider.hpp"
 #include "math/math.hpp"
-
-// Camera
 #include "camera/camera.hpp"
-#include "camera/camera_controller.hpp"
 
 // Animation
 #include "animation/animation.hpp"
@@ -34,7 +31,7 @@
 
 // Types
 #include "opengl_msat/types/color.hpp"
-#include "opengl_msat/controls/keyboard_types.hpp"
+#include "opengl_msat/controls/control_types.hpp"
 #include "opengl_msat/types/lights.hpp"
 #include "opengl_msat/types/projections.hpp"
 #include "opengl_msat/types/render_types.hpp"
@@ -70,6 +67,9 @@
 // Controls
 #include "controls/keyboard.hpp"
 #include "controls/keyboard_mapping.hpp"
+#include "controls/control_types.hpp"
+#include "controls/mouse.hpp"
+#include "controls/input_controller.hpp"
 
 // Geometry
 #include "geometry/cube.hpp"

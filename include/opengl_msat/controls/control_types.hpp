@@ -1,13 +1,55 @@
-#ifndef OPENGL_MSAT_KEYBOARD_TYPES_HPP
-#define OPENGL_MSAT_KEYBOARD_TYPES_HPP
+#ifndef OPENGL_MSAT_CONTROL_TYPES_HPP
+#define OPENGL_MSAT_CONTROL_TYPES_HPP
 
 #include <string>
 #include <map>
 #include "opengl_msat/common.h"
 
+class ControlSignals {
+public:
+    static const unsigned int ExitProgram = 1;
+
+    static const unsigned int MoveForward = 8000;
+    static const unsigned int MoveLeft = 8001;
+    static const unsigned int MoveRight = 8002;
+    static const unsigned int MoveBackward = 8003;
+};
+
+enum MouseButton {
+    Primary = 0,
+    Secondary = 1,
+};
+
+enum class MouseButtonState {
+    Press,
+    Down,
+    Release,
+};
+
+struct MouseButtonEvent {
+    int button;
+    MouseButtonState event;
+
+    bool operator<(const MouseButtonEvent& other) const {
+        if (button < other.button) return true;
+        if (button > other.button) return false;
+        return event < other.event;
+    }
+
+    bool operator==(const MouseButtonEvent& other) const {
+        return button == other.button && event == other.event;
+    }
+};
+
+struct CursorMoved {
+    unsigned int x, y;
+    int diffX, diffY;
+};
+
 enum KeyState {
     Press,
-    Release
+    Down,
+    Release,
 };
 
 struct KeyboardEvent {

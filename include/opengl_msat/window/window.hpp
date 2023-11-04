@@ -3,8 +3,9 @@
 
 #include "opengl_msat/common.h"
 #include "opengl_msat/controls/keyboard.hpp"
-#include "opengl_msat/controls/keyboard_types.hpp"
+#include "opengl_msat/controls/control_types.hpp"
 #include "opengl_msat/controls/mouse.hpp"
+#include "opengl_msat/controls/input_controller.hpp"
 
 /**
  * Window
@@ -29,6 +30,8 @@ public:
 
     void swapAndPoll();
 
+    void handleInputs();
+
     void setSize(unsigned int width, unsigned int height);
 
     [[nodiscard]] bool keepOpen() const;
@@ -38,6 +41,8 @@ public:
     void setKeyboard(Keyboard* kb);
 
     void setMouse(Mouse* ms);
+
+    void setInputController(InputController* ic);
 
     void setFullScreenMode(bool mode);
 
@@ -56,7 +61,13 @@ private:
 
     static Mouse* mouse;
 
+    static InputController* inputController;
+
     static std::optional<float> mouseLastX, mouseLastY;
+
+    static std::map<Key, bool> pressedKeys;
+
+    static std::map<MouseButton, bool> pressedMouseButtons;
 
     bool instantiated = false;
 
@@ -84,6 +95,8 @@ private:
     static void windowCloseCallback(GLFWwindow* window);
 
     static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+    static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 
     static void mouseCallback(GLFWwindow* glfwWindow, double x, double y);
 

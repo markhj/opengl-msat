@@ -46,6 +46,8 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
             renderState.reset();
         }
 
+        window->handleInputs();
+
         clear();
 
         iter(this);

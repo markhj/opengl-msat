@@ -1,14 +1,17 @@
-#include <iostream>
 #include "opengl_msat/controls/mouse.hpp"
-
-void Mouse::onMove(std::function<void(std::array<float, 2>, std::array<float, 2>)> func)
-{
-    onMoveFunc = func;
-}
 
 void Mouse::moved(std::array<float, 2> pos, std::array<float, 2> diff)
 {
-    if (onMoveFunc.has_value()) {
-        onMoveFunc.value()(pos, diff);
+    if (!mouseMapping) {
+        return;
+    }
+
+    if (mouseMapping->getOnMove().has_value()) {
+        mouseMapping->getOnMove().value()(CursorMoved {
+            .x = static_cast<unsigned int>(pos[0]),
+            .y = static_cast<unsigned int>(pos[1]),
+            .diffX = static_cast<int>(diff[0]),
+            .diffY = static_cast<int>(diff[1]),
+        });
     }
 }

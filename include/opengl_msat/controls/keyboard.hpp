@@ -15,19 +15,9 @@ public:
 
     explicit Keyboard(KeyboardMapping* kbm) : keyboardMapping(kbm) {}
 
-    void setKeyboardMapping(KeyboardMapping* kbm);
-
-    KeyboardMapping* getKeyboardMapping();
-
-    bool isDown(Key key);
-
-    void keyPressed(Key key);
-
-    void keyReleased(Key key);
+    KeyboardMapping* keyboardMapping { };
 
 private:
-    KeyboardMapping* keyboardMapping{};
-
     std::map<Key, bool> pressedKeys;
 
 };
