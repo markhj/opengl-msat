@@ -13,6 +13,19 @@ FreeFlyingCamera ffc(&camera, &timer);
 inputController.attach(&ffc);
 ````
 
+## Centering the cursor
+In many use-cases, it makes sense to center the cursor after each render iteration.
+
+Use the method ``Window::centerCursor`` for this.
+
+````c++
+renderer.loop([&](Renderer* renderer) {
+    // ...
+    
+    window.centerCursor();
+});
+````
+
 ## Signals
 The free-flying camera responds to these signals:
 
