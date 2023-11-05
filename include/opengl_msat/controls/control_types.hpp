@@ -18,6 +18,11 @@ public:
     static const unsigned int MoveLeft = 41;
     static const unsigned int MoveRight = 42;
     static const unsigned int MoveBackward = 43;
+    static const unsigned int MoveUp = 44;
+    static const unsigned int MoveDown = 45;
+
+    static const unsigned int RotateCW = 60;
+    static const unsigned int RotateCCW = 61;
 };
 
 /**

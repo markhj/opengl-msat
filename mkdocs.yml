@@ -115,7 +115,7 @@ nav:
     - Shader stages: lists/shader-stage.md
     - Vertex attributes: vertex/vertex-attribute.md
     - Keys: controls/key-enum.md
-    - Mouse: controls/mouse-enums.md
+    - Mouse: lists/mouse-enums.md
     - Render options: lists/render-options.md
     - Framebuffers: lists/framebuffer-enums.md
     - Animations: lists/animation-enums.md

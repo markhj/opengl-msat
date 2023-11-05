@@ -40,4 +40,66 @@ private:
 
 };
 
+enum class IsometricCameraRotation {
+    AroundCamera,
+    AroundTarget,
+};
+
+/**
+ * Isometric camera
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/isometric/
+ */
+class IsometricCamera : public InputControllerRole {
+public:
+    IsometricCamera(Window* window, Camera* camera, Timer* timer);
+
+    void handle(SignalList signals) override;
+
+    void onMouseMove(CursorMoved cursorMoved) override;
+
+    Vec2 position = Vec2(0.0);
+
+    float angle = M_PI / 4;
+
+    float speed = 1.0;
+
+    float height = 2.0;
+
+    bool heightAdjustable = true;
+
+    float offsetY = 0.0;
+
+    float maxHeight = 3.0,
+        minHeight = 1.5;
+
+    bool moveWithMouse = true;
+
+    bool allowRotation = true;
+
+    float rotationSpeed = 1.0;
+
+    unsigned int cursorToBorderMargin = 5;
+
+    IsometricCameraRotation rotationMode = IsometricCameraRotation::AroundCamera;
+
+private:
+    Window* window;
+
+    Camera* camera;
+
+    Timer* timer;
+
+    bool rotating = false;
+
+    std::optional<float> rotationTargetAngle = std::nullopt;
+
+    std::optional<Vec2> cursorPos = std::nullopt;
+
+    void rotationAnimation();
+
+    void rotation(SignalList signals);
+
+};
+
 #endif
