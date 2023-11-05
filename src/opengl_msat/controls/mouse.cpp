@@ -30,3 +30,21 @@ void Mouse::setPosition(unsigned int x, unsigned int y)
     std::cout << "Mouse::setPosition not implemented for this platform." << std::endl;
 #endif
 }
+
+void Mouse::hideCursor() const
+{
+#if _WIN32
+    ShowCursor(false);
+#else
+    std::cout << "Mouse::hideCursor not implemented for this platform." << std::endl;
+#endif
+}
+
+void Mouse::showCursor() const
+{
+#if _WIN32
+    ShowCursor(true);
+#else
+    std::cout << "Mouse::showCursor not implemented for this platform." << std::endl;
+#endif
+}

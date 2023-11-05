@@ -21,6 +21,18 @@ public:
      */
     void setPosition(unsigned int x, unsigned int y);
 
+    /**
+     * @todo Implement for Linux
+     * @todo Implement for Mac
+     */
+    void hideCursor() const;
+
+    /**
+     * @todo Implement for Linux
+     * @todo Implement for Mac
+     */
+    void showCursor() const;
+
     MouseMapping* mouseMapping = nullptr;
 
 };

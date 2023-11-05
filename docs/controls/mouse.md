@@ -49,6 +49,13 @@ mouse.setPosition(100, 100);
 
 See also ``Window::centerCursor`` ([Window](../window/window.md))
 
+### ``hideCursor`` and ``showCursor``
+````c++
+void hideCursor() const;
+void showCursor() const;
+````
+> WARNING: Not yet implemented for Linux and Mac
+
 ## Mouse button down
 If you're not using the [Renderer](../render/render.md), you have to call
 the ``Window::handleInputs`` method to make the "down" state for controls work.
