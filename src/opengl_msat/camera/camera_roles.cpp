@@ -1,6 +1,7 @@
 #include "opengl_msat/camera/camera_roles.hpp"
 
-FreeFlyingCamera::FreeFlyingCamera(Camera *camera, Timer *timer) : camera(camera), timer(timer)
+FreeFlyingCamera::FreeFlyingCamera(Camera *camera, Timer *timer)
+    : camera(camera), timer(timer)
 {
 
 }
@@ -37,7 +38,7 @@ void FreeFlyingCamera::handle(SignalList signals)
     if (xzDirection.x != 0 || xzDirection.y != 0) {
         camera->position.x += sin(dh) * moveSpeed;
         camera->position.z += cos(dh) * moveSpeed;
-        camera->position.y += xzDirection.y * cos(directionVertical) * moveSpeed;
+        camera->position.y += xzDirection.y * sin(directionVertical) * moveSpeed;
     }
 
     // Update the camera target
@@ -45,7 +46,7 @@ void FreeFlyingCamera::handle(SignalList signals)
     // cursor movement can occur without repositioning the camera
     camera->target = camera->position + Vec3(
             sin(directionHorizontal),
-            cos(directionVertical),
+            tan(directionVertical),
             cos(directionHorizontal)
     );
 }
@@ -55,5 +56,17 @@ void FreeFlyingCamera::onMouseMove(CursorMoved cursorMoved)
     float sensitivityFactor = 1000;
 
     directionHorizontal -= cursorMoved.diffX * cursorSensitivity / sensitivityFactor;
-    directionVertical += cursorMoved.diffY * cursorSensitivity / sensitivityFactor;
+    directionVertical -= cursorMoved.diffY * cursorSensitivity / sensitivityFactor;
+
+    if (directionVertical > maxVerticalAngle) {
+        directionVertical = maxVerticalAngle;
+    } else if (directionVertical < -maxVerticalAngle) {
+        directionVertical = -maxVerticalAngle;
+    }
+}
+
+void FreeFlyingCamera::setOrientation(float horizontal, float vertical)
+{
+    directionHorizontal = horizontal;
+    directionVertical = vertical;
 }

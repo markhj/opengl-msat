@@ -22,7 +22,21 @@ The free-flying camera responds to these signals:
 - ``ControlSignals::MoveRight``
 
 ## Properties
-| Property  | Data type | Default | Description                                                           |
-|-----------| --- |---------|-----------------------------------------------------------------------|
-| ``speed`` | ``float`` | ``1.5`` | The units moved in any direction per second, while signals are active |
-| ``cursorSensitivity`` | ``float`` | ``10``  | How fast the cursor moves. Lower value is slower.                     |
+| Property              | Data type | Default             | Description                                                                                             |
+|-----------------------| --- |---------------------|---------------------------------------------------------------------------------------------------------|
+| ``speed``             | ``float`` | ``1.5``             | The units moved in any direction per second, while signals are active                                   |
+| ``cursorSensitivity`` | ``float`` | ``10``              | How fast the cursor moves. Lower value is slower.                                                       |
+| ``maxVerticalAngle``  | ``float`` | ``1.48`` (~85&deg;) | The maximum angle the camera can look up/down. When left at 90&deg; it can produce undesirable behavior |
+
+## Methods
+### ``setOrientation``
+Set the current orientation of the camera (in radians).
+
+````c++
+void setOrientation(float horizontal, float vertical);
+````
+
+Example:
+````c++
+ffc.setOrientation(M_PI / 2, 0.0);
+````
