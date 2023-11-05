@@ -344,3 +344,19 @@ void Window::mouseButtonCallback(GLFWwindow *window, int button, int action, int
         inputController->process({ handle.value() });
     }
 }
+
+void Window::centerCursor() const
+{
+    if (!mouse) {
+        notice("Window: Attempting to center cursor without a mouse");
+    }
+
+    if (!fullScreenMode) {
+        notice("Window: Attempting to center mouse in window mode (not allowed)");
+    }
+
+    mouse->setPosition(
+            getWidth() / 2,
+            getHeight() / 2
+            );
+}

@@ -1,5 +1,11 @@
 #include "opengl_msat/controls/mouse.hpp"
 
+#if _WIN32
+#include <windows.h>
+#include <iostream>
+
+#endif
+
 void Mouse::moved(std::array<float, 2> pos, std::array<float, 2> diff)
 {
     if (!mouseMapping) {
@@ -14,4 +20,13 @@ void Mouse::moved(std::array<float, 2> pos, std::array<float, 2> diff)
             .diffY = static_cast<int>(diff[1]),
         });
     }
+}
+
+void Mouse::setPosition(unsigned int x, unsigned int y)
+{
+#if _WIN32
+    SetCursorPos(x, y);
+#else
+    std::cout << "Mouse::setPosition not implemented for this platform." << std::endl;
+#endif
 }

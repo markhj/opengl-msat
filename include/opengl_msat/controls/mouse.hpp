@@ -15,6 +15,12 @@ class Mouse {
 public:
     void moved(std::array<float, 2> pos, std::array<float, 2> diff);
 
+    /**
+     * @todo Implement for Linux
+     * @todo Implement for Mac
+     */
+    void setPosition(unsigned int x, unsigned int y);
+
     MouseMapping* mouseMapping = nullptr;
 
 };

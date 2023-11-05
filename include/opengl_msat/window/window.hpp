@@ -6,13 +6,14 @@
 #include "opengl_msat/controls/control_types.hpp"
 #include "opengl_msat/controls/mouse.hpp"
 #include "opengl_msat/controls/input_controller.hpp"
+#include "opengl_msat/traits/dev_messaging.hpp"
 
 /**
  * Window
  *
  * @see https://opengl-msat.readthedocs.io/en/latest/window/window/
  */
-class Window {
+class Window : DeveloperMessaging {
 public:
     Window(unsigned int width, unsigned int height, const char* title)
         : windowWidth(width), windowHeight(height), title(title)
@@ -47,6 +48,8 @@ public:
     void setFullScreenMode(bool mode);
 
     void setMsaaSampling(int samples);
+
+    void centerCursor() const;
 
     [[nodiscard]] unsigned int getWidth() const;
 

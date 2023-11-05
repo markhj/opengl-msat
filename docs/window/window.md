@@ -216,3 +216,10 @@ renderer.loop([](Renderer* renderer) {
     // Render code
 });
 ````
+
+## Center cursor
+When a mouse is provided to the window and you're in full screen mode, you can call ``centerCursor``.
+
+````c++
+window.centerCursor();
+````
