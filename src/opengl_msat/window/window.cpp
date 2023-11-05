@@ -17,6 +17,10 @@ void Window::generate()
     glfwWindowHint(GLFW_SAMPLES, 1);
     glfwWindowHint(GLFW_DECORATED, getDecoration());
 
+    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+    monitorWidth = mode->width;
+    monitorHeight = mode->height;
+
     glfwWindow = createWindow();
 
     if (!glfwWindow) {
@@ -27,10 +31,6 @@ void Window::generate()
     glfwMakeContextCurrent(glfwWindow);
 
     initializeGLAD();
-
-    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    monitorWidth = mode->width;
-    monitorHeight = mode->height;
 
     glfwSetKeyCallback(glfwWindow, keyboardCallback);
     glfwSetCursorPosCallback(glfwWindow, mouseCallback);
