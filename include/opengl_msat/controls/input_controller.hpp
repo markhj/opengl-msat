@@ -6,6 +6,11 @@
 #include "keyboard.hpp"
 #include "mouse.hpp"
 
+/**
+ * SignalList
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/input-controller-roles/
+ */
 class SignalList {
 public:
     explicit SignalList(std::vector<unsigned int> signals) : signals(std::move(signals)) { }
@@ -17,6 +22,11 @@ private:
 
 };
 
+/**
+ * Input controller role
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/input-controller-roles/
+ */
 class InputControllerRole {
 public:
     virtual void handle(SignalList inputStates) = 0;
@@ -25,6 +35,11 @@ public:
 
 };
 
+/**
+ * Input controller
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/input-controller/
+ */
 class InputController {
 public:
     void onSignal(unsigned int signal, std::function<void()> func);

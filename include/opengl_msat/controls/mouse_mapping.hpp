@@ -5,6 +5,11 @@
 #include <functional>
 #include "control_types.hpp"
 
+/**
+ * Mouse
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/mouse-mapping/
+ */
 class MouseMapping {
 public:
     void onButtonPress(MouseButton button, unsigned int signal);

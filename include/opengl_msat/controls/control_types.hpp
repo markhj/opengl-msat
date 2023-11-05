@@ -5,16 +5,26 @@
 #include <map>
 #include "opengl_msat/common.h"
 
+/**
+ * Signals
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/signals/
+ */
 class ControlSignals {
 public:
     static const unsigned int ExitProgram = 1;
 
-    static const unsigned int MoveForward = 8000;
-    static const unsigned int MoveLeft = 8001;
-    static const unsigned int MoveRight = 8002;
-    static const unsigned int MoveBackward = 8003;
+    static const unsigned int MoveForward = 40;
+    static const unsigned int MoveLeft = 41;
+    static const unsigned int MoveRight = 42;
+    static const unsigned int MoveBackward = 43;
 };
 
+/**
+ * Signals
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/lists/mouse-enums/
+ */
 enum MouseButton {
     Primary = 0,
     Secondary = 1,
@@ -41,6 +51,11 @@ struct MouseButtonEvent {
     }
 };
 
+/**
+ * CursorMoved
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/cursor-moved/
+ */
 struct CursorMoved {
     unsigned int x, y;
     int diffX, diffY;

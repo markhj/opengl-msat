@@ -12,7 +12,7 @@
 /**
  * Keyboard mapping
  *
- * @see https://opengl-msat.readthedocs.io/en/latest/controls/keyboard/
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/keyboard-mapping/
  */
 class KeyboardMapping {
 public:

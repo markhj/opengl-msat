@@ -4,11 +4,16 @@
 #include "camera.hpp"
 #include "opengl_msat/timer/timer.hpp"
 
+/**
+ * Free-flying camera
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/controls/ffc/
+ */
 class FreeFlyingCamera : public InputControllerRole {
 public:
     FreeFlyingCamera(Camera* camera, Timer* timer);
 
-    float dollySpeed = 1.5,
+    float speed = 1.5,
         cursorSensitivity = 10.0;
 
     void handle(SignalList signals) override;

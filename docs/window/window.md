@@ -183,3 +183,36 @@ If you generate a 800x600 window on a 1920x1080 monitor, then the following appl
 
 - Window mode: ``getWidth`` and ``getHeight`` return 800 and 600.
 - Full screen mode: ``getWidth`` and ``getHeight`` return 1920 and 1080.
+
+## Handle inputs
+Some controllers have a "down" mode, for instance a keyboard's keys
+can be held down.
+
+GLFW doesn't have built-in functions to manage this state. It detects press and release.
+
+To seamlessly implement the possibility of using "down" state with our [keyboard](../controls/keyboard-mapping.md)
+and [mouse mapping](../controls/mouse-mapping.md), the window must be instructed to "handle inputs".
+
+````c++
+while (window.keepOpen()) {
+    window.handleInputs();
+    
+    // Render code
+    
+    window.swapBuffers();
+    window.pollEvents();
+}
+````
+
+This is automatically taken care of when you use the [Renderer](../render/render.md)'s ``loop`` function.
+Meaning, it's _not_ required here:
+
+````c++
+renderer.loop([](Renderer* renderer) {
+    // No need to call the "handleInputs", this is done automatically
+    
+    // ...
+    
+    // Render code
+});
+````

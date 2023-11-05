@@ -7,7 +7,7 @@ FreeFlyingCamera::FreeFlyingCamera(Camera *camera, Timer *timer) : camera(camera
 
 void FreeFlyingCamera::handle(SignalList signals)
 {
-    float moveSpeed = timer->getDeltaTime() * dollySpeed;
+    float moveSpeed = timer->getDeltaTime() * speed;
 
     // Create a two-dimensional vector which tracks in which
     // direction the combined inputs indicate movement.

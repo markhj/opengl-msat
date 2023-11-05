@@ -54,8 +54,20 @@ nav:
         - Cubemaps: textures/cubemaps.md
         - Skybox: textures/skybox.md
       - Controls:
-        - Keyboard: controls/keyboard.md
-        - Key enum: controls/key-enum.md
+        - Control basics: controls/controls.md
+        - Input controller: controls/input-controller.md
+        - Keyboard:
+          - Keyboard: controls/keyboard.md
+          - Keyboard mapping: controls/keyboard-mapping.md
+          - List of keys: controls/key-enum.md
+        - Mouse:
+          - Mouse: controls/mouse.md
+          - Mouse mapping: controls/mouse-mapping.md
+          - CursorMoved struct: controls/cursor-moved.md
+        - Input roles:
+          - Input controller roles: controls/input-controller-roles.md
+          - Free-flying camera: controls/ffc.md
+          - Isometric camera: controls/isometric.md
       - Animation:
         - Animation basics: animation/animation.md
         - Blueprints: animation/blueprint.md
@@ -103,8 +115,10 @@ nav:
     - Shader stages: lists/shader-stage.md
     - Vertex attributes: vertex/vertex-attribute.md
     - Keys: controls/key-enum.md
+    - Mouse: controls/mouse-enums.md
     - Render options: lists/render-options.md
     - Framebuffers: lists/framebuffer-enums.md
     - Animations: lists/animation-enums.md
     - Textures: lists/texture-enums.md
+    - Signals: lists/signals.md
   - Troubleshooting: troubleshooting.md
