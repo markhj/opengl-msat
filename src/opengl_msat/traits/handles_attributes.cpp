@@ -10,6 +10,24 @@ unsigned int HandlesAttributes::getSizeOfAttributes(std::vector<VertexAttribute>
     return size;
 }
 
+void optional2DVector(std::vector<GLfloat>* list, std::optional<Vec2> value)
+{
+    if (value.has_value()) {
+        list->insert(list->end(), { value.value().x, value.value().y });
+    } else {
+        list->insert(list->end(), { 0.0, 0.0 });
+    }
+}
+
+void optional3DVector(std::vector<GLfloat>* list, std::optional<Vec3> value)
+{
+    if (value.has_value()) {
+        list->insert(list->end(), { value.value().x, value.value().y, value.value().z });
+    } else {
+        list->insert(list->end(), { 0.0, 0.0, 0.0 });
+    }
+}
+
 std::vector<GLfloat>
 HandlesAttributes::flattenVertices2D(std::vector<VertexElement2D> elements, std::vector<VertexAttribute> attributes)
 {
@@ -21,51 +39,23 @@ HandlesAttributes::flattenVertices2D(std::vector<VertexElement2D> elements, std:
                     list.insert(list.end(), {vertex.position.x, vertex.position.y});
                     break;
                 case VertexAttribute::TextureCoord:
-                    if (vertex.textureCoords.has_value()) {
-                        Vec2 texCoords = vertex.textureCoords.value();
-                        list.insert(list.end(), {texCoords.x, texCoords.y});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0});
-                    }
+                    optional2DVector(&list, vertex.textureCoords);
                     break;
                 case VertexAttribute::MaterialId:
-                    if (vertex.materialId.has_value()) {
-                        list.push_back(vertex.materialId.value());
-                    } else {
-                        list.push_back(-1);
-                    }
+                    list.push_back(vertex.materialId.value() ? vertex.materialId.value() : -1);
                     break;
                 case VertexAttribute::ColorRGB:
                     list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
                     break;
                 case VertexAttribute::Normal2D:
-                    if (vertex.normal.has_value()) {
-                        list.insert(list.end(), {vertex.normal.value().x,
-                                                 vertex.normal.value().y});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0});
-                    }
+                    optional2DVector(&list, vertex.normal);
                     break;
                 case VertexAttribute::Tangent2D:
-                    if (vertex.tangent.has_value()) {
-                        list.insert(list.end(), {vertex.tangent.value().x,
-                                                 vertex.tangent.value().y});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0});
-                    }
+                    optional2DVector(&list, vertex.tangent);
                     break;
                 case VertexAttribute::Bitangent2D:
-                    if (vertex.bitangent.has_value()) {
-                        list.insert(list.end(), {vertex.bitangent.value().x,
-                                                 vertex.bitangent.value().y});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0});
-                    }
+                    optional2DVector(&list, vertex.bitangent);
                     break;
-                default:
-                    std::cout << "WARNING: Implementation missing in HandlesAttributes::flattenVertices2D: "
-                              << getVertexAttributeVarName(attr)
-                              << std::endl;
             }
         }
     }
@@ -83,54 +73,23 @@ HandlesAttributes::flattenVertices3D(std::vector<VertexElement3D> elements, std:
                     list.insert(list.end(), {vertex.position.x, vertex.position.y, vertex.position.z});
                     break;
                 case VertexAttribute::TextureCoord:
-                    if (vertex.textureCoords.has_value()) {
-                        Vec2 texCoords = vertex.textureCoords.value();
-                        list.insert(list.end(), {texCoords.x, texCoords.y});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0});
-                    }
+                    optional2DVector(&list, vertex.textureCoords);
                     break;
                 case VertexAttribute::MaterialId:
-                    if (vertex.materialId.has_value()) {
-                        list.push_back(vertex.materialId.value());
-                    } else {
-                        list.push_back(-1);
-                    }
+                    list.push_back(vertex.materialId.value() ? vertex.materialId.value() : -1);
                     break;
                 case VertexAttribute::Normal3D:
-                    if (vertex.normal.has_value()) {
-                        list.insert(list.end(), {vertex.normal.value().x,
-                                                 vertex.normal.value().y,
-                                                 vertex.normal.value().z});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0, 0.0});
-                    }
+                    optional3DVector(&list, vertex.normal);
                     break;
                 case VertexAttribute::Tangent3D:
-                    if (vertex.tangent.has_value()) {
-                        list.insert(list.end(), {vertex.tangent.value().x,
-                                                 vertex.tangent.value().y,
-                                                 vertex.tangent.value().z});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0, 0.0});
-                    }
+                    optional3DVector(&list, vertex.tangent);
                     break;
                 case VertexAttribute::Bitangent3D:
-                    if (vertex.bitangent.has_value()) {
-                        list.insert(list.end(), {vertex.bitangent.value().x,
-                                                 vertex.bitangent.value().y,
-                                                 vertex.bitangent.value().z});
-                    } else {
-                        list.insert(list.end(), {0.0, 0.0, 0.0});
-                    }
+                    optional3DVector(&list, vertex.bitangent);
                     break;
                 case VertexAttribute::ColorRGB:
                     list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
                     break;
-                default:
-                    std::cout << "WARNING: Implementation missing in HandlesAttributes::flattenVertices3D: "
-                              << getVertexAttributeVarName(attr)
-                              << std::endl;
             }
         }
     }
