@@ -355,8 +355,11 @@ void Window::centerCursor() const
         notice("Window: Attempting to center mouse in window mode (not allowed)");
     }
 
-    mouse->setPosition(
-            getWidth() / 2,
-            getHeight() / 2
-            );
+    unsigned int x = getWidth() / 2,
+        y = getHeight() / 2;
+
+    mouseLastX = x;
+    mouseLastY = y;
+
+    mouse->setPosition(x, y);
 }
