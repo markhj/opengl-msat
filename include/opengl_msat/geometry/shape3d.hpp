@@ -13,7 +13,8 @@
  * @see https://opengl-msat.readthedocs.io/en/latest/geometry/shapes/
  */
 class Shape3D :
-        public ExportsVertices<VertexElement3D> {
+        public ExportsVertices<VertexElement3D>,
+        HandlesAttributes {
 public:
     virtual void construct() = 0;
 

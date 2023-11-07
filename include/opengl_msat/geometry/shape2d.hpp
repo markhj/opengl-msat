@@ -13,7 +13,8 @@
  * @see https://opengl-msat.readthedocs.io/en/latest/geometry/shapes/
  */
 class Shape2D :
-        public ExportsVertices<VertexElement2D> {
+        public ExportsVertices<VertexElement2D>,
+        HandlesAttributes {
 public:
     virtual void construct() = 0;
 
