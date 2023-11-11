@@ -1,4 +1,5 @@
 #include "opengl_msat/shader/fragment_sbldr.hpp"
+#include "opengl_msat/shader/glsl.hpp"
 
 void FragmentShaderBuilder::buildSource()
 {
@@ -32,20 +33,8 @@ void FragmentShaderBuilder::buildSource()
     }
 
     if (enableLighting) {
-        addLine("struct DirectionalLight {\n"
-                "vec3 direction, ambientColor, diffuseColor, specularColor;\n"
-                "};\n");
-
-        addLine("struct PointLight {\n"
-                "vec3 position, ambientColor, diffuseColor, specularColor;\n"
-                "float constant, linear, quadratic;\n"
-                "};");
-
-        addLine("struct SpotLight {\n"
-                "vec3 position, direction, ambientColor, diffuseColor, specularColor;\n"
-                "float cutOff;\n"
-                "float constant, linear, quadratic;\n"
-                "};");
+        addLine(lightStructs);
+        addLine(lightFunctions);
 
         addLine("uniform DirectionalLight[" + std::to_string(lightSlots) + "] directionalLights;\n"
                 "uniform PointLight[" + std::to_string(lightSlots) + "] pointLights;\n"
@@ -53,53 +42,6 @@ void FragmentShaderBuilder::buildSource()
                 "uniform int numDirectionalLights = 0;\n"
                 "uniform int numPointLights = 0;\n"
                 "uniform int numSpotLights = 0;\n");
-
-        addLine("vec3 calcDirectionalLight(DirectionalLight light, float shininess) {\n"
-                "vec3 viewDir = normalize(camera.position - pos);\n"
-                "vec3 lightDir = normalize(-light.direction);\n"
-                "vec3 diffuse = light.diffuseColor * max(dot(normal, lightDir), 0.0);\n"
-                "vec3 reflectDir = reflect(-lightDir, normal);\n"
-                "vec3 specular = light.specularColor * pow(max(dot(viewDir, reflectDir), 0.0), shininess);\n"
-                "return light.ambientColor + diffuse + specular;\n"
-                "}");
-
-        addLine("vec3 calcPointLight(PointLight light, float shininess) {\n"
-                "vec3 viewDir = normalize(camera.position - pos);\n"
-                "vec3 lightDir = normalize(light.position - pos);\n"
-                "float diff = max(dot(normal, lightDir), 0.0);\n"
-                "vec3 reflectDir = reflect(-lightDir, normal);\n"
-                "float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);\n"
-                "float distance = length(light.position - pos);\n"
-                "float attenuation = 1.0 / (light.constant + light.linear * distance +\n"
-                "light.quadratic * (distance * distance));\n"
-                "vec3 ambient  = attenuation * light.ambientColor;\n"
-                "vec3 diffuse  = attenuation * light.diffuseColor * diff;\n"
-                "vec3 specular = attenuation * light.specularColor * spec;\n"
-                "return (ambient + diffuse + specular);\n"
-                "}\n");
-
-        addLine("vec3 calcSpotLight(SpotLight light, float shininess) {\n"
-                "vec3 viewDir = normalize(camera.position - pos);\n"
-                "vec3 result = vec3(0.0, 0.0, 0.0);\n"
-                "vec3 lightDir = normalize(light.position - pos);\n"
-                "float theta = dot(lightDir, normalize(-light.direction));\n"
-                "float cutOff = cos(light.cutOff * M_PI / 180);\n"
-                "if (theta > cutOff) {\n"
-                    "vec3 ambient = light.ambientColor;\n"
-                    "vec3 norm = normalize(normal);\n"
-                    "float diff = max(dot(norm, lightDir), 0.0);\n"
-                    "vec3 diffuse = light.diffuseColor * diff;\n"
-                    "vec3 reflectDir = reflect(-lightDir, norm);\n"
-                    "float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);\n"
-                    "vec3 specular = light.specularColor * spec;\n"
-                    "float distance = length(light.position - pos);\n"
-                    "float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));\n"
-                    "diffuse   *= attenuation;\n"
-                    "specular *= attenuation;\n"
-                    "return ambient + diffuse + specular;\n"
-                "}\n"
-                "return vec3(0.0, 0.0, 0.0);\n"
-            "}");
     }
 
     if (enableMaterials) {

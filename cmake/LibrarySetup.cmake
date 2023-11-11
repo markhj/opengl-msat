@@ -61,7 +61,8 @@ set(CLASSES
 
 # The list of structs
 set(STRUCTS
-    types/scenes)
+    types/scenes
+    shader/glsl)
 
 # The list of contracts in the library
 set(CONTRACTS
