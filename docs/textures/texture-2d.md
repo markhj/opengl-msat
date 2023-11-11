@@ -16,3 +16,13 @@ Texture2D(unsigned int width, unsigned int height, TextureOptions options);
 
 Texture2D(unsigned int width, unsigned int height);
 ````
+
+## Save to file
+You can save the texture to a file using the ``Texture2D::saveTo`` method.
+
+Example:
+````c++
+texture.saveTo("file.png");
+````
+
+The output format is a PNG image, located relative to the executable.
