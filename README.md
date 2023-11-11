@@ -22,6 +22,16 @@ purpose at this stage.
 
 To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.readthedocs.io
 
+## Features
+- Window management
+- Keyboard and mouse controls
+- 2D and 3D rendering
+- Textures, cube maps and skyboxes
+- Shader tools
+- Font and text
+- Misc. debugging tools
+- UI
+
 ## Documentation :blue_book:
 The documentation is written in Markdown (MD) and compiled with MkDocs.
 
