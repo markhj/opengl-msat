@@ -148,6 +148,9 @@ protected:
                   unsigned char* data,
                   TextureOptions options);
 
+protected:
+    unsigned int width, height;
+
 private:
     void load(const std::vector<std::string>& filenames, TextureOptions options);
 

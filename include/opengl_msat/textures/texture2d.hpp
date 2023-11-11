@@ -2,7 +2,6 @@
 #define OPENGL_MSAT_TEXTURE2D_HPP
 
 #include <utility>
-
 #include "texture.hpp"
 
 /**
@@ -12,21 +11,15 @@
  */
 class Texture2D : public Texture {
 public:
-    explicit Texture2D(std::string filename)
-        : Texture(TextureType::Texture2D, std::move(filename))
-    {}
+    explicit Texture2D(std::string filename);
 
-    Texture2D(std::string filename, TextureOptions options)
-        : Texture(TextureType::Texture2D, std::move(filename), options)
-    {}
+    Texture2D(std::string filename, TextureOptions options);
 
-    Texture2D(unsigned int width, unsigned int height, TextureOptions options)
-            : Texture(TextureType::Texture2D, width, height, options)
-    {}
+    Texture2D(unsigned int width, unsigned int height, TextureOptions options);
 
-    Texture2D(unsigned int width, unsigned int height)
-            : Texture(TextureType::Texture2D, width, height, {})
-    {}
+    Texture2D(unsigned int width, unsigned int height);
+
+    void saveTo(const char* filename);
 
 };
 

@@ -2,13 +2,15 @@
 #include "opengl_msat/common.h"
 #include "opengl_msat/textures/texture.hpp"
 
-Texture::Texture(TextureType type, unsigned int width, unsigned int height) : type(type)
+Texture::Texture(TextureType type, unsigned int width, unsigned int height)
+    : type(type), width(width), height(height)
 {
     generateId();
     generate(getGlType(type), width, height, nullptr, {});
 }
 
-Texture::Texture(TextureType type, unsigned int width, unsigned int height, TextureOptions options) : type(type)
+Texture::Texture(TextureType type, unsigned int width, unsigned int height, TextureOptions options)
+    : type(type), width(width), height(height)
 {
     generateId();
     generate(getGlType(type), width, height, nullptr, options);
@@ -47,6 +49,8 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
         noLoaded++;
 
         image = img.value();
+        width = image.width;
+        height = image.height;
 
         generate(getGlTypeIter(type, i), image.width, image.height, image.data, options);
 
@@ -67,21 +71,24 @@ void Texture::load(const std::vector<std::string>& filenames, TextureOptions opt
 }
 
 void Texture::generate(GLint txType,
-                       unsigned int width,
-                       unsigned int height,
+                       unsigned int tWidth,
+                       unsigned int tHeight,
                        unsigned char *data,
                        TextureOptions options)
 {
     bind();
+    width = tWidth;
+    height = tHeight;
     glTexImage2D(txType,
                  0,
                  options.format,
-                 width,
-                 height,
+                 tWidth,
+                 tHeight,
                  0,
                  options.format,
                  GL_UNSIGNED_BYTE,
                  data);
+
     unbind();
 }
 
