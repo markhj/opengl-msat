@@ -42,7 +42,7 @@ HandlesAttributes::flattenVertices2D(std::vector<VertexElement2D> elements, std:
                     optional2DVector(&list, vertex.textureCoords);
                     break;
                 case VertexAttribute::MaterialId:
-                    list.push_back(vertex.materialId.value() ? vertex.materialId.value() : -1);
+                    list.push_back(vertex.materialId.has_value() ? vertex.materialId.value() : -1);
                     break;
                 case VertexAttribute::ColorRGB:
                     list.insert(list.end(), {vertex.color.r, vertex.color.g, vertex.color.b});
@@ -76,7 +76,7 @@ HandlesAttributes::flattenVertices3D(std::vector<VertexElement3D> elements, std:
                     optional2DVector(&list, vertex.textureCoords);
                     break;
                 case VertexAttribute::MaterialId:
-                    list.push_back(vertex.materialId.value() ? vertex.materialId.value() : -1);
+                    list.push_back(vertex.materialId.has_value() ? vertex.materialId.value() : -1);
                     break;
                 case VertexAttribute::Normal3D:
                     optional3DVector(&list, vertex.normal);
