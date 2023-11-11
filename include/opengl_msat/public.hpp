@@ -3,6 +3,8 @@
  *
  * The collection of all essential headers gathered in a single file
  * for easy use by consumers of the library
+ *
+ * @see https://opengl-msat.readthedocs.io/en/latest/getting-started/public-header/
  */
 
 #ifndef OPENGL_MSAT_PUBLIC_HPP
@@ -86,5 +88,9 @@
 // UI
 #include "ui/ui.hpp"
 #include "ui/ui_element.hpp"
+
+// Text
+#include "text/font.hpp"
+#include "text/text.hpp"
 
 #endif

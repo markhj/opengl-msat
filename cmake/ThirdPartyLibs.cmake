@@ -4,4 +4,6 @@ find_package(glm REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(assimp REQUIRED)
 
+include_directories(${FREETYPE_INCLUDE_DIRS})
+
 target_link_libraries(opengl_msat PRIVATE glfw opengl32 assimp glm freetype)

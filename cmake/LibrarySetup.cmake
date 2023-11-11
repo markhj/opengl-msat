@@ -35,6 +35,8 @@ set(CLASSES
         tools/system
         tools/helper
         tools/service_provider
+        text/font
+        text/text
         textures/texture
         textures/texture2d
         textures/texture_unit_mng
