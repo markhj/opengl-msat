@@ -23,11 +23,11 @@ private:
 
     FT_Face face;
 
-    Texture2D fontTexture;
+    Texture2D fontTexture = Texture2D(0, 0);
 
     void construct(const char* filename, unsigned int pixelHeight);
 
-    void build();
+    void build(unsigned int pixelHeight);
 
 };
 
