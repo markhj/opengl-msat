@@ -14,6 +14,7 @@ set(CLASSES
         geometry/matrices
         geometry/shape2d
         geometry/shape3d
+        geometry/regular_polygon
         geometry/rectangle
         geometry/cube
         geometry/object_wrapper

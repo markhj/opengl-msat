@@ -81,6 +81,7 @@
 #include "geometry/object2d.hpp"
 #include "geometry/object3d.hpp"
 #include "geometry/rectangle.hpp"
+#include "geometry/regular_polygon.hpp"
 #include "geometry/cube.hpp"
 
 // UI
