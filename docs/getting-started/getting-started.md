@@ -11,7 +11,10 @@ A number of third-party libraries are required for OpenGL MSAT to function. Thes
 
 If you don't know how to install or link these libraries, you need to do this before anyting else.
 
-It's possible you can find what you're looking for here: https://opengl.it.com/setting-up
+### Building with tests
+> To build the **test suite** of OpenGL MSAT itself, you additionally require C++ BBunit:
+> https://github.com/markhj/cpp-bbunit.
+> This library must be discoverable via CMake's ``find_package``.
 
 ## Getting started using CMake
 Clone the library from: https://github.com/markhj/opengl-msat to somewhere on your local machine.

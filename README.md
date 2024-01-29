@@ -13,7 +13,7 @@
 
 If you have any ideas or problems, don't hesitate to open an issue, or create a pull request.
 
-## 🚀 Current state of the project
+# 🚀 Current state of the project
 
 ⚠️ **DO NOT USE IN PRODUCTION** ⚠️
 
@@ -23,11 +23,11 @@ foundation and features happen very rapidly.
 It's highly unrecommended to use the library for any serious or real-world
 purpose at this stage.
 
-## 🚦 Getting started
+# 🚦 Getting started
 
 To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.readthedocs.io
 
-## 🌿 Features
+# 🌿 Features
 - Window management
 - Keyboard and mouse controls
 - 2D and 3D rendering
@@ -37,10 +37,16 @@ To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.r
 - Misc. debugging tools
 - UI
 
-## 📚 Documentation
+# 📌 Requirements
+
+- C++20 or higher
+- CMake 3.26 or higher
+- Third-party libraries listed here: https://opengl-msat.readthedocs.io/en/latest/getting-started/getting-started/
+
+# 📚 Documentation
 The documentation is written in Markdown (MD) and compiled with MkDocs.
 
-### Editing documentation (with mkdocs)
+## Editing documentation (with mkdocs)
 You must first and foremost have **Python** (and **PiP**) installed.
 Proceed by installing **Mkdocs**.
 
@@ -60,14 +66,14 @@ python -m mkdocs serve
 
 The documentation source is found in the ``docs`` directory.
 
-### Publishing
+## Publishing
 The version hosted at readthedocs.io is automatically rebuilt when a new
 version of ``master`` branch is pushed.
 
 The documentation is based on the latest ``master`` branch, and is available
 at https://opengl-msat.readthedocs.io
 
-## 🎳 Tests
+# 🎳 Tests
 
 The tests contained within the ``tests`` directory can be built using the
 included ``CMakeLists.txt`` file and setting the environment variable
@@ -75,7 +81,9 @@ included ``CMakeLists.txt`` file and setting the environment variable
 
 This generates an executable which runs the tests suites.
 
-## 🌱 Samples
+> Important: C++ BBUnit must be discoverable with CMake's ``find_package`` to build tests.
+
+# 🌱 Samples
 
 You can compile the samples included in the ``samples`` directory, by adding
 the environment variable ``OPENGL_MSAT_BUILD_SAMPLES`` and setting it to ``1``.
