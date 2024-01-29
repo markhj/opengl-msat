@@ -39,7 +39,7 @@ To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.r
 
 # 📌 Requirements
 
-- C++20 or higher
+- C++17 or higher
 - CMake 3.26 or higher
 - Third-party libraries listed here: https://opengl-msat.readthedocs.io/en/latest/getting-started/getting-started/
 
