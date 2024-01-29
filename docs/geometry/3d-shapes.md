@@ -1,8 +1,9 @@
-# Cube
+# 3D shapes
 
+## Cube
 The ``Cube`` class assists in creating a basic 3-dimensional cube.
 
-## Initializing
+### Initializing
 It's initialized by providing two vertices which are diagonally opposed.
 
 For instance:
@@ -18,7 +19,7 @@ its center at ``(0, 0, 0)``.
 Cube cube(Vec3(1.5));
 ````
 
-## Transforms
+### Transforms
 
 The ``Cube`` class is based on the [Shape3D class](shapes.md) which
 means you have access various transform methods (translate, scale, rotate, etc.).

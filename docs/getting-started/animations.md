@@ -5,7 +5,7 @@ In this guide, we will move a cube in a circle.
 ## Setting up
 In this example we will use the [VBO-managed scene](../vertex/vbo-scene.md).
 
-First, we create a [Cube](../geometry/cube.md), a scene, a VAO and VBO.
+First, we create a [Cube](../geometry/3d-shapes.md), a scene, a VAO and VBO.
 
 ````c++
 Object3D cube = Cube(Vec3(-0.25, 0.11, -0.25), Vec3(0.25, 0.5, 0.25));

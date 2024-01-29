@@ -27,7 +27,6 @@ nav:
           - Vertex attributes: vertex/vertex-attribute.md
           - VBO-managed scene: vertex/vbo-scene.md
       - Geometry:
-          - Cube: geometry/cube.md
           - Shapes: geometry/shapes.md
           - ObjectXD: geometry/object-xd.md
           - Object collection: geometry/object-collection.md
@@ -97,6 +96,9 @@ nav:
   - Misc.:
     - Timer: misc/timer.md
     - Math: misc/math.md
+    - Shapes:
+      - 2D shapes: geometry/2d-shapes.md
+      - 3D shapes: geometry/3d-shapes.md
     - Types:
       - Color: misc/color.md
       - Image: misc/image.md
