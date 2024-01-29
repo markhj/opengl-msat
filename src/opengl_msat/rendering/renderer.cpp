@@ -10,7 +10,10 @@ void Renderer::render(VAO &vao)
     // @todo Implement support for multiple VBOs, instead of specifically targeting the first
     VAOAssociable& vbo = vao.getAssociatedVBOs()[0].get();
 
-    render(vao, DrawMode::Triangles, 0, vbo.count());
+    render(vao,
+           DrawMode::Triangles,
+           0,
+           vbo.countVertices(vao.getAttributesForVBO(&vbo).value()));
 
     vao.unbind();
 }
@@ -22,7 +25,10 @@ void Renderer::render(VAO vao, DrawMode drawMode)
     // @todo Implement support for multiple VBOs, instead of specifically targeting the first
     VAOAssociable& vbo = vao.getAssociatedVBOs()[0].get();
 
-    render(vao, drawMode, 0, vbo.count());
+    render(vao,
+           drawMode,
+           0,
+           vbo.countVertices(vao.getAttributesForVBO(&vbo).value()));
 
     vao.unbind();
 }

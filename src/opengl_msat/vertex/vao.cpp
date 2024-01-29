@@ -43,10 +43,22 @@ void VAO::associate(VAOAssociable &vbo, std::vector<VertexAttribute> attributes)
             pos += size;
         }
     });
+
+    vboAttributeAssociations[&vbo] = attributes;
+
     unbind();
 }
 
 std::vector<std::reference_wrapper<VAOAssociable>> VAO::getAssociatedVBOs()
 {
     return associatedVBOs;
+}
+
+std::optional<std::vector<VertexAttribute>> VAO::getAttributesForVBO(VAOAssociable *vbo)
+{
+    auto it = vboAttributeAssociations.find(vbo);
+    if (it != vboAttributeAssociations.end()) {
+        return it->second;
+    }
+    return std::nullopt;
 }

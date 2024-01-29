@@ -30,9 +30,25 @@ public:
 
     void upload() override;
 
+    /**
+     * Returns the total number of float values (irrespective of how they are sorted
+     * into vertices)
+     *
+     * @return unsigned int
+     */
     [[nodiscard]] unsigned int count() override;
 
     [[nodiscard]] unsigned int byteSize() override;
+
+    /**
+     * Returns the total number of vertices according to the
+     * size of the provided attributes
+     *
+     * @param std::vector<VertexAttribute> attributes
+     * @return unsigned int
+     */
+    [[nodiscard]] unsigned int countVertices(std::vector<VertexAttribute> attributes) override;
+
 private:
     GLuint vbo;
 

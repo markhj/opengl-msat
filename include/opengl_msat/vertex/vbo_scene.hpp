@@ -32,6 +32,8 @@ public:
 
     unsigned int byteSize() override;
 
+    unsigned int countVertices(std::vector<VertexAttribute> attributes) override;
+
 protected:
     ObjectCollection* scene;
 

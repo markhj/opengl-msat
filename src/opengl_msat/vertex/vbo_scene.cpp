@@ -1,3 +1,4 @@
+#include <cmath>
 #include "opengl_msat/vertex/vbo_scene.hpp"
 
 template<typename ObjectCollection, typename VertexElementXD>
@@ -45,6 +46,17 @@ template<typename ObjectCollection, typename VertexElementXD>
 void SceneManagedVBO<ObjectCollection, VertexElementXD>::doBind()
 {
     vbo.bind();
+}
+
+template<typename ObjectCollection, typename VertexElementXD>
+unsigned int
+SceneManagedVBO<ObjectCollection, VertexElementXD>::countVertices(std::vector<VertexAttribute> attributes)
+{
+    unsigned int sizeOfAttribs = 0;
+    for (VertexAttribute attribute : attributes) {
+        sizeOfAttribs += getVertexAttributeSize(attribute);
+    }
+    return floor(count() / sizeOfAttribs);
 }
 
 template<typename ObjectCollection, typename VertexElementXD>
