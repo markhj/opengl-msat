@@ -19,7 +19,7 @@ class Mat4 : public glm::mat4, public Matrix<glm::mat4> {
 public:
     explicit Mat4(float val) : glm::mat4(val) { }
 
-    Mat4(const glm::mat4& other) : glm::mat4(other) { }
+    explicit Mat4(const glm::mat4& other) : glm::mat4(other) { }
 
     [[nodiscard]] glm::mat4 toGlm() const override;
 };
