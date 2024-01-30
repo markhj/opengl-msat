@@ -29,7 +29,6 @@ To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.r
 
 # 🌿 Features
 - Window management
-- Keyboard and mouse controls
 - 2D and 3D rendering
 - Textures, cube maps and skyboxes
 - Shader tools

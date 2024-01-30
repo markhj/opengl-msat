@@ -1,6 +1,7 @@
 #ifndef OPENGL_MSAT_SYSINFO_HPP
 #define OPENGL_MSAT_SYSINFO_HPP
 
+#include <map>
 #include "opengl_msat/common.h"
 #include "opengl_msat/window/window.hpp"
 #include "systeminfo.hpp"

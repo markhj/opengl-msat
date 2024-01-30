@@ -45,9 +45,6 @@ while (window.keepOpen()) {
 }
 ````
 
-Note: We will address how to actually map the ESC button in the [Keyboard chapter](../controls/keyboard.md).
-This code only demonstrates the idea of calling the ``Window::close`` method.
-
 ## Swap buffers and poll events
 In OpenGL, we generally do two things at the end of a render loop iteration:
 
@@ -183,43 +180,3 @@ If you generate a 800x600 window on a 1920x1080 monitor, then the following appl
 
 - Window mode: ``getWidth`` and ``getHeight`` return 800 and 600.
 - Full screen mode: ``getWidth`` and ``getHeight`` return 1920 and 1080.
-
-## Handle inputs
-Some controllers have a "down" mode, for instance a keyboard's keys
-can be held down.
-
-GLFW doesn't have built-in functions to manage this state. It detects press and release.
-
-To seamlessly implement the possibility of using "down" state with our [keyboard](../controls/keyboard-mapping.md)
-and [mouse mapping](../controls/mouse-mapping.md), the window must be instructed to "handle inputs".
-
-````c++
-while (window.keepOpen()) {
-    window.handleInputs();
-    
-    // Render code
-    
-    window.swapBuffers();
-    window.pollEvents();
-}
-````
-
-This is automatically taken care of when you use the [Renderer](../render/render.md)'s ``loop`` function.
-Meaning, it's _not_ required here:
-
-````c++
-renderer.loop([](Renderer* renderer) {
-    // No need to call the "handleInputs", this is done automatically
-    
-    // ...
-    
-    // Render code
-});
-````
-
-## Center cursor
-When a mouse is provided to the window and you're in full screen mode, you can call ``centerCursor``.
-
-````c++
-window.centerCursor();
-````

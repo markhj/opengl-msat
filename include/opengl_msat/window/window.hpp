@@ -2,10 +2,6 @@
 #define OPENGL_MSAT_WINDOW_HPP
 
 #include "opengl_msat/common.h"
-#include "opengl_msat/controls/keyboard.hpp"
-#include "opengl_msat/controls/control_types.hpp"
-#include "opengl_msat/controls/mouse.hpp"
-#include "opengl_msat/controls/input_controller.hpp"
 #include "opengl_msat/traits/dev_messaging.hpp"
 
 /**
@@ -31,25 +27,15 @@ public:
 
     void swapAndPoll();
 
-    void handleInputs();
-
     void setSize(unsigned int width, unsigned int height);
 
     [[nodiscard]] bool keepOpen() const;
 
     void close();
 
-    void setKeyboard(Keyboard* kb);
-
-    void setMouse(Mouse* ms);
-
-    void setInputController(InputController* ic);
-
     void setFullScreenMode(bool mode);
 
     void setMsaaSampling(int samples);
-
-    void centerCursor() const;
 
     [[nodiscard]] unsigned int getWidth() const;
 
@@ -59,18 +45,6 @@ public:
 
 private:
     GLFWwindow* glfwWindow;
-
-    static Keyboard* keyboard;
-
-    static Mouse* mouse;
-
-    static InputController* inputController;
-
-    static std::optional<float> mouseLastX, mouseLastY;
-
-    static std::map<Key, bool> pressedKeys;
-
-    static std::map<MouseButton, bool> pressedMouseButtons;
 
     bool instantiated = false;
 
@@ -96,12 +70,6 @@ private:
     [[nodiscard]] int getDecoration() const;
 
     static void windowCloseCallback(GLFWwindow* window);
-
-    static void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
-
-    static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
-
-    static void mouseCallback(GLFWwindow* glfwWindow, double x, double y);
 
     // Window decoration is the title bar with minimize, maximize and close buttons
     // The setting of this value in practice is overruled by fullScreenMode (if true)
