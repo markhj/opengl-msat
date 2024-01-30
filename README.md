@@ -7,9 +7,9 @@
 
 **OpenGL MSAT** stands for **OpenGL misc. structs and tools**. The purpose of this library is to:
 
-- Soften the learning curve for OpenGL
-- Reduce boilerplate code
-- Abstract certain concepts so they're more digestible and less error prone
+-   Soften the learning curve for OpenGL
+-   Reduce boilerplate code
+-   Abstract certain concepts so they're more digestible and less error prone
 
 If you have any ideas or problems, don't hesitate to open an issue, or create a pull request.
 
@@ -28,19 +28,19 @@ purpose at this stage.
 To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.readthedocs.io
 
 # 🌿 Features
-- Window management
-- 2D and 3D rendering
-- Textures, cube maps and skyboxes
-- Shader tools
-- Font and text
-- Misc. debugging tools
-- UI
+-   Window management
+-   2D and 3D rendering
+-   Textures, cube maps and skyboxes
+-   Shader tools
+-   Font and text
+-   Misc. debugging tools
+-   UI
 
 # 📌 Requirements
 
-- C++17 or higher
-- CMake 3.26 or higher
-- Third-party libraries listed here: https://opengl-msat.readthedocs.io/en/latest/getting-started/getting-started/
+-   C++17 or higher
+-   CMake 3.26 or higher
+-   Third-party libraries listed here: https://opengl-msat.readthedocs.io/en/latest/getting-started/getting-started/
 
 # 📚 Documentation
 The documentation is written in Markdown (MD) and compiled with MkDocs.
