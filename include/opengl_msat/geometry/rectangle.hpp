@@ -24,7 +24,7 @@ class Rectangle2D : public Shape2D {
 public:
     Rectangle2D(Vec2 a, Vec2 b) : a(std::move(a)), b(std::move(b)) { }
 
-    Rectangle2D& setNormal(Vec3 value);
+    Rectangle2D& setNormal(Vec2 value);
 
     void construct() override;
 

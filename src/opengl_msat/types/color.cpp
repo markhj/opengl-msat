@@ -23,3 +23,16 @@ ColorRGBA::ColorRGBA(float r, float g, float b, float a) : Vec4(r, g, b, a)
 {
 
 }
+
+Color Coloring::get(int index)
+{
+    int noOfColors = colors.size();
+    if (repeat) {
+        while (index > noOfColors - 1) {
+            index -= noOfColors;
+        }
+        return colors[index];
+    } else {
+        return colors[index > noOfColors - 1 ? noOfColors - 1 : index];
+    }
+}

@@ -3,7 +3,8 @@
 
 Vec3 Math::calculateNormal(Vec3 a, Vec3 b, Vec3 c)
 {
-    return glm::normalize(glm::cross(b - a, c - a));
+    return Vec3(0.0);
+//    return glm::normalize(glm::cross(b - a, c - a));
 }
 
 Vec3 Math::calculateTangent(VertexElement3D a, VertexElement3D b, VertexElement3D c)

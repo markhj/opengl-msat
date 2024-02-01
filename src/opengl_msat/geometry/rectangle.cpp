@@ -34,7 +34,7 @@ Rectangle3D& Rectangle3D::setNormal(Vec3 value)
     return *this;
 }
 
-Rectangle2D &Rectangle2D::setNormal(Vec3 value)
+Rectangle2D &Rectangle2D::setNormal(Vec2 value)
 {
     normal = value;
     return *this;

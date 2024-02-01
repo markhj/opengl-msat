@@ -1,6 +1,7 @@
 #ifndef OPENGL_MSAT_COLOR_HPP
 #define OPENGL_MSAT_COLOR_HPP
 
+#include <vector>
 #include "opengl_msat/geometry/vectors.hpp"
 
 /**

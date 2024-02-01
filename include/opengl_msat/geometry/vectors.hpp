@@ -27,7 +27,7 @@ public:
 
     Vec2(float x, float y) : glm::vec2(x, y) { }
 
-    explicit Vec2(const glm::vec3& other) : glm::vec2(other) { }
+    Vec2(const glm::vec3& other) : glm::vec2(other) { }
 
     [[nodiscard]] glm::vec2 toGlm() const override;
 
@@ -51,7 +51,7 @@ public:
 
     Vec3(float x, float y, float z) : glm::vec3(x, y, z) { }
 
-    explicit Vec3(const glm::vec3& other) : glm::vec3(other) { }
+    Vec3(const glm::vec3& other) : glm::vec3(other) { }
 
     [[nodiscard]] glm::vec3 toGlm() const override;
 
@@ -75,7 +75,7 @@ public:
 
     Vec4(float x, float y, float z, float w) : glm::vec4(x, y, z, w) { }
 
-    explicit Vec4(const glm::vec4& other) : glm::vec4(other) { }
+    Vec4(const glm::vec4& other) : glm::vec4(other) { }
 
     [[nodiscard]] glm::vec4 toGlm() const override;
 
