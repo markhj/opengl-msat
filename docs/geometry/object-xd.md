@@ -69,7 +69,7 @@ Returns the list of float values (with respect to the listed attributes).
 
 ## Casting
 Instances of ``Shape3D`` can be cast to ``Object3D``.
-This works for instance on the [Cube class](cube.md).
+This works for instance on the [Cube class](3d-shapes.md).
 
 ````c++
 Object3D cube = Cube(Vec3(1.0));

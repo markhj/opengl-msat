@@ -26,10 +26,16 @@ public:
     void associate(VAOAssociable& vbo, std::vector<VertexAttribute> attributes);
 
     std::vector<std::reference_wrapper<VAOAssociable>> getAssociatedVBOs();
+
+    std::optional<std::vector<VertexAttribute>> getAttributesForVBO(VAOAssociable* vbo);
+
 private:
     GLuint vao;
 
     std::vector<std::reference_wrapper<VAOAssociable>> associatedVBOs = {};
+
+    std::map<VAOAssociable*, std::vector<VertexAttribute>> vboAttributeAssociations = {};
+
 };
 
 #endif

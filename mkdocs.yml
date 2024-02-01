@@ -27,7 +27,6 @@ nav:
           - Vertex attributes: vertex/vertex-attribute.md
           - VBO-managed scene: vertex/vbo-scene.md
       - Geometry:
-          - Cube: geometry/cube.md
           - Shapes: geometry/shapes.md
           - ObjectXD: geometry/object-xd.md
           - Object collection: geometry/object-collection.md
@@ -53,21 +52,6 @@ nav:
         - Texture unit manager: textures/tum.md
         - Cubemaps: textures/cubemaps.md
         - Skybox: textures/skybox.md
-      - Controls:
-        - Control basics: controls/controls.md
-        - Input controller: controls/input-controller.md
-        - Keyboard:
-          - Keyboard: controls/keyboard.md
-          - Keyboard mapping: controls/keyboard-mapping.md
-          - List of keys: controls/key-enum.md
-        - Mouse:
-          - Mouse: controls/mouse.md
-          - Mouse mapping: controls/mouse-mapping.md
-          - CursorMoved struct: controls/cursor-moved.md
-        - Input roles:
-          - Input controller roles: controls/input-controller-roles.md
-          - Free-flying camera: controls/ffc.md
-          - Isometric camera: controls/isometric.md
       - Animation:
         - Animation basics: animation/animation.md
         - Blueprints: animation/blueprint.md
@@ -97,6 +81,9 @@ nav:
   - Misc.:
     - Timer: misc/timer.md
     - Math: misc/math.md
+    - Shapes:
+      - 2D shapes: geometry/2d-shapes.md
+      - 3D shapes: geometry/3d-shapes.md
     - Types:
       - Color: misc/color.md
       - Coloring: misc/coloring.md
@@ -115,8 +102,6 @@ nav:
     - Projections: lists/projections.md
     - Shader stages: lists/shader-stage.md
     - Vertex attributes: vertex/vertex-attribute.md
-    - Keys: controls/key-enum.md
-    - Mouse: lists/mouse-enums.md
     - Render options: lists/render-options.md
     - Framebuffers: lists/framebuffer-enums.md
     - Animations: lists/animation-enums.md

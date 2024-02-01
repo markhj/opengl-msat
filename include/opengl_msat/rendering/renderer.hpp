@@ -58,6 +58,12 @@ public:
 
     bool resetState = true;
 
+    /**
+     * Applied by glClearColor which determines the background color
+     * where no pixels are actively rendered
+     */
+    Color backgroundColor = Color(0.0);
+
 private:
     Window* window;
 

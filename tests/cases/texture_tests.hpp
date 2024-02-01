@@ -1,7 +1,7 @@
 #ifndef OPENGL_MSAT_TEXTURE_TESTS_HPP
 #define OPENGL_MSAT_TEXTURE_TESTS_HPP
 
-#include "bbunit.hpp"
+#include <bbunit/bbunit.hpp>
 #include "opengl_msat/public.hpp"
 
 class TextureBindingTest : public BBUnit::TestCase {

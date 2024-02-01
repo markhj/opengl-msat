@@ -1,14 +1,7 @@
 #include <iostream>
 #include "opengl_msat/window/window.hpp"
 
-Keyboard* Window::keyboard = nullptr;
-Mouse* Window::mouse = nullptr;
 bool Window::shouldClose = false;
-InputController* Window::inputController = nullptr;
-std::map<Key, bool> Window::pressedKeys = {};
-std::map<MouseButton, bool> Window::pressedMouseButtons = {};
-
-std::optional<float> Window::mouseLastX = std::nullopt, Window::mouseLastY = std::nullopt;
 
 void Window::generate()
 {
@@ -32,10 +25,7 @@ void Window::generate()
 
     initializeGLAD();
 
-    glfwSetKeyCallback(glfwWindow, keyboardCallback);
-    glfwSetCursorPosCallback(glfwWindow, mouseCallback);
     glfwSetWindowCloseCallback(glfwWindow, windowCloseCallback);
-    glfwSetMouseButtonCallback(glfwWindow, mouseButtonCallback);
 
     instantiated = true;
 }
@@ -134,54 +124,9 @@ int Window::getDecoration() const
     return decoration ? 1 : 0;
 }
 
-void Window::keyboardCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-    if (!keyboard) {
-        return;
-    }
-
-    if (!keyboard->keyboardMapping) {
-        return;
-    }
-
-    auto glfwToKey = keyGlfwLookup.find(key);
-    if (!glfwToKey->first) {
-        return;
-    }
-
-    KeyState state;
-    switch (action) {
-        case GLFW_PRESS:
-            state = KeyState::Press;
-            pressedKeys[glfwToKey->second] = true;
-            break;
-        case GLFW_RELEASE:
-            state = KeyState::Release;
-            pressedKeys[glfwToKey->second] = false;
-            break;
-        default:
-            return;
-    }
-
-    KeyboardEvent kbEvent {
-        .key = glfwToKey->second,
-        .event = state
-    };
-
-    auto handle = keyboard->keyboardMapping->getHandle(kbEvent);
-    if (handle.has_value() && inputController != nullptr) {
-        inputController->process({ handle.value() });
-    }
-}
-
 GLFWwindow *Window::getGlfwWindow() const
 {
     return glfwWindow;
-}
-
-void Window::setKeyboard(Keyboard *kb)
-{
-    keyboard = kb;
 }
 
 void Window::setFullScreenMode(bool mode)
@@ -209,157 +154,7 @@ float Window::getAspectRatio() const
     return static_cast<float>(getWidth()) / getHeight();
 }
 
-void Window::mouseCallback(GLFWwindow *glfwWindow, double x, double y)
-{
-    if (!mouse) {
-        return;
-    }
-
-    if (!mouseLastX.has_value()) {
-        mouseLastX = x;
-    }
-
-    if (!mouseLastY.has_value()) {
-        mouseLastY = y;
-    }
-
-    float diffX = x - mouseLastX.value(),
-        diffY = y - mouseLastY.value();
-
-    mouseLastX = x;
-    mouseLastY = y;
-
-    mouse->moved({static_cast<float>(x), static_cast<float>(y)},
-                 {diffX, diffY});
-
-    if (inputController != nullptr) {
-        inputController->mouseMoved(CursorMoved {
-            .x = static_cast<unsigned int>(x),
-            .y = static_cast<unsigned int>(y),
-            .diffX = static_cast<int>(diffX),
-            .diffY = static_cast<int>(diffY),
-        });
-    }
-}
-
-void Window::setMouse(Mouse *ms)
-{
-    mouse = ms;
-}
-
 void Window::windowCloseCallback(GLFWwindow *window)
 {
     shouldClose = true;
-}
-
-void Window::setInputController(InputController *ic)
-{
-    inputController = ic;
-}
-
-void Window::handleInputs()
-{
-    if (!inputController) {
-        return;
-    }
-
-    std::vector<unsigned int> list;
-
-    if (keyboard && keyboard->keyboardMapping) {
-        for (auto k: pressedKeys) {
-            if (!k.second) {
-                continue;
-            }
-
-            KeyboardEvent kbEvent{
-                .key = k.first,
-                .event = KeyState::Down,
-            };
-
-            auto handle = keyboard->keyboardMapping->getHandle(kbEvent);
-            if (handle.has_value()) {
-                list.push_back(handle.value());
-            }
-        }
-    }
-
-    if (mouse) {
-        for (auto k: pressedMouseButtons) {
-            if (!k.second) {
-                continue;
-            }
-
-            auto handle = mouse->mouseMapping->getHandle({
-                .button = k.first,
-                .event = MouseButtonState::Down,
-            });
-
-            if (handle.has_value()) {
-                list.push_back(handle.value());
-            }
-        }
-    }
-
-    inputController->process(list);
-}
-
-void Window::mouseButtonCallback(GLFWwindow *window, int button, int action, int mods)
-{
-    if (!mouse) {
-        return;
-    }
-
-    if (mouse->mouseMapping == nullptr) {
-        return;
-    }
-
-    // Currently, we only support primary and secondary buttons
-    if (button != 0 && button != 1) {
-        return;
-    }
-
-    MouseButtonState state;
-    MouseButton mouseButton((button == 0 ? MouseButton::Primary : MouseButton::Secondary));
-
-    switch (action) {
-        case GLFW_PRESS:
-            state = MouseButtonState::Press;
-            pressedMouseButtons[mouseButton] = true;
-            break;
-        case GLFW_RELEASE:
-            state = MouseButtonState::Release;
-            pressedMouseButtons[mouseButton] = false;
-            break;
-        default:
-            return;
-    }
-
-    MouseButtonEvent kbEvent {
-        .button = mouseButton,
-        .event = state
-    };
-
-    auto handle = mouse->mouseMapping->getHandle(kbEvent);
-    if (handle.has_value() && inputController != nullptr) {
-        inputController->process({ handle.value() });
-    }
-}
-
-void Window::centerCursor() const
-{
-    if (!mouse) {
-        notice("Window: Attempting to center cursor without a mouse");
-    }
-
-    if (!fullScreenMode) {
-        notice("Window: Attempting to center mouse in window mode (not allowed)");
-    }
-
-    unsigned int x = getWidth() / 2,
-        y = getHeight() / 2;
-
-    mouseLastX = x;
-    mouseLastY = y;
-
-    mouse->setPosition(x, y);
 }

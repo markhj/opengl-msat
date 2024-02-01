@@ -11,6 +11,9 @@ public:
     virtual unsigned int count() = 0;
 
     virtual unsigned int byteSize() = 0;
+
+    virtual unsigned int countVertices(std::vector<VertexAttribute> attributes) = 0;
+
 };
 
 #endif

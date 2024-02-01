@@ -22,7 +22,7 @@ std::vector<VertexElement3D> getVertices();
 ## Casting to ``ObjectXD``
 Instances of ``Shape2D`` and ``Shape3D`` can be cast to ``Object2D`` and ``Object3D`` respectively.
 
-This works for instance on the [Cube class](cube.md).
+This works for instance on the [Cube class](3d-shapes.md).
 
 ````c++
 Object3D cube = Cube(Vec3(1.0));
@@ -39,3 +39,7 @@ And that means you can now apply the various transforms on it:
 cube.translate = Vec3(3.0, 0.0, 0.0);
 cube.scale = 2.0;
 ````
+
+## See also
+* [List of 2D shapes](2d-shapes.md)
+* [List of 3D shapes](3d-shapes.md)

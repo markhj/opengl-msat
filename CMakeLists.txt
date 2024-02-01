@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 project(opengl_msat)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 
 include_directories(include)
 include_directories(libs/glad/include)
@@ -27,6 +27,8 @@ endif ()
 
 # Build tests (if requested by the env. variable OPENGL_MSAT_BUILD_TESTS)
 if (OPENGL_MSAT_BUILD_TESTS)
+    find_package(cpp_bbunit REQUIRED)
+
     set(TEST_CASES
         texture_tests
         math_tests
@@ -42,7 +44,7 @@ if (OPENGL_MSAT_BUILD_TESTS)
     add_executable(tests
             tests/main.cpp
             ${OPENGL_MSAT_TEST_FILES})
-    target_link_libraries(tests opengl_msat)
+    target_link_libraries(tests opengl_msat cpp_bbunit)
 endif ()
 
 # Build samples (if requested)

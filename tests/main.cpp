@@ -1,4 +1,4 @@
-#include "bbunit.hpp"
+#include <bbunit/bbunit.hpp>
 #include "opengl_msat/public.hpp"
 
 #include "cases/texture_tests.hpp"

@@ -19,7 +19,6 @@
 
 // Camera
 #include "camera/camera.hpp"
-#include "camera/camera_roles.hpp"
 
 // Animation
 #include "animation/animation.hpp"
@@ -34,7 +33,6 @@
 
 // Types
 #include "opengl_msat/types/color.hpp"
-#include "opengl_msat/controls/control_types.hpp"
 #include "opengl_msat/types/lights.hpp"
 #include "opengl_msat/types/projections.hpp"
 #include "opengl_msat/types/render_types.hpp"
@@ -66,13 +64,6 @@
 #include "vertex/vao.hpp"
 #include "vertex/vbo.hpp"
 #include "vertex/vbo_scene.hpp"
-
-// Controls
-#include "controls/keyboard.hpp"
-#include "controls/keyboard_mapping.hpp"
-#include "controls/control_types.hpp"
-#include "controls/mouse.hpp"
-#include "controls/input_controller.hpp"
 
 // Geometry
 #include "geometry/cube.hpp"

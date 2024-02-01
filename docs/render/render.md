@@ -113,3 +113,19 @@ renderer.swapSettings(newSettings, [&](Renderer* renderer) {
 
 // Settings from before swapSettings was called are now back in effect
 ````
+
+## 🎨 Background color
+You can set the default background color of a window by changing the
+``backgroundColor`` property of ``Renderer``.
+
+````c++
+renderer.backgroundColor = Color(0.1, 0.0, 0.1);
+````
+
+This value is used by the ``Renderer``'s ``clear`` method. If you utilize
+the built-in ``loop`` method, then ``clear`` is automatically called for you.
+
+However, if you're handling the rendering loop manually, you'll need to make sure
+``clear`` method is called to see the background color applied.
+
+> The default value is black ``Color(0.0, 0.0, 0.0)``

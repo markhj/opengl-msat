@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <cmath>
 #include "opengl_msat/vertex/vbo.hpp"
 
 
@@ -54,4 +55,13 @@ void VBO::substitute(std::vector<GLfloat> values, unsigned int from)
                     values.size() * sizeof(GLfloat),
                     values.data());
     safeUnbind();
+}
+
+unsigned int VBO::countVertices(std::vector<VertexAttribute> attributes)
+{
+    unsigned int sizeOfAttribs = 0;
+    for (VertexAttribute attribute : attributes) {
+        sizeOfAttribs += getVertexAttributeSize(attribute);
+    }
+    return floor(count() / sizeOfAttribs);
 }

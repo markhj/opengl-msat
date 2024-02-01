@@ -10,7 +10,10 @@ void Renderer::render(VAO &vao)
     // @todo Implement support for multiple VBOs, instead of specifically targeting the first
     VAOAssociable& vbo = vao.getAssociatedVBOs()[0].get();
 
-    render(vao, DrawMode::Triangles, 0, vbo.count());
+    render(vao,
+           DrawMode::Triangles,
+           0,
+           vbo.countVertices(vao.getAttributesForVBO(&vbo).value()));
 
     vao.unbind();
 }
@@ -22,7 +25,10 @@ void Renderer::render(VAO vao, DrawMode drawMode)
     // @todo Implement support for multiple VBOs, instead of specifically targeting the first
     VAOAssociable& vbo = vao.getAssociatedVBOs()[0].get();
 
-    render(vao, drawMode, 0, vbo.count());
+    render(vao,
+           drawMode,
+           0,
+           vbo.countVertices(vao.getAttributesForVBO(&vbo).value()));
 
     vao.unbind();
 }
@@ -46,8 +52,6 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
             renderState.reset();
         }
 
-        window->handleInputs();
-
         clear();
 
         iter(this);
@@ -63,7 +67,11 @@ void Renderer::loop(std::function<void(Renderer *)> iter)
 
 void Renderer::clear() const
 {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(backgroundColor.r,
+                 backgroundColor.g,
+                 backgroundColor.b,
+                 1.0f);
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
