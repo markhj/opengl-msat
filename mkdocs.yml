@@ -99,6 +99,7 @@ nav:
     - Math: misc/math.md
     - Types:
       - Color: misc/color.md
+      - Coloring: misc/coloring.md
       - Image: misc/image.md
     - Binding and context:
       - Context: context/context.md

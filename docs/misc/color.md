@@ -16,3 +16,6 @@ ColorRGB white(1.0);
 ````c++
 ColorRGBA halfTransparentRed(1.0, 0.0, 0.0, 0.5);
 ````
+
+# See also
+-   [Coloring](coloring.md)

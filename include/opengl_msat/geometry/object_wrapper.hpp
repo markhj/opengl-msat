@@ -28,6 +28,8 @@ public:
 
     ObjectWrapper& colorize(Color color);
 
+    ObjectWrapper& colorize(Coloring coloring);
+
     VecX translate = VecX(0.0);
 
     float scale = 1.0;

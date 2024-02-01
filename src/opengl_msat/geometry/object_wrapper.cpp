@@ -16,5 +16,11 @@ ObjectWrapper<VertexElementXD, VecX>& ObjectWrapper<VertexElementXD, VecX>::colo
     return *this;
 }
 
+template<typename VertexElementXD, typename VecX>
+ObjectWrapper<VertexElementXD, VecX>& ObjectWrapper<VertexElementXD, VecX>::colorize(Coloring coloring)
+{
+    return *this;
+}
+
 template class ObjectWrapper<VertexElement2D, Vec2>;
 template class ObjectWrapper<VertexElement3D, Vec3>;
