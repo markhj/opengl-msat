@@ -1,6 +1,7 @@
 ![](https://res.cloudinary.com/drfztvfdh/image/upload/v1706440042/Github/opengl-msat_emha2y.jpg)
 
 ![GitHub Tag](https://img.shields.io/github/v/tag/markhj/opengl-msat?label=version)
+![GitHub last commit](https://img.shields.io/github/last-commit/markhj/opengl-msat)
 [![Documentation Status](https://readthedocs.org/projects/opengl-msat/badge/?version=latest)](https://opengl-msat.readthedocs.io/en/latest/?badge=latest)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8b583492783549cf90ca12bace85b2c8)](https://app.codacy.com/gh/markhj/opengl-msat/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?label=license)
