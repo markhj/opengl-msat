@@ -5,6 +5,13 @@ that they can behave as an object.
 
 Objects extend the ``ObjectWrapper`` class which offer a number of methods.
 
+## Methods provided by ``ObjectWrapper``
+
+````c++
+ObjectWrapper& colorize(Color color);
+ObjectWrapper& colorize(Coloring coloring);
+````
+
 ## Properties
 You can set these properties which will then apply to all vertices of an object.
 
