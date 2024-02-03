@@ -1,9 +1,7 @@
 # Vertex shader builder
 
-## Include, initialize and usage
+## Initialize and usage
 ````c++
-#include <opengl_msat/shader/vertex_sbldr.hpp>
-
 std::vector<VertexAttribute> attributes = { /* List of vertex attributes */ };
 
 VertexShaderBuilder vsb(attributes);

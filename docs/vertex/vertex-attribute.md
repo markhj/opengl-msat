@@ -6,11 +6,6 @@ used in conjunction with a number of features.
 For example, they are used in ``VAO::associate`` to much more easily
 set up the vertex attribute pointers.
 
-## Include
-````c++
-#include "opengl_msat/shared/vertex_types.hpp"
-````
-
 ## Attributes
 | Enum             | Size | Description                        |
 |------------------|------|------------------------------------|

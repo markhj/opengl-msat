@@ -2,11 +2,6 @@
 
 A **shader program** consists of one or more **shader stages**, typically vertex and fragment.
 
-## Include
-````c++
-#include <opengl_msat/shader/shader.hpp>
-````
-
 ## Shader program
 
 You can easily set up and compile a shader program like this:

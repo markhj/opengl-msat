@@ -2,14 +2,6 @@
 
 The ``Timer`` class a simple utility to assist with calculating delta time and frames per second (FPS).
 
-## Include
-
-Start off by including the ``timer.hpp`` file:
-
-````c++
-#include <opengl_msat/timer/timer.hpp>
-````
-
 ## Instantiation
 
 Instantiate ``Timer``:
