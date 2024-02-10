@@ -10,7 +10,7 @@ class ExportsVertices {
 public:
     virtual std::vector<VertexElementXD> getVertices() = 0;
 
-    virtual std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) = 0;
+    virtual std::vector<GLfloat> getVerticesFlattened(const std::vector<VertexAttribute>& attributes) = 0;
 };
 
 #endif

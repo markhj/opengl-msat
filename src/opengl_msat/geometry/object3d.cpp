@@ -49,7 +49,7 @@ std::vector<VertexElement3D> Object3D::getVertices()
     return list;
 }
 
-std::vector<GLfloat> Object3D::getVerticesFlattened(std::vector<VertexAttribute> attributes)
+std::vector<GLfloat> Object3D::getVerticesFlattened(const std::vector<VertexAttribute>& attributes)
 {
     return flattenVertices3D(getVertices(), attributes);
 }

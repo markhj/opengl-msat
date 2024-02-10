@@ -42,7 +42,7 @@ std::vector <VertexElement2D> Object2D::getVertices()
     return list;
 }
 
-std::vector<GLfloat> Object2D::getVerticesFlattened(std::vector<VertexAttribute> attributes)
+std::vector<GLfloat> Object2D::getVerticesFlattened(const std::vector<VertexAttribute>& attributes)
 {
     return flattenVertices2D(getVertices(), attributes);
 }

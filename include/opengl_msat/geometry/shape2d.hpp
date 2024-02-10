@@ -18,7 +18,7 @@ class Shape2D :
 public:
     virtual void construct() = 0;
 
-    std::vector<GLfloat> getVerticesFlattened(const std::vector<VertexAttribute> attributes) override;
+    std::vector<GLfloat> getVerticesFlattened(const std::vector<VertexAttribute>& attributes) override;
 
     std::vector<VertexElement2D> getVertices() override;
 

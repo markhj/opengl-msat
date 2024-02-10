@@ -17,7 +17,7 @@ class ObjectCollection :
 public:
     std::vector<VertexElementXD> getVertices() override;
 
-    std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override;
+    std::vector<GLfloat> getVerticesFlattened(const std::vector<VertexAttribute>& attributes) override;
 
     void add(ObjectXD* obj);
 

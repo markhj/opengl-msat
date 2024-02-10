@@ -18,7 +18,7 @@ class Object2D :
 public:
     std::vector<VertexElement2D> getVertices() override;
 
-    std::vector<GLfloat> getVerticesFlattened(std::vector<VertexAttribute> attributes) override;
+    std::vector<GLfloat> getVerticesFlattened(const std::vector<VertexAttribute>& attributes) override;
 
     /**
      * If you want your application to rely on the use of translations (rather than coordinates)

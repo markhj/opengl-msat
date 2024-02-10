@@ -15,7 +15,7 @@ std::vector<VertexElementXD> ObjectCollection<ObjectXD, VertexElementXD>::getVer
 
 template<typename ObjectXD, typename VertexElementXD>
 std::vector<GLfloat>
-ObjectCollection<ObjectXD, VertexElementXD>::getVerticesFlattened(std::vector<VertexAttribute> attributes)
+ObjectCollection<ObjectXD, VertexElementXD>::getVerticesFlattened(const std::vector<VertexAttribute>& attributes)
 {
     std::vector<GLfloat> list;
     for (ObjectXD* obj : objects) {

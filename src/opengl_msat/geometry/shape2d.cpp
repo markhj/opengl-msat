@@ -1,6 +1,6 @@
 #include "opengl_msat/geometry/shape2d.hpp"
 
-std::vector<GLfloat> Shape2D::getVerticesFlattened(const std::vector<VertexAttribute> attributes)
+std::vector<GLfloat> Shape2D::getVerticesFlattened(const std::vector<VertexAttribute>& attributes)
 {
     reset();
     construct();
