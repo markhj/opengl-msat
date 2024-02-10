@@ -1,8 +1,10 @@
 #ifndef OPENGL_MSAT_SYSTEMINFO_HPP
 #define OPENGL_MSAT_SYSTEMINFO_HPP
 
+#include <iostream>
+
 struct OpenGLVersion {
-    const char* version;
+    std::string version;
     const unsigned int major, minor;
 };
 

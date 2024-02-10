@@ -1,4 +1,5 @@
 #include "opengl_msat/tools/system.hpp"
+#include <regex>
 
 std::map<GLint, int> System::fakedValues = {};
 
@@ -38,9 +39,17 @@ GPU System::gpu()
 
 OpenGLVersion System::getVersion()
 {
-    unsigned int majorVersion, minorVersion;
-    const char* versionAsString = getChar(GL_VERSION);
-    sscanf(versionAsString, "%d.%d", &majorVersion, &minorVersion);
+    unsigned int majorVersion = 0, minorVersion = 0;
+    std::string versionAsString = getChar(GL_VERSION);
+
+    std::regex pattern("([0-9]+)\\.([0-9]+)");
+    std::smatch match;
+    if (std::regex_search(versionAsString, match, pattern)) {
+        std::string majorStr = match[1].str();
+        std::string minorStr = match[2].str();
+        majorVersion = std::stoi(majorStr);
+        minorVersion = std::stoi(minorStr);
+    }
 
     return {
         .version = versionAsString,
