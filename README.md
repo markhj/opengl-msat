@@ -1,4 +1,4 @@
-![](https://res.cloudinary.com/drfztvfdh/image/upload/v1706440042/Github/opengl-msat_emha2y.jpg)
+![OpenGL MSAT banner](https://res.cloudinary.com/drfztvfdh/image/upload/v1706440042/Github/opengl-msat_emha2y.jpg)
 
 ![GitHub Tag](https://img.shields.io/github/v/tag/markhj/opengl-msat?label=version)
 ![GitHub last commit](https://img.shields.io/github/last-commit/markhj/opengl-msat)
@@ -26,34 +26,37 @@ purpose at this stage.
 
 # 🚦 Getting started
 
-To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.readthedocs.io
+To get started with OpenGL MSAT, please read the guide at: <https://opengl-msat.readthedocs.io>
 
 # 🌿 Features
--   Window management
--   2D and 3D rendering
--   Textures, cube maps and skyboxes
--   Shader tools
--   Lighting
--   Models
--   Font and text
--   Framebuffers
--   Misc. debugging tools
--   UI
+
+- Window management
+- 2D and 3D rendering
+- Textures, cube maps and skyboxes
+- Shader tools
+- Lighting
+- Models
+- Font and text
+- Framebuffers
+- Misc. debugging tools
+- UI
 
 # 📌 Requirements
 
 -   C++17 or higher
 -   CMake 3.26 or higher
--   Third-party libraries listed here: https://opengl-msat.readthedocs.io/en/latest/getting-started/getting-started/
+-   Third-party libraries listed here: <https://opengl-msat.readthedocs.io/en/latest/getting-started/getting-started/>
 
 # 📚 Documentation
+
 The documentation is written in Markdown (MD) and compiled with MkDocs.
 
 ## Editing documentation (with mkdocs)
+
 You must first and foremost have **Python** (and **PiP**) installed.
 Proceed by installing **Mkdocs**.
 
-For installation, please see: https://www.mkdocs.org
+For installation, please see: <https://www.mkdocs.org>
 
 To serve the documentation locally:
 
@@ -70,6 +73,7 @@ python -m mkdocs serve
 The documentation source is found in the ``docs`` directory.
 
 ## Publishing
+
 The version hosted at readthedocs.io is automatically rebuilt when a new
 version of ``master`` branch is pushed.
 
