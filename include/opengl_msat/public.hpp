@@ -79,4 +79,7 @@
 #include "ui/ui.hpp"
 #include "ui/ui_element.hpp"
 
+// Models
+#include "model/model.hpp"
+
 #endif

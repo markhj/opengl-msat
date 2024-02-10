@@ -52,6 +52,8 @@ nav:
         - Texture unit manager: textures/tum.md
         - Cubemaps: textures/cubemaps.md
         - Skybox: textures/skybox.md
+      - Models:
+        - Model basics: models/models.md
       - Animation:
         - Animation basics: animation/animation.md
         - Blueprints: animation/blueprint.md

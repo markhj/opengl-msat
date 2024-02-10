@@ -15,6 +15,7 @@ set(CLASSES
         geometry/object3d
         geometry/object_collection
         math/math
+        model/model
         rendering/renderer
         rendering/renderstate
         rendering/framebuffer
