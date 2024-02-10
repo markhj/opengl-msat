@@ -3,11 +3,6 @@
 The ``Renderer`` provides a number of essential and a number of optional tools
 for rendering with OpenGL MSAT.
 
-## Include
-````c++
-#include "opengl_msat/renderer/renderer.hpp"
-````
-
 ## Setup
 In its simplest form, a render loop can look like this:
 

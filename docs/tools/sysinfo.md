@@ -2,11 +2,6 @@
 
 Often, you need to structure your code in accordance with system-specific information, ranging from screen resolution to max. number of texture units.
 
-## Include
-````c++
-#include "opengl_msat/tools/system.hpp"
-````
-
 ## Usage
 ````c++
 SystemInfo systemInfo = System::getSystemInfo(&window);

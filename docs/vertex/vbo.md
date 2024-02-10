@@ -2,11 +2,6 @@
 
 A **Vertex Buffer Object** (VBO) contains the actual vertex data.
 
-## Include
-````c++
-#include "opengl_msat/vertex/vbo.hpp"
-````
-
 ## Setup
 You instantiate a VBO like this:
 

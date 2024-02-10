@@ -5,13 +5,6 @@ and ensure unbinding isn't forgotten, we've added the ``Context`` class.
 
 It works on classes which inherit the ``Bindable`` class (acting as an interface/contract).
 
-It works like this:
-
-## Include
-````c++
-#include "opengl_msat/context/context.hpp"
-````
-
 ## Usage
 ````c++
 VAO vao;

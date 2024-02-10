@@ -2,11 +2,6 @@
 
 The ``VAO`` is [Bindable class](../context/context.md) representing a Vertex Array Object.
 
-## Include
-````c++
-#include "opengl_msat/vertex/vao.hpp"
-````
-
 ## Initialization
 After including ``vao.hpp`` you can instantiate a VAO with:
 

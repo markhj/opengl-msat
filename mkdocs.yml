@@ -108,5 +108,4 @@ nav:
     - Framebuffers: lists/framebuffer-enums.md
     - Animations: lists/animation-enums.md
     - Textures: lists/texture-enums.md
-    - Signals: lists/signals.md
   - Troubleshooting: troubleshooting.md
