@@ -33,7 +33,10 @@ To get started with OpenGL MSAT, please read the guide at: https://opengl-msat.r
 -   2D and 3D rendering
 -   Textures, cube maps and skyboxes
 -   Shader tools
+-   Lighting
+-   Models
 -   Font and text
+-   Framebuffers
 -   Misc. debugging tools
 -   UI
 
